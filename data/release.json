@@ -1,9 +1,9 @@
 {
-  "version": "3.15.1",
-  "date": "2026-10-20",
+  "version": "3.16.0",
+  "date": "2026-10-26",
   "size": "43 MB",
-  "sha256": "f3e17bcb30dacf3c45eba054932edc490bc8efe12a9f6d99a45b00f713ef2a84",
-  "zipSha256": "793300ed43a6f34e1f2f7e5d6ea1adb7c42d38de962a52efb2feabe5529d2af7",
-  "debSha256": "fe69c77a6e6f84745c9b7e059155ff84b43101674f27ad761ffab02d6a563b34",
-  "notes": "# Clavis Encrypt 3.15.1\n\n## Improvements\n\n- **Removing your license while offline no longer uses up a device.** If you choose **Settings → Remove license** without an internet connection, Clavis now frees that PC's activation the next time it starts online, so you can use your key on another PC.\n- Clavis Pro and Premium keys are now confirmed each time Clavis starts while online, instead of once a day. With no internet connection, nothing changes and your plan keeps working.\n\n## Install / upgrade\n\n- **Windows, already installed:** the app updates itself (Settings → Updates → Check now), or download the new installer from https://clavisenc.com/download.html.\n- **Microsoft Store:** the Store updates it automatically.\n- **Linux:** install the new `.deb` from https://clavisenc.com/download.html.\n\nYour vaults and settings are kept.\n"
+  "sha256": "28ae2e45154bb76d77c64d3961da905221a91546e9fdcbe70edabd9932a10960",
+  "zipSha256": "f84a79ac7c92b541df7f28e7ee6adbeefaa6a3ea186f7a1322cbccb437c423b5",
+  "debSha256": "3ea6f901416b1bb517fe654bf1ead98c0567c397f6adf62f81eba34cd9156f27",
+  "notes": "# Clavis Encrypt 3.16.0\n\n## Decrypting folders is free\n\n- You can now decrypt a whole folder of encrypted files on every plan: choose the folder (or right-click it in File Explorer → Clavis → Decrypt) and press Decrypt. Verifying a folder is free too.\n- Encrypting a whole folder in one step is still part of Clavis Pro. On the free plan you can select any files inside a folder and encrypt them.\n\n## Also\n\n- The Sharing window now opens at the top, so the first section is no longer cut off.\n- Clavis from the Microsoft Store asks once, after you've used it a few times, whether you'd like to rate it in the Store. Choose Not now and it never asks again.\n\n## Install / upgrade\n\n- **Windows, already installed:** the app updates itself (Settings → Updates → Check now), or download it from https://clavisenc.com/download.html.\n- **Microsoft Store:** the Store updates it automatically.\n- **Linux:** install the new `.deb` from https://clavisenc.com/download.html.\n\nYour vaults and settings are kept.\n"
 }
