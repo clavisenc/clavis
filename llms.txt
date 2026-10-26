@@ -85,6 +85,7 @@ Not for: storing passwords (it is not a password manager), macOS, Android or iPh
 - [Download](https://clavisenc.com/download.html): installer, portable ZIP, checksums, install steps, FAQ
 - [Security](https://clavisenc.com/security.html): how the encryption works in plain English, and its limits
 - [Open in browser](https://clavisenc.com/open.html): open a .enc file on any phone, Mac or PC in the browser, decrypted locally (nothing uploaded)
+- [Encrypt in browser](https://clavisenc.com/encrypt.html): encrypt files with a password on any phone, Mac or PC in the browser (free, nothing uploaded); writes the same password-based .enc format (v3, Argon2id 64 MiB / 2 passes, AES-256-GCM) that opens in Clavis Encrypt, open.html and clavis_decrypt.py; up to 1 GB at a time on a phone, 2 GB on a computer
 - [File format](https://clavisenc.com/format.html): the complete .enc format and a free open-source decryptor (clavis_decrypt.py, MIT) that opens any file with just the password, without Clavis Encrypt
 - [Pricing](https://clavisenc.com/pricing.html): Free vs Pro vs Premium
 - [About](https://clavisenc.com/about.html): why Clavis exists and technical specifications

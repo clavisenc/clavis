@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" data-no-analytics>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- No network requests at all from this page's code: the file and password never leave the device. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'none'; media-src blob:; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Encrypt a file in your browser — Clavis Encrypt</title>
+  <meta name="description" content="Encrypt a file with a password on any phone, Mac or PC, right in your browser. Free, no account. Encrypted on your device; nothing is uploaded.">
+  <meta name="theme-color" content="#05080F">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Encrypt a file in your browser">
+  <meta property="og:description" content="Lock a file with a password on any phone, Mac or PC. Encrypted on your device; nothing is uploaded.">
+  <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://clavisenc.com/encrypt.html">
+  <meta property="og:url" content="https://clavisenc.com/encrypt.html">
+  <meta property="og:site_name" content="Clavis Encrypt">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=89cbf04025">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://clavisenc.com/encrypt.html#page","name":"Encrypt a file in your browser","description":"Encrypt a file with a password on any phone, Mac or PC, on your device. Nothing is uploaded.","inLanguage":"en","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it safe to encrypt a file on a website?","acceptedAnswer":{"@type":"Answer","text":"This page encrypts on your device. Its code runs in your browser, and the page's security policy stops that code from connecting anywhere, so the file and the password are never uploaded. As with any web page, you're trusting the code the site sends you. The file format is public, so you can check a file with the open-source decryptor. The code hasn't been independently audited."}},{"@type":"Question","name":"How does the other person open the file?","acceptedAnswer":{"@type":"Answer","text":"At clavisenc.com/open.html on any phone or computer, where it's decrypted on their device, or in the free Clavis Encrypt app for Windows and Linux. They need the password you send them separately."}},{"@type":"Question","name":"How should I send the password?","acceptedAnswer":{"@type":"Answer","text":"Separately from the file: a phone call, a text message or a different chat app, never in the same email or chat as the file. Anyone who gets both can open it."}},{"@type":"Question","name":"What encryption does it use?","acceptedAnswer":{"@type":"Answer","text":"AES-256-GCM, with a key made from your password by Argon2id (64 MB of memory, 2 passes) and a new random salt for every file. The content is compressed, then sealed in 64 KB chunks, so a changed, reordered or cut-off file is detected when it's opened. It's the same .enc format the Clavis Encrypt app writes."}},{"@type":"Question","name":"Is there a size limit?","acceptedAnswer":{"@type":"Answer","text":"Up to 1 GB at a time on a phone and 2 GB on a computer, because the browser holds the encrypted file until you save it. The Clavis Encrypt app has no such limit."}},{"@type":"Question","name":"Can I encrypt a folder?","acceptedAnswer":{"@type":"Answer","text":"Not on this page. Zip the folder first and encrypt the zip file, or use the Clavis Encrypt app, which encrypts whole folders."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. There's no account, no sign-up and no limit on how often you use it."}},{"@type":"Question","name":"What if I forget the password?","acceptedAnswer":{"@type":"Answer","text":"Then the file can't be opened. The password is never stored or sent anywhere, so there's nothing to recover it from. Keep your original file until the other person has opened theirs."}}]}</script>
+  <style>
+    .locker { margin: 26px 0 8px; }
+    .drop { display: block; border: 1.5px dashed var(--line-2); border-radius: 18px; padding: 28px 22px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; }
+    .drop.hot, .drop:hover { border-color: var(--azure); background: rgba(47,166,255,.06); }
+    .drop b { display: block; color: var(--text); font-size: 18px; margin-bottom: 6px; }
+    .drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+    .drop #chosen { font: 500 14px/1.4 var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+    .locker label.f { display: block; margin: 18px 0 0; color: var(--text); font-weight: 600; font-size: 15px; }
+    .pw-row { display: flex; gap: 8px; margin-top: 8px; }
+    .locker input[type=password], .locker input[type=text] { flex: 1; min-width: 0; width: 100%; height: 50px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--line-2); background: rgba(255,255,255,.04); color: var(--text); font-size: 16px; font-family: var(--mono); }
+    .locker input:focus { outline: 2px solid var(--azure); outline-offset: 2px; }
+    .locker #pw2 { margin-top: 8px; }
+    .pw-row .btn { flex: none; }
+    .tools { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
+    .meter { height: 4px; border-radius: 4px; background: rgba(255,255,255,.07); margin: 12px 0 0; overflow: hidden; }
+    .meter i { display: block; height: 100%; width: 0; transition: width .2s, background .2s; }
+    .meter i.s0 { background: #FF6B6B; } .meter i.s1 { background: #FF9F5A; } .meter i.s2 { background: #F5D547; }
+    .meter i.s3 { background: #7BD88F; } .meter i.s4 { background: var(--ok); }
+    .hint { color: var(--muted); font-size: 14px; margin: 8px 0 0; min-height: 1.4em; }
+    #formMsg { color: #FF8A8A; margin: 16px 0 0; }
+    .locker .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+    .btn.small { padding: 9px 16px; font-size: 14px; }
+    #results { list-style: none; padding: 0; margin: 22px 0 0; }
+    .res { padding: 16px 18px; border: 1px solid var(--line-2); border-radius: 14px; margin-bottom: 12px; }
+    .res-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .res-name { color: var(--text); overflow-wrap: anywhere; }
+    .res-state { color: var(--muted); font-size: 14px; }
+    .res-state.good { color: var(--ok); } .res-state.bad { color: #FF8A8A; }
+    .bar { height: 4px; border-radius: 4px; background: rgba(255,255,255,.07); margin: 12px 0 0; overflow: hidden; }
+    .bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #3D7BFF, #46E6FF); transition: width .2s; }
+    .res-act { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .res-act:empty { display: none; }
+    .done { padding: 18px 20px; border: 1px solid var(--line-2); border-radius: 14px; background: rgba(61,214,140,.05); }
+    .done p { margin: 0 0 12px; }
+    .done textarea { width: 100%; min-height: 120px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line-2); background: rgba(255,255,255,.04); color: var(--text); font: 15px/1.5 var(--sans, inherit); resize: vertical; }
+    #unsupported { color: #FF8A8A; }
+  </style>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
+      </button>
+      <nav class="nav-links" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+        <a href="blog.html">Blog</a>
+        <a href="help.html">Help</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="block">
+      <div class="wrap post">
+        <p class="post-meta">Encrypt anywhere</p>
+        <h1>Encrypt a file in your browser</h1>
+        <p>On a phone, a Mac or any computer. The file is encrypted <strong>on this device</strong>: this page can't send anything anywhere, and your file and password are never uploaded.</p>
+        <p id="unsupported" hidden>This browser is too old for this page. Use a current Chrome, Edge, Firefox or Safari.</p>
+
+        <form class="locker" id="encForm" autocomplete="off" novalidate>
+          <label class="drop" id="drop">
+            <input type="file" id="plainFiles" multiple>
+            <b>Choose or drop files</b>
+            <span id="chosen">No file chosen</span>
+          </label>
+
+          <label class="f" for="pw">Password</label>
+          <div class="pw-row">
+            <input type="password" id="pw" autocomplete="new-password" autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="strength">
+            <button class="btn btn-ghost small" id="showPw" type="button" aria-pressed="false" aria-controls="pw pw2">Show</button>
+          </div>
+          <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+          <p class="hint" id="strength" aria-live="polite"></p>
+          <div class="tools">
+            <button class="btn btn-ghost small" id="suggest" type="button">Suggest a password</button>
+          </div>
+          <p class="hint" id="suggestNote" hidden>Copy or write it down now: you'll need to send it to them, and nobody can recover it.</p>
+
+          <label class="f" for="pw2">Type it again</label>
+          <input type="password" id="pw2" autocomplete="new-password" autocapitalize="off" autocorrect="off" spellcheck="false">
+
+          <p id="formMsg" role="alert" hidden></p>
+          <div class="row">
+            <button class="btn btn-primary" id="encBtn" type="submit">Encrypt</button>
+            <button class="btn btn-ghost" id="clearBtn" type="button">Clear</button>
+          </div>
+        </form>
+        <ul id="results" aria-live="polite"></ul>
+
+        <div class="done" id="done" hidden>
+          <p><strong>Done.</strong> Send the .enc file any way you like, and send the password separately (a call or a different app). They can open it <a href="open.html">here in the browser</a> or in Clavis Encrypt.</p>
+          <label class="f" for="message">Message to send with the file</label>
+          <textarea id="message" readonly></textarea>
+          <div class="res-act">
+            <button class="btn btn-ghost small" id="copyMessage" type="button">Copy message</button>
+            <button class="btn btn-ghost small" id="copyPassword" type="button">Copy password</button>
+          </div>
+        </div>
+
+        <h2>How it works</h2>
+        <ol>
+          <li>Choose one or more files and a password (or press <strong>Suggest a password</strong>).</li>
+          <li>Each file is encrypted with AES-256-GCM on this device, with a key made from your password by Argon2id.</li>
+          <li>Save the <code>.enc</code> file and send it any way you like: email, a chat app, a cloud link or a USB stick.</li>
+          <li>Send the password a different way, such as a phone call or a different app, not with the file.</li>
+          <li>They open it at <a href="open.html">Open an encrypted file</a> on any phone or computer, or in the free Clavis Encrypt app.</li>
+        </ol>
+
+        <h2>Good to know</h2>
+        <ul>
+          <li>Encrypting takes a few seconds per file: the same deliberate slowness that protects your password from guessing.</li>
+          <li>Up to 1 GB at a time on a phone and 2 GB on a computer: very large files may not fit in a phone's memory. The app has no such limit.</li>
+          <li>The <code>.enc</code> file keeps the original name (for example <code>report.pdf.enc</code>) so the other person knows what it is. If the name itself is private, rename the <code>.enc</code> file: the real name is stored inside, encrypted, and comes back when it's opened.</li>
+          <li>If the password is forgotten, the file can't be opened by anyone, including us. Keep your original until they've opened theirs.</li>
+          <li>It's the same public <a href="format.html">file format</a> the Clavis Encrypt app writes, and an open-source decryptor opens it too. This page's code hasn't been independently audited (see <a href="security.html">Security</a>).</li>
+          <li><strong>For files you keep</strong>, whole folders, the right-click menu and automatic encryption, <a href="download.html">use the free Clavis Encrypt app</a> for Windows (or Linux).</li>
+        </ul>
+
+        <h2>Questions</h2>
+        <div class="faq">
+          <details><summary>Is it safe to encrypt a file on a website?</summary><p>This page encrypts on your device. Its code runs in your browser, and the page's security policy stops that code from connecting anywhere, so the file and the password are never uploaded. As with any web page, you're trusting the code the site sends you. The file format is public, so you can check a file with the open-source decryptor. The code hasn't been independently audited.</p></details>
+          <details><summary>How does the other person open the file?</summary><p>At clavisenc.com/open.html on any phone or computer, where it's decrypted on their device, or in the free Clavis Encrypt app for Windows and Linux. They need the password you send them separately.</p></details>
+          <details><summary>How should I send the password?</summary><p>Separately from the file: a phone call, a text message or a different chat app, never in the same email or chat as the file. Anyone who gets both can open it.</p></details>
+          <details><summary>What encryption does it use?</summary><p>AES-256-GCM, with a key made from your password by Argon2id (64 MB of memory, 2 passes) and a new random salt for every file. The content is compressed, then sealed in 64 KB chunks, so a changed, reordered or cut-off file is detected when it's opened. It's the same .enc format the Clavis Encrypt app writes.</p></details>
+          <details><summary>Is there a size limit?</summary><p>Up to 1 GB at a time on a phone and 2 GB on a computer, because the browser holds the encrypted file until you save it. The Clavis Encrypt app has no such limit.</p></details>
+          <details><summary>Can I encrypt a folder?</summary><p>Not on this page. Zip the folder first and encrypt the zip file, or use the Clavis Encrypt app, which encrypts whole folders.</p></details>
+          <details><summary>Is it free?</summary><p>Yes. There's no account, no sign-up and no limit on how often you use it.</p></details>
+          <details><summary>What if I forget the password?</summary><p>Then the file can't be opened. The password is never stored or sent anywhere, so there's nothing to recover it from. Keep your original file until the other person has opened theirs.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+          <p class="latin">clāvis — Latin, “key”</p>
+          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
+          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
+        </div>
+        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a></nav>
+        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
+        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      </div>
+      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/vendor/argon2.umd.min.js"></script>
+  <script src="assets/js/vendor/common-passwords.js"></script>
+  <script src="assets/js/strength.js"></script>
+  <script src="assets/js/encrypt.js"></script>
+  <script src="assets/js/encrypt-ui.js"></script>
+  <script src="assets/js/site.js?v=e725794481" defer></script>
+</body>
+</html>
