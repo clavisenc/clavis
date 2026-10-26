@@ -64,16 +64,14 @@
               <span class="os-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4cc2ff" d="M2.5 4.4 10.4 3.3v7.9H2.5z"/><path fill="#4cc2ff" d="M11.6 3.1 21.5 1.8v9.4h-9.9z"/><path fill="#4cc2ff" d="M2.5 12.4h7.9v7.9l-7.9-1.1z"/><path fill="#4cc2ff" d="M11.6 12.4h9.9v9.4l-9.9-1.3z"/></svg></span>
               <div><div class="os-name">Windows</div><div class="os-sub">Windows 10 &amp; 11 · 64-bit · <span data-release="size">43 MB</span></div></div>
             </div>
-            <p class="os-what">Adds Clavis to the Start menu and to the File Explorer right-click menu.</p>
-            <a data-goatcounter-click="download-windows-installer" data-goatcounter-title="Download: Windows installer" class="btn btn-primary" id="dl-btn" href="https://github.com/clavisenc/FileEncryptionApp-updates/releases/latest/download/Clavis-Setup.exe"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg> Clavis-Setup.exe</a>
+            <p class="os-what">Get it from the Microsoft Store: it installs without warnings and keeps itself up to date.</p>
+            <a class="btn btn-primary" id="dl-store" href="https://apps.microsoft.com/detail/9PCWJ9HG0TNN?mode=direct&amp;cid=website" target="_blank" rel="noopener" data-goatcounter-click="download-windows-store" data-goatcounter-title="Download: Microsoft Store"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h14l-1 10H4z"/><path d="M7 7V5a3 3 0 0 1 6 0v2"/></svg> Get it from Microsoft Store</a>
+            <p class="os-note"><b>Or download the installer</b>, which also adds the File Explorer right-click Encrypt menu and the command line. No administrator rights needed.</p>
+            <a data-goatcounter-click="download-windows-installer" data-goatcounter-title="Download: Windows installer" class="btn btn-ghost" id="dl-btn" href="https://github.com/clavisenc/FileEncryptionApp-updates/releases/latest/download/Clavis-Setup.exe"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg> Clavis-Setup.exe</a>
             <a data-goatcounter-click="download-windows-zip" data-goatcounter-title="Download: Windows ZIP" class="btn btn-ghost" href="https://github.com/clavisenc/FileEncryptionApp-updates/releases/latest/download/Clavis-windows.zip"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg> Portable ZIP (no installer)</a>
-            <p class="os-note">No administrator rights needed. Portable ZIP: unzip anywhere and run <b>Clavis.exe</b>.</p>
-            <div class="ms-store">
-              <a class="ms-store-badge" href="https://apps.microsoft.com/detail/9PCWJ9HG0TNN?mode=direct&amp;cid=website" target="_blank" rel="noopener" data-goatcounter-click="msstore-badge" data-goatcounter-title="Download: Microsoft Store badge"><img src="assets/img/ms-store-badge.svg" width="161" height="44" alt="Download from the Microsoft Store"></a>
-              <p><b>Prefer the Microsoft Store?</b> Install Clavis Encrypt from there, and the Store keeps it up to date for you. The installer above also adds the right-click Encrypt menu and the command line.</p>
-            </div>
+            <p class="os-note">Portable ZIP: unzip anywhere and run <b>Clavis.exe</b>.</p>
             <details class="os-warn" data-track="download-warning-help">
-              <summary>Nothing downloaded, or a warning appeared?</summary>
+              <summary>Installer: nothing downloaded, or a warning appeared?</summary>
               <p><b>Easiest fix:</b> install it from the <a href="https://apps.microsoft.com/detail/9PCWJ9HG0TNN?mode=direct&amp;cid=website" target="_blank" rel="noopener" data-goatcounter-click="msstore-warning-help">Microsoft Store</a> instead.</p>
               <p>Clavis Encrypt is new, so Edge and Chrome don't recognise the installer yet and may hold it back. Nothing is wrong with the file.</p>
               <ol>
@@ -122,7 +120,7 @@
           <h2 class="h2">Three minutes, <em>start to locked.</em></h2>
         </div>
         <ol class="dl-steps">
-          <li><h3>Install</h3><p><b>Windows:</b> double-click Clavis-Setup.exe — it installs just for you, no administrator prompt. <b>Linux:</b> <code>sudo apt install ./Clavis-linux.deb</code></p></li>
+          <li><h3>Install</h3><p><b>Windows:</b> click <b>Get</b> in the Microsoft Store, or double-click Clavis-Setup.exe — either way it installs just for you, no administrator prompt. <b>Linux:</b> <code>sudo apt install ./Clavis-linux.deb</code></p></li>
           <li><h3>Create your vault</h3><p>Open Clavis from the Start menu or your apps menu and choose a strong password. Clavis coaches you while you type.</p></li>
           <li><h3>Save your recovery key</h3><p>Write it down or print it. It's your way back in if you ever forget the password. <a href="help-recovery-key.html">More about it →</a></p></li>
         </ol>
