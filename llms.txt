@@ -123,6 +123,7 @@ Not for: storing passwords (it is not a password manager), macOS, Android or iPh
 
 ## Guides
 
+- [Encrypt a file on your phone and send it safely](https://clavisenc.com/blog-encrypt-file-on-phone-android-iphone.html): Android and iPhone, in the browser with encrypt.html; compared with what phones already offer
 - [How to carry encrypted files on a USB stick and open them on another PC](https://clavisenc.com/blog-carry-encrypted-files-on-usb-stick.html): set up a stick with USB Stick -> Set up stick (Pro), run Clavis from it on other Windows PCs, or open files with the offline browser page; limits and questions
 - [Can you permanently delete a file on Windows 11? What actually works](https://clavisenc.com/blog-shred-files-windows-11-what-actually-works.html): what Delete, TRIM and file shredders do on hard disks, SSDs, USB sticks and cloud folders, with sources (NIST SP 800-88 Rev. 2, USENIX FAST '11), and why encrypting first protects a file
 - [BitLocker vs Device encryption on Windows 11 Home: what's the difference?](https://clavisenc.com/blog-bitlocker-vs-device-encryption-windows-11-home.html)
