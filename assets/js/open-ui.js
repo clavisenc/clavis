@@ -54,6 +54,7 @@
       try {
         const { name, blob } = await ClavisOpen.openFile(f, pw, kf, (frac, msg) => { r.bar(frac); r.state(msg); });
         r.bar(1); r.state("Opened · " + size(blob.size), "good"); r.done(name, blob);
+        if (window.ClavisCount) ClavisCount.event("open-file");
       } catch (err) {
         r.bar(0);
         if (err instanceof ClavisOpen.BadPassword) r.state("Wrong password or key file", "bad");

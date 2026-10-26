@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- No network requests at all from this page's code: the file and password never leave the device. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'none'; media-src blob:; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://clavis.goatcounter.com; connect-src 'none'; media-src blob:; form-action 'none'; base-uri 'none'; object-src 'none'">
   <meta name="referrer" content="no-referrer">
   <title>Encrypt a file in your browser — Clavis Encrypt</title>
   <meta name="description" content="Encrypt a file with a password on any phone, Mac or PC, right in your browser. Free, no account. Encrypted on your device; nothing is uploaded.">
@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css?v=89cbf04025">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://clavisenc.com/encrypt.html#page","name":"Encrypt a file in your browser","description":"Encrypt a file with a password on any phone, Mac or PC, on your device. Nothing is uploaded.","inLanguage":"en","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"}}]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it safe to encrypt a file on a website?","acceptedAnswer":{"@type":"Answer","text":"This page encrypts on your device. Its code runs in your browser, and the page's security policy stops that code from connecting anywhere, so the file and the password are never uploaded. As with any web page, you're trusting the code the site sends you. The file format is public, so you can check a file with the open-source decryptor. The code hasn't been independently audited."}},{"@type":"Question","name":"How does the other person open the file?","acceptedAnswer":{"@type":"Answer","text":"At clavisenc.com/open.html on any phone or computer, where it's decrypted on their device, or in the free Clavis Encrypt app for Windows and Linux. They need the password you send them separately."}},{"@type":"Question","name":"How should I send the password?","acceptedAnswer":{"@type":"Answer","text":"Separately from the file: a phone call, a text message or a different chat app, never in the same email or chat as the file. Anyone who gets both can open it."}},{"@type":"Question","name":"What encryption does it use?","acceptedAnswer":{"@type":"Answer","text":"AES-256-GCM, with a key made from your password by Argon2id (64 MB of memory, 2 passes) and a new random salt for every file. The content is compressed, then sealed in 64 KB chunks, so a changed, reordered or cut-off file is detected when it's opened. It's the same .enc format the Clavis Encrypt app writes."}},{"@type":"Question","name":"Is there a size limit?","acceptedAnswer":{"@type":"Answer","text":"Up to 1 GB at a time on a phone and 2 GB on a computer, because the browser holds the encrypted file until you save it. The Clavis Encrypt app has no such limit."}},{"@type":"Question","name":"Can I encrypt a folder?","acceptedAnswer":{"@type":"Answer","text":"Not on this page. Zip the folder first and encrypt the zip file, or use the Clavis Encrypt app, which encrypts whole folders."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. There's no account, no sign-up and no limit on how often you use it."}},{"@type":"Question","name":"What if I forget the password?","acceptedAnswer":{"@type":"Answer","text":"Then the file can't be opened. The password is never stored or sent anywhere, so there's nothing to recover it from. Keep your original file until the other person has opened theirs."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it safe to encrypt a file on a website?","acceptedAnswer":{"@type":"Answer","text":"This page encrypts on your device. Its code runs in your browser, and the page's security policy stops that code from connecting anywhere, so the file and the password are never uploaded. The only thing the page sends is a cookieless count (a visit, and \"a file was encrypted\") to the site's analytics, with no file name, size, content or password. As with any web page, you're trusting the code the site sends you. The file format is public, so you can check a file with the open-source decryptor. The code hasn't been independently audited."}},{"@type":"Question","name":"How does the other person open the file?","acceptedAnswer":{"@type":"Answer","text":"At clavisenc.com/open.html on any phone or computer, where it's decrypted on their device, or in the free Clavis Encrypt app for Windows and Linux. They need the password you send them separately."}},{"@type":"Question","name":"How should I send the password?","acceptedAnswer":{"@type":"Answer","text":"Separately from the file: a phone call, a text message or a different chat app, never in the same email or chat as the file. Anyone who gets both can open it."}},{"@type":"Question","name":"What encryption does it use?","acceptedAnswer":{"@type":"Answer","text":"AES-256-GCM, with a key made from your password by Argon2id (64 MB of memory, 2 passes) and a new random salt for every file. The content is compressed, then sealed in 64 KB chunks, so a changed, reordered or cut-off file is detected when it's opened. It's the same .enc format the Clavis Encrypt app writes."}},{"@type":"Question","name":"Is there a size limit?","acceptedAnswer":{"@type":"Answer","text":"Up to 1 GB at a time on a phone and 2 GB on a computer, because the browser holds the encrypted file until you save it. The Clavis Encrypt app has no such limit."}},{"@type":"Question","name":"Can I encrypt a folder?","acceptedAnswer":{"@type":"Answer","text":"Not on this page. Zip the folder first and encrypt the zip file, or use the Clavis Encrypt app, which encrypts whole folders."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. There's no account, no sign-up and no limit on how often you use it."}},{"@type":"Question","name":"What if I forget the password?","acceptedAnswer":{"@type":"Answer","text":"Then the file can't be opened. The password is never stored or sent anywhere, so there's nothing to recover it from. Keep your original file until the other person has opened theirs."}}]}</script>
   <style>
     .locker { margin: 26px 0 8px; }
     .drop { display: block; border: 1.5px dashed var(--line-2); border-radius: 18px; padding: 28px 22px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; }
@@ -79,7 +79,7 @@
         <a href="blog.html">Blog</a>
         <a href="help.html">Help</a>
         <a href="pricing.html">Pricing</a>
-        <a class="btn btn-primary" href="download.html">Download</a>
+        <a class="btn btn-primary" href="download.html?ref=encrypt">Download</a>
       </nav>
     </div>
   </header>
@@ -89,7 +89,7 @@
       <div class="wrap post">
         <p class="post-meta">Encrypt anywhere</p>
         <h1>Encrypt a file in your browser</h1>
-        <p>On a phone, a Mac or any computer. The file is encrypted <strong>on this device</strong>: this page can't send anything anywhere, and your file and password are never uploaded.</p>
+        <p>On a phone, a Mac or any computer. The file is encrypted <strong>on this device</strong>: your file and password never leave this device. The page only counts visits and finished files, without cookies, like the rest of this site.</p>
         <p id="unsupported" hidden>This browser is too old for this page. Use a current Chrome, Edge, Firefox or Safari.</p>
 
         <form class="locker" id="encForm" autocomplete="off" novalidate>
@@ -148,12 +148,12 @@
           <li>The <code>.enc</code> file keeps the original name (for example <code>report.pdf.enc</code>) so the other person knows what it is. If the name itself is private, rename the <code>.enc</code> file: the real name is stored inside, encrypted, and comes back when it's opened.</li>
           <li>If the password is forgotten, the file can't be opened by anyone, including us. Keep your original until they've opened theirs.</li>
           <li>It's the same public <a href="format.html">file format</a> the Clavis Encrypt app writes, and an open-source decryptor opens it too. This page's code hasn't been independently audited (see <a href="security.html">Security</a>).</li>
-          <li><strong>For files you keep</strong>, whole folders, the right-click menu and automatic encryption, <a href="download.html">use the free Clavis Encrypt app</a> for Windows (or Linux).</li>
+          <li><strong>For files you keep</strong>, whole folders, the right-click menu and automatic encryption, <a href="download.html?ref=encrypt">use the free Clavis Encrypt app</a> for Windows (or Linux).</li>
         </ul>
 
         <h2>Questions</h2>
         <div class="faq">
-          <details><summary>Is it safe to encrypt a file on a website?</summary><p>This page encrypts on your device. Its code runs in your browser, and the page's security policy stops that code from connecting anywhere, so the file and the password are never uploaded. As with any web page, you're trusting the code the site sends you. The file format is public, so you can check a file with the open-source decryptor. The code hasn't been independently audited.</p></details>
+          <details><summary>Is it safe to encrypt a file on a website?</summary><p>This page encrypts on your device. Its code runs in your browser, and the page's security policy stops that code from connecting anywhere, so the file and the password are never uploaded. The only thing the page sends is a cookieless count (a visit, and "a file was encrypted") to the site's analytics, with no file name, size, content or password. As with any web page, you're trusting the code the site sends you. The file format is public, so you can check a file with the open-source decryptor. The code hasn't been independently audited.</p></details>
           <details><summary>How does the other person open the file?</summary><p>At clavisenc.com/open.html on any phone or computer, where it's decrypted on their device, or in the free Clavis Encrypt app for Windows and Linux. They need the password you send them separately.</p></details>
           <details><summary>How should I send the password?</summary><p>Separately from the file: a phone call, a text message or a different chat app, never in the same email or chat as the file. Anyone who gets both can open it.</p></details>
           <details><summary>What encryption does it use?</summary><p>AES-256-GCM, with a key made from your password by Argon2id (64 MB of memory, 2 passes) and a new random salt for every file. The content is compressed, then sealed in 64 KB chunks, so a changed, reordered or cut-off file is detected when it's opened. It's the same .enc format the Clavis Encrypt app writes.</p></details>
@@ -173,9 +173,9 @@
           <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
           <p class="latin">clāvis — Latin, “key”</p>
           <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
-          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
+          <a class="btn btn-primary foot-cta" href="download.html?ref=encrypt">Download free</a>
         </div>
-        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a></nav>
+        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html?ref=encrypt">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a></nav>
         <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
         <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
       </div>
@@ -188,6 +188,7 @@
   <script src="assets/js/strength.js"></script>
   <script src="assets/js/encrypt.js"></script>
   <script src="assets/js/encrypt-ui.js"></script>
+  <script src="assets/js/count.js"></script>
   <script src="assets/js/site.js?v=e725794481" defer></script>
 </body>
 </html>

@@ -130,6 +130,7 @@
       try {
         const out = await ClavisEncrypt.encryptFile(f, password, (frac, text) => { r.bar(frac); r.state(text); });
         r.bar(1); r.state("Encrypted · " + size(out.blob.size), "good"); r.done(out.name, out.blob);
+        if (window.ClavisCount) ClavisCount.event("encrypt-file");
         made.push(out.name);
       } catch (err) {
         r.bar(0);
