@@ -1,9 +1,9 @@
 {
-  "version": "3.16.0",
-  "date": "2026-10-26",
+  "version": "3.16.1",
+  "date": "2026-10-28",
   "size": "43 MB",
-  "sha256": "28ae2e45154bb76d77c64d3961da905221a91546e9fdcbe70edabd9932a10960",
-  "zipSha256": "f84a79ac7c92b541df7f28e7ee6adbeefaa6a3ea186f7a1322cbccb437c423b5",
-  "debSha256": "3ea6f901416b1bb517fe654bf1ead98c0567c397f6adf62f81eba34cd9156f27",
-  "notes": "# Clavis Encrypt 3.16.0\n\n## Decrypting folders is free\n\n- You can now decrypt a whole folder of encrypted files on every plan: choose the folder (or right-click it in File Explorer → Clavis → Decrypt) and press Decrypt. Verifying a folder is free too.\n- Encrypting a whole folder in one step is still part of Clavis Pro. On the free plan you can select any files inside a folder and encrypt them.\n\n## Also\n\n- The Sharing window now opens at the top, so the first section is no longer cut off.\n- Clavis from the Microsoft Store asks once, after you've used it a few times, whether you'd like to rate it in the Store. Choose Not now and it never asks again.\n\n## Install / upgrade\n\n- **Windows, already installed:** the app updates itself (Settings → Updates → Check now), or download it from https://clavisenc.com/download.html.\n- **Microsoft Store:** the Store updates it automatically.\n- **Linux:** install the new `.deb` from https://clavisenc.com/download.html.\n\nYour vaults and settings are kept.\n"
+  "sha256": "81860e80cd181e94a1bcb9b8e9cbc5e1dee7370ec18fd5bc1443af8af4bc5cee",
+  "zipSha256": "574b24c2cf2d937516e1364b69a9eaa2810af931160d62cefc41458dfed6ed95",
+  "debSha256": "a143fc4d7e1b10c6924d9b996c56cf3d4199873f690c523bbfa28750a07e0c09",
+  "notes": "# Clavis Encrypt 3.16.1\n\n## Ready for Pro and Premium\n\n- Clavis can now activate the Clavis Pro and Clavis Premium license keys from our new online store (Settings → License → Enter license key). Sales open on https://clavisenc.com/pricing.html soon; update now so your copy is ready.\n- A key works on up to 2 PCs. To move it, choose Remove license on the old PC first; if that PC is offline, Clavis frees the slot the next time it's online.\n\n## Install / upgrade\n\n- **Windows, already installed:** the app updates itself (Settings → Updates → Check now), or download it from https://clavisenc.com/download.html.\n- **Microsoft Store:** the Store updates it automatically.\n- **Linux:** install the new `.deb` from https://clavisenc.com/download.html.\n\nYour vaults and settings are kept.\n"
 }
