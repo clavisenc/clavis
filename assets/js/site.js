@@ -492,3 +492,40 @@
     if (thanks) thanks.hidden = false;
   }));
 })();
+
+/* Time-limited notices (data-until="YYYY-MM-DD", last day included) hide themselves afterwards,
+   so the site never shows an expired offer even if nobody removes it. */
+(function () {
+  document.querySelectorAll("[data-until]").forEach(el => {
+    const end = new Date(el.getAttribute("data-until") + "T23:59:59");
+    if (!isNaN(end) && new Date() > end) el.hidden = true;
+  });
+})();
+
+/* Launch offer bar at the top of every page, until the offer ends (then nothing is added).
+   Closing it hides it for the rest of the visit. */
+(function () {
+  const END = new Date("2026-11-30T23:59:59");
+  if (!(new Date() <= END)) return;
+  if (/(^|\/)(thanks|uninstalled|404)\.html$/.test(location.pathname)) return;
+  try { if (sessionStorage.getItem("offer-closed") === "1") return; } catch (e) { /* storage blocked: show it */ }
+  const bar = document.createElement("div");
+  bar.className = "offer-bar";
+  bar.setAttribute("role", "region");
+  bar.setAttribute("aria-label", "Launch offer");
+  bar.innerHTML = '<span><span class="offer-long">Hurry: launch offer ends 30 Nov. 20% off Pro &amp; Premium with code </span><code>LAUNCH20</code><span class="offer-short"> = 20% off until 30 Nov</span></span>'
+    + '<a href="pricing.html?ref=offer-bar#plans">See pricing &rarr;</a>'
+    + '<button type="button" class="offer-close" aria-label="Close">&times;</button>';
+  document.body.prepend(bar);
+  const root = document.documentElement;
+  const fit = () => root.style.setProperty("--offer-h", bar.offsetHeight + "px");
+  root.classList.add("has-offer");
+  fit();
+  window.addEventListener("resize", fit);
+  bar.querySelector(".offer-close").addEventListener("click", () => {
+    bar.remove();
+    root.classList.remove("has-offer");
+    window.removeEventListener("resize", fit);
+    try { sessionStorage.setItem("offer-closed", "1"); } catch (e) { /* fine */ }
+  });
+})();

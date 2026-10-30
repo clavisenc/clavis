@@ -848,3 +848,24 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .reasons button[aria-pressed="true"] { opacity: 1; background: var(--brass-soft); border-color: var(--brass); }
 .post .reason-thanks { color: var(--ok); font-weight: 500; }
 .post code.path { overflow-wrap: anywhere; }
+.offer-note[hidden] { display: none; }
+
+/* Site-wide launch-offer bar (added by site.js until its end date; hides itself afterwards). */
+.offer-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 55; min-height: 38px; display: flex; align-items: center;
+  justify-content: center; flex-wrap: wrap; column-gap: 10px; row-gap: 2px; padding: 6px 48px 6px 16px; background: var(--brass-grad); color: var(--brass-ink);
+  font-size: 14px; font-weight: 600; line-height: 1.35; text-align: center; }
+.offer-bar a { color: var(--brass-ink); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.offer-bar code { font: inherit; font-weight: 800; letter-spacing: .04em; }
+.offer-bar .offer-close { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px;
+  border: 0; border-radius: 8px; background: transparent; color: var(--brass-ink); font-size: 20px; line-height: 1; cursor: pointer; }
+.offer-bar .offer-close:hover { background: rgba(0, 0, 0, .08); }
+html.has-offer body { padding-top: var(--offer-h, 38px); }
+html.has-offer .nav { top: var(--offer-h, 38px); }
+html.has-offer .readbar { top: var(--offer-h, 38px); }
+@media (max-width: 760px) {
+  html.has-offer .nav-links { top: calc(76px + var(--offer-h, 38px)); }
+  .offer-bar .offer-long { display: none; }
+  .offer-bar { font-size: 13px; padding: 6px 44px 6px 12px; }
+}
+.offer-bar .offer-short { display: none; }
+@media (max-width: 760px) { .offer-bar .offer-short { display: inline; } }
