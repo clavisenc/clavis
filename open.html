@@ -6,11 +6,11 @@
   <!-- No network requests at all from this page's code: the file and password never leave the device. -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://clavis.goatcounter.com; connect-src 'none'; media-src blob:; form-action 'none'; base-uri 'none'; object-src 'none'">
   <meta name="referrer" content="no-referrer">
-  <title>Open a .enc file in your browser — Clavis Encrypt</title>
-  <meta name="description" content="Open a Clavis Encrypt file on any phone, Mac or PC, right in the browser. Decrypted on your device; the file and password are never uploaded.">
+  <title>Open a Clavis .enc File Online (Free, Decrypted on Your Device)</title>
+  <meta name="description" content="Open or decrypt a Clavis .enc file online for free, on any phone, Mac or PC. Decrypted on your device; the file and password are never uploaded.">
   <meta name="theme-color" content="#05080F">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Open a Clavis Encrypt file in your browser">
+  <meta property="og:title" content="Open a Clavis .enc file online">
   <meta property="og:description" content="On any phone, Mac or PC. Decrypted on your device; nothing is uploaded.">
   <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -22,7 +22,8 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link href="assets/css/fonts.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css?v=78fb9366a3">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://clavisenc.com/open.html#page","name":"Open a .enc file in your browser","description":"Open a Clavis Encrypt file on any phone, Mac or PC, decrypted on your device.","inLanguage":"en","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://clavisenc.com/open.html#page","name":"Open a Clavis .enc file online","description":"Open a Clavis Encrypt file on any phone, Mac or PC, decrypted on your device.","inLanguage":"en","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"mainEntity":{"@id":"https://clavisenc.com/open.html#app"}},{"@type":"WebApplication","@id":"https://clavisenc.com/open.html#app","name":"Clavis Encrypt: open a .enc file online","url":"https://clavisenc.com/open.html","description":"Open a Clavis Encrypt .enc file in the browser, on any phone, Mac or PC. The file is decrypted on the device and is not uploaded.","applicationCategory":"SecurityApplication","operatingSystem":"Any","browserRequirements":"A current Chrome, Edge, Firefox or Safari","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I open a .enc file?","acceptedAnswer":{"@type":"Answer","text":"If Clavis Encrypt made it, choose the file on this page, type its password and press Open. That works on any phone or computer with a current browser, and you don't need to install anything. If another program made it, you need that program."}},{"@type":"Question","name":"Can I decrypt a file online without uploading it?","acceptedAnswer":{"@type":"Answer","text":"Yes, on this page. Its code runs in your browser, and the page's security policy stops that code from connecting anywhere, so the file and the password are never uploaded. The only thing the page sends is a cookieless count (a visit, and \"a file was opened\") to the site's analytics, with no file name, size, content or password. As with any web page, you're trusting the code the site sends you. The file format is public, so you can check a file with the open-source decryptor. The code hasn't been independently audited."}},{"@type":"Question","name":"Can this page open any .enc file?","acceptedAnswer":{"@type":"Answer","text":"No. It opens files made with Clavis Encrypt or with this site's Encrypt online page. Other programs use the .enc ending for their own formats, and the page will say \"This isn't a Clavis Encrypt file.\" It also can't open files made with Encrypt for someone or files from a team folder: those open only in Clavis Encrypt."}},{"@type":"Question","name":"Can I open a .enc file without the password?","acceptedAnswer":{"@type":"Answer","text":"No. Without the password the file can't be decrypted, and neither this page nor we can get a lost password back for you. If someone sent you the file, ask them for the password. If it's your own file and you forgot your vault password, use your recovery key in the Clavis Encrypt app; this page can't use one."}},{"@type":"Question","name":"Why does it say \"Wrong password or key file\"?","acceptedAnswer":{"@type":"Answer","text":"The file wouldn't open with what you entered. Check the capital letters and spaces, and if your vault uses a key file, choose it under My vault uses a key file. Team folder files show this message too, because they open only in Clavis Encrypt."}},{"@type":"Question","name":"Why does it say the file was damaged or altered?","acceptedAnswer":{"@type":"Answer","text":"Part of the file has changed since it was encrypted, or it didn't finish downloading. Clavis checks this every time and won't give you a changed file. Download it again or ask the sender for a new copy."}},{"@type":"Question","name":"Does it work on iPhone and Android?","acceptedAnswer":{"@type":"Answer","text":"Yes, in a current Safari, Chrome, Edge or Firefox. Very large files (over about 1 GB) may not fit in a phone's memory, so open those on a computer."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. There's no account, no sign-up and no limit on how often you use it."}}]}</script>
   <style>
     .opener { margin: 26px 0 8px; }
     .drop { display: block; border: 1.5px dashed var(--line-2); border-radius: 18px; padding: 28px 22px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; }
@@ -76,8 +77,9 @@
     <section class="block">
       <div class="wrap post">
         <p class="post-meta">Open anywhere</p>
-        <h1>Open a .enc file in your browser</h1>
+        <h1>Open a .enc file online, in your browser</h1>
         <p>On a phone, a Mac, a Chromebook or a PC without Clavis Encrypt. The file is decrypted <strong>on this device</strong>: your file and password never leave this device. The page only counts visits and opened files, without cookies, like the rest of this site.</p>
+        <p>It opens <code>.enc</code> files made with Clavis Encrypt. Other programs use the <code>.enc</code> ending too, and their files won't open here.</p>
         <p id="unsupported" hidden>This browser is too old for this page. Use a current Chrome, Edge, Firefox or Safari.</p>
 
         <form class="opener" id="openForm" autocomplete="off">
@@ -88,7 +90,8 @@
           </label>
           <label class="f" for="pw">Password</label>
           <input type="password" id="pw" required autocomplete="off" spellcheck="false">
-          <details><summary>My vault uses a key file</summary><input type="file" id="keyFile"></details>
+          <!-- The class is deliberate: it keeps this control out of BuildSite's FAQ JSON-LD, which reads only bare details tags. -->
+          <details class="key-file"><summary>My vault uses a key file</summary><input type="file" id="keyFile"></details>
           <div class="row">
             <button class="btn btn-primary" id="openBtn" type="submit">Open</button>
             <button class="btn btn-ghost" id="clearBtn" type="button">Clear</button>
@@ -96,15 +99,51 @@
         </form>
         <ul id="results" aria-live="polite"></ul>
 
+        <div class="callout"><b>Short answer:</b> to decrypt a Clavis .enc file online, choose the file above, type its password and press <strong>Open</strong>. It's decrypted in your browser, on your device, and you then save the original file. It's free and needs no account and no app. It works only for files made with Clavis Encrypt, and only with the right password.</div>
+
+        <h2>What is a .enc file?</h2>
+        <p><code>.enc</code> is short for "encrypted". A file with that ending is locked: its content can't be read without the right password or key. The ending doesn't belong to any one program, so different programs write different kinds of <code>.enc</code> file.</p>
+        <p>A Clavis <code>.enc</code> file holds one encrypted file, protected with AES-256-GCM, with its original name stored inside. If someone sent it to you, it was probably made with <a href="encrypt.html">Encrypt online</a> or <strong>Send with a password</strong> in the app, and it has a name like <code>report.pdf.enc</code>. Files you encrypted in the Clavis Encrypt app have random names, and the real name comes back when you open them.</p>
+
+        <h2>How to open a .enc file online</h2>
+        <ol>
+          <li>If the file came by email, a chat app or a link, save it to your phone or computer first.</li>
+          <li>Press <strong>Choose or drop .enc files</strong> at the top of this page and pick the file. You can pick several, if they share one password.</li>
+          <li>Type the <strong>Password</strong>. If someone sent you the file, ask them for it. For your own files, it's the vault password you used when you encrypted them.</li>
+          <li>If your vault uses a key file, open <strong>My vault uses a key file</strong> and choose it.</li>
+          <li>Press <strong>Open</strong> and wait a few seconds.</li>
+          <li>Press <strong>Save <em>name</em></strong> to keep the file. For PDFs, images and text files, <strong>View</strong> shows it first.</li>
+        </ol>
+
+        <h2>What this page can't open</h2>
+        <ul>
+          <li><strong><code>.enc</code> files from other programs.</strong> The page says "This isn't a Clavis Encrypt file." Open those with the program that made them; ask the sender if you're not sure which one it was.</li>
+          <li><strong>Files made with Encrypt for someone.</strong> They open only in Clavis Encrypt, with the recipient's Clavis ID.</li>
+          <li><strong>Team folder files.</strong> They open only in Clavis Encrypt, for members of the team folder. This page shows "Wrong password or key file" for them.</li>
+          <li><strong>Any file without its password.</strong> Neither this page nor we can get a lost password back for you.</li>
+        </ul>
+
         <h2>Good to know</h2>
         <ul>
           <li>Opening takes a few seconds: the same deliberate slowness that protects your password from guessing.</li>
           <li>Very large files (over about 1 GB) may not fit in a phone's memory; open those on a computer.</li>
-          <li>Files made with <strong>Encrypt for someone</strong> open only in Clavis Encrypt, with the recipient's Clavis ID.</li>
-          <li>This page works the same way as the free <a href="format.html">open-source decryptor</a>; the file format is public.</li>
+          <li>The copy you save is an ordinary, unlocked file. On a shared or borrowed device, delete it when you've finished. Your <code>.enc</code> file isn't changed.</li>
+          <li>This page works the same way as the free <a href="format.html">open-source decryptor</a>; the file format is public. This page's code hasn't been independently audited (see <a href="security.html">Security</a>).</li>
           <li>To send a file back locked with a password, <a href="encrypt.html">encrypt a file in your browser</a>, on this phone or computer.</li>
           <li>For files you keep, whole folders, watch folders and more, <a href="download.html?ref=open">get Clavis Encrypt</a>.</li>
         </ul>
+
+        <h2>Questions</h2>
+        <div class="faq">
+          <details><summary>How do I open a .enc file?</summary><p>If Clavis Encrypt made it, choose the file on this page, type its password and press Open. That works on any phone or computer with a current browser, and you don't need to install anything. If another program made it, you need that program.</p></details>
+          <details><summary>Can I decrypt a file online without uploading it?</summary><p>Yes, on this page. Its code runs in your browser, and the page's security policy stops that code from connecting anywhere, so the file and the password are never uploaded. The only thing the page sends is a cookieless count (a visit, and "a file was opened") to the site's analytics, with no file name, size, content or password. As with any web page, you're trusting the code the site sends you. The file format is public, so you can check a file with the open-source decryptor. The code hasn't been independently audited.</p></details>
+          <details><summary>Can this page open any .enc file?</summary><p>No. It opens files made with Clavis Encrypt or with this site's Encrypt online page. Other programs use the .enc ending for their own formats, and the page will say "This isn't a Clavis Encrypt file." It also can't open files made with Encrypt for someone or files from a team folder: those open only in Clavis Encrypt.</p></details>
+          <details><summary>Can I open a .enc file without the password?</summary><p>No. Without the password the file can't be decrypted, and neither this page nor we can get a lost password back for you. If someone sent you the file, ask them for the password. If it's your own file and you forgot your vault password, use your recovery key in the Clavis Encrypt app; this page can't use one.</p></details>
+          <details><summary>Why does it say "Wrong password or key file"?</summary><p>The file wouldn't open with what you entered. Check the capital letters and spaces, and if your vault uses a key file, choose it under My vault uses a key file. Team folder files show this message too, because they open only in Clavis Encrypt.</p></details>
+          <details><summary>Why does it say the file was damaged or altered?</summary><p>Part of the file has changed since it was encrypted, or it didn't finish downloading. Clavis checks this every time and won't give you a changed file. Download it again or ask the sender for a new copy.</p></details>
+          <details><summary>Does it work on iPhone and Android?</summary><p>Yes, in a current Safari, Chrome, Edge or Firefox. Very large files (over about 1 GB) may not fit in a phone's memory, so open those on a computer.</p></details>
+          <details><summary>Is it free?</summary><p>Yes. There's no account, no sign-up and no limit on how often you use it.</p></details>
+        </div>
       </div>
     </section>
   </main>
@@ -118,7 +157,7 @@
           <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
           <a class="btn btn-primary foot-cta" href="download.html?ref=open">Download free</a>
         </div>
-        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html?ref=open">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a></nav>
+        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html?ref=open">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
         <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
         <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
       </div>
