@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BitLocker recovery key: where to find it on Windows 11 — Clavis Encrypt</title>
+  <meta name="description" content="Windows asking for a BitLocker recovery key? Where to find it: Microsoft account, work account, printout or USB. What to do if it isn't there.">
+  <meta name="theme-color" content="#05080F">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Where is my BitLocker recovery key? How to find it on Windows 11">
+  <meta property="og:description" content="Where the 48-digit key is for each kind of PC, how to match the Key ID, why it may be missing from your Microsoft account, and what to do today so it never locks you out.">
+  <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://clavisenc.com/blog-find-bitlocker-recovery-key-windows-11.html">
+  <meta property="og:url" content="https://clavisenc.com/blog-find-bitlocker-recovery-key-windows-11.html">
+  <meta property="og:site_name" content="Clavis Encrypt">
+  <meta property="article:published_time" content="2026-11-05">
+  <meta property="article:modified_time" content="2026-11-05">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link href="assets/css/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=78fb9366a3">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-find-bitlocker-recovery-key-windows-11.html#article","headline":"Where is my BitLocker recovery key? How to find it on Windows 11 (and what to do if it's not in your Microsoft account)","description":"Windows asking for a BitLocker recovery key? Where to find it: Microsoft account, work account, printout or USB. What to do if it isn't there.","datePublished":"2026-11-05","dateModified":"2026-11-05","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-find-bitlocker-recovery-key-windows-11.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://support.microsoft.com/en-us/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6","https://support.microsoft.com/en-us/topic/31ce2444-7de3-818c-d626-e3b5a3024da5","https://support.microsoft.com/en-us/windows/back-up-your-bitlocker-recovery-key-e63607b4-77fb-4ad3-8022-d6dc428fbd0d","https://support.microsoft.com/en-us/windows/device-encryption-in-windows-cf7e2b6f-3e70-4882-9532-18633605b7df","https://support.microsoft.com/windows/security/encryption/bitlocker-drive-encryption","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/recovery-overview","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/recovery-process","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/preboot-recovery-screen","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/faq","https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-7/ee424308(v=ws.10)","https://learn.microsoft.com/en-us/troubleshoot/windows-client/windows-security/bitlocker-recovery-known-issues","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-protectors","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/operations-guide","https://learn.microsoft.com/en-us/powershell/module/bitlocker/suspend-bitlocker","https://learn.microsoft.com/en-us/windows/terminal/faq","https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-bitlocker","https://learn.microsoft.com/en-us/windows/release-health/","https://support.microsoft.com/help/5040442","https://aka.ms/myrecoverykey","https://aka.ms/aadrecoverykey"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"Where is my BitLocker recovery key? How to find it on Windows 11","item":"https://clavisenc.com/blog-find-bitlocker-recovery-key-windows-11.html"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where is my BitLocker recovery key?","acceptedAnswer":{"@type":"Answer","text":"Most often in the Microsoft account used on the PC: go to aka.ms/myrecoverykey on another device, sign in and pick the key whose Key ID matches the one on the recovery screen. On a work or school PC it's at aka.ms/aadrecoverykey or with IT. If you turned BitLocker on yourself, it may be on a printout, in a text file or on a USB flash drive. If someone else set up the PC, it may be in their account."}},{"@type":"Question","name":"Is the BitLocker recovery key my Microsoft password or PIN?","acceptedAnswer":{"@type":"Answer","text":"No. It's a 48-digit number made when encryption was turned on. Your Microsoft account password only lets you sign in to the page where the key is saved."}},{"@type":"Question","name":"Can Microsoft give me my BitLocker recovery key?","acceptedAnswer":{"@type":"Answer","text":"No. Microsoft says its Support team can't retrieve, provide or recreate a lost BitLocker recovery key. If the key was saved to your Microsoft account, you can see it yourself at aka.ms/myrecoverykey."}},{"@type":"Question","name":"Does Windows 11 Home have a BitLocker recovery key?","acceptedAnswer":{"@type":"Answer","text":"Yes, if device encryption is on. Windows 11 Home doesn't have the BitLocker app, but device encryption uses BitLocker and saves the recovery key to the Microsoft account an administrator signed in with. Find it at aka.ms/myrecoverykey."}},{"@type":"Question","name":"Why is my computer suddenly asking for a BitLocker recovery key?","acceptedAnswer":{"@type":"Answer","text":"Something BitLocker checks at startup changed: often a BIOS or firmware update, Secure Boot or the TPM turned off, a USB stick or dock connected at startup, a repair that changed hardware, or the drive moved to another PC. Some Windows updates have also caused it on certain PCs, for example the July 2024 update KB5040442. On Windows 11 24H2 or later, press Alt on the recovery screen to see the reason."}},{"@type":"Question","name":"Is the Key ID the recovery key?","acceptedAnswer":{"@type":"Answer","text":"No. The Key ID only identifies which key the drive needs. Match its first 8 characters to the Key IDs in your account, then type the 48-digit recovery key that goes with it."}},{"@type":"Question","name":"How do I find my BitLocker recovery key with CMD?","acceptedAnswer":{"@type":"Answer","text":"While you can still sign in, right-click Start, choose Terminal (Admin) and run manage-bde -protectors -get C: (it works the same in Command Prompt run as administrator). The Numerical Password entry shows the ID and the 48-digit recovery password. This only works on a PC that starts; on the blue recovery screen you need a copy from somewhere else. On Windows Home, Microsoft doesn't say whether manage-bde works; if it gives an error, use aka.ms/myrecoverykey."}},{"@type":"Question","name":"Can I find the BitLocker key without a Microsoft account?","acceptedAnswer":{"@type":"Answer","text":"Only if it was saved somewhere else: a printout, a text file, a USB flash drive, or a work or school account (aka.ms/aadrecoverykey or your IT team). If it was never saved anywhere you can reach, there is no supported way to get it."}},{"@type":"Question","name":"What if the Key ID doesn't match any key in my account?","acceptedAnswer":{"@type":"Answer","text":"Then this drive's key isn't in that account. Try every other Microsoft account used on the PC, a work or school account, and any printout, file or USB drive. On Windows 11 24H2 or later, the recovery screen shows a hint of the Microsoft account that holds the key."}},{"@type":"Question","name":"Does the recovery key change after I use it?","acceptedAnswer":{"@type":"Answer","text":"On work or school PCs it can: if IT has turned on automatic recovery password rotation, the PC makes a new key after the old one is used and stores it in Microsoft Entra ID. Microsoft doesn't describe this for personal PCs. Either way, after any recovery, check that the key in your account or on your printout still matches (manage-bde -protectors -get C: shows the current one)."}}]}</script>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
+      </button>
+      <nav class="nav-links" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="help.html">Help</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="block">
+      <div class="wrap post">
+        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 5, 2026</p>
+        <h1>Where is my BitLocker recovery key? How to find it on Windows 11 (and what to do if it's not in your Microsoft account)</h1>
+
+        <p>A blue screen says <strong>BitLocker recovery</strong> and wants a long number before Windows will start. It often appears after a firmware update, a repair or a change in the PC's settings, and often on a PC whose owner never turned BitLocker on: many Windows 11 laptops, Home edition included, encrypt their drive by themselves. The number is the <strong>recovery key</strong>, made when encryption was turned on, and where it went depends on how the PC was set up. Here's where to look in each case, how to pick the right key, why it may be missing, and what to do today so this never locks you out.</p>
+
+        <div class="callout"><b>Short answer:</b> note the first 8 characters of the <b>Key ID</b> on the recovery screen, then on another phone or computer go to <a href="https://aka.ms/myrecoverykey" rel="noopener">aka.ms/myrecoverykey</a>, sign in with the Microsoft account used on the locked PC (or that of whoever set it up) and type the 48-digit key whose Key ID matches. On a work or school PC, use <a href="https://aka.ms/aadrecoverykey" rel="noopener">aka.ms/aadrecoverykey</a> (<b>Devices</b> → <b>View BitLocker Keys</b>) or ask your IT team. Microsoft says its Support team can't retrieve, provide or recreate a lost recovery key, and there is no supported way to unlock the drive without it.</div>
+
+        <h2>First, read the recovery screen</h2>
+        <p>The screen tells you more than it seems. This applies to Windows 11 and Windows 10, Home and Pro; the two extras marked 24H2 are only on Windows 11 version 24H2 or later.</p>
+        <ul>
+          <li><strong>The Key ID is a label, not the key.</strong> It tells you which key this drive needs. Write down its first 8 characters: you'll match them in a minute.</li>
+          <li><strong>The recovery key is 48 digits</strong>, in eight groups of six. It's numbers only, so you never need to type letters. Microsoft's help desk guidance says the screen checks each group of six for typing mistakes and lets you correct them.</li>
+          <li><strong>Number keys don't type anything?</strong> Use the function keys: <kbd>F1</kbd> to <kbd>F9</kbd> type 1 to 9, and <kbd>F10</kbd> types 0, as Microsoft's older BitLocker recovery guide puts it. Microsoft's BitLocker FAQ explains that the function keys work before Windows starts on every keyboard, while the number keys don't on all of them.</li>
+          <li><strong>A hint about where the key is.</strong> If the key was saved to a Microsoft account, the screen shows <strong>aka.ms/myrecoverykey</strong>; from 24H2 it also shows a hint of <em>which</em> Microsoft account. If it was printed and saved to a file, it says <strong>Look for a printout or a text file with the key</strong>. A work PC may show a message from your IT team.</li>
+          <li><strong>Why it's asking (24H2).</strong> Press <kbd>Alt</kbd> to open <strong>Additional recovery information</strong>, with an error category and code (for example, Secure Boot turned off, or a TPM problem).</li>
+          <li><strong>Narrator and the on-screen keyboard.</strong> When the screen comes from the Windows Recovery Environment, press <kbd>Windows</kbd> + <kbd>Ctrl</kbd> + <kbd>Enter</kbd> for Narrator, or tap the text box for the on-screen keyboard. If the key is asked for earlier, by the Windows Boot Manager, these tools might not be available.</li>
+          <li><strong>Skip this drive</strong> doesn't unlock anything. It takes you on to the recovery options (<strong>Troubleshoot</strong> and so on), and the drive stays locked.</li>
+        </ul>
+
+        <h2>Where your key can be</h2>
+        <p>Find the row that matches how your PC was set up.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Your situation</th><th>Where to look</th><th>How</th></tr></thead>
+            <tbody>
+              <tr><td>Your own PC, signed in with a Microsoft account. This includes Windows 11 Home with device encryption.</td><td>Your Microsoft account</td><td>On another device, go to <a href="https://aka.ms/myrecoverykey" rel="noopener">aka.ms/myrecoverykey</a>, sign in and find the matching Key ID. Device encryption uploads the key when an administrator on the PC signs in with a Microsoft account.</td></tr>
+              <tr><td>Someone else set up the PC or turned on BitLocker: a family member, a shop, a previous owner</td><td>Their Microsoft account</td><td>Microsoft says the key may be in that person's account. Ask them to sign in at aka.ms/myrecoverykey and read you the key with your Key ID.</td></tr>
+              <tr><td>Work or school PC (Microsoft Entra ID)</td><td>Your organization's account</td><td>Go to <a href="https://aka.ms/aadrecoverykey" rel="noopener">aka.ms/aadrecoverykey</a>, sign in with your work or school account, select <strong>Devices</strong>, expand the device and select <strong>View BitLocker Keys</strong>. Your organization can switch this off; then IT can look it up.</td></tr>
+              <tr><td>Work PC joined to an on-premises Active Directory domain</td><td>Your IT help desk</td><td>The screen shows your IT team's own message, or <strong>Contact your organization's help desk</strong>. IT can find the key from the first 8 characters of the Key ID.</td></tr>
+              <tr><td>You turned on BitLocker yourself on Windows 11 Pro, Enterprise or Education</td><td>Wherever you chose to save it</td><td>When you turned it on, Windows offered <strong>Save to your Microsoft Account</strong>, <strong>Save to a USB flash drive</strong>, <strong>Save to a file</strong> and <strong>Print the recovery key</strong>. Check your important papers, other drives and cloud storage for the file. If the key is on a USB flash drive, plug it into the locked PC and follow the prompts.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>How to pick the right key when there are several</h2>
+        <p>Your account page can list several keys, for example from older PCs or other drives. Go by the Key ID, not by the order or the device name.</p>
+        <ol>
+          <li>Open <a href="https://aka.ms/myrecoverykey" rel="noopener">aka.ms/myrecoverykey</a> (or aka.ms/aadrecoverykey for work and school) on another device and sign in.</li>
+          <li>Find the entry whose Key ID starts with the same 8 characters as the Key ID on the blue screen.</li>
+          <li>Type that entry's 48-digit recovery key on the locked PC and press <kbd>Enter</kbd>.</li>
+          <li>If no Key ID matches, this drive's key isn't in that account. Try the other accounts and places below rather than typing keys that don't match.</li>
+        </ol>
+
+        <h2>The key isn't in my Microsoft account: what to check</h2>
+        <p>These are the reasons Microsoft documents, most likely first.</p>
+        <ul>
+          <li><strong>It's in a different account.</strong> The key goes to the Microsoft account of an administrator on the PC who signed in, or of whoever turned BitLocker on. Try every Microsoft account that has been used on that PC, including old email addresses and family members' accounts. On Windows 11 24H2 or later, the recovery screen hints at the right account.</li>
+          <li><strong>The PC belongs, or once belonged, to work or school.</strong> Then the key may be in the organization's Microsoft Entra ID or Active Directory, not in your personal account. Try aka.ms/aadrecoverykey, or ask IT.</li>
+          <li><strong>The PC was set up with a local account.</strong> Microsoft says device encryption isn't turned on automatically then, and a PC that uses only local accounts "remains unprotected even though the data is encrypted" until someone signs in with a Microsoft or work account. No key goes to any Microsoft account in that case, so if the PC still asks for one, BitLocker was turned on another way: look for a printout, a file or a USB drive. Our guide to <a href="blog-turn-off-device-encryption-windows-11.html">turning off device encryption on Windows 11</a> explains how this works.</li>
+          <li><strong>BitLocker was turned on by hand and saved elsewhere.</strong> On Pro, saving to the Microsoft account is only one of four choices. Look for a printout, a text file or a USB flash drive from the day it was turned on.</li>
+          <li><strong>The drive came from another PC.</strong> Moving a BitLocker drive into a new computer triggers recovery. The key is wherever it was saved when the drive was first encrypted.</li>
+        </ul>
+        <p>Also worth checking, though not from Microsoft: a password manager, your email and cloud storage (search for "recovery key"), and whoever set up or last repaired the PC.</p>
+
+        <h2>Why Windows is asking for the key now</h2>
+        <p>BitLocker asks when something it checks at startup has changed. Microsoft lists these common causes:</p>
+        <ul>
+          <li>a BIOS or UEFI firmware update</li>
+          <li>the TPM security chip turned off, cleared or hidden in the firmware settings</li>
+          <li>Secure Boot turned off, or its settings changed</li>
+          <li>a USB stick, DVD or other bootable media connected at startup, or a changed boot order</li>
+          <li>docking or undocking a laptop</li>
+          <li>a new motherboard with a new TPM, or the drive moved into another computer</li>
+          <li>changes to the boot manager or the drive's partitions</li>
+          <li>a startup PIN entered wrongly too many times, or too many failed sign-ins on a PC where IT set a limit</li>
+        </ul>
+        <p>Some Windows updates have also sent certain PCs to the recovery screen. For example, after the July 2024 update <a href="https://support.microsoft.com/help/5040442" rel="noopener">KB5040442</a>, Microsoft warned that some PCs might show the BitLocker recovery screen at startup, more likely with device encryption on, and a later update addressed it. Microsoft posts issues like this as known issues in the update's support article, and lists current known issues for each Windows version on <a href="https://learn.microsoft.com/en-us/windows/release-health/" rel="noopener">Windows release health</a>.</p>
+        <p><strong>If it asks at every restart:</strong> after you unlock with the key, Windows normally updates its startup checks to match the PC's current setup, so it shouldn't ask again. If it does, undo what changed. Microsoft says turning Secure Boot back on and restarting might fix it, and so might removing a bootable USB stick or disc. Then suspend and resume BitLocker once, which Microsoft says reseals the key to the PC's current setup: in Terminal (Admin) (see step 2 below), run <code>Suspend-BitLocker -MountPoint "C:"</code>, then <code>Resume-BitLocker -MountPoint "C:"</code>. On a work or school PC, ask IT.</p>
+
+        <h2>If you still can't find it</h2>
+        <ul>
+          <li><strong>There is no supported way around the key.</strong> Microsoft says: "Microsoft Support doesn't have the ability to retrieve, provide, or recreate a lost BitLocker recovery key."</li>
+          <li><strong>Undo the change first.</strong> Turn Secure Boot and the TPM back on, undo firmware setting changes, unplug USB drives and docks, or put the drive back in its own PC. If the cause goes away, the PC may start normally.</li>
+          <li><strong>Work or school PC:</strong> your IT team can usually get the key from Microsoft Entra ID or Active Directory.</li>
+          <li><strong>Last resort, start again.</strong> If you can't find the key and can't undo the change, Microsoft's answer is to reset the PC using one of the <a href="https://support.microsoft.com/en-us/topic/31ce2444-7de3-818c-d626-e3b5a3024da5" rel="noopener">Windows recovery options</a>. It warns: "Resetting your device will remove all of your files." The catch: Microsoft also says that with BitLocker on, you need the recovery key for most recovery options in the Windows Recovery Environment, and on a PC set up with a BitLocker startup PIN or password, even a <strong>Remove everything</strong> reset asks for it. So you may have to reinstall Windows from a bootable USB drive made on another PC, which also removes everything. Files you had in OneDrive or another backup can be brought back; files that were only on this drive can't.</li>
+          <li><strong>Be careful with tools or services that promise to unlock BitLocker without the key.</strong> Microsoft's own BitLocker Repair tool is for damaged drives, and it still needs the recovery key.</li>
+        </ul>
+
+        <h2>What the recovery key can and can't do</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+            <tbody>
+              <tr><td>Unlock the drive when Windows asks for it?</td><td>Yes. Type the 48 digits, or plug in the USB drive it was saved to.</td></tr>
+              <tr><td>Can I see it on the PC?</td><td>Yes, but only while you can still sign in, as an administrator (step 2 below). Not from the blue screen.</td></tr>
+              <tr><td>Can the drive be read in another PC without it?</td><td>No. Moving the drive to another computer is itself a reason BitLocker asks for the key.</td></tr>
+              <tr><td>Can I reset the PC without it?</td><td>Only by erasing everything on it. Microsoft says most recovery options in the Windows Recovery Environment need the key when BitLocker is on, and on a PC with a BitLocker startup PIN or password even a <strong>Remove everything</strong> reset asks for it. You may have to reinstall Windows from a bootable USB drive made on another PC, which removes all your files.</td></tr>
+              <tr><td>Does it back up my files?</td><td>No. It only unlocks the drive. If the drive fails, the key can't bring files back.</td></tr>
+              <tr><td>Does it cover USB drives?</td><td>No. Each encrypted drive has its own key. Device encryption covers internal drives only; a USB drive encrypted with BitLocker on Pro has a key of its own.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Do this today while your PC still works</h2>
+        <p>Five minutes now saves a locked PC later. Do this before any BIOS update, repair or hardware change.</p>
+        <ol>
+          <li><strong>Check the account (all editions, including Home).</strong> Open <a href="https://aka.ms/myrecoverykey" rel="noopener">aka.ms/myrecoverykey</a> and sign in with the Microsoft account you use on this PC. Note the Key IDs listed. On a work or school PC, use aka.ms/aadrecoverykey.</li>
+          <li><strong>Match it to this PC (administrator).</strong> Right-click <strong>Start</strong> (or press <strong>Windows key + X</strong>) and choose <strong>Terminal (Admin)</strong>. On some PCs it's called <strong>Windows Terminal (Admin)</strong> or <strong>Windows PowerShell (Admin)</strong>. Select <strong>Yes</strong> when Windows asks whether to allow changes. Run <code>manage-bde -protectors -get C:</code>. Under <strong>Numerical Password</strong> you'll see an ID and the 48-digit recovery password. The ID should match a Key ID in your account. To show only that entry, run <code>manage-bde -protectors -get C: -Type RecoveryPassword</code>. Repeat with <code>D:</code> and so on for other encrypted drives. If the ID isn't in your account, save the key yourself (step 3 or 5). On Windows Home, Microsoft doesn't say whether <code>manage-bde</code> works (we've only tested it there without administrator rights, when it refused). If it gives an error on Home, rely on step 1 and make sure your account lists a key for this PC.</li>
+          <li><strong>Back it up (Windows 11 Pro, Enterprise and Education).</strong> Select Start, type <code>BitLocker</code> and choose <strong>Manage BitLocker</strong>. Next to the drive, select <strong>Back up your recovery key</strong>, then choose <strong>Save to your Microsoft Account</strong>, <strong>Save to a USB flash drive</strong>, <strong>Save to a file</strong> or <strong>Print the recovery key</strong>, and select <strong>Finish</strong>. You can't save the file on the encrypted drive itself. On a work PC the first option may read <strong>Save to your Azure AD account</strong> or <strong>Save to your Microsoft Entra ID account</strong>. You can make as many backups as you like. The steps are the same on Windows 10.</li>
+          <li><strong>On Windows 11 Home</strong> there's no Manage BitLocker app: Microsoft says BitLocker isn't available on Home. Device encryption saves the key to the Microsoft account of an administrator who signs in with one, so step 1 is how you confirm it's there and copy it, and step 2 matches it to this PC if <code>manage-bde</code> works on yours. <strong>Settings → Privacy &amp; security → Device encryption</strong> shows whether it's on.</li>
+          <li><strong>Keep one copy offline, away from the PC.</strong> Write the 48 digits on paper and keep them with your important papers, or store them in a password manager. Microsoft advises keeping a USB drive or printout with the key away from the computer, so not in the laptop bag.</li>
+          <li><strong>Suspend BitLocker before a BIOS or firmware update.</strong> Microsoft recommends this so the update doesn't trigger recovery. In Terminal (Admin), run <code>Suspend-BitLocker -MountPoint "C:" -RebootCount 2</code>, then install the update. Protection comes back by itself after two restarts; firmware updates can restart the PC more than once, and Microsoft's advice for them is a count of 2 or more, or 0. Afterwards, check that <code>manage-bde -status C:</code> says <strong>Protection On</strong>, and if it doesn't, run <code>Resume-BitLocker -MountPoint "C:"</code>. A count of 0 keeps it suspended until you resume it yourself, so if you use 0, resume as soon as the update is done. The drive stays encrypted while suspended, but it isn't locked against someone who takes the PC. On Windows Home, if the command gives an error, skip the suspend and keep your key at hand for the update. Full steps: <a href="blog-turn-off-device-encryption-windows-11.html#suspend">suspend instead of turning off</a>.</li>
+        </ol>
+
+        <h2>Why more people see this on Windows 11 now</h2>
+        <p>Since Windows 11 version 24H2, automatic device encryption no longer needs Modern Standby or HSTI-compliant hardware and is no longer blocked by DMA ports, so more PCs are encrypted after setup without their owners deciding to. If you're not sure why yours encrypted itself, see <a href="blog-turn-off-device-encryption-windows-11.html">turning off device encryption on Windows 11</a>; to find out whether it is, see <a href="blog-check-if-drive-is-encrypted-windows-11.html">how to check if your drive is encrypted</a>.</p>
+
+        <h2>Your files still need a backup</h2>
+        <p>Drive encryption isn't a backup, and losing the key can mean losing the files. Keep copies of the files that matter on another drive or in the cloud. If they're sensitive, encrypt the copies: the free <a href="download.html?ref=blog-bitlocker-key">Clavis Encrypt</a> app for Windows and Linux encrypts one file or several at once. Those copies open with your Clavis password (and key file, if you use one) in Clavis on another Windows or Linux PC, or in any browser at <a href="open.html">clavisenc.com/open.html</a>, and they don't depend on this PC's BitLocker key. Keep Clavis's own <a href="help-recovery-key.html">recovery key</a> somewhere safe in case you forget that password. To be clear: Clavis doesn't encrypt drives, isn't a replacement for BitLocker or device encryption, and can't find, recover or bypass a BitLocker recovery key. Clavis is closed source and hasn't been independently audited; its <a href="format.html">file format is public</a>, with an open-source decryptor.</p>
+
+        <h2>Questions</h2>
+        <div class="faq">
+          <details><summary>Where is my BitLocker recovery key?</summary><p>Most often in the Microsoft account used on the PC: go to aka.ms/myrecoverykey on another device, sign in and pick the key whose Key ID matches the one on the recovery screen. On a work or school PC it's at aka.ms/aadrecoverykey or with IT. If you turned BitLocker on yourself, it may be on a printout, in a text file or on a USB flash drive. If someone else set up the PC, it may be in their account.</p></details>
+          <details><summary>Is the BitLocker recovery key my Microsoft password or PIN?</summary><p>No. It's a 48-digit number made when encryption was turned on. Your Microsoft account password only lets you sign in to the page where the key is saved.</p></details>
+          <details><summary>Can Microsoft give me my BitLocker recovery key?</summary><p>No. Microsoft says its Support team can't retrieve, provide or recreate a lost BitLocker recovery key. If the key was saved to your Microsoft account, you can see it yourself at aka.ms/myrecoverykey.</p></details>
+          <details><summary>Does Windows 11 Home have a BitLocker recovery key?</summary><p>Yes, if device encryption is on. Windows 11 Home doesn't have the BitLocker app, but device encryption uses BitLocker and saves the recovery key to the Microsoft account an administrator signed in with. Find it at aka.ms/myrecoverykey.</p></details>
+          <details><summary>Why is my computer suddenly asking for a BitLocker recovery key?</summary><p>Something BitLocker checks at startup changed: often a BIOS or firmware update, Secure Boot or the TPM turned off, a USB stick or dock connected at startup, a repair that changed hardware, or the drive moved to another PC. Some Windows updates have also caused it on certain PCs, for example the July 2024 update KB5040442. On Windows 11 24H2 or later, press Alt on the recovery screen to see the reason.</p></details>
+          <details><summary>Is the Key ID the recovery key?</summary><p>No. The Key ID only identifies which key the drive needs. Match its first 8 characters to the Key IDs in your account, then type the 48-digit recovery key that goes with it.</p></details>
+          <details><summary>How do I find my BitLocker recovery key with CMD?</summary><p>While you can still sign in, right-click Start, choose Terminal (Admin) and run manage-bde -protectors -get C: (it works the same in Command Prompt run as administrator). The Numerical Password entry shows the ID and the 48-digit recovery password. This only works on a PC that starts; on the blue recovery screen you need a copy from somewhere else. On Windows Home, Microsoft doesn't say whether manage-bde works; if it gives an error, use aka.ms/myrecoverykey.</p></details>
+          <details><summary>Can I find the BitLocker key without a Microsoft account?</summary><p>Only if it was saved somewhere else: a printout, a text file, a USB flash drive, or a work or school account (aka.ms/aadrecoverykey or your IT team). If it was never saved anywhere you can reach, there is no supported way to get it.</p></details>
+          <details><summary>What if the Key ID doesn't match any key in my account?</summary><p>Then this drive's key isn't in that account. Try every other Microsoft account used on the PC, a work or school account, and any printout, file or USB drive. On Windows 11 24H2 or later, the recovery screen shows a hint of the Microsoft account that holds the key.</p></details>
+          <details><summary>Does the recovery key change after I use it?</summary><p>On work or school PCs it can: if IT has turned on automatic recovery password rotation, the PC makes a new key after the old one is used and stores it in Microsoft Entra ID. Microsoft doesn't describe this for personal PCs. Either way, after any recovery, check that the key in your account or on your printout still matches (manage-bde -protectors -get C: shows the current one).</p></details>
+        </div>
+
+        <h2>Sources</h2>
+        <ul class="sources">
+          <li><a href="https://support.microsoft.com/en-us/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6" rel="noopener">Microsoft Support: Find your BitLocker recovery key (Key ID, where to look, Support can't recreate a key, reset removes files)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/topic/31ce2444-7de3-818c-d626-e3b5a3024da5" rel="noopener">Microsoft Support: Recovery options in Windows (the BitLocker recovery key is needed for most recovery options in WinRE; reinstalling from a USB drive made on another PC removes everything)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/back-up-your-bitlocker-recovery-key-e63607b4-77fb-4ad3-8022-d6dc428fbd0d" rel="noopener">Microsoft Support: Back up your BitLocker recovery key (Manage BitLocker, the four backup options)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/device-encryption-in-windows-cf7e2b6f-3e70-4882-9532-18633605b7df" rel="noopener">Microsoft Support: Device Encryption in Windows (Microsoft account vs local account)</a></li>
+          <li><a href="https://support.microsoft.com/windows/security/encryption/bitlocker-drive-encryption" rel="noopener">Microsoft Support: BitLocker Drive Encryption (not available on Windows Home)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/" rel="noopener">Microsoft Learn: BitLocker overview (device encryption, key upload to the Microsoft account, local accounts)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/recovery-overview" rel="noopener">Microsoft Learn: BitLocker recovery overview (what triggers recovery, Narrator and on-screen keyboard, Remove everything reset asks for the key with a PIN or password, suspending for firmware updates, suspend and resume reseals the key)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/recovery-process" rel="noopener">Microsoft Learn: BitLocker recovery process (Entra ID self-recovery, Key ID lookup, typing checks, password rotation, Repair tool)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/preboot-recovery-screen" rel="noopener">Microsoft Learn: BitLocker preboot recovery screen (key hints, Microsoft account hint and Alt details in 24H2, error codes)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/faq" rel="noopener">Microsoft Learn: BitLocker FAQ (function keys F1 to F10 at the recovery screen)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-7/ee424308(v=ws.10)" rel="noopener">Microsoft Learn (archived, Windows 7): Recovering data protected by BitLocker (F1 to F9 type 1 to 9, F10 types 0)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/windows-security/bitlocker-recovery-known-issues" rel="noopener">Microsoft Learn: BitLocker recovery known issues (Skip this drive, firmware updates that restart several times: a reboot count of 2 or more, or 0)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-protectors" rel="noopener">Microsoft Learn: manage-bde protectors (manage-bde -protectors -get, Windows 10 and 11)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/operations-guide" rel="noopener">Microsoft Learn: BitLocker operations guide (showing the recovery password, Suspend protection)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/bitlocker/suspend-bitlocker" rel="noopener">Microsoft Learn: Suspend-BitLocker (RebootCount; 0 suspends until you resume it)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/terminal/faq" rel="noopener">Microsoft Learn: Windows Terminal FAQ (Windows key + X, Windows Terminal (Admin))</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-bitlocker" rel="noopener">Microsoft Learn: BitLocker drive encryption in Windows 11 for OEMs (24H2 changes to automatic device encryption)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/release-health/" rel="noopener">Microsoft Learn: Windows release health (known issues with updates)</a></li>
+          <li><a href="https://support.microsoft.com/help/5040442" rel="noopener">Microsoft Support: July 9, 2024, KB5040442 (known issue: BitLocker recovery screen at startup, more likely with device encryption on)</a></li>
+          <li><a href="https://aka.ms/myrecoverykey" rel="noopener">Microsoft account: BitLocker recovery keys (aka.ms/myrecoverykey)</a></li>
+          <li><a href="https://aka.ms/aadrecoverykey" rel="noopener">Work or school account: devices and BitLocker keys (aka.ms/aadrecoverykey)</a></li>
+        </ul>
+        <p class="muted-note"><em>Last checked against Microsoft's documentation on November 5, 2026. Windows changes between versions; what your own recovery screen and account page show is the final word.</em></p>
+
+        <p>Related: <a href="blog-bitlocker-vs-device-encryption-windows-11-home.html">device encryption vs BitLocker on Windows 11 Home</a>, <a href="blog-protect-files-before-laptop-repair.html">protecting your files before a laptop repair</a> and <a href="blog-move-encrypted-files-to-new-pc.html">moving encrypted files to a new PC</a>.</p>
+
+        <div class="post-cta">
+          <a class="btn btn-primary" href="download.html?ref=blog-bitlocker-key">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>
+            Encrypt your backup copies with Clavis — free
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+          <p class="latin">clāvis — Latin, “key”</p>
+          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
+          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
+        </div>
+        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
+        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
+        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      </div>
+      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js?v=081703c843" defer></script>
+</body>
+</html>

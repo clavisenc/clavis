@@ -127,6 +127,11 @@ Not for: storing passwords (it is not a password manager), macOS, Android or iPh
 
 ## Guides
 
+- [How to check if your drive is encrypted on Windows 11](https://clavisenc.com/blog-check-if-drive-is-encrypted-windows-11.html): Settings, Manage BitLocker, manage-bde -status and Get-BitLockerVolume; what Percentage Encrypted, Protection Off and Waiting for Activation mean; Clavis does not encrypt or check drives
+- [Where is my BitLocker recovery key? How to find it on Windows 11](https://clavisenc.com/blog-find-bitlocker-recovery-key-windows-11.html): Microsoft account (aka.ms/myrecoverykey), work or school account, printout, file or USB drive; matching the Key ID; what to do if it is missing
+- [Turn off device encryption in Windows 11 (save the key first)](https://clavisenc.com/blog-turn-off-device-encryption-windows-11.html): why Windows 11 can turn on device encryption by itself, whether to turn it off, Settings and manage-bde steps, and suspending instead before a BIOS or firmware update
+- [Device encryption not showing or not available in Windows 11](https://clavisenc.com/blog-device-encryption-not-available-windows-11.html): the Device Encryption Support line in System Information, what each reason (TPM, PCR7, WinRE, HSTI, DMA, policy) means and how to fix it, and what changed in Windows 11 24H2
+- [“Encrypt contents to secure data” greyed out? Why it happens and what to do](https://clavisenc.com/blog-encrypt-contents-to-secure-data-greyed-out.html): Windows 11 and 10 Home have no EFS and no registry, service or Group Policy change adds it; causes on Pro, Enterprise and Education; alternatives for Home
 - [How to share encrypted files with your team in OneDrive, Google Drive or Dropbox (no shared password)](https://clavisenc.com/blog-share-encrypted-folder-team-onedrive-google-drive-dropbox.html): team folders (since 3.15), each person with their own Clavis ID, no shared password
 - [Encrypt a file on your phone and send it safely](https://clavisenc.com/blog-encrypt-file-on-phone-android-iphone.html): Android and iPhone, in the browser with encrypt.html; compared with what phones already offer
 - [How to carry encrypted files on a USB stick and open them on another PC](https://clavisenc.com/blog-carry-encrypted-files-on-usb-stick.html): set up a stick with USB Stick -> Set up stick (Pro), run Clavis from it on other Windows PCs, or open files with the offline browser page; limits and questions
@@ -135,7 +140,7 @@ Not for: storing passwords (it is not a password manager), macOS, Android or iPh
 - [How to encrypt files on Windows 10 (free)](https://clavisenc.com/blog-encrypt-files-windows-10.html)
 - [How to keep files private on a shared family PC (Windows 11)](https://clavisenc.com/blog-keep-files-private-shared-family-pc.html)
 - [How to encrypt files before emailing them](https://clavisenc.com/blog-encrypt-files-before-emailing.html)
-- [How to encrypt a USB drive on Windows 11 Home (without BitLocker)](https://clavisenc.com/blog-encrypt-usb-drive-windows-11-home.html)
+- [How to password-protect or encrypt a USB drive without BitLocker (Windows 11 and 10 Home)](https://clavisenc.com/blog-encrypt-usb-drive-windows-11-home.html): 7-Zip, VeraCrypt, Clavis or BitLocker To Go set up on a Pro PC; which keep your files, opening them on other PCs, and forgotten passwords
 - [How to encrypt files on Windows 11 Home (no BitLocker needed)](https://clavisenc.com/blog-encrypt-files-windows-11-home.html)
 - [How to share encrypted files without sending a password](https://clavisenc.com/blog-share-encrypted-files-without-password.html)
 - [What a post-quantum recovery key is, and why your encryption needs one](https://clavisenc.com/blog-post-quantum-recovery-key.html)
@@ -145,7 +150,7 @@ Not for: storing passwords (it is not a password manager), macOS, Android or iPh
 - [How to encrypt files on Linux (Ubuntu and Debian)](https://clavisenc.com/blog-file-encryption-linux.html)
 - [Clavis vs Cryptomator vs AxCrypt vs BitLocker: which file encryption should you use?](https://clavisenc.com/blog-clavis-vs-cryptomator-axcrypt-bitlocker.html)
 - [Clavis Free vs Pro vs Premium: which do you need?](https://clavisenc.com/blog-clavis-free-vs-pro-vs-premium.html)
-- [How to encrypt a folder on Windows (free)](https://clavisenc.com/blog-encrypt-folder-on-windows.html)
+- [How to password protect (encrypt) a folder in Windows 11 Home or Pro](https://clavisenc.com/blog-encrypt-folder-on-windows.html): no edition of Windows puts a password on a folder; EFS on Pro; 7-Zip, OneDrive Personal Vault, VeraCrypt or Clavis on Home; why Locker.bat scripts only hide files
 - [A simpler VeraCrypt alternative for everyday files](https://clavisenc.com/blog-veracrypt-alternative.html)
 - [AES-256-GCM and Argon2id, in plain English](https://clavisenc.com/blog-aes-256-gcm-argon2id-explained.html)
 - [Why local encryption beats trusting the cloud](https://clavisenc.com/blog-local-vs-cloud-encryption.html)

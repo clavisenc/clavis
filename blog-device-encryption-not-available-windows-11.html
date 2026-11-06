@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Device encryption not available in Windows 11? How to fix — Clavis Encrypt</title>
+  <meta name="description" content="Device encryption missing or not showing in Windows 11? What each Device Encryption Support reason (TPM, PCR7, WinRE, DMA) means and how to fix it.">
+  <meta name="theme-color" content="#05080F">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Device encryption not showing or not available in Windows 11: what each reason means and how to fix it">
+  <meta property="og:description" content="Find the reason in System Information, then fix it: what TPM is not usable, PCR7 binding, WinRE, HSTI, DMA and Disabled by policy mean, and what changed in Windows 11 24H2.">
+  <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://clavisenc.com/blog-device-encryption-not-available-windows-11.html">
+  <meta property="og:url" content="https://clavisenc.com/blog-device-encryption-not-available-windows-11.html">
+  <meta property="og:site_name" content="Clavis Encrypt">
+  <meta property="article:published_time" content="2026-11-05">
+  <meta property="article:modified_time" content="2026-11-05">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link href="assets/css/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=78fb9366a3">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-device-encryption-not-available-windows-11.html#article","headline":"Device encryption not showing or not available in Windows 11: what each reason means and how to fix it","description":"Device encryption missing or not showing in Windows 11? What each Device Encryption Support reason (TPM, PCR7, WinRE, DMA) means and how to fix it.","datePublished":"2026-11-05","dateModified":"2026-11-05","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-device-encryption-not-available-windows-11.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://support.microsoft.com/en-us/windows/device-encryption-in-windows-cf7e2b6f-3e70-4882-9532-18633605b7df","https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-bitlocker","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/","https://learn.microsoft.com/en-us/windows/security/book/operating-system-security-encryption-and-data-protection","https://support.microsoft.com/en-us/windows/experience/find-information-about-your-windows-device","https://support.microsoft.com/en-us/windows/deployment/updates-lifecycle/install-windows-updates","https://support.microsoft.com/en-us/windows/enable-tpm-2-0-on-your-pc-1fd5a332-360d-4f46-a1e7-ae6b0c90645c","https://support.microsoft.com/en-us/windows/device-security-in-the-windows-security-app-afa11526-de57-b1c5-599f-3a4c6a61c5e2","https://support.microsoft.com/en-us/windows/windows-11-and-secure-boot-a8ff1202-c0d9-42f5-940f-843abef64fad","https://learn.microsoft.com/en-us/windows/deployment/mbr-to-gpt","https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/reagentc-command-line-options?view=windows-11","https://support.microsoft.com/en-us/topic/kb5028997-instructions-to-manually-resize-your-partition-to-install-the-winre-update-400faa27-9343-461c-ada9-24c8229763bf","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/recovery-overview","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/operations-guide","https://learn.microsoft.com/en-us/powershell/module/bitlocker/suspend-bitlocker","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-protectors","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/configure","https://support.microsoft.com/en-us/windows/deployment/install-upgrade/upgrade-windows-home-to-windows-pro","https://support.microsoft.com/en-us/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6","https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings","https://learn.microsoft.com/en-us/windows/terminal/faq","https://learn.microsoft.com/en-us/answers/questions/4252467/system-information-device-encryption-question","https://learn.microsoft.com/en-us/answers/questions/5682631/setting-up-device-encryption-reasons-for-failed-au"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"Device encryption not available in Windows 11? How to fix","item":"https://clavisenc.com/blog-device-encryption-not-available-windows-11.html"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is device encryption not showing in Windows 11 Home?","acceptedAnswer":{"@type":"Answer","text":"Either you're signed in with a standard account, or the PC fails a requirement. Open System Information as administrator and read the Device Encryption Support line. If it says Meets prerequisites, sign in with an administrator account and look under Settings, Privacy & security. If it lists reasons, common ones are a TPM or Secure Boot switched off in the UEFI firmware settings. Windows 11 Home does have device encryption; it's full BitLocker that it lacks."}},{"@type":"Question","name":"What does \"Reasons for failed automatic device encryption\" mean?","acceptedAnswer":{"@type":"Answer","text":"It's how System Information introduces the list of reasons your PC can't use device encryption, such as TPM is not usable, PCR7 binding is not supported or WinRE is not configured. Fix each reason in turn, starting with the TPM, and check again. On Windows 11 version 24H2 and later, the Modern Standby (HSTI) and DMA reasons no longer block device encryption."}},{"@type":"Question","name":"What does \"Elevation required to view\" mean in System Information?","acceptedAnswer":{"@type":"Answer","text":"It means System Information wasn't opened with administrator rights, so it won't show whether device encryption is supported. Close it, right-click System Information in the Start menu results, choose Run as administrator, and read the Device Encryption Support line again."}},{"@type":"Question","name":"Does device encryption still need Modern Standby in Windows 11 24H2?","acceptedAnswer":{"@type":"Answer","text":"No. Starting with Windows 11 version 24H2, Microsoft removed the Modern Standby or HSTI requirement and the DMA requirement for automatic device encryption, so more PCs qualify. On Windows 10 and on Windows 11 versions before 24H2, those requirements still apply. The way past them is Windows 11 version 24H2 or later; on Windows 10, that means upgrading to Windows 11, which needs a PC that meets Windows 11's requirements, including TPM 2.0."}},{"@type":"Question","name":"How do I fix \"PCR7 binding is not supported\"?","acceptedAnswer":{"@type":"Answer","text":"Microsoft gives two causes: Secure Boot is turned off, or devices such as a docking station, external graphics card or special network adapter are connected at startup. Unplug those devices and restart. If the message remains, turn on Secure Boot in the UEFI firmware settings and use UEFI boot mode, not Legacy or CSM. If Windows was installed in Legacy mode, it won't start in UEFI mode until the disk is converted with Microsoft's MBR2GPT tool. Before converting, confirm the PC supports UEFI boot, back up your files, and suspend BitLocker if it's on, with a reboot count of 0 so it stays suspended until you resume it. The conversion can't be undone; after it, switch the firmware to UEFI. Microsoft says BitLocker's protectors must then be recreated, which makes a new recovery key: back it up straight away and check its Key ID at aka.ms/myrecoverykey, because the old key no longer works. Then resume protection and check that manage-bde -status C: says Protection On."}},{"@type":"Question","name":"What does \"TPM is not usable\" mean?","acceptedAnswer":{"@type":"Answer","text":"The PC either has no Trusted Platform Module or it's switched off in the BIOS or UEFI. Check Windows Security, Device security, Security processor, or run tpm.msc. To turn it on, restart into UEFI Firmware Settings and enable the TPM option, often called Intel PTT, AMD fTPM or Security Device Support. Microsoft's page for PC makers lists TPM 1.2 or 2.0 for automatic device encryption, though Windows 11 itself requires TPM 2.0."}},{"@type":"Question","name":"Can I use device encryption with a local account?","acceptedAnswer":{"@type":"Answer","text":"Not properly. With only a local account, Windows doesn't turn device encryption on automatically, and Microsoft says a PC that uses only local accounts remains unprotected even though the data is encrypted. An administrator needs to sign in with a Microsoft account so the recovery key is backed up and the drive is fully protected."}},{"@type":"Question","name":"How do I turn on device encryption in Windows 11 Home?","acceptedAnswer":{"@type":"Answer","text":"Sign in with an administrator account, and use a Microsoft account so Windows backs up the recovery key to it automatically. Open Settings, then Privacy & security, then Device encryption, and switch it on. Then check that the recovery key is listed at aka.ms/myrecoverykey. If the page isn't there, open System Information as administrator and read Device Encryption Support to see which requirement your PC fails."}}]}</script>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
+      </button>
+      <nav class="nav-links" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="help.html">Help</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="block">
+      <div class="wrap post">
+        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 5, 2026</p>
+        <h1>Device encryption not showing or not available in Windows 11: what each reason means and how to fix it</h1>
+
+        <p>Device encryption is the simple form of BitLocker that Windows turns on by itself, Windows 11 Home included, when a PC meets its requirements. When the PC doesn't, device encryption is not available and the <strong>Device encryption</strong> page is simply missing from Settings, with no message. Windows does record the reason, in one line of the System Information app that most people never open. This guide shows where to find that line, what each message means, how to fix it, and which messages stopped mattering in Windows 11 version 24H2.</p>
+
+        <div class="callout"><b>Short answer:</b> if <b>Settings → Privacy &amp; security</b> has no <b>Device encryption</b> page, device encryption is not available to you: you're on a standard account or the PC fails a requirement. Run <b>System Information</b> as administrator; <b>Device Encryption Support</b> names the reason, often a TPM or Secure Boot off in UEFI. Since Windows 11 24H2, Modern Standby and DMA no longer block it.</div>
+
+        <h2>Step 1: check your Windows version, because 24H2 changed the rules</h2>
+        <ol>
+          <li>Right-click <strong>Start</strong> and choose <strong>Settings</strong>.</li>
+          <li>Go to <strong>System → About</strong>.</li>
+          <li>Under <strong>Windows specifications</strong>, note the <strong>Edition</strong> and <strong>Version</strong>.</li>
+        </ol>
+        <p>The edition matters less than people think. Microsoft says device encryption is available on all Windows versions, Home included; it's full BitLocker, with all its settings, that needs Pro, Enterprise or Education (see <a href="blog-bitlocker-vs-device-encryption-windows-11-home.html">device encryption vs BitLocker on Windows 11 Home</a>). The version matters a lot. Starting with Windows 11 version 24H2, Microsoft removed two requirements: the PC no longer has to support Modern Standby or pass the Hardware Security Test Interface (HSTI) checks, and external DMA ports no longer block it. On Windows 10, and on Windows 11 before 24H2, both requirements still apply. (Microsoft ended Windows 10 support on October 14, 2025.)</p>
+
+        <h2>Step 2: read the Device Encryption Support line</h2>
+        <ol>
+          <li>Select <strong>Start</strong> and type <strong>System Information</strong>.</li>
+          <li>Right-click <strong>System Information</strong> in the results and select <strong>Run as administrator</strong>. Select <strong>Yes</strong> if Windows asks whether to allow changes.</li>
+          <li>With <strong>System Summary</strong> selected on the left, scroll the list on the right to <strong>Device Encryption Support</strong>. On some PCs it's called <strong>Automatic Device Encryption Support</strong>.</li>
+          <li>Read the value. <strong>Meets prerequisites</strong> means the PC qualifies. Otherwise, System Information shows a message such as <strong>Reasons for failed automatic device encryption:</strong> followed by one or more reasons, separated by commas, as in the examples users have posted on Microsoft Q&amp;A (see Sources).</li>
+        </ol>
+        <p>Fix the reasons one at a time, TPM first, and open System Information again after each change to see what's left. Microsoft says that if a change later makes the PC qualify, for example turning on Secure Boot, device encryption turns BitLocker on automatically as soon as it detects it. When it does, sign in as an administrator with a Microsoft account if you haven't, then check that a key for this PC is listed at aka.ms/myrecoverykey (see <a href="blog-find-bitlocker-recovery-key-windows-11.html">how to find your BitLocker recovery key</a>). With only local accounts, the drive isn't protected. The exception: once device encryption has been turned off, it won't turn itself back on, so you switch it on in Settings. The same list also has <strong>Secure Boot State</strong> and <strong>PCR7 Configuration</strong> lines, which show the Secure Boot state and whether PCR7 binding is possible; Microsoft's guide for PC makers checks these two lines when PCR7 binding fails.</p>
+
+        <div class="callout"><b>Before you change firmware settings:</b> if a drive on this PC is already encrypted with BitLocker or device encryption, make sure you can get its recovery key first. With a Microsoft account, it's at aka.ms/myrecoverykey, which you can open from another device. Microsoft lists turning off or clearing the TPM, firmware upgrades and changes to what the TPM measures among the events that can make a PC ask for its recovery key at startup. For planned firmware changes, Microsoft says you can avoid that by temporarily suspending BitLocker first: the drive stays encrypted, and protection turns back on by itself after the number of restarts you choose. Our <a href="blog-turn-off-device-encryption-windows-11.html#suspend">steps for suspending BitLocker before a firmware change</a> cover this, including what to do if the command gives an error on Windows Home. Never choose a firmware option that clears or resets the TPM. Not sure whether your drive is encrypted? See <a href="blog-check-if-drive-is-encrypted-windows-11.html">how to check if a drive is encrypted</a>.</div>
+
+        <h2>What each message means and how to fix it</h2>
+        <p>These are the messages you're most likely to see. Microsoft's pages explain what most of them mean but don't print all of them word for word; for the others, the wording below comes from System Information results that users have posted on Microsoft Q&amp;A, and it varies slightly between PCs (for example "DMA-capable" with a hyphen, or "the device is not Modern Standby").</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>What it says</th><th>What it means</th><th>How to fix it</th><th>Still applies on Windows 11 24H2 and later?</th></tr></thead>
+            <tbody>
+              <tr><td>Meets prerequisites</td><td>The PC qualifies for device encryption.</td><td>If Settings has no Device encryption page, sign in with an administrator account. If the page shows Off, turn it on (see below).</td><td>Not a problem</td></tr>
+              <tr><td>Elevation required to view</td><td>System Information wasn't opened as administrator, so it won't show the result. Microsoft notes some devices need elevated permissions to view these settings.</td><td>Close it and open it again with <strong>Run as administrator</strong>.</td><td>Not a problem</td></tr>
+              <tr><td>TPM is not usable</td><td>The PC has no Trusted Platform Module (TPM), or the TPM isn't enabled in the BIOS or UEFI.</td><td>Turn on the TPM in the UEFI firmware settings (Intel PTT, AMD fTPM, Security Device Support).</td><td>Yes</td></tr>
+              <tr><td>PCR7 binding is not supported</td><td>Secure Boot is off, or devices such as a docking station, external graphics card or special network adapter are connected during startup.</td><td>Unplug those devices at startup; turn on Secure Boot and boot in UEFI mode, not Legacy/CSM.</td><td>Yes</td></tr>
+              <tr><td>WinRE is not configured</td><td>Windows Recovery Environment isn't set up.</td><td>Run <code>reagentc /enable</code> in Terminal (Admin).</td><td>Yes</td></tr>
+              <tr><td>Hardware Security Test Interface failed and device is not Modern Standby</td><td>The PC neither supports Modern Standby nor passes Microsoft's HSTI security tests.</td><td>Update to Windows 11 version 24H2 or later. On Windows 10, that means upgrading to Windows 11, which needs a PC that meets its requirements, including TPM 2.0. Microsoft documents no fix for older versions.</td><td>No: requirement removed in 24H2</td></tr>
+              <tr><td>Un-allowed DMA capable bus/device(s) detected</td><td>Windows found at least one possible external port or device that can read memory directly (DMA) and may be a risk.</td><td>Update to Windows 11 version 24H2 or later (on Windows 10, only possible if the PC meets Windows 11's requirements). Don't edit the AllowedBuses registry key.</td><td>No: requirement removed in 24H2</td></tr>
+              <tr><td>Disabled by policy</td><td>Microsoft doesn't document this message. It likely means a policy or setting (such as PreventDeviceEncryption, which Microsoft documents for PC makers and organizations) blocks automatic device encryption.</td><td>Work or school PC: ask IT. Your own PC: whoever installed Windows may have set it on purpose (<a href="#disabled-by-policy">see below</a>); otherwise ask the PC maker. Don't edit the registry.</td><td>Not part of the 24H2 change</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>TPM is not usable</h2>
+        <p>Microsoft's explanation: the PC doesn't have a TPM, or the TPM isn't enabled in the BIOS or UEFI. First check what Windows sees:</p>
+        <ul>
+          <li>Open <strong>Windows Security</strong> (select Start and type it) and choose <strong>Device security</strong>. If there's no <strong>Security processor</strong> section, Microsoft says the PC probably has no TPM or it isn't enabled in UEFI.</li>
+          <li>Or press <kbd>Windows</kbd> + <kbd>R</kbd>, type <code>tpm.msc</code> and select <strong>OK</strong>. "Compatible TPM cannot be found" means the TPM may be disabled.</li>
+        </ul>
+        <p>To turn it on:</p>
+        <ol>
+          <li>Save your work. In Windows 11, open <strong>Settings → System → Recovery</strong> and select <strong>Restart now</strong> next to <strong>Advanced startup</strong>. In Windows 10, it's <strong>Settings → Update &amp; Security → Recovery → Restart now</strong>.</li>
+          <li>On the blue screen, choose <strong>Troubleshoot → Advanced options → UEFI Firmware Settings → Restart</strong>.</li>
+          <li>Look for the TPM option, often under <strong>Advanced</strong>, <strong>Security</strong> or <strong>Trusted Computing</strong>. Names vary: <strong>Intel PTT</strong> or <strong>Intel Platform Trust Technology</strong>, <strong>AMD fTPM switch</strong> or <strong>AMD PSP fTPM</strong>, <strong>Security Device</strong>, <strong>Security Device Support</strong> or <strong>TPM State</strong>. Enable it, then save and exit.</li>
+          <li>Back in Windows, open System Information as administrator and check again.</li>
+        </ol>
+        <p>Every firmware is laid out differently. If you can't find the option, follow your PC or motherboard maker's guide, which is where Microsoft's TPM article points too. Microsoft's page for PC makers lists a TPM 1.2 or TPM 2.0 for automatic device encryption, though Windows 11 itself requires TPM 2.0.</p>
+
+        <h2>PCR7 binding is not supported</h2>
+        <p>PCR7 is a register in the TPM where the firmware records the Secure Boot settings at startup. Device encryption needs to tie its key to it. Microsoft gives two causes for this message: Secure Boot is disabled in the BIOS/UEFI, or peripherals are connected during startup, such as specialized network interfaces, docking stations or an external graphics card.</p>
+        <ol>
+          <li>Unplug docks, external graphics and other add-on devices, restart, and check System Information again.</li>
+          <li>If the message is still there, turn on Secure Boot. Open <strong>UEFI Firmware Settings</strong> as in the TPM steps above. If the boot mode is <strong>Legacy</strong> (also called <strong>CSM</strong>), switch it to <strong>UEFI</strong>, or make UEFI the first or only option. Then enable <strong>Secure Boot</strong>. Microsoft's Secure Boot page links to guides from the main PC makers for the exact menu names.</li>
+        </ol>
+        <p><strong>Warning for Legacy installs:</strong> if Windows was installed in Legacy mode, Microsoft says it won't start after you switch the firmware to UEFI. The disk has to be converted from MBR to GPT first, with Microsoft's MBR2GPT tool. To check your disk, right-click <strong>Start</strong>, choose <strong>Disk Management</strong>, right-click your system disk (usually Disk 0), choose <strong>Properties</strong> and open the <strong>Volumes</strong> tab: <strong>Partition style</strong> says MBR or GPT. If it says MBR, take these steps in order:</p>
+        <ol>
+          <li>Confirm that the PC supports UEFI boot, in its firmware settings or the PC maker's documentation. Microsoft says to make sure of this before converting: after the conversion the firmware has to boot in UEFI mode, so a PC that only supports Legacy boot won't start from the converted disk.</li>
+          <li>Back up your files.</li>
+          <li>If BitLocker or device encryption is on, suspend it first, so that it stays suspended until you resume it yourself. In Terminal (Admin), run <code>Suspend-BitLocker -MountPoint "C:" -RebootCount 0</code> or <code>manage-bde -protectors -disable C: -rc 0</code>. This is the one case where a count of 0 is right, not the count of 2 used for firmware updates. Microsoft says an encrypted disk converts only while protection is suspended, and that the existing protectors must be deleted and recreated before BitLocker resumes (step 6). With a count of 2, protection can come back on by itself after the restarts, still using the old protectors. If that's unfamiliar, get help from your PC maker or Microsoft support before you start.</li>
+          <li>Follow Microsoft's MBR2GPT guide, which starts with a check that changes nothing. The conversion itself can't be undone.</li>
+          <li>Switch the firmware to boot in UEFI mode, then turn on Secure Boot.</li>
+          <li><strong>If BitLocker was on, recreate its protectors and save the new key.</strong> Microsoft says the existing protectors have to be deleted and recreated before BitLocker can resume. Recreating the recovery password makes a <strong>new</strong> 48-digit recovery key, and your old copy (at aka.ms/myrecoverykey, on paper or in a file) no longer unlocks the drive. Back up the new key straight away: on Pro, use <strong>Manage BitLocker → Back up your recovery key</strong>; otherwise write down the key that <code>manage-bde -protectors -get C:</code> shows (Microsoft doesn't say whether <code>manage-bde</code> works on Home). Then check that its Key ID is listed at aka.ms/myrecoverykey. If it isn't, keep your own copy somewhere safe, away from the PC. Finally, turn protection back on with <code>Resume-BitLocker -MountPoint "C:"</code> or <code>manage-bde -protectors -enable C:</code>, and check that <code>manage-bde -status C:</code> says <strong>Protection On</strong>. Don't leave the drive suspended: while it is, the key is stored unprotected on the drive.</li>
+        </ol>
+        <p>On some desktops, an add-in card that loads its own firmware driver at startup stops Windows from using PCR7, and Microsoft documents no simple fix for that. BitLocker itself still works without PCR7, and Microsoft says it's still secure with its regular profile.</p>
+
+        <h2>WinRE is not configured</h2>
+        <p>Windows Recovery Environment (WinRE) is Windows' built-in repair system. Microsoft says this message means it isn't configured on your PC. To check and turn it on:</p>
+        <ol>
+          <li>Right-click <strong>Start</strong> (or press <strong>Windows key + X</strong>) and choose <strong>Terminal (Admin)</strong>. On some PCs it's called <strong>Windows Terminal (Admin)</strong> or <strong>Windows PowerShell (Admin)</strong>. Select <strong>Yes</strong> when Windows asks whether to allow changes.</li>
+          <li>Type <code>reagentc /info</code> and press Enter. It shows the status of Windows RE and, if it's installed, a <strong>Windows RE location</strong>.</li>
+          <li>If it's disabled, type <code>reagentc /enable</code> and press Enter.</li>
+          <li>Run <code>reagentc /info</code> again to confirm, then check System Information.</li>
+        </ol>
+        <p>By default, <code>reagentc /enable</code> uses the recovery image <code>Winre.wim</code> in <code>C:\Windows\System32\Recovery</code>. If the command reports an error, don't start deleting or resizing partitions from forum posts. Get help from Microsoft support or your PC maker.</p>
+
+        <h2>Hardware Security Test Interface failed / not Modern Standby, and un-allowed DMA</h2>
+        <p>These two messages describe requirements that applied before Windows 11 version 24H2:</p>
+        <ul>
+          <li><strong>Hardware Security Test Interface failed and device is not Modern Standby:</strong> the PC neither supports Modern Standby nor passes Microsoft's HSTI security self-tests. Both depend on how the PC maker built the hardware and firmware.</li>
+          <li><strong>Un-allowed DMA capable bus/device(s) detected:</strong> in Microsoft's words, Windows "detected at least one potential external DMA capable bus or device that may expose a DMA threat".</li>
+        </ul>
+        <p>Microsoft removed both requirements in Windows 11 version 24H2, and says more devices are now eligible for automatic and manual device encryption. So the way past these messages is a newer version of Windows:</p>
+        <ul>
+          <li><strong>Windows 11:</strong> select <strong>Start → Settings → Windows Update</strong>, select <strong>Check for Windows updates</strong> and install the latest version. If it isn't offered, Microsoft says you can get it manually through the Windows Update Assistant.</li>
+          <li><strong>Windows 10:</strong> this means upgrading to Windows 11, which needs a PC that meets Windows 11's requirements, including TPM 2.0. Windows 10's updates are under <strong>Settings → Update &amp; Security → Windows Update</strong>.</li>
+        </ul>
+        <p>Microsoft documents no fix for home users who stay on Windows 10 or older Windows 11 versions.</p>
+        <p><strong>Don't take ownership of the AllowedBuses registry key.</strong> Many forum answers copy Microsoft's steps for adding DMA buses to <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DmaSecurity\AllowedBuses</code>. Those steps are written for PC makers, to use only after the hardware vendor confirms a bus has no external DMA ports. Marking a real external port as safe defeats the point of the check. And Microsoft says Windows 11 24H2 ignores that key anyway.</p>
+
+        <h2 id="disabled-by-policy">Disabled by policy</h2>
+        <p>Microsoft doesn't document this exact message. It likely means a policy or setting is blocking automatic device encryption. Microsoft does document one such setting, <code>PreventDeviceEncryption</code>: PC makers can use it when they ship their own encryption instead, and Microsoft's IT documentation gives the same setting for organizations that want to stop automatic device encryption.</p>
+        <ul>
+          <li><strong>Work or school PC:</strong> ask IT before changing anything. The organization may protect the drive in another way.</li>
+          <li><strong>Windows installed by you or a PC builder:</strong> whoever installed it may have set <code>PreventDeviceEncryption</code> on purpose, as described in <a href="blog-turn-off-device-encryption-windows-11.html#fresh-install">stopping device encryption during a fresh install</a>. If you set it yourself, the message is expected.</li>
+          <li><strong>Otherwise, on your own PC:</strong> ask the PC maker's support why it's set. Don't edit the registry to undo it.</li>
+        </ul>
+
+        <h2>It says "Meets prerequisites" but Settings has no Device encryption page</h2>
+        <p>Then the PC qualifies, and the likely cause is your account. Microsoft says that if <strong>Device encryption</strong> doesn't appear, it's either unavailable on your device or you might be signed in with a standard user account. Sign in with an administrator account and look again under <strong>Settings → Privacy &amp; security → Device encryption</strong>. On Windows 10, where Settings is laid out differently, press <strong>Windows key + R</strong>, type <code>ms-settings:deviceencryption</code> and select <strong>OK</strong>: Microsoft's Device Encryption page gives that shortcut, and Microsoft Learn lists it as the Encryption settings page.</p>
+        <p>If the page is there but switched <strong>Off</strong>, turn it on yourself with the toggle. Microsoft notes that once device encryption has been turned off, it won't turn itself back on; you have to switch it on in Settings. Before you do, make sure the recovery key will be backed up (see the next section). While the drive is being encrypted, Settings may not show it as on yet: Microsoft says it doesn't show device encryption enabled until encryption is complete.</p>
+
+        <h2>Using a local account?</h2>
+        <p>With only a local account, device encryption isn't turned on automatically. Microsoft's IT documentation goes further: on a PC that uses only local accounts, the drive "remains unprotected even though the data is encrypted", because the key isn't locked away and no recovery key is backed up until an administrator signs in with a Microsoft account. Before you change any firmware settings on a PC that might already be encrypted, make sure you can reach the recovery key: see <a href="blog-find-bitlocker-recovery-key-windows-11.html">how to find your BitLocker recovery key</a>. For why Windows encrypts some PCs without asking, and how to turn it off safely, see <a href="blog-turn-off-device-encryption-windows-11.html">turning off device encryption in Windows 11</a>.</p>
+
+        <h2>If your PC still can't use device encryption</h2>
+        <ul>
+          <li><strong>Fix the firmware settings.</strong> If the cause is a TPM or Secure Boot switched off in UEFI, fixing it costs nothing.</li>
+          <li><strong>BitLocker on Windows 11 Pro.</strong> BitLocker is part of Pro, Enterprise and Education. On a PC without a TPM, it can still encrypt the Windows drive using a startup key on a USB drive that you insert to start the PC. This first has to be allowed in Group Policy: Microsoft's Configure BitLocker page says to enable <strong>Require additional authentication at startup</strong> and select <strong>Allow BitLocker without a compatible TPM</strong>. If that policy isn't configured, Microsoft says users can configure only basic options, on computers with a TPM. If you lose the USB key, Microsoft says you must use one of the BitLocker recovery options, such as the recovery key, to get into the drive. Microsoft also notes this skips the startup integrity check a TPM provides. Moving from Home to Pro is a paid upgrade: Microsoft's upgrade page has you buy it in Microsoft Store or enter a Windows Pro product key.</li>
+          <li><strong>Encrypt your most sensitive files one by one.</strong> This doesn't protect the whole drive, but it does protect the files that matter most, and it keeps protecting them once they leave the PC.</li>
+        </ul>
+        <p>For that last option: Clavis Encrypt does not encrypt drives and is not a replacement for device encryption or BitLocker. Its free version encrypts individual files, one or several at a time, on Windows 11 (Home included) and Windows 10. Those files stay encrypted while you're signed in and when you copy them to a USB stick, an email or a cloud folder. Clavis is closed source and hasn't been independently audited; its <a href="format.html">file format is public</a>, with an open-source decryptor. For Windows' built-in options as well, see <a href="blog-encrypt-files-windows-11-home.html">how to encrypt files in Windows 11 Home</a>.</p>
+
+        <h2>Questions</h2>
+        <div class="faq">
+          <details><summary>Why is device encryption not showing in Windows 11 Home?</summary><p>Either you're signed in with a standard account, or the PC fails a requirement. Open System Information as administrator and read the Device Encryption Support line. If it says Meets prerequisites, sign in with an administrator account and look under Settings, Privacy &amp; security. If it lists reasons, common ones are a TPM or Secure Boot switched off in the UEFI firmware settings. Windows 11 Home does have device encryption; it's full BitLocker that it lacks.</p></details>
+          <details><summary>What does "Reasons for failed automatic device encryption" mean?</summary><p>It's how System Information introduces the list of reasons your PC can't use device encryption, such as TPM is not usable, PCR7 binding is not supported or WinRE is not configured. Fix each reason in turn, starting with the TPM, and check again. On Windows 11 version 24H2 and later, the Modern Standby (HSTI) and DMA reasons no longer block device encryption.</p></details>
+          <details><summary>What does "Elevation required to view" mean in System Information?</summary><p>It means System Information wasn't opened with administrator rights, so it won't show whether device encryption is supported. Close it, right-click System Information in the Start menu results, choose Run as administrator, and read the Device Encryption Support line again.</p></details>
+          <details><summary>Does device encryption still need Modern Standby in Windows 11 24H2?</summary><p>No. Starting with Windows 11 version 24H2, Microsoft removed the Modern Standby or HSTI requirement and the DMA requirement for automatic device encryption, so more PCs qualify. On Windows 10 and on Windows 11 versions before 24H2, those requirements still apply. The way past them is Windows 11 version 24H2 or later; on Windows 10, that means upgrading to Windows 11, which needs a PC that meets Windows 11's requirements, including TPM 2.0.</p></details>
+          <details><summary>How do I fix "PCR7 binding is not supported"?</summary><p>Microsoft gives two causes: Secure Boot is turned off, or devices such as a docking station, external graphics card or special network adapter are connected at startup. Unplug those devices and restart. If the message remains, turn on Secure Boot in the UEFI firmware settings and use UEFI boot mode, not Legacy or CSM. If Windows was installed in Legacy mode, it won't start in UEFI mode until the disk is converted with Microsoft's MBR2GPT tool. Before converting, confirm the PC supports UEFI boot, back up your files, and suspend BitLocker if it's on, with a reboot count of 0 so it stays suspended until you resume it. The conversion can't be undone; after it, switch the firmware to UEFI. Microsoft says BitLocker's protectors must then be recreated, which makes a new recovery key: back it up straight away and check its Key ID at aka.ms/myrecoverykey, because the old key no longer works. Then resume protection and check that manage-bde -status C: says Protection On.</p></details>
+          <details><summary>What does "TPM is not usable" mean?</summary><p>The PC either has no Trusted Platform Module or it's switched off in the BIOS or UEFI. Check Windows Security, Device security, Security processor, or run tpm.msc. To turn it on, restart into UEFI Firmware Settings and enable the TPM option, often called Intel PTT, AMD fTPM or Security Device Support. Microsoft's page for PC makers lists TPM 1.2 or 2.0 for automatic device encryption, though Windows 11 itself requires TPM 2.0.</p></details>
+          <details><summary>Can I use device encryption with a local account?</summary><p>Not properly. With only a local account, Windows doesn't turn device encryption on automatically, and Microsoft says a PC that uses only local accounts remains unprotected even though the data is encrypted. An administrator needs to sign in with a Microsoft account so the recovery key is backed up and the drive is fully protected.</p></details>
+          <details><summary>How do I turn on device encryption in Windows 11 Home?</summary><p>Sign in with an administrator account, and use a Microsoft account so Windows backs up the recovery key to it automatically. Open Settings, then Privacy &amp; security, then Device encryption, and switch it on. Then check that the recovery key is listed at aka.ms/myrecoverykey. If the page isn't there, open System Information as administrator and read Device Encryption Support to see which requirement your PC fails.</p></details>
+        </div>
+
+        <h2>Sources</h2>
+        <ul class="sources">
+          <li><a href="https://support.microsoft.com/en-us/windows/device-encryption-in-windows-cf7e2b6f-3e70-4882-9532-18633605b7df" rel="noopener">Microsoft Support: Device Encryption in Windows (System Information values, standard accounts, local accounts, turning it on, the ms-settings:deviceencryption shortcut)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-bitlocker" rel="noopener">Microsoft Learn: BitLocker drive encryption in Windows 11 for OEMs (requirements, TPM 1.2 or 2.0, 24H2 changes, un-allowed DMA, AllowedBuses ignored in 24H2, PreventDeviceEncryption, PCR7 and add-in cards)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/" rel="noopener">Microsoft Learn: BitLocker overview (device encryption, turning on automatically once a PC qualifies, local accounts, re-enabling, editions, startup key without a TPM, Legacy/CSM and MBR2GPT)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/book/operating-system-security-encryption-and-data-protection" rel="noopener">Microsoft Learn: Windows 11 security book, Encryption and data protection (DMA and HSTI/Modern Standby prerequisites removed)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/experience/find-information-about-your-windows-device" rel="noopener">Microsoft Support: Find information about your Windows device (edition and version under Windows specifications)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/deployment/updates-lifecycle/install-windows-updates" rel="noopener">Microsoft Support: Install Windows Updates (Windows 11 and Windows 10 paths, Windows Update Assistant)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/enable-tpm-2-0-on-your-pc-1fd5a332-360d-4f46-a1e7-ae6b0c90645c" rel="noopener">Microsoft Support: Enable TPM 2.0 on your PC (TPM 2.0 required for Windows 11, tpm.msc, firmware option names, Windows 10 end of support)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/device-security-in-the-windows-security-app-afa11526-de57-b1c5-599f-3a4c6a61c5e2" rel="noopener">Microsoft Support: Device Security in the Windows Security app (Security processor)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/windows-11-and-secure-boot-a8ff1202-c0d9-42f5-940f-843abef64fad" rel="noopener">Microsoft Support: Windows 11 and Secure Boot (UEFI Firmware Settings, Legacy/CSM)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/deployment/mbr-to-gpt" rel="noopener">Microsoft Learn: MBR2GPT (checking UEFI support first, BitLocker suspended during conversion, switching the firmware to UEFI, checking the partition style)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/reagentc-command-line-options?view=windows-11" rel="noopener">Microsoft Learn: REAgentC command-line options</a></li>
+          <li><a href="https://support.microsoft.com/en-us/topic/kb5028997-instructions-to-manually-resize-your-partition-to-install-the-winre-update-400faa27-9343-461c-ada9-24c8229763bf" rel="noopener">Microsoft Support: KB5028997 (checking WinRE with reagentc /info as administrator)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/recovery-overview" rel="noopener">Microsoft Learn: BitLocker recovery overview (events that trigger recovery, suspending BitLocker for planned changes)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/operations-guide" rel="noopener">Microsoft Learn: BitLocker operations guide (suspending and resuming BitLocker; removing and adding a recovery password protector gives a new recovery password)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/bitlocker/suspend-bitlocker" rel="noopener">Microsoft Learn: Suspend-BitLocker (a RebootCount of 0 keeps BitLocker suspended until you resume it; the key is in the clear while suspended)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-protectors" rel="noopener">Microsoft Learn: manage-bde protectors (-disable with -rc 0 suspends protection indefinitely; -enable turns it back on)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/configure" rel="noopener">Microsoft Learn: Configure BitLocker (Require additional authentication at startup, Allow BitLocker without a compatible TPM, lost USB key)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/deployment/install-upgrade/upgrade-windows-home-to-windows-pro" rel="noopener">Microsoft Support: Upgrade Windows Home to Windows Pro (purchase in Microsoft Store or a Pro product key)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6" rel="noopener">Microsoft Support: Find your BitLocker recovery key</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings" rel="noopener">Microsoft Learn: Launch Windows Settings (ms-settings:deviceencryption, the Encryption page)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/terminal/faq" rel="noopener">Microsoft Learn: Windows Terminal FAQ (Windows key + X, Windows Terminal (Admin))</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/answers/questions/4252467/system-information-device-encryption-question" rel="noopener">Microsoft Q&amp;A, user post: System Information - Device Encryption Question (example wording: Elevation required to view, the HSTI and DMA-capable messages)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/answers/questions/5682631/setting-up-device-encryption-reasons-for-failed-au" rel="noopener">Microsoft Q&amp;A, user post: Setting up Device Encryption (example wording: Reasons for failed automatic device encryption, PCR7, HSTI and DMA messages)</a></li>
+        </ul>
+
+        <p>Related: <a href="blog-check-if-drive-is-encrypted-windows-11.html">how to check if a drive is encrypted in Windows 11</a>, <a href="blog-turn-off-device-encryption-windows-11.html">how to turn off device encryption in Windows 11</a> and <a href="blog-find-bitlocker-recovery-key-windows-11.html">how to find your BitLocker recovery key</a>.</p>
+
+        <div class="post-cta">
+          <a class="btn btn-primary" href="download.html?ref=blog-device-encryption">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>
+            Encrypt individual files with Clavis Encrypt — free
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+          <p class="latin">clāvis — Latin, “key”</p>
+          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
+          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
+        </div>
+        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
+        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
+        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      </div>
+      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js?v=081703c843" defer></script>
+</body>
+</html>

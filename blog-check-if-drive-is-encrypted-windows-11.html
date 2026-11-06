@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to check if your drive is encrypted on Windows 11 — Clavis Encrypt</title>
+  <meta name="description" content="See if your Windows 11 drive is really encrypted: Settings, Manage BitLocker and manage-bde, plus what Protection Off and Waiting for Activation mean.">
+  <meta name="theme-color" content="#05080F">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to check if your drive is encrypted on Windows 11">
+  <meta property="og:description" content="Encrypted isn't the same as protected. Check Settings, Manage BitLocker, manage-bde or PowerShell, and find out what each result means and what to do next.">
+  <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://clavisenc.com/blog-check-if-drive-is-encrypted-windows-11.html">
+  <meta property="og:url" content="https://clavisenc.com/blog-check-if-drive-is-encrypted-windows-11.html">
+  <meta property="og:site_name" content="Clavis Encrypt">
+  <meta property="article:published_time" content="2026-11-05">
+  <meta property="article:modified_time" content="2026-11-05">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link href="assets/css/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=78fb9366a3">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-check-if-drive-is-encrypted-windows-11.html#article","headline":"How to check if your drive is encrypted on Windows 11","description":"See if your Windows 11 drive is really encrypted: Settings, Manage BitLocker and manage-bde, plus what Protection Off and Waiting for Activation mean.","datePublished":"2026-11-05","dateModified":"2026-11-05","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-check-if-drive-is-encrypted-windows-11.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://support.microsoft.com/en-us/windows/device-encryption-in-windows-cf7e2b6f-3e70-4882-9532-18633605b7df","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/operations-guide","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/faq","https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-bitlocker","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-status","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-on","https://learn.microsoft.com/en-us/powershell/module/bitlocker/get-bitlockervolume","https://learn.microsoft.com/en-us/windows/win32/secprov/getprotectionstatus-win32-encryptablevolume","https://learn.microsoft.com/en-us/windows/win32/secprov/getconversionstatus-win32-encryptablevolume","https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings","https://learn.microsoft.com/en-us/windows/terminal/faq","https://support.microsoft.com/en-us/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"How to check if your drive is encrypted on Windows 11","item":"https://clavisenc.com/blog-check-if-drive-is-encrypted-windows-11.html"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I know if my laptop is encrypted on Windows 11?","acceptedAnswer":{"@type":"Answer","text":"Open Settings, Privacy & security, Device encryption and see whether it's On. On Windows 11 Pro, Enterprise or Education, also search Start for Manage BitLocker. For the most detail, open a terminal as administrator and run manage-bde -status C:. Percentage Encrypted shows whether the data is encrypted, and Protection Status shows whether it's actually protected."}},{"@type":"Question","name":"Why does it say Protection Off if my drive is 100% encrypted?","acceptedAnswer":{"@type":"Answer","text":"Because the key that unlocks the drive is stored in the clear on the disk. That happens when BitLocker is suspended, for example before a firmware update, or when device encryption has encrypted the drive but was never activated, which Microsoft says is the case until someone signs in with a Microsoft account or a work or school account. The data is encrypted, but the drive isn't protected until protection is resumed or a protector is added."}},{"@type":"Question","name":"What does Waiting for Activation mean in BitLocker?","acceptedAnswer":{"@type":"Answer","text":"Microsoft says it means BitLocker is enabled with a clear protector key and requires further action to be fully protected. The drive is encrypted, but it isn't protected yet. On a PC with device encryption, signing in with a Microsoft account as an administrator removes the clear key, saves the recovery key to that account and adds the TPM protector."}},{"@type":"Question","name":"Does manage-bde work on Windows 11 Home?","acceptedAnswer":{"@type":"Answer","text":"manage-bde.exe was present on the Windows 11 Home PC we tested. Without administrator rights it returned an access-denied error asking for administrative rights, so open a terminal as administrator first. Microsoft lists BitLocker for Pro, Enterprise and Education and doesn't say whether manage-bde -status works on Home, and we haven't tested it as administrator on Home. If it doesn't work there, use Settings, Privacy & security, Device encryption."}},{"@type":"Question","name":"Does manage-bde show other encryption tools like VeraCrypt?","acceptedAnswer":{"@type":"Answer","text":"No. Microsoft describes Get-BitLockerVolume as getting information about \"volumes that BitLocker Drive Encryption can protect\", and manage-bde -status reports each drive's BitLocker state. Microsoft's developer documentation also says that on a hardware-encrypted drive, Protection Off can mean the drive is managed by a third-party key manager. So a drive that shows as not encrypted or not protected could still be encrypted by other software, such as VeraCrypt, or by a drive maker's own tool. Check in that tool instead."}},{"@type":"Question","name":"Does checking BitLocker status change anything on my drive?","acceptedAnswer":{"@type":"Answer","text":"No. manage-bde -status and Get-BitLockerVolume only read the drive's status, and looking at the Settings or Manage BitLocker pages changes nothing unless you press a switch or button. Be careful not to type -on or -off instead of -status: those start encrypting or decrypting the drive."}},{"@type":"Question","name":"Device encryption is in progress. How do I see how far it has got?","acceptedAnswer":{"@type":"Answer","text":"Run manage-bde -status C: from a terminal opened as administrator and read Percentage Encrypted, with Conversion Status to confirm it's encrypting rather than decrypting. In an administrator PowerShell, Get-BitLockerVolume C: | fl shows the same information as EncryptionPercentage and VolumeStatus. Settings shows On only once encryption is complete. Microsoft says the time depends on the drive's type, size and speed, that automatic encryption can be delayed or paused while you use the PC, especially on battery, and that after a shutdown it carries on where it stopped."}}]}</script>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
+      </button>
+      <nav class="nav-links" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="help.html">Help</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="block">
+      <div class="wrap post">
+        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 5, 2026</p>
+        <h1>How to check if your drive is encrypted on Windows 11</h1>
+
+        <p>Many Windows 11 laptops encrypt their own drive during setup, and their owners often find out only when Windows asks for a recovery key at startup. Other people assume their PC is encrypted when it isn't. And some drives are encrypted but not protected, because the key that unlocks them is stored unprotected on the same disk. Here's how to check in Settings, Control Panel, Command Prompt and PowerShell, and what each result means.</p>
+
+        <div class="callout"><b>Short answer:</b> on Windows 11 Home or Pro, open <b>Settings → Privacy &amp; security → Device encryption</b>; it shows <b>On</b> only once encryption has finished. On Pro, Enterprise or Education, <b>Manage BitLocker</b> in Start shows it too. For detail, run <code>manage-bde -status C:</code> in a terminal opened as administrator and read <b>Percentage Encrypted</b> (is the data encrypted?) and <b>Protection Status</b> (is the key locked away?). 100% with <b>Protection On</b> means encrypted and protected. With <b>Protection Off</b>, the key sits in the clear on the disk, so the drive isn't protected yet.</div>
+
+        <h2>What your result means</h2>
+        <p>Find what you see in the first column. The sections below show where each reading comes from.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>You see</th><th>What it means</th><th>What to do</th></tr></thead>
+            <tbody>
+              <tr><td>Settings: Device encryption <strong>On</strong></td><td>The drive is encrypted and encryption has finished. Settings doesn't show On before that.</td><td>Make sure you can reach your <a href="#recovery-key">recovery key</a>. To confirm it's protected, run <code>manage-bde -status C:</code> and look for <strong>Protection On</strong>.</td></tr>
+              <tr><td>Settings: Device encryption <strong>Off</strong></td><td>Device encryption isn't on, or Windows hasn't finished encrypting yet.</td><td>Run <code>manage-bde -status C:</code> to see which.</td></tr>
+              <tr><td>Settings: no <strong>Device encryption</strong> page</td><td>Your PC doesn't support device encryption, or you're signed in with a standard account.</td><td>See <a href="blog-device-encryption-not-available-windows-11.html">why device encryption isn't available</a>.</td></tr>
+              <tr><td>Manage BitLocker: <strong>On</strong></td><td>BitLocker is enabled for the drive.</td><td>Make sure you can reach your recovery key.</td></tr>
+              <tr><td>Manage BitLocker: <strong>Off</strong></td><td>BitLocker isn't enabled for the drive.</td><td>See <a href="#if-off">if it's off</a>.</td></tr>
+              <tr><td>Manage BitLocker: <strong>Suspended</strong></td><td>The data is still encrypted, but BitLocker isn't actively protecting the drive.</td><td>If an update suspended it, restart and check again. Otherwise <a href="#not-protected">resume protection</a>.</td></tr>
+              <tr><td>Manage BitLocker: <strong>Waiting for Activation</strong></td><td>Encrypted with only a clear key. It needs a proper key protector before it's protected.</td><td>See <a href="#not-protected">encrypted but not protected</a>.</td></tr>
+              <tr><td>File Explorer: a yellow warning icon on the drive</td><td>Microsoft says device encryption shows this while the drive has only a clear key. The icon goes once the TPM protector is created and the recovery key is backed up.</td><td>See <a href="#not-protected">encrypted but not protected</a>.</td></tr>
+              <tr><td>Conversion Status <strong>Fully Decrypted</strong>, <strong>Protection Off</strong> (PowerShell: <code>FullyDecrypted</code>)</td><td>BitLocker hasn't encrypted this drive.</td><td>See <a href="#if-off">if it's off</a>.</td></tr>
+              <tr><td>Conversion Status <strong>Encryption in Progress</strong> or <strong>Encryption Paused</strong> (PowerShell: <code>EncryptionInProgress</code> while it runs)</td><td>Windows is encrypting the drive, or has paused part-way. Protection stays Off until it's complete.</td><td>Leave the PC plugged in and check again later. Microsoft says automatic device encryption can be delayed or paused while you use the PC, especially on battery, and that after a shutdown it carries on where it stopped the next time Windows starts.</td></tr>
+              <tr><td>Conversion Status <strong>Decryption in Progress</strong> or <strong>Decryption Paused</strong></td><td>Encryption was turned off and Windows is decrypting the drive, or has paused part-way.</td><td>If you didn't do this, ask whoever manages the PC.</td></tr>
+              <tr><td>100% encrypted, <strong>Protection On</strong></td><td>Encrypted and protected: the key isn't available in the clear on the disk.</td><td>Make sure you can reach your recovery key.</td></tr>
+              <tr><td>100% encrypted, <strong>Protection Off</strong></td><td>Encrypted, but not protected. Protection is suspended, or it was never switched on.</td><td>See <a href="#not-protected">encrypted but not protected</a>.</td></tr>
+              <tr><td>PowerShell: ProtectionStatus <strong>Unknown</strong></td><td>Microsoft says the protection status can't be determined, which can happen when the drive is locked.</td><td>Unlock the drive, then check again.</td></tr>
+              <tr><td>"An attempt to access a required resource was denied" or "Access denied"</td><td>The command ran without administrator rights.</td><td>Open the terminal as administrator and run it again. If it still fails, use Settings.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Check in Settings (Windows 11 Home and Pro)</h2>
+        <ol>
+          <li>Sign in with an administrator account. Microsoft says the page may not appear if you're signed in with a standard account.</li>
+          <li>Open <strong>Settings</strong> and select <strong>Privacy &amp; security</strong>.</li>
+          <li>Select <strong>Device encryption</strong>. On the PC itself, this link opens the page directly: <a href="ms-settings:deviceencryption"><code>ms-settings:deviceencryption</code></a>.</li>
+          <li>Read the switch: <strong>On</strong> or <strong>Off</strong>.</li>
+        </ol>
+        <p>Microsoft says the Settings page doesn't show device encryption as enabled until encryption is complete. While Windows is still encrypting, the switch can't tell you how far it has got, so use <code>manage-bde</code> (below) to see the percentage.</p>
+        <p>If <strong>Device encryption</strong> isn't listed under Privacy &amp; security at all, your PC doesn't support it, or you're signed in with a standard account. <a href="blog-device-encryption-not-available-windows-11.html">Device encryption not available on Windows 11</a> explains how to find the reason in System Information.</p>
+        <p>On Windows 10, press <strong>Windows key + R</strong>, type <code>ms-settings:deviceencryption</code> and select <strong>OK</strong>: Microsoft's support page that gives this shortcut covers both Windows 10 and Windows 11.</p>
+
+        <h2>Check in Control Panel (Windows 11 Pro, Enterprise and Education)</h2>
+        <ol>
+          <li>Select <strong>Start</strong>, type <strong>BitLocker</strong> and select <strong>Manage BitLocker</strong>. This opens the <strong>BitLocker Drive Encryption</strong> Control Panel.</li>
+          <li>Find your drives. Microsoft says the applet sorts them into the Windows (operating system) drive, fixed data drives and removable data drives, based on how each drive reports itself to Windows.</li>
+          <li>Read the status next to each drive letter.</li>
+        </ol>
+        <p>Microsoft lists four statuses:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Status</th><th>Microsoft's description</th></tr></thead>
+            <tbody>
+              <tr><td><strong>On</strong></td><td>BitLocker is enabled for the volume.</td></tr>
+              <tr><td><strong>Off</strong></td><td>BitLocker isn't enabled for the volume.</td></tr>
+              <tr><td><strong>Suspended</strong></td><td>BitLocker is suspended and not actively protecting the volume.</td></tr>
+              <tr><td><strong>Waiting for Activation</strong></td><td>BitLocker is enabled with a clear protector key and requires further action to be fully protected.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>A drive shows up properly here only if it's formatted and has a drive letter. Microsoft lists BitLocker for Windows Pro, Enterprise and Education, not Home. On a Windows 11 Home PC we tested, Control Panel had no BitLocker Drive Encryption item (it listed one called Device Encryption instead). On Home, use Settings or <code>manage-bde</code>.</p>
+
+        <h2>Check with manage-bde -status</h2>
+        <p><code>manage-bde</code> is the BitLocker command-line tool, and it shows the most detail. Device encryption is BitLocker turned on automatically, so you read both the same way. It needs a terminal opened as administrator. Microsoft lists BitLocker for Pro, Enterprise and Education, and its <code>manage-bde</code> reference doesn't say whether the command works on Home. On a Windows 11 Home PC we tested, <code>manage-bde.exe</code> was present, but we only ran it without administrator rights, and it refused (see below). If it doesn't work on your Home PC as administrator, use Settings.</p>
+        <ol>
+          <li>Open a terminal as administrator: right-click <strong>Start</strong> (or press <strong>Windows key + X</strong>) and choose <strong>Terminal (Admin)</strong>. On some PCs it's called <strong>Windows Terminal (Admin)</strong> or <strong>Windows PowerShell (Admin)</strong>. Select <strong>Yes</strong> when Windows asks whether to allow changes.</li>
+          <li>Type <code>manage-bde -status C:</code> and press Enter. Leave out <code>C:</code> to see every drive.</li>
+          <li>Read the lines explained below.</li>
+        </ol>
+        <p>This is Microsoft's sample output for an encrypted, protected Windows drive:</p>
+        <figure class="term" aria-label="manage-bde -status sample output"><div class="term-bar"><i></i><i></i><i></i><span>Administrator: Command Prompt</span></div><pre><span class="t-prompt">C:\&gt;</span><span class="t-cmd">manage-bde -status</span>
+
+Volume C: [Local Disk]
+[OS Volume]
+
+    Size:                 1000 GB
+    BitLocker Version:    2.0
+    Conversion Status:    Used Space Only Encrypted
+    Percentage Encrypted: 100.0%
+    Encryption Method:    XTS-AES 128
+    Protection Status:    Protection On
+    Lock Status:          Unlocked
+    Identification Field: Unknown
+    Key Protectors:
+        TPM
+        Numerical Password</pre></figure>
+        <ul>
+          <li><strong>Conversion Status</strong>: whether the drive is fully encrypted, fully decrypted, or being encrypted or decrypted, and whether that has paused. <em>Encryption in Progress</em>, <em>Encryption Paused</em>, <em>Decryption in Progress</em> and <em>Decryption Paused</em> mean Windows is part-way through. Microsoft's developer documentation says to rely on this state, not the percentage, to tell whether a drive is fully encrypted or fully decrypted. <em>Used Space Only Encrypted</em>, as in Microsoft's sample, means only the space that held data was encrypted; new data is encrypted as it's saved. Microsoft warns that files deleted before encryption sit in free space that this mode doesn't encrypt, and can be recovered until they're overwritten.</li>
+          <li><strong>Percentage Encrypted</strong>: how far encryption or decryption has got. Use it to follow progress, and Conversion Status to see which way it's going.</li>
+          <li><strong>Protection Status</strong>: the line that matters most. <em>Protection On</em> means the drive is fully encrypted and its key isn't available in the clear on the disk. <em>Protection Off</em> means the drive is unencrypted, partly encrypted, or its key is available in the clear on the disk.</li>
+          <li><strong>Lock Status</strong>: <em>Unlocked</em> means Windows can read the drive right now. <em>Locked</em> means a data or USB drive hasn't been unlocked yet.</li>
+          <li><strong>Key Protectors</strong>: what can unlock the drive. <em>TPM</em> is the PC's security chip. <em>Numerical Password</em> is the 48-digit recovery password (PowerShell calls it <code>RecoveryPassword</code>).</li>
+        </ul>
+        <p>If you forget to run the terminal as administrator, you get an error instead. This is what <code>manage-bde -status C:</code> returned on a Windows 11 Home PC we tested, from a terminal not run as administrator (the version number on yours may differ):</p>
+        <figure class="term" aria-label="manage-bde error without administrator rights"><div class="term-bar"><i></i><i></i><i></i><span>Terminal (not administrator)</span></div><pre>BitLocker Drive Encryption: Configuration Tool version 10.0.26100
+Copyright (C) 2013 Microsoft Corporation. All rights reserved.
+
+ERROR: An attempt to access a required resource was denied.
+
+Check that you have administrative rights on the computer.</pre></figure>
+        <p>Close it, open a terminal as administrator (step 1) and run the command again. If your account isn't an administrator, ask whoever manages the PC to run it.</p>
+        <p><strong>Careful:</strong> <code>-status</code> only reads. Other <code>manage-bde</code> options change the drive. Never type <code>-on</code> to check: Microsoft documents it as "Encrypts the drive and turns on BitLocker." <code>-off</code> starts decrypting (Microsoft notes it doesn't ask you to confirm), and <code>-protectors -disable</code> suspends protection.</p>
+
+        <h2>Check with PowerShell</h2>
+        <p>In an administrator PowerShell window or tab (not Command Prompt: <code>Get-BitLockerVolume</code> is part of the BitLocker PowerShell module), run:</p>
+        <figure class="term" aria-label="Get-BitLockerVolume sample output"><div class="term-bar"><i></i><i></i><i></i><span>Administrator: Windows PowerShell</span></div><pre><span class="t-prompt">PS C:\&gt;</span> <span class="t-cmd">Get-BitLockerVolume C: | fl</span>
+
+ComputerName         : DESKTOP
+MountPoint           : C:
+EncryptionMethod     : XtsAes128
+AutoUnlockEnabled    :
+AutoUnlockKeyStored  : False
+MetadataVersion      : 2
+VolumeStatus         : FullyEncrypted
+ProtectionStatus     : On
+LockStatus           : Unlocked
+EncryptionPercentage : 100
+WipePercentage       : 0
+VolumeType           : OperatingSystem
+CapacityGB           : 1000
+KeyProtector         : {Tpm, RecoveryPassword}</pre></figure>
+        <p>That's Microsoft's sample. Read three lines:</p>
+        <ul>
+          <li><strong>VolumeStatus</strong>: <code>FullyEncrypted</code>, <code>FullyDecrypted</code>, or a value saying encryption or decryption is in progress or paused, such as <code>EncryptionInProgress</code>.</li>
+          <li><strong>ProtectionStatus</strong>: <code>On</code> or <code>Off</code>, with the same meaning as Protection Status above. Microsoft describes it as whether BitLocker currently uses a key protector to encrypt the drive's encryption key.</li>
+          <li><strong>EncryptionPercentage</strong>: 0 to 100. Microsoft's developer documentation warns that, because of rounding, 0 or 100 doesn't always mean fully decrypted or fully encrypted. VolumeStatus is the one to trust.</li>
+        </ul>
+        <p>It needs administrator rights too. On the Windows 11 Home PC we tested, it returned <code>Access denied</code> in a terminal not run as administrator.</p>
+
+        <h2>What each check can and can't tell you</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>Settings</th><th>Manage BitLocker</th><th>manage-bde / PowerShell</th></tr></thead>
+            <tbody>
+              <tr><td>Windows 11 Home</td><td>Yes, if the PC supports device encryption</td><td>Microsoft lists BitLocker for Pro, Enterprise and Education only</td><td>Present on the Home PC we tested, but refused without administrator rights; not tested as administrator on Home</td></tr>
+              <tr><td>Shows progress</td><td>No: shows On only when finished</td><td>Microsoft documents status words only (On, Off, Suspended, Waiting for Activation)</td><td>Yes: percentage and status</td></tr>
+              <tr><td>Shows whether the key is protected</td><td>No</td><td>Yes: Suspended, Waiting for Activation</td><td>Yes: Protection Status</td></tr>
+              <tr><td>Shows other drives, including USB</td><td>No: device encryption covers internal drives only</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td>Shows other encryption tools (VeraCrypt, a drive maker's software)</td><td>No</td><td>No</td><td>No: BitLocker only</td></tr>
+              <tr><td>Shows where your recovery key is saved</td><td>No</td><td>No</td><td>No: only that a recovery password exists</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>None of these tells you whether your files are safe while you're signed in. Drive encryption protects a PC that's switched off; <a href="blog-bitlocker-vs-device-encryption-windows-11-home.html">device encryption vs BitLocker</a> explains what it does and doesn't cover.</p>
+
+        <h2 id="not-protected">Encrypted but not protected</h2>
+        <p>BitLocker encrypts your data with a key, then locks that key with a <em>protector</em>, such as the PC's TPM chip. Protection Status tells you whether that lock is in place. A drive can be 100% encrypted with the lock off. There are three common ways to end up there.</p>
+        <p><strong>Suspended.</strong> Microsoft says suspending "keeps the data encrypted", but the key is then protected by a clear key: "a cryptographic key stored unencrypted and unprotected on the disk drive". People and update tools suspend BitLocker on purpose before some firmware and BIOS updates, so the PC doesn't ask for the recovery key afterwards. If that's why, finish the update and restart. Protection comes back by itself after the number of restarts chosen when it was suspended, unless that number was 0 (see <a href="blog-turn-off-device-encryption-windows-11.html#suspend">how suspending works</a>). If it's still suspended, resume protection:</p>
+        <ul>
+          <li>Pro, Enterprise or Education: in <strong>Manage BitLocker</strong>, select the Windows drive, then <strong>Resume protection</strong>.</li>
+          <li>From an administrator terminal, Microsoft's command for resuming: <code>manage-bde -protectors -enable C:</code> (in PowerShell, <code>Resume-BitLocker -MountPoint "C:"</code> does the same)</li>
+        </ul>
+        <p>Don't resume in the middle of a firmware or BIOS update: Microsoft says applying those updates while BitLocker is protecting the drive can send the PC to the recovery screen at the next restart. Have your recovery key ready before you change anything.</p>
+        <p><strong>Waiting for Activation.</strong> The drive was encrypted with only a clear key and was never given a proper protector. Device encryption starts in a similar state. After Windows setup, it encrypts the drive with a clear key, "the equivalent of standard BitLocker suspended state", and File Explorer shows a yellow warning icon on the drive. Microsoft's guide for PC makers says protection is armed only after someone signs in with a Microsoft account or a work or school account; until then, "data is not protected". When an administrator signs in with a Microsoft account, Windows removes the clear key, saves the recovery key to that account and creates the TPM protector.</p>
+        <p>On Pro, Enterprise or Education, Microsoft says an administrator can also add a protector from Manage BitLocker, PowerShell or <code>manage-bde</code>. Before you do, make sure the drive has a recovery password and that a copy is saved somewhere off the PC. Microsoft's own example of turning on BitLocker with only the TPM protector has "no recovery key", and Microsoft says that in recovery mode you need the recovery password or recovery key to unlock the drive.</p>
+        <ul>
+          <li>In <strong>Manage BitLocker</strong>, select the drive and choose <strong>Back up your recovery key</strong>.</li>
+          <li>From an administrator terminal, <code>manage-bde -protectors -add -recoverypassword C:</code> adds a recovery password, and <code>manage-bde -protectors -get C:</code> lists the drive's protectors. Write down the 48-digit Numerical Password it shows (or save it with <strong>Manage BitLocker → Back up your recovery key</strong>) and keep it off the PC before you add any other protector.</li>
+        </ul>
+        <p><strong>Local accounts only.</strong> Microsoft describes this case in two ways. Its support page and its guide for PC makers say that with a local account, device encryption <em>isn't turned on automatically</em>. Its BitLocker overview says that a device that uses only local accounts "remains unprotected even though the data is encrypted". In practice, if you set up your PC without a Microsoft account, don't guess: run <code>manage-bde -status C:</code> and read Protection Status. If the drive is encrypted but says <strong>Protection Off</strong>, Microsoft says a PC that isn't joined to a work or school network needs a Microsoft account with administrator rights on it: when that administrator signs in with the Microsoft account, Windows removes the clear key, uploads the recovery key to the account and creates the TPM protector. Afterwards, check that the key appears at aka.ms/myrecoverykey. On Pro, Enterprise or Education, Microsoft's guide for PC makers adds that BitLocker can be turned on manually from the BitLocker Control Panel (<strong>Manage BitLocker</strong>). If Conversion Status says <strong>Fully Decrypted</strong>, see <a href="#if-off">if it's off</a>.</p>
+        <p>Wondering why Windows encrypted your drive by itself, or whether Windows 11 is encrypted by default? See <a href="blog-turn-off-device-encryption-windows-11.html">how to turn off device encryption on Windows 11</a>, which covers both.</p>
+
+        <h2>Check an external or USB drive</h2>
+        <p>Device encryption covers the Windows drive and other fixed internal drives, not external or USB drives. A USB stick is encrypted only if someone used BitLocker To Go (from a Pro, Enterprise or Education PC) or another tool. To check, plug it in, note its drive letter, and run <code>manage-bde -status E:</code> in an administrator terminal, using its letter instead of <code>E:</code>. On Pro, look for it in Manage BitLocker under removable data drives, or under fixed data drives if it isn't there: Microsoft says the applet sorts drives by how each one reports itself to Windows. If Lock Status says <em>Locked</em>, unlock the drive to see the rest. To lock a USB stick on Windows 11 Home, see <a href="blog-encrypt-usb-drive-windows-11-home.html">how to encrypt a USB drive on Windows 11 Home</a>.</p>
+
+        <h2 id="recovery-key">If it's on: find your recovery key now</h2>
+        <p>A firmware update, a hardware change or a repair can make Windows ask for the 48-digit recovery key at startup, and without it the drive stays locked. Microsoft says its support team can't retrieve, provide or recreate a lost key. For a personal Microsoft account, open <strong>aka.ms/myrecoverykey</strong> on another device (it goes to account.microsoft.com/devices/recoverykey) and find the key for this PC. If someone else set up the PC, it may be in their account. For the other places to look, see <a href="blog-find-bitlocker-recovery-key-windows-11.html">how to find your BitLocker recovery key on Windows 11</a>.</p>
+
+        <h2 id="if-off">If it's off: what to do next</h2>
+        <p>Before you turn encryption on, make sure the recovery key will be saved somewhere you can reach from another device. Encrypting with no reachable recovery key is how people lock themselves out.</p>
+        <ol>
+          <li><strong>Device encryption (Home and Pro, on supported PCs):</strong> sign in with an administrator account, open <strong>Settings → Privacy &amp; security → Device encryption</strong> and turn the switch <strong>On</strong>. If you use a local account, sign in with a Microsoft account first so the recovery key is attached to it, then check that it appears at aka.ms/myrecoverykey.</li>
+          <li><strong>BitLocker (Pro, Enterprise and Education):</strong> select <strong>Start</strong>, type <strong>BitLocker</strong>, select <strong>Manage BitLocker</strong>, then <strong>Turn on BitLocker</strong> next to the drive. When asked, back up the recovery key to your Microsoft account, a USB flash drive, a file kept off the PC, or a printout.</li>
+          <li><strong>Neither is offered:</strong> see <a href="blog-device-encryption-not-available-windows-11.html">why device encryption isn't available</a> for the usual reasons and fixes.</li>
+        </ol>
+        <p>If your PC can't use either, or you only need certain files kept private, file encryption is a different tool for a different job. <a href="./">Clavis Encrypt</a>, free on Windows 10 and 11 and Linux, encrypts files you choose, one or several at a time, with a password, so they stay locked while the PC is on and in copies you move elsewhere. It doesn't encrypt drives, can't check or fix drive encryption, and isn't a replacement for BitLocker or device encryption: if your PC can turn on device encryption, do that first. Clavis is closed source and hasn't been independently audited; its file format is public, with an open-source decryptor. See <a href="blog-encrypt-files-windows-11-home.html">how to encrypt files on Windows 11 Home</a>.</p>
+
+        <h2>Questions</h2>
+        <div class="faq">
+          <details><summary>How do I know if my laptop is encrypted on Windows 11?</summary><p>Open Settings, Privacy &amp; security, Device encryption and see whether it's On. On Windows 11 Pro, Enterprise or Education, also search Start for Manage BitLocker. For the most detail, open a terminal as administrator and run manage-bde -status C:. Percentage Encrypted shows whether the data is encrypted, and Protection Status shows whether it's actually protected.</p></details>
+          <details><summary>Why does it say Protection Off if my drive is 100% encrypted?</summary><p>Because the key that unlocks the drive is stored in the clear on the disk. That happens when BitLocker is suspended, for example before a firmware update, or when device encryption has encrypted the drive but was never activated, which Microsoft says is the case until someone signs in with a Microsoft account or a work or school account. The data is encrypted, but the drive isn't protected until protection is resumed or a protector is added.</p></details>
+          <details><summary>What does Waiting for Activation mean in BitLocker?</summary><p>Microsoft says it means BitLocker is enabled with a clear protector key and requires further action to be fully protected. The drive is encrypted, but it isn't protected yet. On a PC with device encryption, signing in with a Microsoft account as an administrator removes the clear key, saves the recovery key to that account and adds the TPM protector.</p></details>
+          <details><summary>Does manage-bde work on Windows 11 Home?</summary><p>manage-bde.exe was present on the Windows 11 Home PC we tested. Without administrator rights it returned an access-denied error asking for administrative rights, so open a terminal as administrator first. Microsoft lists BitLocker for Pro, Enterprise and Education and doesn't say whether manage-bde -status works on Home, and we haven't tested it as administrator on Home. If it doesn't work there, use Settings, Privacy &amp; security, Device encryption.</p></details>
+          <details><summary>Does manage-bde show other encryption tools like VeraCrypt?</summary><p>No. Microsoft describes Get-BitLockerVolume as getting information about "volumes that BitLocker Drive Encryption can protect", and manage-bde -status reports each drive's BitLocker state. Microsoft's developer documentation also says that on a hardware-encrypted drive, Protection Off can mean the drive is managed by a third-party key manager. So a drive that shows as not encrypted or not protected could still be encrypted by other software, such as VeraCrypt, or by a drive maker's own tool. Check in that tool instead.</p></details>
+          <details><summary>Does checking BitLocker status change anything on my drive?</summary><p>No. manage-bde -status and Get-BitLockerVolume only read the drive's status, and looking at the Settings or Manage BitLocker pages changes nothing unless you press a switch or button. Be careful not to type -on or -off instead of -status: those start encrypting or decrypting the drive.</p></details>
+          <details><summary>Device encryption is in progress. How do I see how far it has got?</summary><p>Run manage-bde -status C: from a terminal opened as administrator and read Percentage Encrypted, with Conversion Status to confirm it's encrypting rather than decrypting. In an administrator PowerShell, Get-BitLockerVolume C: | fl shows the same information as EncryptionPercentage and VolumeStatus. Settings shows On only once encryption is complete. Microsoft says the time depends on the drive's type, size and speed, that automatic encryption can be delayed or paused while you use the PC, especially on battery, and that after a shutdown it carries on where it stopped.</p></details>
+        </div>
+
+        <h2>Sources</h2>
+        <ul class="sources">
+          <li><a href="https://support.microsoft.com/en-us/windows/device-encryption-in-windows-cf7e2b6f-3e70-4882-9532-18633605b7df" rel="noopener">Microsoft Support: Device Encryption in Windows (Settings path, ms-settings link, local accounts, standard accounts)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/" rel="noopener">Microsoft Learn: BitLocker overview (editions, device encryption, clear key, local accounts, Settings shows On when complete, internal drives only)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/operations-guide" rel="noopener">Microsoft Learn: BitLocker operations guide (Manage BitLocker and its drive categories, Control Panel statuses, manage-bde and PowerShell sample output, TPM-only example, adding and listing protectors, resume and turn on)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/faq" rel="noopener">Microsoft Learn: BitLocker FAQ (suspending and the clear key, updates, encryption time, resuming after a shutdown, recovery mode)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-bitlocker" rel="noopener">Microsoft Learn: BitLocker drive encryption in Windows 11 for OEMs (protection armed after Microsoft account sign-in; not enabled with local accounts)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-status" rel="noopener">Microsoft Learn: manage-bde status</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-on" rel="noopener">Microsoft Learn: manage-bde on ("Encrypts the drive and turns on BitLocker")</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/bitlocker/get-bitlockervolume" rel="noopener">Microsoft Learn: Get-BitLockerVolume (volumes that BitLocker can protect)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/win32/secprov/getprotectionstatus-win32-encryptablevolume" rel="noopener">Microsoft Learn: GetProtectionStatus (what Protection On, Off and Unknown mean, including on hardware-encrypted drives)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/win32/secprov/getconversionstatus-win32-encryptablevolume" rel="noopener">Microsoft Learn: GetConversionStatus (the six conversion states; use the state, not the percentage)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings" rel="noopener">Microsoft Learn: Launch Windows Settings (ms-settings:deviceencryption)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/terminal/faq" rel="noopener">Microsoft Learn: Windows Terminal FAQ (Windows key + X, Windows Terminal (Admin))</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6" rel="noopener">Microsoft Support: Find your BitLocker recovery key</a></li>
+        </ul>
+        <p class="muted-note"><em>Checked against Microsoft's documentation on November 5, 2026, and on a Windows 11 Home PC without administrator rights. Windows changes between versions; what your own PC shows is the final word.</em></p>
+
+        <div class="post-cta">
+          <a class="btn btn-primary" href="blog-encrypt-files-windows-11-home.html">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="12" height="8" rx="2"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>
+            Next: encrypt your most private files
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+          <p class="latin">clāvis — Latin, “key”</p>
+          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
+          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
+        </div>
+        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
+        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
+        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      </div>
+      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js?v=081703c843" defer></script>
+</body>
+</html>

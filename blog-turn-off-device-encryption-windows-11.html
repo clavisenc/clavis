@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Turn off device encryption in Windows 11 (save the key first) — Clavis Encrypt</title>
+  <meta name="description" content="Windows 11 can turn on device encryption by itself. Should you turn it off? Save your recovery key first, then the Settings and manage-bde steps.">
+  <meta name="theme-color" content="#05080F">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Turn off device encryption in Windows 11 (save the key first)">
+  <meta property="og:description" content="Why Windows 11 encrypted your drive by itself, whether to turn it off, the Settings and command-line steps, and why a BIOS update only needs a suspend.">
+  <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://clavisenc.com/blog-turn-off-device-encryption-windows-11.html">
+  <meta property="og:url" content="https://clavisenc.com/blog-turn-off-device-encryption-windows-11.html">
+  <meta property="og:site_name" content="Clavis Encrypt">
+  <meta property="article:published_time" content="2026-11-05">
+  <meta property="article:modified_time" content="2026-11-05">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link href="assets/css/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=78fb9366a3">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-turn-off-device-encryption-windows-11.html#article","headline":"Turn off device encryption in Windows 11 (save the key first)","description":"Windows 11 can turn on device encryption by itself. Should you turn it off? Save your recovery key first, then the Settings and manage-bde steps.","datePublished":"2026-11-05","dateModified":"2026-11-05","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-turn-off-device-encryption-windows-11.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://support.microsoft.com/en-us/windows/device-encryption-in-windows-cf7e2b6f-3e70-4882-9532-18633605b7df","https://support.microsoft.com/en-us/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6","https://support.microsoft.com/en-us/windows/back-up-your-bitlocker-recovery-key-e63607b4-77fb-4ad3-8022-d6dc428fbd0d","https://support.microsoft.com/en-us/windows/bitlocker-drive-encryption-76b92ac9-1040-48d6-9f5f-d14b3c5fa178","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/","https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-bitlocker","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/recovery-overview","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/operations-guide","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-off","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-status","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-protectors","https://learn.microsoft.com/en-us/powershell/module/bitlocker/suspend-bitlocker","https://learn.microsoft.com/en-us/troubleshoot/windows-client/windows-security/bitlocker-recovery-known-issues","https://learn.microsoft.com/en-us/windows/terminal/faq","https://learn.microsoft.com/en-us/windows/client-management/manage-recall","https://techcommunity.microsoft.com/blog/windows-itpro-blog/announcing-hardware-accelerated-bitlocker/4474609"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"Turn off device encryption in Windows 11 (save the key first)","item":"https://clavisenc.com/blog-turn-off-device-encryption-windows-11.html"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I turn off device encryption in Windows 11?","acceptedAnswer":{"@type":"Answer","text":"Save your recovery key first. Then sign in as an administrator, open Settings, Privacy & security, Device encryption, and set it to Off; this is the way Microsoft documents. Windows then decrypts the drive in the background. You can also run manage-bde -off C: in Terminal (Admin), which you open by right-clicking Start; afterwards, check that the Settings page shows Off."}},{"@type":"Question","name":"Should I turn off device encryption in Windows 11?","acceptedAnswer":{"@type":"Answer","text":"For most people, no. Microsoft recommends keeping device encryption on for any PC that supports it: it stops someone reading the drive by taking it out of a lost or stolen laptop. The usual reasons to turn it off have better answers: save the recovery key against lockout, suspend it for a BIOS update, and check whether the slowdown is real on your PC."}},{"@type":"Question","name":"Is it safe to turn off device encryption?","acceptedAnswer":{"@type":"Answer","text":"It's safe for your files: Windows decrypts the drive in place. What you lose is protection, because anyone who takes the drive out of a lost or stolen PC can then read it. Save your recovery key first, keep the PC plugged in, and let decryption finish."}},{"@type":"Question","name":"Is Windows 11 encrypted by default?","acceptedAnswer":{"@type":"Answer","text":"On PCs that meet the requirements, yes: device encryption starts after setup, and Microsoft's Recall documentation says Device Encryption or BitLocker are enabled by default on Windows 11. It only protects the drive once the recovery key is backed up: on a personal PC, when an administrator signs in with a Microsoft account; on a work or school PC, when the organization backs the key up to Microsoft Entra ID or Active Directory. With only a local account, Microsoft says it isn't turned on automatically, though the drive may already be encrypted with an unprotected key."}},{"@type":"Question","name":"Does turning off device encryption turn off BitLocker?","acceptedAnswer":{"@type":"Answer","text":"Yes. Device encryption is BitLocker switched on automatically, so turning it off decrypts the drive and removes BitLocker from it. Microsoft describes manage-bde -off, the command-line way to do it, as the command that decrypts the drive and turns off BitLocker. Afterwards, check every internal drive with manage-bde -status."}},{"@type":"Question","name":"Does turning off device encryption delete my files?","acceptedAnswer":{"@type":"Answer","text":"No. It decrypts the drive in place and your files stay where they are. As before any long disk operation, back up anything you can't replace, and keep the recovery key until decryption has finished."}},{"@type":"Question","name":"How long does it take to turn off device encryption?","acceptedAnswer":{"@type":"Answer","text":"Microsoft doesn't give a figure; it depends on the drive. Decryption runs in the background. Follow it with manage-bde -status in Terminal (Admin), where Percentage Encrypted counts down as the drive is decrypted. Keep a laptop plugged in until it finishes."}},{"@type":"Question","name":"Does turning off device encryption improve performance or gaming?","acceptedAnswer":{"@type":"Answer","text":"Usually only a little. Microsoft says it has aimed to keep BitLocker's overhead within single-digit percentage points, but that the impact is more pronounced on fast NVMe drives, especially for I/O-heavy work like gaming or video editing. That's why it added hardware-accelerated BitLocker on some new processors. Whether the gain is worth an unprotected drive depends on what's on the PC."}},{"@type":"Question","name":"Will device encryption turn itself back on?","acceptedAnswer":{"@type":"Answer","text":"Microsoft says that if device encryption is turned off in Settings, it will no longer automatically enable itself in the future; you'd turn it on again in Settings. It doesn't say the same for manage-bde or Manage BitLocker, so if you used those, check that the Settings page shows Off and run manage-bde -status again after the next feature update. A clean reinstall of Windows runs setup again, which prepares device encryption again on a PC that qualifies, and a work or school PC can be encrypted by policy."}},{"@type":"Question","name":"I use a local account: is my drive encrypted?","acceptedAnswer":{"@type":"Answer","text":"It may be, without being protected. Microsoft says a PC that uses only local accounts remains unprotected even though the data is encrypted: the key is stored on the drive unprotected, and File Explorer shows a yellow warning icon on it. To protect it, sign in to Windows as an administrator with a Microsoft account, which backs up the key; otherwise, turning it off is the clean choice."}},{"@type":"Question","name":"Why can't I turn off device encryption?","acceptedAnswer":{"@type":"Answer","text":"You need an administrator account; with a standard account, Microsoft says the Device encryption page may not appear at all. On a PC managed by a work or school, encryption might be required by policy, so ask IT. If the page is missing for another reason, see device encryption not available in Windows 11."}},{"@type":"Question","name":"Do I need to turn off device encryption before a BIOS update?","acceptedAnswer":{"@type":"Answer","text":"No. Suspend it instead. Microsoft says suspending for planned firmware or hardware changes avoids the recovery screen and leaves the drive fully encrypted. In Terminal (Admin), run Suspend-BitLocker -MountPoint \"C:\" -RebootCount 2, install the update, and protection comes back by itself after two restarts. Then check that manage-bde -status C: says Protection On. If you suspend with a count of 0 instead, resume it yourself with Resume-BitLocker -MountPoint \"C:\" once the update is done. If Windows asks for the recovery key anyway, see how to find your BitLocker recovery key."}}]}</script>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
+      </button>
+      <nav class="nav-links" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="help.html">Help</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="block">
+      <div class="wrap post">
+        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 5, 2026</p>
+        <h1>Turn off device encryption in Windows 11 (save the key first)</h1>
+
+        <p>Many Windows 11 PCs encrypt their own drive during setup, without asking. That's device encryption, and it's why some people meet a BitLocker recovery screen they never knew they'd set up. You can turn it off, but usually you shouldn't, and either way the first step is the same: find your recovery key. Here's why your PC encrypted itself, how to decide, the Settings and command-line steps to turn it off, and what to do before a BIOS update instead.</p>
+
+        <div class="callout"><b>Short answer:</b> device encryption is BitLocker that Windows turns on by itself on supported PCs. First, save a copy of your recovery key from <b>aka.ms/myrecoverykey</b>. Then sign in as an administrator and set <b>Settings → Privacy &amp; security → Device encryption</b> to <b>Off</b>; Windows decrypts the drive in the background. Microsoft recommends keeping it on; for a BIOS update, suspend it instead.</div>
+
+        <h2>Why your PC encrypted itself</h2>
+        <p>Microsoft describes device encryption as “a Windows feature that provides a simple way for some devices to enable BitLocker encryption automatically”, for the Windows drive and other fixed (internal) drives. It doesn't touch USB or external drives. On a PC that meets the requirements, it starts on its own once Windows setup has finished: “Unlike a standard BitLocker implementation, device encryption is enabled automatically so that the device is always protected.”</p>
+        <p>It happens in two stages:</p>
+        <ol>
+          <li><strong>After setup, Windows encrypts the drives with a “clear key”.</strong> The key is stored on the drive unprotected, which Microsoft calls “the equivalent of standard BitLocker suspended state”. File Explorer shows a yellow warning icon on the drive while it's in this state.</li>
+          <li><strong>Protection switches on once the recovery key is backed up.</strong> On a personal PC, that's when an administrator signs in with a Microsoft account: Windows uploads the recovery key to that account, creates the TPM protector and removes the clear key. On a work or school PC, it's when the organization backs up the key to Microsoft Entra ID or Active Directory, if its BitLocker policy is set to do that. Microsoft's guidance for PC makers says protection is “enabled (armed) only after users sign in with a Microsoft Account” or a work account, and “until that, protection is suspended and data is not protected”.</li>
+        </ol>
+        <p><strong>The local-account trap.</strong> Microsoft's support page says that with a local account, device encryption “isn't turned on automatically”. Its technical overview adds that a PC that uses only local accounts “remains unprotected even though the data is encrypted”. So the drive can be encrypted while its key sits unprotected on it: encrypted, but not yet protecting you.</p>
+        <p><strong>Why more PCs do this now.</strong> Device encryption still needs a TPM and Secure Boot. But “starting in Windows 11, version 24H2, the prerequisites of DMA and HSTI/Modern Standby are removed”, so many more PCs qualify. And if a PC didn't qualify at first, a later change such as turning on Secure Boot makes Windows switch it on “as soon as it detects it”.</p>
+        <p><strong>Is Windows 11 encrypted by default, then?</strong> On PCs that meet the requirements, yes. Microsoft's Recall documentation says “Device Encryption or BitLocker are enabled by default on Windows 11”. It only protects you once the recovery key has been backed up to a Microsoft account or the organization's directory.</p>
+
+        <h2>Is it on? A quick check</h2>
+        <ul>
+          <li>Open <strong>Settings → Privacy &amp; security → Device encryption</strong>. Microsoft's support page also gives a shortcut, <code>ms-settings:deviceencryption</code>, which opens the page directly: press <strong>Windows key + R</strong>, type it and select <strong>OK</strong>. This also works on Windows 10.</li>
+          <li>Settings shows device encryption as on only once encryption is complete, so a PC that's still encrypting can look as if it's off.</li>
+          <li>A yellow warning icon on the drive in File Explorer means it's encrypted but the key isn't protected yet.</li>
+        </ul>
+        <p>For the command-line check (<code>manage-bde -status</code>) and what each status means, see <a href="blog-check-if-drive-is-encrypted-windows-11.html">how to check if your drive is encrypted in Windows 11</a>. If there's no Device encryption page at all, see <a href="blog-device-encryption-not-available-windows-11.html">device encryption not available in Windows 11</a>. For how it compares with full BitLocker in Windows 11 Pro, see <a href="blog-bitlocker-vs-device-encryption-windows-11-home.html">device encryption vs BitLocker on Windows 11 Home</a>.</p>
+
+        <h2>Do this first: save your recovery key</h2>
+        <p>Look up the key now, while everything works. On another device, open <strong>aka.ms/myrecoverykey</strong>, sign in with the Microsoft account used on this PC, and find the key whose Key ID matches this PC's. To see this PC's ID, right-click <strong>Start</strong> (or press <strong>Windows key + X</strong>) and choose <strong>Terminal (Admin)</strong>. On some PCs it's called <strong>Windows Terminal (Admin)</strong> or <strong>Windows PowerShell (Admin)</strong>. Select <strong>Yes</strong> when Windows asks whether to allow changes. Then run <code>manage-bde -protectors -get C: -Type RecoveryPassword</code> and compare the ID listed under <strong>Numerical Password</strong>. If someone else set up the PC, the key may be in <em>their</em> Microsoft account. Write it down or print it, and keep that copy away from the laptop.</p>
+        <p>If no key in the account matches, get a copy before you go any further, while Windows still starts. In the same Terminal (Admin) window, this PowerShell command, based on one in Microsoft's BitLocker operations guide, shows the ID and the 48-digit recovery password: <code>(Get-BitLockerVolume -MountPoint C).KeyProtector | Where-Object {$_.KeyProtectorType -eq 'RecoveryPassword'} | Format-Table KeyProtectorId,RecoveryPassword</code>. Microsoft Support “doesn't have the ability to retrieve, provide, or recreate a lost BitLocker recovery key”, and without the key the fallback is a reset, which “will remove all of your files”.</p>
+        <p>On Windows Home, Microsoft doesn't say whether <code>manage-bde</code> and the BitLocker PowerShell commands work (we've only tested them there without administrator rights, when they refused). If they give an error on Home, the key listed at aka.ms/myrecoverykey is the copy to save. If no key there matches this PC, don't turn anything off until you have one.</p>
+        <p>Full steps, including work and school accounts: <a href="blog-find-bitlocker-recovery-key-windows-11.html">how to find your BitLocker recovery key in Windows 11</a>.</p>
+
+        <h2>Should you turn off device encryption?</h2>
+        <p>Microsoft's position is clear: “It's recommended to keep device encryption on for any systems that support it.” Its BitLocker guide also says decryption should happen “when protection is no longer required, and not as a troubleshooting step”. Here's how that works out for the usual reasons people turn it off:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Your situation</th><th>What to do</th><th>Why</th></tr></thead>
+            <tbody>
+              <tr><td>A laptop that leaves the house</td><td>Keep it on</td><td>If the laptop is lost or stolen, someone who takes the drive out can't read it; using the laptop itself still needs your Windows sign-in.</td></tr>
+              <tr><td>Afraid of being locked out</td><td>Save the recovery key; don't decrypt</td><td>Windows can ask for the key after some firmware, hardware or boot changes. Lockout happens when you don't have it; having the key fixes that.</td></tr>
+              <tr><td>A BIOS or firmware update</td><td>Suspend, don't decrypt</td><td>Microsoft says suspending avoids the recovery screen and “leaves the drive fully encrypted”. <a href="#suspend">Steps below.</a></td></tr>
+              <tr><td>Sending it for repair</td><td>Don't decrypt; have the key ready</td><td>A new motherboard with a new TPM is one of the changes that trigger recovery. Protect private files separately: see <a href="blog-protect-files-before-laptop-repair.html">before a laptop repair</a>.</td></tr>
+              <tr><td>Speed or gaming</td><td>Check whether it matters on your PC</td><td>See the performance note below. Suspending doesn't change speed, because the drive stays encrypted.</td></tr>
+              <tr><td>Local account, and you won't use a Microsoft account</td><td>Turn it off cleanly, or protect it properly</td><td>The drive “remains unprotected even though the data is encrypted”. To protect it, sign in to Windows as an administrator with a Microsoft account, or use full BitLocker on Pro and choose where the key goes.</td></tr>
+              <tr><td>A Copilot+ PC that uses Recall</td><td>Keep it on</td><td>Microsoft lists “Users need to enable Device Encryption or BitLocker” among Recall's minimum requirements.</td></tr>
+              <tr><td>A work or school PC</td><td>Ask IT</td><td>Microsoft notes encryption “might be required by organizational policies”.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>About performance.</strong> Microsoft says: “Historically, we have strived to keep BitLocker performance overhead within single digit percentage points.” It also says that on fast NVMe drives the impact is “more pronounced”, “especially on high-throughput and I/O intensive workloads like gaming or video editing”. Its answer is hardware-accelerated BitLocker, which arrived with the September 2025 update for Windows 11 24H2 and with 25H2 on supported PCs. Microsoft's December 2025 announcement named Intel vPro PCs with Intel Core Ultra Series 3 processors as the first, with other vendors to follow. Microsoft reports an average 70% saving in CPU cycles compared with software BitLocker. To see if your PC uses it, run <code>manage-bde -status</code> as administrator and look for <strong>Hardware accelerated</strong> under <strong>Encryption Method</strong>. If you still decide speed matters more, weigh it against what someone could read from the drive if the PC went missing.</p>
+
+        <h2>How to turn off device encryption</h2>
+        <p><strong>Before you start:</strong> save your recovery key (above), sign in with an administrator account, and plug the laptop in. Back up anything you can't replace, as before any long disk operation. Microsoft gives no figure for how long decryption takes; it depends on the drive. If your PC has the Device encryption page in Settings, use it: it's the way Microsoft documents for turning device encryption off.</p>
+
+        <h3>In Settings (recommended)</h3>
+        <ol>
+          <li>Sign in to Windows with an administrator account. With a standard account, Microsoft says the Device encryption page may not appear.</li>
+          <li>Open <strong>Settings → Privacy &amp; security → Device encryption</strong>, or use the shortcut <code>ms-settings:deviceencryption</code>.</li>
+          <li>Set <strong>Device encryption</strong> to <strong>Off</strong> (confirm if Windows asks). Microsoft's BitLocker overview says this Settings switch “can be used to turn device encryption on or off”.</li>
+          <li>Windows starts decrypting the drive in the background. Leave the PC plugged in until it's done.</li>
+          <li>To watch progress, run <code>manage-bde -status</code> in Terminal (Admin) (see the command-line steps below). <strong>Percentage Encrypted</strong> counts down as the drive is decrypted. Check every drive it lists, including any second internal drive.</li>
+        </ol>
+
+        <h3>From the command line (cmd or PowerShell)</h3>
+        <p>On Windows Home, Settings is the documented way. As noted above, Microsoft doesn't say whether these commands work there; if one gives an error, use Settings instead.</p>
+        <ol>
+          <li>Right-click <strong>Start</strong> (or press <strong>Windows key + X</strong>) and choose <strong>Terminal (Admin)</strong>. On some PCs it's called <strong>Windows Terminal (Admin)</strong> or <strong>Windows PowerShell (Admin)</strong>. Select <strong>Yes</strong> when Windows asks whether to allow changes.</li>
+          <li>Run <code>manage-bde -status</code> to see which drives are encrypted and their letters.</li>
+          <li>Run <code>manage-bde -off C:</code>. Microsoft: it “decrypts the drive and turns off BitLocker. All key protectors are removed when decryption is complete.” It starts without asking you to confirm, so check the drive letter first.</li>
+          <li>Repeat for any other internal drive that's encrypted, for example <code>manage-bde -off D:</code>.</li>
+          <li>Run <code>manage-bde -status</code> again to follow progress. <code>manage-bde -pause C:</code> pauses decryption and <code>manage-bde -resume C:</code> carries on.</li>
+        </ol>
+        <p>In the same window, the PowerShell command <code>Disable-BitLocker -MountPoint C</code> does the same.</p>
+
+        <h3>On Windows 11 Pro, Enterprise or Education</h3>
+        <p>Device encryption is the same BitLocker, so you can also search Start for <strong>BitLocker</strong>, open <strong>Manage BitLocker</strong> and choose <strong>Turn off BitLocker</strong> next to the drive, then confirm. Microsoft says BitLocker Drive Encryption “isn't available on Windows Home edition”, and that if Manage BitLocker isn't listed, you don't have the right edition; on Home, use Settings. More on the difference: <a href="blog-bitlocker-vs-device-encryption-windows-11-home.html">device encryption vs BitLocker</a>.</p>
+
+        <h3>Afterwards</h3>
+        <p>Microsoft says that if device encryption is turned off in Settings, “it will no longer automatically enable itself in the future. The user must enable it manually in Settings.” It doesn't say the same about <code>manage-bde</code>, PowerShell or Manage BitLocker. If you used one of those, open <strong>Settings → Privacy &amp; security → Device encryption</strong> once decryption has finished (if your PC has that page) and check that it shows <strong>Off</strong>, and run <code>manage-bde -status</code> again after the next Windows feature update. If you change your mind, turn it back <strong>On</strong> on the same Settings page.</p>
+
+        <h2 id="suspend">Suspend instead: before a BIOS or firmware update</h2>
+        <p>A BIOS or UEFI firmware upgrade is one of the events Microsoft lists as causing the recovery screen at startup. Decrypting the whole drive to avoid that is overkill. Microsoft: “For planned scenarios, such as a known hardware or firmware upgrades, initiating recovery can be avoided by temporarily suspending BitLocker protection. Suspending BitLocker leaves the drive fully encrypted.” The order Microsoft gives PC makers is: suspend, apply the update, restart, resume.</p>
+        <ol>
+          <li>Save your recovery key first, in case anything goes wrong.</li>
+          <li>Open Terminal (Admin) as in the command-line steps above and run <code>Suspend-BitLocker -MountPoint "C:" -RebootCount 2</code>, or <code>manage-bde -protectors -disable C: -rc 2</code>, which does the same. Protection then comes back by itself after two restarts. Firmware updates can restart the PC more than once while they install, and for them Microsoft's advice is a count of 2 or more, or 0.</li>
+          <li>Install the BIOS or firmware update and let the PC restart as often as it needs.</li>
+          <li>A count of 0 keeps BitLocker suspended until you resume it yourself. If you used 0, resume as soon as the update has finished: <code>Resume-BitLocker -MountPoint "C:"</code> or <code>manage-bde -protectors -enable C:</code>.</li>
+          <li>Check with <code>manage-bde -status C:</code> that <strong>Protection Status</strong> says <strong>Protection On</strong>. If not, resume it as in step 4 (or choose <strong>Resume protection</strong> in Manage BitLocker on Pro).</li>
+        </ol>
+        <p>On Pro you can also choose <strong>Suspend protection</strong> in <strong>Manage BitLocker</strong>. Microsoft says protection then comes back when the PC restarts, so it suits an update that restarts only once.</p>
+        <p>While it's suspended, the key is stored unprotected on the drive. Microsoft says this “will allow anyone to access encrypted data”, so keep the PC with you and don't leave it suspended.</p>
+        <p>On Windows Home, Microsoft doesn't say whether these commands work (we've only tested them there without administrator rights). If one gives an error on Home, skip the suspend and keep your recovery key at hand for the update instead: if the recovery screen appears, type the key and Windows starts.</p>
+
+        <h2>What can go wrong</h2>
+        <ul>
+          <li><strong><code>manage-bde</code> refuses to run.</strong> Run it in Terminal (Admin), as in the command-line steps above. If it still gives an error on Windows Home, use Settings.</li>
+          <li><strong>Decryption doesn't seem to move.</strong> Check <code>manage-bde -status</code>. If it was paused, <code>manage-bde -resume C:</code> carries on. Keep the laptop on mains power.</li>
+          <li><strong>A recovery screen appears at startup.</strong> Note the first 8 characters of the Key ID it shows and find the matching key at aka.ms/myrecoverykey. From Windows 11 version 24H2, the screen also shows a hint of which Microsoft account holds the key. Full help: <a href="blog-find-bitlocker-recovery-key-windows-11.html">find your BitLocker recovery key</a>.</li>
+        </ul>
+
+        <h2 id="fresh-install">Stop it turning on during a fresh install</h2>
+        <p>This is for people who build or reinstall PCs. Microsoft documents a registry value that prevents the automatic process:</p>
+        <ul>
+          <li>Key: <code class="path">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BitLocker</code></li>
+          <li>Value: <code>PreventDeviceEncryption</code>, type REG_DWORD, data <code>1</code></li>
+        </ul>
+        <p>PC makers can set the same thing in an unattended setup (answer) file. Microsoft's caveats come with it: keeping device encryption on is recommended; “we do not recommend setting this registry key on devices with Recall feature”; and its guidance for PC makers only allows them to disable device encryption when they ship their own encryption instead. The value prevents the automatic process; it isn't described as a way to decrypt. A drive that's already encrypted stays encrypted until you turn it off with the steps above.</p>
+        <p>The value stays in the registry after setup. Microsoft describes it as preventing the automatic process, so don't expect device encryption to switch itself on later on that PC, for example after Secure Boot is turned on. If System Information on that PC shows <strong>Disabled by policy</strong> under Device Encryption Support, this value is a likely reason (Microsoft doesn't document that message): see <a href="blog-device-encryption-not-available-windows-11.html#disabled-by-policy">Disabled by policy</a>.</p>
+
+        <h2>What drive encryption doesn't cover, on or off</h2>
+        <p>Device encryption and BitLocker protect a PC that's switched off. Once you're signed in, every file is readable to anyone using your account, and a copy you put on a USB stick, attach to an email or sync to OneDrive or Google Drive isn't covered at all. That's true whether you keep device encryption on or turn it off.</p>
+        <p>For your most private files, a file-encryption app can cover those gaps. <a href="download.html?ref=blog-device-encryption-off">Clavis Encrypt</a> is free to encrypt and decrypt files on Windows 10 and 11 and Linux. It encrypts the files you choose, and an encrypted copy stays encrypted when you put it on a USB stick, attach it to an email or sync it to a cloud folder. It uses its own password and recovery key, separate from the BitLocker key. It doesn't encrypt drives and isn't a replacement for device encryption or BitLocker: use it alongside them, not instead. Clavis is closed source and hasn't been independently audited; its <a href="format.html">file format is public</a>, with an open-source decryptor. More: <a href="blog-encrypt-files-windows-11-home.html">how to encrypt files on Windows 11 Home</a>.</p>
+
+        <h2>Questions</h2>
+        <div class="faq">
+          <details><summary>How do I turn off device encryption in Windows 11?</summary><p>Save your recovery key first. Then sign in as an administrator, open Settings, Privacy &amp; security, Device encryption, and set it to Off; this is the way Microsoft documents. Windows then decrypts the drive in the background. You can also run manage-bde -off C: in Terminal (Admin), which you open by right-clicking Start; afterwards, check that the Settings page shows Off.</p></details>
+          <details><summary>Should I turn off device encryption in Windows 11?</summary><p>For most people, no. Microsoft recommends keeping device encryption on for any PC that supports it: it stops someone reading the drive by taking it out of a lost or stolen laptop. The usual reasons to turn it off have better answers: save the recovery key against lockout, suspend it for a BIOS update, and check whether the slowdown is real on your PC.</p></details>
+          <details><summary>Is it safe to turn off device encryption?</summary><p>It's safe for your files: Windows decrypts the drive in place. What you lose is protection, because anyone who takes the drive out of a lost or stolen PC can then read it. Save your recovery key first, keep the PC plugged in, and let decryption finish.</p></details>
+          <details><summary>Is Windows 11 encrypted by default?</summary><p>On PCs that meet the requirements, yes: device encryption starts after setup, and Microsoft's Recall documentation says Device Encryption or BitLocker are enabled by default on Windows 11. It only protects the drive once the recovery key is backed up: on a personal PC, when an administrator signs in with a Microsoft account; on a work or school PC, when the organization backs the key up to Microsoft Entra ID or Active Directory. With only a local account, Microsoft says it isn't turned on automatically, though the drive may already be encrypted with an unprotected key.</p></details>
+          <details><summary>Does turning off device encryption turn off BitLocker?</summary><p>Yes. Device encryption is BitLocker switched on automatically, so turning it off decrypts the drive and removes BitLocker from it. Microsoft describes manage-bde -off, the command-line way to do it, as the command that decrypts the drive and turns off BitLocker. Afterwards, check every internal drive with manage-bde -status.</p></details>
+          <details><summary>Does turning off device encryption delete my files?</summary><p>No. It decrypts the drive in place and your files stay where they are. As before any long disk operation, back up anything you can't replace, and keep the recovery key until decryption has finished.</p></details>
+          <details><summary>How long does it take to turn off device encryption?</summary><p>Microsoft doesn't give a figure; it depends on the drive. Decryption runs in the background. Follow it with manage-bde -status in Terminal (Admin), where Percentage Encrypted counts down as the drive is decrypted. Keep a laptop plugged in until it finishes.</p></details>
+          <details><summary>Does turning off device encryption improve performance or gaming?</summary><p>Usually only a little. Microsoft says it has aimed to keep BitLocker's overhead within single-digit percentage points, but that the impact is more pronounced on fast NVMe drives, especially for I/O-heavy work like gaming or video editing. That's why it added hardware-accelerated BitLocker on some new processors. Whether the gain is worth an unprotected drive depends on what's on the PC.</p></details>
+          <details><summary>Will device encryption turn itself back on?</summary><p>Microsoft says that if device encryption is turned off in Settings, it will no longer automatically enable itself in the future; you'd turn it on again in Settings. It doesn't say the same for manage-bde or Manage BitLocker, so if you used those, check that the Settings page shows Off and run manage-bde -status again after the next feature update. A clean reinstall of Windows runs setup again, which prepares device encryption again on a PC that qualifies, and a work or school PC can be encrypted by policy.</p></details>
+          <details><summary>I use a local account: is my drive encrypted?</summary><p>It may be, without being protected. Microsoft says a PC that uses only local accounts remains unprotected even though the data is encrypted: the key is stored on the drive unprotected, and File Explorer shows a yellow warning icon on it. To protect it, sign in to Windows as an administrator with a Microsoft account, which backs up the key; otherwise, turning it off is the clean choice.</p></details>
+          <details><summary>Why can't I turn off device encryption?</summary><p>You need an administrator account; with a standard account, Microsoft says the Device encryption page may not appear at all. On a PC managed by a work or school, encryption might be required by policy, so ask IT. If the page is missing for another reason, see <a href="blog-device-encryption-not-available-windows-11.html">device encryption not available in Windows 11</a>.</p></details>
+          <details><summary>Do I need to turn off device encryption before a BIOS update?</summary><p>No. Suspend it instead. Microsoft says suspending for planned firmware or hardware changes avoids the recovery screen and leaves the drive fully encrypted. In Terminal (Admin), run Suspend-BitLocker -MountPoint "C:" -RebootCount 2, install the update, and protection comes back by itself after two restarts. Then check that manage-bde -status C: says Protection On. If you suspend with a count of 0 instead, resume it yourself with Resume-BitLocker -MountPoint "C:" once the update is done. If Windows asks for the recovery key anyway, see <a href="blog-find-bitlocker-recovery-key-windows-11.html">how to find your BitLocker recovery key</a>.</p></details>
+        </div>
+
+        <h2>Sources</h2>
+        <ul class="sources">
+          <li><a href="https://support.microsoft.com/en-us/windows/device-encryption-in-windows-cf7e2b6f-3e70-4882-9532-18633605b7df" rel="noopener">Microsoft Support: Device Encryption in Windows (administrator account, Settings page, local accounts)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6" rel="noopener">Microsoft Support: Find your BitLocker recovery key (Key ID, aka.ms/myrecoverykey, Support can't recover a lost key)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/back-up-your-bitlocker-recovery-key-e63607b4-77fb-4ad3-8022-d6dc428fbd0d" rel="noopener">Microsoft Support: Back up your BitLocker recovery key</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/bitlocker-drive-encryption-76b92ac9-1040-48d6-9f5f-d14b3c5fa178" rel="noopener">Microsoft Support: BitLocker Drive Encryption (Pro, Enterprise and Education only, not Home; organizational policies)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/" rel="noopener">Microsoft Learn: BitLocker overview (device encryption, clear key, local accounts, 24H2, turning it off, PreventDeviceEncryption)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-bitlocker" rel="noopener">Microsoft Learn: BitLocker drive encryption in Windows 11 for OEMs (when protection is armed, requirements, Recall caveat, firmware updates)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/recovery-overview" rel="noopener">Microsoft Learn: BitLocker recovery overview (what triggers recovery, suspending for planned changes, protection resumes at the next restart unless a reboot count is set)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/operations-guide" rel="noopener">Microsoft Learn: BitLocker operations guide (listing the recovery password, suspend, resume, Turn off BitLocker, Disable-BitLocker)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde" rel="noopener">Microsoft Learn: manage-bde (pause and resume decryption)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-off" rel="noopener">Microsoft Learn: manage-bde off</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-status" rel="noopener">Microsoft Learn: manage-bde status</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-protectors" rel="noopener">Microsoft Learn: manage-bde protectors (-disable and reboot count)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/bitlocker/suspend-bitlocker" rel="noopener">Microsoft Learn: Suspend-BitLocker (RebootCount; 0 suspends until you resume it)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/windows-security/bitlocker-recovery-known-issues" rel="noopener">Microsoft Learn: BitLocker recovery known issues (firmware updates that restart several times: a reboot count of 2 or more, or 0)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/terminal/faq" rel="noopener">Microsoft Learn: Windows Terminal FAQ (Windows key + X, Windows Terminal (Admin))</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/client-management/manage-recall" rel="noopener">Microsoft Learn: Manage Recall for Windows clients (requires Device Encryption or BitLocker)</a></li>
+          <li><a href="https://techcommunity.microsoft.com/blog/windows-itpro-blog/announcing-hardware-accelerated-bitlocker/4474609" rel="noopener">Microsoft Tech Community: Announcing hardware-accelerated BitLocker (December 2025; performance overhead on NVMe)</a></li>
+        </ul>
+        <p class="muted-note"><em>Checked against Microsoft's documentation on November 5, 2026. Windows changes between versions; the Settings page and <code>manage-bde -status</code> on your own PC are the final word. This guide is about Windows' own drive encryption; Clavis Encrypt plays no part in turning it on or off.</em></p>
+
+        <div class="post-cta">
+          <a class="btn btn-primary" href="download.html?ref=blog-device-encryption-off">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>
+            Encrypt your most private files too — Clavis Encrypt is free
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+          <p class="latin">clāvis — Latin, “key”</p>
+          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
+          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
+        </div>
+        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
+        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
+        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      </div>
+      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js?v=081703c843" defer></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Encrypt contents to secure data greyed out? Why, what to do — Clavis Encrypt</title>
+  <meta name="description" content="Greyed (grayed) out in Windows 11 or 10? Home has no EFS and no registry or service fix adds it. Check your edition, the Pro causes, what to use instead.">
+  <meta name="theme-color" content="#05080F">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="“Encrypt contents to secure data” greyed out? Why it happens and what to do">
+  <meta property="og:description" content="Windows Home has no EFS, and no registry, service or Group Policy fix adds it. A 30-second check, what we found testing the usual fixes, the causes on Pro, and what to use instead.">
+  <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://clavisenc.com/blog-encrypt-contents-to-secure-data-greyed-out.html">
+  <meta property="og:url" content="https://clavisenc.com/blog-encrypt-contents-to-secure-data-greyed-out.html">
+  <meta property="og:site_name" content="Clavis Encrypt">
+  <meta property="article:published_time" content="2026-11-05">
+  <meta property="article:modified_time" content="2026-11-05">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link href="assets/css/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=78fb9366a3">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-encrypt-contents-to-secure-data-greyed-out.html#article","headline":"“Encrypt contents to secure data” greyed out? Why it happens and what to do","description":"Greyed (grayed) out in Windows 11 or 10? Home has no EFS and no registry or service fix adds it. Check your edition, the Pro causes, what to use instead.","datePublished":"2026-11-05","dateModified":"2026-11-05","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-encrypt-contents-to-secure-data-greyed-out.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://support.microsoft.com/en-us/windows/security/encryption/how-to-encrypt-a-file-or-folder","https://learn.microsoft.com/en-us/previous-versions/windows/embedded/bb499351(v=winembedded.5)","https://support.microsoft.com/en-us/windows/experience/find-information-about-your-windows-device","https://support.microsoft.com/en-us/windows/deployment/install-upgrade/upgrade-windows-home-to-windows-pro","https://support.microsoft.com/en-us/onedrive/install-onedrive-on-an-external-drive","https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-admx-filesys","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-behavior","https://learn.microsoft.com/en-us/windows-server/security/windows-services/security-guidelines-for-disabling-system-services-in-windows-server","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cipher","https://learn.microsoft.com/en-us/windows/win32/fileio/file-encryption","https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc759177(v=ws.10)","https://learn.microsoft.com/en-us/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/back-up-recovery-agent-efs-private-key","https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc742463(v=ws.11)","https://support.microsoft.com/en-us/windows/security/encryption/device-encryption-in-windows","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/","https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings","https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows","https://www.7-zip.org/","https://veracrypt.io/en/Using%20VeraCrypt%20Without%20Administrator%20Privileges.html","https://clavisenc.com/format.html"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"“Encrypt contents to secure data” greyed out? Why it happens and what to do","item":"https://clavisenc.com/blog-encrypt-contents-to-secure-data-greyed-out.html"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is “Encrypt contents to secure data” greyed out?","acceptedAnswer":{"@type":"Answer","text":"Usually because the PC runs Windows 11 or Windows 10 Home, which doesn't include EFS, the Encrypting File System behind that box. Microsoft says file encryption is not available in the Home edition of Windows. On Pro, Enterprise or Education, it's usually a drive that isn't NTFS, such as a FAT32 or exFAT USB stick, or a policy that turns encryption off."}},{"@type":"Question","name":"How do I enable Encrypt contents to secure data in Windows 11 Home?","acceptedAnswer":{"@type":"Answer","text":"You can't. EFS isn't part of Windows 11 Home, and no setting, service or registry change adds it. Either upgrade to Windows 11 Pro (Settings, System, Activation, Upgrade your edition of Windows) or use an alternative: device encryption for the drive, plus a 7-Zip archive, a VeraCrypt container or a file-encryption app such as Clavis Encrypt for your files."}},{"@type":"Question","name":"Does Windows 11 Home have EFS?","acceptedAnswer":{"@type":"Answer","text":"No. EFS (the Encrypting File System) is in Windows 11 Pro, Enterprise and Education, not Home. On a Windows 11 Home PC, even the command cipher /e answers “The request is not supported.” Many Home PCs do have device encryption, which encrypts the whole internal drive instead."}},{"@type":"Question","name":"Can a registry or Group Policy change turn it on in Home?","acceptedAnswer":{"@type":"Answer","text":"No. On a Windows 11 Home PC we found the EFS service already running, fsutil reporting encryption as enabled, NtfsDisableEncryption set to 0 and no policy set, and cipher /e still answered “The request is not supported.” The Group Policy setting for EFS can only turn encryption off; it can't add EFS to Home."}},{"@type":"Question","name":"Why is it greyed out on a USB stick?","acceptedAnswer":{"@type":"Answer","text":"On Home, it's greyed out everywhere. On Pro, it's usually because the stick is formatted FAT32 or exFAT, and EFS works only on NTFS drives. Check in File Explorer: right-click the drive, Properties, General tab, File system. For a stick, a tool that encrypts each file with a password travels better than EFS."}},{"@type":"Question","name":"Is it the same on Windows 10?","acceptedAnswer":{"@type":"Answer","text":"Yes. Microsoft's page on encrypting a file or folder applies to Windows 10 and Windows 11 and says file encryption is not available in the Home edition. You check your edition the same way on both: Settings, System, About, under Windows specifications."}},{"@type":"Question","name":"Does EFS put a password on my folder?","acceptedAnswer":{"@type":"Answer","text":"No. EFS has no separate password. It uses a key in your Windows account, so anyone signed in as you opens the files normally. It keeps out other accounts and someone who removes the drive. To lock files with their own password, use a 7-Zip archive, a VeraCrypt container or a file-encryption app."}},{"@type":"Question","name":"Why can't I encrypt a folder in Windows 11?","acceptedAnswer":{"@type":"Answer","text":"If the encrypt option is greyed out, your PC probably runs Windows 11 Home, which has no EFS. On Pro, check that the folder is on an NTFS drive, isn't a system folder such as the Windows folder, and that no policy turns encryption off. On Home, put the folder in a password-protected 7-Zip archive or a VeraCrypt container, or encrypt its files with an app such as Clavis Encrypt. Step by step: how to encrypt a folder on Windows."}}]}</script>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
+      </button>
+      <nav class="nav-links" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="help.html">Help</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="block">
+      <div class="wrap post">
+        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 5, 2026</p>
+        <h1>“Encrypt contents to secure data” greyed out? Why it happens and what to do</h1>
+
+        <p>You right-click a file or folder, choose <strong>Properties → Advanced</strong>, and the <strong>Encrypt contents to secure data</strong> box is greyed out (grayed out): you can't tick it. That box switches on EFS, the Encrypting File System built into some editions of Windows. Most of the time the reason is simple, and it isn't a fault you can repair. Here's how to tell which case you're in within 30 seconds, what we found when we tried the popular “fixes”, the real causes on Pro, and what to use instead.</p>
+
+        <div class="callout"><b>Short answer:</b> on Windows 11 or 10 <b>Home</b>, “Encrypt contents to secure data” is greyed out because Home doesn't include EFS, the Encrypting File System behind it. Microsoft: “File encryption is not available in the Home edition of Windows.” No registry, service or Group Policy change adds it. On <b>Pro, Enterprise or Education</b>, check the drive is NTFS and no policy blocks encryption.</div>
+
+        <h2 id="check">Check in 30 seconds</h2>
+        <ol>
+          <li><strong>Your edition.</strong> Right-click <strong>Start</strong>, choose <strong>Settings</strong>, then <strong>System → About</strong>. Under <strong>Windows specifications</strong>, look next to <strong>Edition</strong>. It's the same on Windows 10.</li>
+          <li><strong>The drive's file system</strong> (this matters only on Pro and above). Open File Explorer, right-click the drive the file is on and choose <strong>Properties</strong>. On the <strong>General</strong> tab, next to <strong>File system</strong>, see if it says NTFS.</li>
+        </ol>
+        <p>If the edition says <strong>Home</strong>, skip to <a href="#home">what to do on Windows Home</a>. If it says <strong>Pro</strong>, <strong>Enterprise</strong> or <strong>Education</strong>, read <a href="#pro">why it's greyed out on Pro</a>.</p>
+
+        <h2 id="tested">We tried the usual “fixes” on Windows 11 Home</h2>
+        <p>Most guides for this problem list the same steps: start the EFS service, change a registry value, run <code>fsutil</code>, edit Group Policy, run DISM or SFC. Before telling you to skip them, we checked what they would change on a Windows 11 Home PC in November 2026.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>What the fix changes</th><th>How we checked</th><th>Result on Windows 11 Home</th></tr></thead>
+            <tbody>
+              <tr><td>The EFS service</td><td>Service status for <strong>Encrypting File System (EFS)</strong></td><td>Already running</td></tr>
+              <tr><td>The NTFS encryption setting</td><td><code>fsutil behavior query disableencryption</code></td><td><code>DisableEncryption = 0 (Encryption is ENABLED)</code></td></tr>
+              <tr><td>The registry value</td><td><code>NtfsDisableEncryption</code> in <code>HKLM\SYSTEM\CurrentControlSet\Control\FileSystem</code></td><td><code>0</code> (not disabled)</td></tr>
+              <tr><td>The policy value</td><td><code>NtfsDisableEncryption</code> in <code>HKLM\SYSTEM\CurrentControlSet\Policies</code></td><td>Not set (no policy blocking it)</td></tr>
+              <tr><td>Encrypting a file anyway</td><td><code>cipher /e</code> on a test file</td><td><code>The request is not supported.</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Everything those fixes would switch on was already on, and encryption still failed. So on Home, skip the service, registry, <code>fsutil</code>, Group Policy, DISM and SFC steps: nothing here is damaged. EFS simply isn't part of the Home edition. The Group Policy setting involved, “Do not allow encryption on all NTFS volumes”, can only turn encryption off. It can't add EFS, so tricks that add the Group Policy Editor to Home don't help (and on our Home PC it wasn't set anyway).</p>
+
+        <h2 id="pro">Why it's greyed out (or won't work) on Pro, Enterprise or Education</h2>
+        <p>On these editions EFS is included, so one of these is usually the reason:</p>
+        <ul>
+          <li><strong>The drive isn't NTFS.</strong> EFS works only on NTFS volumes (Microsoft's <code>cipher</code> reference). USB sticks and SD cards are often formatted FAT32 or exFAT, and the box can't be used there. Check the <strong>File system</strong> line as above. For a stick, a tool that encrypts the files themselves is usually the better fit: see <a href="blog-encrypt-usb-drive-windows-11-home.html">how to encrypt a USB drive without BitLocker</a>.</li>
+          <li><strong>A policy turns encryption off.</strong> The Group Policy setting <strong>Do not allow encryption on all NTFS volumes</strong> is under <strong>Computer Configuration → Administrative Templates → System → Filesystem → NTFS</strong>, and it writes the registry value <code>NtfsDisableEncryption</code> under <code>HKLM\System\CurrentControlSet\Policies</code>. Microsoft: “Enabling this setting will prevent access to and creation of encrypted files”, and “A reboot is required for this setting to take effect.” On a work or school PC this is your organisation's decision, so ask IT rather than working around it. On your own PC, an administrator can set the policy back to <strong>Not Configured</strong> and restart.</li>
+          <li><strong>The NTFS setting is off.</strong> <code>fsutil behavior query disableencryption</code> shows it. If it reports 1, an administrator can run <code>fsutil behavior set disableencryption 0</code> and restart; Microsoft notes the restart is needed for it to take effect.</li>
+          <li><strong>It's a system file or folder.</strong> Microsoft lists system files, system directories and root directories (such as the top of <code>C:\</code>) among the things that can't be encrypted, and its archived EFS overview adds files inside the Windows folder. Encrypt your own folders instead, such as Documents.</li>
+          <li><strong>Compression isn't the reason.</strong> A file can't be NTFS-compressed and encrypted at the same time, but Microsoft's archived EFS overview says marking a compressed file for encryption simply uncompresses it.</li>
+        </ul>
+        <p>Microsoft lists the <strong>Encrypting File System (EFS)</strong> service with startup type Manual and warns: “If you stop or disable this service, applications can't access encrypted files.” So on Pro, if the service's startup type has been set to Disabled, an administrator should set it back to Manual. On Home this doesn't help: on our test PC the service was already running.</p>
+
+        <h2 id="efs">What EFS can and can't do (read this before upgrading for it)</h2>
+        <p>If you're thinking of buying Pro just to tick that box, know what you'd be getting.</p>
+        <ul>
+          <li><strong>It has no password of its own.</strong> EFS uses a certificate and key stored in your Windows user account. Microsoft's archived overview puts it this way: “Encryption is transparent to the user that encrypted the file.” Anyone signed in as you, and any program running as you, opens the files without a prompt. It keeps out other accounts on the PC and someone who takes the drive out.</li>
+          <li><strong>It needs a key backup.</strong> To decrypt a file, Windows needs your EFS private key. If the copy of that key on your PC is lost, the files can't be opened without a backup or a recovery agent set up by an organisation. One way that happens: Microsoft's archived Windows 7-era help warns that after a local account's password is reset (for example by an administrator), files the user encrypted are no longer accessible. <code>cipher /x</code> backs up your EFS certificate and keys to a file. Make that backup before you encrypt anything that matters, and keep it off the PC.</li>
+          <li><strong>Copies may not stay encrypted.</strong> Microsoft's archived overview warns that encrypted files “can become decrypted if you copy or move the file to a volume that is not an NTFS volume”, such as a FAT32 stick. Because programs running as you read the file normally, an email attachment or a cloud upload is generally an ordinary, readable copy.</li>
+        </ul>
+        <p>If EFS still suits you, the full steps for Pro are in <a href="blog-encrypt-folder-on-windows.html">how to encrypt a folder on Windows</a>.</p>
+
+        <h2 id="home">What to do on Windows 11 or 10 Home: five honest options</h2>
+        <p>You can't switch EFS on in Home. These work instead, and most people want two of them: device encryption for the drive, plus one tool for the files.</p>
+        <ol>
+          <li><strong>Turn on device encryption, if your PC offers it.</strong> Sign in with a Microsoft account that has administrator rights. On Windows 11, open <strong>Settings → Privacy &amp; security → Device encryption</strong>. On Windows 10, where Settings is laid out differently, press <strong>Windows key + R</strong>, type <code>ms-settings:deviceencryption</code> and select <strong>OK</strong>: Microsoft's Device Encryption page gives that shortcut, and Microsoft Learn lists it as the Encryption settings page. Turn it <strong>On</strong>. The recovery key is then attached to your Microsoft account: make sure you can find it before you rely on it. On a PC that uses only local accounts, Microsoft says the drive stays unprotected even though the data is encrypted. If the page isn't there, see <a href="blog-device-encryption-not-available-windows-11.html">device encryption not available on Windows 11</a>. With a Microsoft account, device encryption protects the internal drives of a lost or stolen PC. It doesn't protect files while you're signed in, or copies you send. (More in <a href="blog-bitlocker-vs-device-encryption-windows-11-home.html">BitLocker vs device encryption on Windows 11 Home</a>.)</li>
+          <li><strong>Upgrade to Pro.</strong> On Windows 11: <strong>Settings → System → Activation</strong>, expand <strong>Upgrade your edition of Windows</strong>, then select <strong>Open Store</strong>, or <strong>Change</strong> next to <strong>Change product key</strong> if you already have a Pro key. On Windows 10: <strong>Settings → Update &amp; Security → Activation → Go to the Store</strong>. You get EFS and BitLocker, with the limits above.</li>
+          <li><strong>A password-protected 7-Zip archive.</strong> Free on every edition. With <a href="https://www.7-zip.org/" rel="noopener">7-Zip</a> installed, right-click the files and choose <strong>7-Zip → Add to archive...</strong> (on Windows 11, look under <strong>Show more options</strong> if it isn't in the first menu), choose the 7z format, set a password and tick <strong>Encrypt file names</strong>. It uses AES-256. The catch: you extract the archive to use a file, and extracted copies are easy to leave behind.</li>
+          <li><strong>A VeraCrypt container.</strong> A free, open-source encrypted container you mount like a drive. It needs an administrator to install it, because it uses a device driver, and you set the container's size in advance.</li>
+          <li><strong>A file-encryption app</strong> such as Clavis Encrypt, which locks each file where it is (below).</li>
+        </ol>
+        <p>Whichever you choose, a forgotten password usually means the files are gone. Write it down somewhere safe, away from the PC.</p>
+
+        <h2 id="clavis">Where Clavis Encrypt fits</h2>
+        <p><a href="./">Clavis Encrypt</a>, made by the publisher of this site, encrypts files on Windows 10 and 11 (and Linux) and works the same on Home and Pro. The free plan encrypts and decrypts files, one or several at once, with your vault password, decrypts whole folders, gives you a recovery key in case you forget the password, and can unlock with Windows Hello. Encrypting a whole folder in one step is part of <a href="pricing.html">Clavis Pro</a> ($19 once). On Windows it installs without administrator rights. Each file becomes a <code>.enc</code> file that stays encrypted when you copy it to a USB stick, a cloud folder or an email. The right-click menu (<strong>Show more options → Clavis → Encrypt</strong> on Windows 11) comes with the installer from the <a href="download.html">download page</a>; the Microsoft Store version has no right-click menu, so you drag files onto its window instead (<a href="help-encrypt-decrypt.html">steps</a>). Clavis doesn't encrypt drives, so keep device encryption on as well. It's closed source and hasn't been independently audited; the <a href="format.html">.enc format is public</a>, with an open-source decryptor.</p>
+
+        <h2 id="compare">How the options compare</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Option</th><th>Works on Home?</th><th>What it protects</th><th>Password or Windows sign-in?</th><th>Stays encrypted when copied to USB or cloud?</th></tr></thead>
+            <tbody>
+              <tr><td>EFS (Encrypt contents to secure data)</td><td>No: Pro, Enterprise, Education</td><td>Files and folders on NTFS drives, from other accounts and from someone who removes the drive</td><td>Windows sign-in (key in your account)</td><td>Generally no</td></tr>
+              <tr><td>Device encryption</td><td>Yes, on supported hardware</td><td>The internal drives of a lost or stolen PC, when you sign in with a Microsoft account (not with local accounts only)</td><td>Windows sign-in (recovery key in your Microsoft account)</td><td>No</td></tr>
+              <tr><td>7-Zip archive</td><td>Yes</td><td>Files inside the archive</td><td>Separate password</td><td>Yes, the archive does</td></tr>
+              <tr><td>VeraCrypt container</td><td>Yes (admin to install)</td><td>Files inside the container while it's closed</td><td>Separate password</td><td>The container file does; files copied out of it don't</td></tr>
+              <tr><td>Clavis Encrypt</td><td>Yes, no admin rights</td><td>Each file you encrypt</td><td>Separate password (vault password, or Windows Hello)</td><td>Yes, each <code>.enc</code> file does</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="wrong">If it still doesn't work</h2>
+        <ul>
+          <li><strong>You upgraded to Pro and the box is still greyed out:</strong> check the drive's file system and the policy and <code>fsutil</code> settings in <a href="#pro">the Pro section</a>, and restart after any change.</li>
+          <li><strong>The Device encryption page is missing:</strong> Microsoft says it's either unavailable on your device or you're signed in with a standard account. Our <a href="blog-device-encryption-not-available-windows-11.html">device encryption guide</a> covers the checks.</li>
+          <li><strong>EFS files won't open on a new or rebuilt PC, or after a password reset:</strong> you need the key backup you made with <code>cipher /x</code>. Without it, or an organisation's recovery agent, they can't be decrypted.</li>
+          <li><strong>A file you encrypted with EFS opens on another PC from a USB stick:</strong> it was probably copied to a FAT32 or exFAT drive and lost its encryption on the way. Encrypt copies you carry with a password-based tool instead.</li>
+        </ul>
+
+        <h2>Questions</h2>
+        <div class="faq">
+          <details><summary>Why is “Encrypt contents to secure data” greyed out?</summary><p>Usually because the PC runs Windows 11 or Windows 10 Home, which doesn't include EFS, the Encrypting File System behind that box. Microsoft says file encryption is not available in the Home edition of Windows. On Pro, Enterprise or Education, it's usually a drive that isn't NTFS, such as a FAT32 or exFAT USB stick, or a policy that turns encryption off.</p></details>
+          <details><summary>How do I enable Encrypt contents to secure data in Windows 11 Home?</summary><p>You can't. EFS isn't part of Windows 11 Home, and no setting, service or registry change adds it. Either upgrade to Windows 11 Pro (Settings, System, Activation, Upgrade your edition of Windows) or use an alternative: device encryption for the drive, plus a 7-Zip archive, a VeraCrypt container or a file-encryption app such as Clavis Encrypt for your files.</p></details>
+          <details><summary>Does Windows 11 Home have EFS?</summary><p>No. EFS (the Encrypting File System) is in Windows 11 Pro, Enterprise and Education, not Home. On a Windows 11 Home PC, even the command cipher /e answers “The request is not supported.” Many Home PCs do have device encryption, which encrypts the whole internal drive instead.</p></details>
+          <details><summary>Can a registry or Group Policy change turn it on in Home?</summary><p>No. On a Windows 11 Home PC we found the EFS service already running, fsutil reporting encryption as enabled, NtfsDisableEncryption set to 0 and no policy set, and cipher /e still answered “The request is not supported.” The Group Policy setting for EFS can only turn encryption off; it can't add EFS to Home.</p></details>
+          <details><summary>Why is it greyed out on a USB stick?</summary><p>On Home, it's greyed out everywhere. On Pro, it's usually because the stick is formatted FAT32 or exFAT, and EFS works only on NTFS drives. Check in File Explorer: right-click the drive, Properties, General tab, File system. For a stick, a tool that encrypts each file with a password travels better than EFS.</p></details>
+          <details><summary>Is it the same on Windows 10?</summary><p>Yes. Microsoft's page on encrypting a file or folder applies to Windows 10 and Windows 11 and says file encryption is not available in the Home edition. You check your edition the same way on both: Settings, System, About, under Windows specifications.</p></details>
+          <details><summary>Does EFS put a password on my folder?</summary><p>No. EFS has no separate password. It uses a key in your Windows account, so anyone signed in as you opens the files normally. It keeps out other accounts and someone who removes the drive. To lock files with their own password, use a 7-Zip archive, a VeraCrypt container or a file-encryption app.</p></details>
+          <details><summary>Why can't I encrypt a folder in Windows 11?</summary><p>If the encrypt option is greyed out, your PC probably runs Windows 11 Home, which has no EFS. On Pro, check that the folder is on an NTFS drive, isn't a system folder such as the Windows folder, and that no policy turns encryption off. On Home, put the folder in a password-protected 7-Zip archive or a VeraCrypt container, or encrypt its files with an app such as Clavis Encrypt. Step by step: <a href="blog-encrypt-folder-on-windows.html">how to encrypt a folder on Windows</a>.</p></details>
+        </div>
+
+        <h2>Sources</h2>
+        <ul class="sources">
+          <li><a href="https://support.microsoft.com/en-us/windows/security/encryption/how-to-encrypt-a-file-or-folder" rel="noopener">Microsoft Support: How to encrypt a file or folder (Windows 11 and 10; “File encryption is not available in the Home edition of Windows”)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/embedded/bb499351(v=winembedded.5)" rel="noopener">Microsoft Learn (archived): Encryption File System (Properties → Advanced → Encrypt contents to secure data)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/experience/find-information-about-your-windows-device" rel="noopener">Microsoft Support: Find information about your Windows device (edition under System, About, Windows specifications; Windows 11 and 10)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/deployment/install-upgrade/upgrade-windows-home-to-windows-pro" rel="noopener">Microsoft Support: Upgrade from Windows Home to Windows Pro (upgrade steps)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/onedrive/install-onedrive-on-an-external-drive" rel="noopener">Microsoft Support: Install OneDrive on an external drive (checking a drive's file system in Properties)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-admx-filesys" rel="noopener">Microsoft Learn: ADMX_FileSys Policy CSP, DisableEncryption (“Do not allow encryption on all NTFS volumes”; it prevents access to and creation of encrypted files; reboot required)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-behavior" rel="noopener">Microsoft Learn: fsutil behavior (disableencryption; restart required)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/security/windows-services/security-guidelines-for-disabling-system-services-in-windows-server" rel="noopener">Microsoft Learn: Security guidelines for system services in Windows Server (Encrypting File System service: startup type Manual; stopping or disabling it blocks access to encrypted files)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cipher" rel="noopener">Microsoft Learn: cipher (encryption on NTFS volumes; /x backs up the EFS certificate and keys)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/win32/fileio/file-encryption" rel="noopener">Microsoft Learn: File Encryption (what can't be encrypted: compressed files, system files, system and root directories)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc759177(v=ws.10)" rel="noopener">Microsoft Learn (archived): Encrypting File System overview (NTFS only, compression, Windows folder, copies to non-NTFS volumes)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/back-up-recovery-agent-efs-private-key" rel="noopener">Microsoft Learn: Back up the recovery agent EFS private key (decrypting needs the EFS private key; the copy on the local computer can be lost)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc742463(v=ws.11)" rel="noopener">Microsoft Learn (archived, Windows 7 era): Set Password for &lt;User&gt; dialog box (after a local account password reset, files the user encrypted are no longer accessible)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/security/encryption/device-encryption-in-windows" rel="noopener">Microsoft Support: Device Encryption in Windows (available on Home; Windows 11 steps; ms-settings:deviceencryption shortcut; recovery key)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/" rel="noopener">Microsoft Learn: BitLocker overview, Device encryption (needs a Microsoft account with administrator rights; local-only accounts stay unprotected)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings" rel="noopener">Microsoft Learn: Launch Windows Settings (Encryption: ms-settings:deviceencryption)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows" rel="noopener">Microsoft Support: File Explorer in Windows (older app commands are under Show more options on Windows 11)</a></li>
+          <li><a href="https://www.7-zip.org/" rel="noopener">7-Zip (AES-256 encryption in 7z and ZIP formats)</a></li>
+          <li><a href="https://veracrypt.io/en/Using%20VeraCrypt%20Without%20Administrator%20Privileges.html" rel="noopener">VeraCrypt documentation: Using VeraCrypt without administrator privileges (an administrator must install it)</a></li>
+          <li><a href="https://clavisenc.com/format.html" rel="noopener">Clavis Encrypt: the public .enc file format and open-source decryptor</a></li>
+        </ul>
+        <p class="muted-note"><em>The service, fsutil, registry and <code>cipher /e</code> results are from our own test on a Windows 11 Home PC, November 2026.</em></p>
+
+        <p>More guides: <a href="blog-encrypt-files-windows-11-home.html">how to encrypt files in Windows 11 Home</a>, <a href="blog-encrypt-files-windows-10.html">how to encrypt files on Windows 10</a> and <a href="blog-encrypt-folder-on-windows.html">how to encrypt a folder on Windows</a>.</p>
+
+        <div class="post-cta">
+          <a class="btn btn-primary" href="download.html">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>
+            Try Clavis Encrypt — free on Windows Home and Pro
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+          <p class="latin">clāvis — Latin, “key”</p>
+          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
+          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
+        </div>
+        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
+        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
+        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      </div>
+      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js?v=081703c843" defer></script>
+</body>
+</html>
