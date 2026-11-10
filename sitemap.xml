@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://clavisenc.com/</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/about.html</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://clavisenc.com/blog-7zip-command-line-password.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://clavisenc.com/blog-aes-256-gcm-argon2id-explained.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-bitlocker-vs-device-encryption-windows-11-home.html</loc><lastmod>2026-11-06</lastmod></url>
   <url><loc>https://clavisenc.com/blog-carry-encrypted-files-on-usb-stick.html</loc><lastmod>2026-11-05</lastmod></url>
@@ -14,8 +15,9 @@
   <url><loc>https://clavisenc.com/blog-encrypt-before-onedrive-google-drive-dropbox.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-encrypt-contents-to-secure-data-greyed-out.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-encrypt-file-on-phone-android-iphone.html</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://clavisenc.com/blog-encrypt-files-before-emailing.html</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://clavisenc.com/blog-encrypt-files-command-line-windows.html</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://clavisenc.com/blog-encrypt-file-powershell.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://clavisenc.com/blog-encrypt-files-before-emailing.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://clavisenc.com/blog-encrypt-files-command-line-windows.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://clavisenc.com/blog-encrypt-files-windows-10.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-encrypt-files-windows-11-home.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-encrypt-folder-on-windows.html</loc><lastmod>2026-11-05</lastmod></url>
@@ -25,6 +27,7 @@
   <url><loc>https://clavisenc.com/blog-find-aadhaar-pan-scans-on-your-pc.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-find-bitlocker-recovery-key-windows-11.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-government-employees-protect-official-documents.html</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://clavisenc.com/blog-gpg-encrypt-file-windows.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://clavisenc.com/blog-journalists-protect-sources-laptop-seized.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-keep-aadhaar-pan-scans-safe-laptop.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-keep-files-private-shared-family-pc.html</loc><lastmod>2026-11-05</lastmod></url>
@@ -32,7 +35,10 @@
   <url><loc>https://clavisenc.com/blog-lawyers-protect-case-files-evidence.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-local-vs-cloud-encryption.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-move-encrypted-files-to-new-pc.html</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://clavisenc.com/blog-password-protect-pdf-windows.html</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://clavisenc.com/blog-openssl-encrypt-file-windows.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://clavisenc.com/blog-password-protect-pdf-windows.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://clavisenc.com/blog-password-protect-word-excel-file.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://clavisenc.com/blog-password-protect-zip-file-windows-11.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://clavisenc.com/blog-post-quantum-recovery-key.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-protect-files-before-laptop-repair.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-share-encrypted-files-without-password.html</loc><lastmod>2026-11-05</lastmod></url>
@@ -42,7 +48,7 @@
   <url><loc>https://clavisenc.com/blog-students-protect-thesis-project-files.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-turn-off-device-encryption-windows-11.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/blog-veracrypt-alternative.html</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://clavisenc.com/blog.html</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://clavisenc.com/blog.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://clavisenc.com/download.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/encrypt.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://clavisenc.com/format.html</loc><lastmod>2026-11-05</lastmod></url>

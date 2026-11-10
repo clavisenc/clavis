@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenSSL: encrypt a file with a password on Windows — Clavis Encrypt</title>
+  <meta name="description" content="Encrypt and decrypt a file with OpenSSL on Windows: openssl enc with -pbkdf2, safer password options, and public-key encryption with openssl cms.">
+  <meta name="theme-color" content="#05080F">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to encrypt a file with OpenSSL on Windows (password or public key)">
+  <meta property="og:description" content="Tested openssl enc and openssl cms commands, why -pbkdf2 matters, why enc has no tamper check, and how to pass passwords in scripts.">
+  <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://clavisenc.com/blog-openssl-encrypt-file-windows.html">
+  <meta property="og:url" content="https://clavisenc.com/blog-openssl-encrypt-file-windows.html">
+  <meta property="og:site_name" content="Clavis Encrypt">
+  <meta property="article:published_time" content="2026-11-11">
+  <meta property="article:modified_time" content="2026-11-11">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link href="assets/css/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=78fb9366a3">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-openssl-encrypt-file-windows.html#article","headline":"How to encrypt a file with OpenSSL on Windows (password or public key)","description":"Encrypt and decrypt a file with OpenSSL on Windows: openssl enc with -pbkdf2, safer password options, and public-key encryption with openssl cms.","datePublished":"2026-11-11","dateModified":"2026-11-11","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-openssl-encrypt-file-windows.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://docs.openssl.org/3.5/man1/openssl-enc/","https://docs.openssl.org/1.1.1/man1/enc/","https://docs.openssl.org/3.5/man1/openssl-passphrase-options/","https://docs.openssl.org/3.5/man1/openssl-cms/","https://docs.openssl.org/3.0/man1/openssl-cms/","https://docs.openssl.org/1.1.1/man1/cms/","https://docs.openssl.org/3.5/man1/openssl-pkeyutl/","https://docs.openssl.org/3.5/man3/RSA_public_encrypt/","https://docs.openssl.org/3.5/man1/openssl-req/","https://docs.openssl.org/3.5/man1/openssl-rand/","https://openssl-library.org/source/","https://github.com/openssl/openssl/wiki/Binaries","https://github.com/openssl/installer/blob/main/windows-installer/README.md","https://github.com/git-for-windows/build-extra/blob/main/ReleaseNotes.md","https://learn.microsoft.com/en-us/powershell/module/psreadline/about/about_psreadline","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_character_encoding?view=powershell-5.1","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_redirection","https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"How to encrypt a file with OpenSSL on Windows","item":"https://clavisenc.com/blog-openssl-encrypt-file-windows.html"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I encrypt a file with OpenSSL using a password?","acceptedAnswer":{"@type":"Answer","text":"Run openssl enc -aes-256-cbc -pbkdf2 -iter 600000 -salt -in file -out file.enc and type a password. To decrypt, add -d, use the .enc file as input and keep the same cipher, -pbkdf2 and -iter. Decrypt to a new file name: OpenSSL overwrites the output file without asking, even when the password is wrong."}},{"@type":"Question","name":"Why does OpenSSL say \"deprecated key derivation used\"?","acceptedAnswer":{"@type":"Answer","text":"You left out -pbkdf2 and -iter, so OpenSSL used its old way of turning the password into a key. Use -pbkdf2 with a high -iter for new files; old files must be decrypted with the options they were made with."}},{"@type":"Question","name":"Can openssl enc use AES-256-GCM?","acceptedAnswer":{"@type":"Answer","text":"No. OpenSSL's manual says enc doesn't support GCM or CCM and won't in the future. Use openssl cms with -aes-256-gcm (OpenSSL 3.0 or later) if you need a tamper check."}},{"@type":"Question","name":"How do I encrypt a large file with an RSA public key in OpenSSL?","acceptedAnswer":{"@type":"Answer","text":"Use openssl cms -encrypt with the recipient's certificate, not RSA directly, which only handles a few hundred bytes. cms encrypts the file with a random key and encrypts that key with RSA; the recipient decrypts with openssl cms -decrypt."}},{"@type":"Question","name":"What does \"bad decrypt\" mean in OpenSSL?","acceptedAnswer":{"@type":"Answer","text":"Usually a wrong password, or options that differ from the ones used to encrypt: cipher, -pbkdf2, -iter, or -md for files from very old versions. A damaged file can cause it too."}}]}</script>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
+      </button>
+      <nav class="nav-links" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="help.html">Help</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="block">
+      <div class="wrap post">
+        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 11, 2026</p>
+        <h1>How to encrypt a file with OpenSSL on Windows (password or public key)</h1>
+
+        <p>OpenSSL is a free command-line toolkit that can encrypt a file with a password or with someone's public key. A few options decide how well the file is protected, and some defaults are old. These commands were tested with OpenSSL 3.2 on Windows 11 and checked against OpenSSL's manual.</p>
+
+        <div class="callout"><b>Short answer:</b> run <code>openssl enc -aes-256-cbc -pbkdf2 -iter 600000 -salt -in report.pdf -out report.pdf.enc</code>, type a password, and decrypt later with the same options plus <code>-d</code>. Always include <code>-pbkdf2</code>, which makes password guessing much slower. <code>openssl enc</code> has no tamper check and no AES-GCM; for that, or to use a public key, use <code>openssl cms</code>. Lose the password or private key and the file can't be recovered.</div>
+
+        <h2>1. Get OpenSSL on Windows</h2>
+        <p>In PowerShell, run <code>openssl version</code>. If the command isn't recognised:</p>
+        <ul>
+          <li><strong>Git for Windows includes it.</strong> Its release notes list the bundled OpenSSL (3.5.9 in October 2026). In Git Bash, <code>openssl</code> just works. To use it from PowerShell, print its path in Git Bash with <code>cygpath -w "$(command -v openssl)"</code>, then run <code>Set-Alias openssl "<em>that path</em>"</code> in PowerShell (it lasts until you close the window).</li>
+          <li><strong>A signed installer.</strong> The OpenSSL project's wiki points to signed Windows installers from the OpenSSL Corporation (x64, x86 and Arm64, EXE or MSI) on the <a href="https://github.com/openssl/installer/releases" rel="noopener">openssl/installer releases page</a>. The installer can add OpenSSL to your PATH.</li>
+        </ul>
+        <p>OpenSSL's downloads page lists 4.1, 4.0 and 3.5 (long-term support) and says every other version is out of support, so update if you see anything older than 3.5 (for example 1.1.1, 3.0 or 3.2). Many Linux distributions include OpenSSL as a package; see <a href="blog-file-encryption-linux.html">file encryption on Linux</a>.</p>
+
+        <h2>2. Encrypt a file with a password</h2>
+<pre><code>openssl enc -aes-256-cbc -pbkdf2 -iter 600000 -salt -in report.pdf -out report.pdf.enc</code></pre>
+        <ul>
+          <li><code>-aes-256-cbc</code>: AES with a 256-bit key in CBC mode, which the manual suggests for beginners.</li>
+          <li><code>-pbkdf2 -iter 600000</code>: PBKDF2 with 600,000 iterations (the manual's default is 10,000). More iterations slow down each guess.</li>
+          <li><code>-salt</code>: a random salt; the default, and the manual says always use it with passwords.</li>
+        </ul>
+        <p>OpenSSL asks for the password with typing hidden. The original stays: test-decrypt first (step 3), then delete it.</p>
+
+        <h2>3. Decrypt it</h2>
+<pre><code>openssl enc -d -aes-256-cbc -pbkdf2 -iter 600000 -in report.pdf.enc -out report-check.pdf</code></pre>
+        <p><strong>Decrypt to a new name.</strong> OpenSSL overwrites the <code>-out</code> file without asking, even when decryption fails, so a wrong password can replace a file with garbage. Open the copy, then rename or delete it. Repeat the cipher, <code>-pbkdf2</code> and <code>-iter</code>: the file stores only its salt. A mismatch or a wrong password normally gives <code>bad decrypt</code>. Note the command (not the password) with your backups.</p>
+
+        <h2>Why -pbkdf2 matters</h2>
+        <p>Without <code>-pbkdf2</code> or <code>-iter</code>, OpenSSL derives the key the old way; OpenSSL 3.2 warned <code>*** WARNING : deprecated key derivation used.</code> in our test. With <code>-pbkdf2</code> (OpenSSL 1.1.1 and later), high iteration counts "increase the time required to brute-force the resulting file". A long, unique password still matters most. Old files: the default digest changed from MD5 to SHA-256 in OpenSSL 1.1.0, so a file made by 1.0.2 or older without <code>-pbkdf2</code> needs <code>-md md5</code> to decrypt.</p>
+
+        <h2>openssl enc can't detect tampering</h2>
+        <p>The manual says <code>enc</code> "does not support authenticated encryption modes like CCM and GCM, and will not support such modes in the future", because it streams output before a tag could be checked. So an altered file can decrypt without complaint, as one changed byte did in our test. The padding check that usually catches a wrong password "isn't a very good test" either: random data passes it more often than 1 time in 256. The manual recommends <code>openssl cms</code>.</p>
+
+        <h2>Passwords in scripts</h2>
+        <p>Typing at the prompt is safest. For scripts, <code>-pass</code> accepts:</p>
+        <ul>
+          <li><code>file:C:\keys\backup-pass.txt</code> (Git Bash: <code>file:C:/keys/backup-pass.txt</code>): the first line. Make it readable only by your account, keep it out of synced folders, and save it as plain text: Windows PowerShell 5.1's <code>&gt;</code> and <code>Out-File</code> write UTF-16, which OpenSSL misreads, so use <code>Set-Content -Encoding ASCII</code>. Test it on a file you encrypted by typing the password.</li>
+          <li><code>env:BACKUP_PASS</code>: an environment variable. Other processes can see environments on some systems, so the manual says use it "with caution".</li>
+          <li><code>stdin</code>: the first line of standard input. A password piped from Windows PowerShell 5.1 didn't match in our test.</li>
+          <li><code>pass:Blue-Fox-42</code>: visible to other programs; the manual says use it only "where security is not important". PowerShell saves typed commands to a history file under <code>%APPDATA%\Microsoft\Windows\PowerShell\PSReadLine</code>, skipping lines with words like <em>password</em> or <em>secret</em>, so <code>-pass pass:…</code> can be saved. Git Bash keeps history in <code>~/.bash_history</code>.</li>
+        </ul>
+
+        <h2>Encrypt a file with a public key</h2>
+        <p>RSA only encrypts small blocks: OpenSSL's documentation limits RSA with OAEP padding to the key size minus 42 bytes (with OAEP's default SHA-1; less with SHA-256), 342 bytes for a 3072-bit key. Try <code>openssl pkeyutl -encrypt</code> on a real file and you get <code>data too large for key size</code>. The answer is hybrid encryption: a random key encrypts the file, and RSA encrypts that key. <code>openssl cms</code> does both, in a standard format.</p>
+        <ol>
+          <li><strong>The person who will decrypt makes a key pair and certificate, once:</strong>
+<pre><code>openssl req -x509 -newkey rsa:3072 -keyout private-key.pem -out certificate.pem -days 3650 -subj "/CN=My backup key"</code></pre>
+          It asks for a pass phrase for the private key; <code>-days 3650</code> means about ten years (the default is 30 days). Share <code>certificate.pem</code>; keep the private key safe. In Git Bash, write <code>"//CN=My backup key"</code>, or Git for Windows turns the leading slash into a Windows path.</li>
+          <li><strong>Anyone with certificate.pem encrypts:</strong>
+<pre><code>openssl cms -encrypt -binary -aes-256-gcm -in archive.zip -out archive.zip.p7m -outform DER -recip certificate.pem -keyopt rsa_padding_mode:oaep</code></pre>
+          Always name the cipher: before OpenSSL 3.5 the default was triple DES. The manual covers AES-GCM in <code>cms</code> from 3.0; on 1.1.1, use <code>-aes256</code>. For very large files, add <code>-stream</code> so the whole file isn't held in memory.</li>
+          <li><strong>The key owner decrypts:</strong>
+<pre><code>openssl cms -decrypt -binary -inform DER -in archive.zip.p7m -inkey private-key.pem -out archive.zip</code></pre>
+          With <code>-aes-256-gcm</code>, an altered file fails (<code>Error decrypting CMS structure</code> in our test), but OpenSSL still writes the output file, overwriting any existing one. Delete it if you see that error.</li>
+        </ol>
+        <p><strong>The manual way, with pkeyutl:</strong></p>
+<pre><code>openssl rand -hex -out file-key.txt 32
+openssl enc -aes-256-cbc -pbkdf2 -in archive.zip -out archive.zip.enc -pass file:file-key.txt
+openssl pkeyutl -encrypt -certin -inkey certificate.pem -pkeyopt rsa_padding_mode:oaep -pkeyopt rsa_oaep_md:sha256 -in file-key.txt -out file-key.txt.enc</code></pre>
+        <p>Delete <code>file-key.txt</code> and send both <code>.enc</code> files. The key owner reverses it, then deletes <code>file-key.txt</code>:</p>
+<pre><code>openssl pkeyutl -decrypt -inkey private-key.pem -pkeyopt rsa_padding_mode:oaep -pkeyopt rsa_oaep_md:sha256 -in file-key.txt.enc -out file-key.txt
+openssl enc -d -aes-256-cbc -pbkdf2 -in archive.zip.enc -out archive.zip -pass file:file-key.txt</code></pre>
+        <p>OpenSSL on Windows wrote the key file with a Windows line ending in our test. On Linux or macOS, run <code>tr -d '\r' &lt; file-key.txt &gt; k &amp;&amp; mv k file-key.txt</code> before the <code>enc</code> step, or you'll get <code>bad decrypt</code>. This route still has no tamper check, so <code>cms</code> is usually better.</p>
+
+        <h2>What can go wrong</h2>
+        <ul>
+          <li><strong>A lost password or private key means lost files.</strong> OpenSSL has no recovery; back up the private key.</li>
+          <li><strong>Decrypting over a file</strong> replaces it, even with a wrong password.</li>
+          <li><strong>The original stays</strong> until you delete it, and may also be in backups or cloud version history.</li>
+          <li><strong>Redirecting with &gt;.</strong> Use <code>-out</code>. Microsoft says PowerShell 7.4 changed redirection to keep a program's output byte for byte; older versions didn't promise that.</li>
+        </ul>
+
+        <h2>What each option can and can't do</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Question</th><th>openssl enc</th><th>openssl cms</th><th>Clavis Encrypt</th></tr></thead>
+            <tbody>
+              <tr><td>Unlocks with</td><td>A password</td><td>The private key (and its pass phrase)</td><td>Your vault password, or the recovery key</td></tr>
+              <tr><td>Detects changes to the file</td><td>No</td><td>Yes, with <code>-aes-256-gcm</code></td><td>Yes, on every decrypt</td></tr>
+              <tr><td>Hides the file name</td><td>Only if you pick a meaningless output name</td><td>Same</td><td>Yes, the real name is stored inside the encrypted file</td></tr>
+              <tr><td>Forgotten password or lost key</td><td>File is lost</td><td>File is lost</td><td>Recovery key, if you kept it; otherwise lost</td></tr>
+              <tr><td>Command line and cost</td><td>Free</td><td>Free</td><td>App free for files; <code>clavis-cli</code> in Premium ($29 once)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>If you'd rather not manage the options</h2>
+        <p><a href="./">Clavis Encrypt</a> makes these choices for you: AES-256-GCM with a key derived from your password by Argon2id, a tamper check on every decrypt, and the real file name hidden inside the <code>.enc</code> file. Encrypting files in the app is free on Windows and Linux. For scripts, <code>clavis-cli</code> comes with Clavis Premium ($29 once, tax included) in the downloads from clavisenc.com, not the Microsoft Store version; it never takes a password as an argument. See <a href="blog-encrypt-files-command-line-windows.html">encrypting files from the command line</a> and the <a href="help-command-line.html">clavis-cli reference</a>. Clavis is closed source and hasn't been independently audited; its <a href="format.html">file format is public</a>, with an open-source decryptor.</p>
+
+        <h2>Questions</h2>
+        <div class="faq">
+          <details><summary>How do I encrypt a file with OpenSSL using a password?</summary><p>Run openssl enc -aes-256-cbc -pbkdf2 -iter 600000 -salt -in file -out file.enc and type a password. To decrypt, add -d, use the .enc file as input and keep the same cipher, -pbkdf2 and -iter. Decrypt to a new file name: OpenSSL overwrites the output file without asking, even when the password is wrong.</p></details>
+          <details><summary>Why does OpenSSL say "deprecated key derivation used"?</summary><p>You left out -pbkdf2 and -iter, so OpenSSL used its old way of turning the password into a key. Use -pbkdf2 with a high -iter for new files; old files must be decrypted with the options they were made with.</p></details>
+          <details><summary>Can openssl enc use AES-256-GCM?</summary><p>No. OpenSSL's manual says enc doesn't support GCM or CCM and won't in the future. Use openssl cms with -aes-256-gcm (OpenSSL 3.0 or later) if you need a tamper check.</p></details>
+          <details><summary>How do I encrypt a large file with an RSA public key in OpenSSL?</summary><p>Use openssl cms -encrypt with the recipient's certificate, not RSA directly, which only handles a few hundred bytes. cms encrypts the file with a random key and encrypts that key with RSA; the recipient decrypts with openssl cms -decrypt.</p></details>
+          <details><summary>What does "bad decrypt" mean in OpenSSL?</summary><p>Usually a wrong password, or options that differ from the ones used to encrypt: cipher, -pbkdf2, -iter, or -md for files from very old versions. A damaged file can cause it too.</p></details>        </div>
+
+        <h2>Sources</h2>
+        <ul class="sources">
+          <li><a href="https://docs.openssl.org/3.5/man1/openssl-enc/" rel="noopener">OpenSSL 3.5 manual: openssl-enc (-pbkdf2 and -iter, 10,000 default iterations, salt, AES in CBC mode for beginners, no GCM or CCM, padding check, cms recommended, MD5 to SHA-256 change)</a></li>
+          <li><a href="https://docs.openssl.org/1.1.1/man1/enc/" rel="noopener">OpenSSL 1.1.1 manual: enc (-pbkdf2 and -iter in 1.1.1)</a></li>
+          <li><a href="https://docs.openssl.org/3.5/man1/openssl-passphrase-options/" rel="noopener">OpenSSL 3.5 manual: openssl-passphrase-options (pass:, env:, file:, fd:, stdin and their risks)</a></li>
+          <li><a href="https://docs.openssl.org/3.5/man1/openssl-cms/" rel="noopener">OpenSSL 3.5 manual: openssl-cms (encrypt and decrypt, AES-GCM, default cipher changed from 3DES to AES-256 in 3.5, RSA-OAEP, -stream)</a></li>
+          <li><a href="https://docs.openssl.org/3.0/man1/openssl-cms/" rel="noopener">OpenSSL 3.0 manual: openssl-cms (AES-GCM supported, triple DES default)</a></li>
+          <li><a href="https://docs.openssl.org/1.1.1/man1/cms/" rel="noopener">OpenSSL 1.1.1 manual: cms (triple DES default)</a></li>
+          <li><a href="https://docs.openssl.org/3.5/man1/openssl-pkeyutl/" rel="noopener">OpenSSL 3.5 manual: openssl-pkeyutl (-encrypt, -certin, RSA OAEP options)</a></li>
+          <li><a href="https://docs.openssl.org/3.5/man3/RSA_public_encrypt/" rel="noopener">OpenSSL 3.5 manual: RSA_public_encrypt (input limit of key size minus 42 bytes with OAEP)</a></li>
+          <li><a href="https://docs.openssl.org/3.5/man1/openssl-req/" rel="noopener">OpenSSL 3.5 manual: openssl-req (-x509, -newkey, -days default of 30)</a></li>
+          <li><a href="https://docs.openssl.org/3.5/man1/openssl-rand/" rel="noopener">OpenSSL 3.5 manual: openssl-rand (-hex, -out)</a></li>
+          <li><a href="https://openssl-library.org/source/" rel="noopener">OpenSSL downloads (supported releases: 4.1, 4.0, 3.5 LTS)</a></li>
+          <li><a href="https://github.com/openssl/openssl/wiki/Binaries" rel="noopener">OpenSSL wiki: Binaries (Windows installers from the OpenSSL Corporation; third-party builds)</a></li>
+          <li><a href="https://github.com/openssl/installer/blob/main/windows-installer/README.md" rel="noopener">OpenSSL Windows installer README (signed, x64, x86 and Arm64, EXE and MSI, Adjust PATH option)</a></li>
+          <li><a href="https://github.com/git-for-windows/build-extra/blob/main/ReleaseNotes.md" rel="noopener">Git for Windows release notes (comes with OpenSSL 3.5.9; path conversion of arguments starting with a slash)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/psreadline/about/about_psreadline" rel="noopener">Microsoft Learn: about_PSReadLine (command history file and the words it filters)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_character_encoding?view=powershell-5.1" rel="noopener">Microsoft Learn: about_Character_Encoding, Windows PowerShell 5.1 (Out-File and &gt; write UTF-16LE; Unicode encodings add a BOM)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_redirection" rel="noopener">Microsoft Learn: about_Redirection (byte-for-byte redirection of native commands from PowerShell 7.4)</a></li>
+          <li><a href="https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html" rel="noopener">GNU Bash manual: Bash variables (HISTFILE defaults to ~/.bash_history)</a></li>
+        </ul>
+        <p class="muted-note"><em>Commands tested with OpenSSL 3.2.1 on Windows 11; facts checked against the OpenSSL manuals on November 11, 2026. Options can change between versions; <code>openssl enc -help</code> on your own PC is the final word.</em></p>
+
+        <p>Related: <a href="blog-gpg-encrypt-file-windows.html">encrypting a file with GPG on Windows</a>, <a href="blog-encrypt-file-powershell.html">encrypting a file with PowerShell</a> and <a href="blog-7zip-command-line-password.html">7-Zip from the command line with a password</a>.</p>
+
+        <div class="post-cta">
+          <a class="btn btn-primary" href="download.html?ref=blog-openssl">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>
+            Try Clavis Encrypt — free for Windows and Linux
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+          <p class="latin">clāvis — Latin, “key”</p>
+          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
+          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
+        </div>
+        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
+        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
+        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      </div>
+      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js?v=081703c843" defer></script>
+</body>
+</html>

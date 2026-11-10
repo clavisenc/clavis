@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to GPG encrypt a file on Windows (command line) — Clavis Encrypt</title>
+  <meta name="description" content="Encrypt a file with GPG on Windows: install Gpg4win, use gpg -c for a passphrase or gpg -e -r for a public key, decrypt with -o and -d, back up your key.">
+  <meta name="theme-color" content="#05080F">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to encrypt a file with GPG on Windows (command line and Kleopatra)">
+  <meta property="og:description" content="Install Gpg4win, encrypt with a passphrase or a public key, decrypt, back up your key, and verify downloads, with the exact gpg commands.">
+  <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://clavisenc.com/blog-gpg-encrypt-file-windows.html">
+  <meta property="og:url" content="https://clavisenc.com/blog-gpg-encrypt-file-windows.html">
+  <meta property="og:site_name" content="Clavis Encrypt">
+  <meta property="article:published_time" content="2026-11-11">
+  <meta property="article:modified_time" content="2026-11-11">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link href="assets/css/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=78fb9366a3">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-gpg-encrypt-file-windows.html#article","headline":"How to encrypt a file with GPG on Windows (command line and Kleopatra)","description":"Encrypt a file with GPG on Windows: install Gpg4win, use gpg -c for a passphrase or gpg -e -r for a public key, decrypt with -o and -d, back up your key.","datePublished":"2026-11-11","dateModified":"2026-11-11","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-gpg-encrypt-file-windows.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://www.gpg4win.org/about.html","https://www.gpg4win.org/get-gpg4win.html","https://www.gpg4win.org/system-requirements.html","https://www.gpg4win.org/version5.html","https://www.gpg4win.org/features.html","https://www.gpg4win.org/package-integrity.html","https://wiki.gnupg.org/Gpg4win/CheckIntegrity","https://github.com/gpg/gpg4win/blob/master/src/nsis/inst-gnupg-w32.nsi","https://github.com/gpg/gnupg/blob/master/build-aux/speedo/w32/inst.nsi","https://www.gnupg.org/documentation/manuals/gnupg/Operational-GPG-Commands.html","https://www.gnupg.org/documentation/manuals/gnupg/OpenPGP-Key-Management.html","https://www.gnupg.org/documentation/manuals/gnupg/GPG-Key-related-Options.html","https://www.gnupg.org/documentation/manuals/gnupg/GPG-Input-and-Output.html","https://www.gnupg.org/documentation/manuals/gnupg/OpenPGP-Options.html","https://www.gnupg.org/documentation/manuals/gnupg/GPG-Esoteric-Options.html","https://www.gnupg.org/faq/gnupg-faq.html","https://www.gnupg.org/download/integrity_check.html","https://github.com/git-for-windows/build-extra/blob/main/ReleaseNotes.md","https://learn.microsoft.com/en-us/powershell/module/psreadline/about/about_psreadline","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_redirection"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"How to encrypt a file with GPG on Windows","item":"https://clavisenc.com/blog-gpg-encrypt-file-windows.html"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I encrypt a file with GPG on Windows?","acceptedAnswer":{"@type":"Answer","text":"Install Gpg4win, open PowerShell and run gpg -c yourfile to encrypt it with a passphrase. GPG writes yourfile.gpg next to the original. To encrypt for someone else, import their public key and run gpg -e -r their-email yourfile."}},{"@type":"Question","name":"How do I encrypt a file with a public key using the gpg command line on Windows?","acceptedAnswer":{"@type":"Answer","text":"Run gpg --import with their key file, check the fingerprint with gpg --fingerprint, certify the key with gpg --lsign-key their-email, then run gpg -e -r their-email -r your-email file. Only the people you list with -r can decrypt it."}},{"@type":"Question","name":"What's the difference between gpg -c and gpg -e?","acceptedAnswer":{"@type":"Answer","text":"gpg -c encrypts with a passphrase you choose, so anyone who knows it can decrypt. gpg -e encrypts for public keys, so only the holders of the matching secret keys can decrypt, and no passphrase has to be shared."}},{"@type":"Question","name":"Does gpg -c use AES-256?","acceptedAnswer":{"@type":"Answer","text":"Yes. The GnuPG manual says the default cipher for symmetric encryption is AES-256. You can add --cipher-algo AES256 to make it explicit."}},{"@type":"Question","name":"I forgot my GPG passphrase. Can I get my files back?","acceptedAnswer":{"@type":"Answer","text":"No. The GnuPG FAQ says it can't help: without the passphrase you can't decrypt existing files. Revoke the key with your revocation certificate and create a new one."}},{"@type":"Question","name":"Can I use GPG on Windows without the command line?","acceptedAnswer":{"@type":"Answer","text":"Yes. Kleopatra, which comes with Gpg4win, creates and manages keys and encrypts and decrypts files in windows, and GpgEX adds encryption to the File Explorer right-click menu."}}]}</script>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
+      </button>
+      <nav class="nav-links" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="help.html">Help</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="block">
+      <div class="wrap post">
+        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 11, 2026</p>
+        <h1>How to encrypt a file with GPG on Windows (command line and Kleopatra)</h1>
+
+        <p>GPG (GnuPG) encrypts files with a passphrase or with someone's public key, in the OpenPGP standard format. On Windows it comes with Gpg4win, which also installs Kleopatra, a key manager with windows and buttons. These commands were checked against the GnuPG manual and tested with GnuPG 2.4.</p>
+
+        <div class="callout"><b>Short answer:</b> install Gpg4win from gpg4win.org, then in PowerShell run <code>gpg -c report.pdf</code> to encrypt with a passphrase, or <code>gpg -e -r alex@example.com report.pdf</code> to encrypt for someone's public key. Both create <code>report.pdf.gpg</code> and leave the original in place. Decrypt with <code>gpg -o report.pdf -d report.pdf.gpg</code>. If you lose the passphrase or your secret key, you can't decrypt the file and nobody can do it for you, so back up your key.</div>
+
+        <h2>1. Install Gpg4win and check it</h2>
+        <p>Gpg4win is the official GnuPG distribution for Windows, maintained by the GnuPG developers. It installs GnuPG (the <code>gpg</code> command), Kleopatra, GpgOL for Outlook and GpgEX for File Explorer. Version 5.1.1 came out on 2026-09-23. It supports Windows 10 (version 1809 or later) and Windows 11; since version 5 it runs only on 64-bit systems and is built on GnuPG 2.5. The download page asks for an optional donation ($0 is a choice).</p>
+        <p>Before you run the installer, check it. Gpg4win's integrity page says the installer is code-signed by g10 Code GmbH: the User Account Control prompt shows the publisher, or right-click the file → <strong>Properties</strong> → <strong>Digital Signatures</strong>. The same page lists SHA-256 checksums, which you can compare with:</p>
+<pre><code>certutil -hashfile gpg4win-5.1.1.exe sha256</code></pre>
+        <p>The installer adds GnuPG's <code>bin</code> folder (by default <code>C:\Program Files\GnuPG\bin</code>) to your PATH, so open a new PowerShell window and run <code>gpg --version</code>. If it isn't found, run <code>&amp; "C:\Program Files\GnuPG\bin\gpg.exe" --version</code>. Git for Windows has its own <code>gpg</code>, so in Git Bash you may get that copy; the version and <strong>Home</strong> folder shown tell you which.</p>
+
+        <h2>2. Encrypt a file with a passphrase</h2>
+<pre><code>gpg -c report.pdf</code></pre>
+        <p>A Pinentry window asks you to choose a passphrase, and gpg writes <code>report.pdf.gpg</code>. The manual says <code>-c</code> (<code>--symmetric</code>) uses AES-256 by default; <code>gpg -c --cipher-algo AES256 report.pdf</code> makes that explicit. Don't use <code>--cipher-algo</code> for public-key encryption: the manual says it lets you violate the OpenPGP standard, and without it gpg uses the preferences stored with the key. Add <code>-a</code> (<code>--armor</code>) for text output you can paste into an email.</p>
+        <p>One surprise: gpg caches the passphrase for symmetric encryption, so decrypting soon afterwards may not ask for it. To check you really can decrypt, add <code>--no-symkey-cache</code>.</p>
+
+        <h2>3. Encrypt a file with someone's public key</h2>
+        <p>First, if you don't have a key pair, make one with <code>gpg --full-generate-key</code> (it asks about every option) or <code>gpg --quick-generate-key "Your Name &lt;you@example.com&gt;"</code>. Share your public key with <code>gpg --armor -o my-public-key.asc --export you@example.com</code>. Then import the recipient's key, check its fingerprint, and certify it:</p>
+<pre><code>gpg --import alex-public.asc
+gpg --fingerprint alex@example.com
+gpg --lsign-key alex@example.com</code></pre>
+        <p>Compare the fingerprint with Alex over the phone or in person before you certify: if the key isn't really theirs, someone else can read your file. <code>--lsign-key</code> signs it with your key, marked as not exportable. Without it, gpg warns there's no assurance the key belongs to that person and asks whether to use it anyway. Then encrypt:</p>
+<pre><code>gpg -e -r alex@example.com -r you@example.com report.pdf</code></pre>
+        <p>Each <code>-r</code> (<code>--recipient</code>) adds a person who can decrypt. Include yourself, or you can't open the file you just made.</p>
+
+        <h2>4. Decrypt</h2>
+<pre><code>gpg -o report.pdf -d report.pdf.gpg</code></pre>
+        <p>Pinentry asks for your passphrase (or your key's passphrase). Always give <code>-o</code> (<code>--output</code>): without it, <code>-d</code> writes the decrypted data to the screen. Don't redirect it with <code>&gt;</code> either: Microsoft says PowerShell 7.4 changed redirection to keep a program's output byte for byte, and older versions didn't promise that.</p>
+
+        <h2>Prefer windows to commands? Use Kleopatra</h2>
+        <p>Kleopatra, installed with Gpg4win, is a certificate manager (it calls keys "certificates") with the common encryption dialogs. It creates key pairs, imports and certifies other people's certificates, and encrypts files and folders for the people you pick. GpgEX adds signing and encrypting to File Explorer's right-click menu; several files and folders selected together become one archive in Gpg4win's gpgtar format.</p>
+
+        <h2>Back up your key, and what losing it means</h2>
+<pre><code>gpg --armor -o E:\my-secret-key.asc --export-secret-keys you@example.com</code></pre>
+        <p>Here <code>E:</code> is a USB stick: export straight to it (or delete any copy left on the PC) and keep it in a drawer, never next to the files it protects. The manual warns that exporting a secret key is a risk if it's sent over an insecure channel. When GnuPG makes a key, it also saves a revocation certificate in the <code>openpgp-revocs.d</code> folder of its home directory. Keep a copy, as safely as the key: anyone who has it can revoke your key.</p>
+        <p>There is no way around a lost passphrase. To "Help! I lost my passphrase.", the GnuPG FAQ answers "Unfortunately, we can't help you": existing files can't be decrypted. It advises revoking the key and starting again with a new one. Files made with <code>gpg -c</code> depend on their passphrase alone.</p>
+
+        <h2>Verify a download with GPG</h2>
+        <p>Many projects publish a signature file next to each download. Import the publisher's key, then name both files:</p>
+<pre><code>gpg --import publisher-key.asc
+gpg --verify setup.exe.sig setup.exe</code></pre>
+        <p>"Good signature" means the file matches the key. If gpg warns that the key (or its User ID) is not certified with a trusted signature, GnuPG's integrity page says to compare the fingerprint it shows with the one the publisher lists. The manual strongly discourages letting gpg guess the data file, so name both. Don't check a GnuPG download with that same new copy; for Gpg4win, use the code signature.</p>
+
+        <h2>What can go wrong</h2>
+        <ul>
+          <li><strong>Lost passphrase or secret key:</strong> the files are lost. Back up the key and keep the passphrase somewhere safe.</li>
+          <li><strong>Encrypted only for someone else:</strong> you can't open your own copy. Add yourself with a second <code>-r</code>.</li>
+          <li><strong>A tampered file:</strong> gpg warns (for example "WARNING: encrypted message has been manipulated!") and exits with an error, but may still write the output file. Delete it.</li>
+          <li><strong>Passphrases in scripts:</strong> the manual calls <code>--passphrase</code> "of very questionable security on a multi-user system" and a <code>--passphrase-file</code> "of questionable security if other users can read this file". They work only with <code>--batch</code> and, since GnuPG 2.1, <code>--pinentry-mode loopback</code>. PowerShell saves typed commands to a history file, skipping only lines with words like <em>password</em> or <em>secret</em>.</li>
+          <li><strong>The original stays:</strong> gpg doesn't delete <code>report.pdf</code>, and <code>report.pdf.gpg</code> shows the name unless you choose another with <code>-o</code>.</li>
+        </ul>
+
+        <h2>What each option can and can't do</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Question</th><th>gpg -c</th><th>gpg -e -r</th><th>Clavis Encrypt</th></tr></thead>
+            <tbody>
+              <tr><td>Unlocks with</td><td>The passphrase</td><td>A recipient's secret key and its passphrase</td><td>Your vault password, or the recovery key</td></tr>
+              <tr><td>Detects changes to the file</td><td>Yes, the manual describes integrity protection (MDC or OCB)</td><td>Yes, same</td><td>Yes, on every decrypt</td></tr>
+              <tr><td>Hides the file name</td><td>Only if you choose a meaningless name with <code>-o</code> (gpg keeps the real name inside, encrypted)</td><td>Same</td><td>Yes, the real name is stored inside</td></tr>
+              <tr><td>Share without sharing a password</td><td>No</td><td>Yes, with people who use OpenPGP software</td><td>Yes, by Clavis ID (Premium; both people use Clavis)</td></tr>
+              <tr><td>Forgotten passphrase or lost key</td><td>File is lost</td><td>File is lost</td><td>Recovery key, if you kept it; otherwise lost</td></tr>
+              <tr><td>Cost</td><td>Free</td><td>Free</td><td>Free for files; command line in Premium ($29 once)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Where Clavis Encrypt fits</h2>
+        <p>GPG is free and uses a published standard, OpenPGP, which makes it the better choice when you exchange files with people who already use it. If you mainly want to lock your own files with a password and not manage keys, <a href="./">Clavis Encrypt</a> is simpler: choose a file (or several) and press <strong>Encrypt</strong>. It uses AES-256-GCM with Argon2id, hides the real file name inside the <code>.enc</code> file, and gives you a recovery key in case you forget your password. That's free on Windows 10 and 11 and Linux. Premium ($29 once) adds sharing by Clavis ID and the <a href="help-command-line.html">clavis-cli command line</a>, which comes only with the downloads from clavisenc.com. Clavis is closed source and hasn't been independently audited; its <a href="format.html">file format is public</a>, with an open-source decryptor.</p>
+
+        <h2>Questions</h2>
+        <div class="faq">
+          <details><summary>How do I encrypt a file with GPG on Windows?</summary><p>Install Gpg4win, open PowerShell and run gpg -c yourfile to encrypt it with a passphrase. GPG writes yourfile.gpg next to the original. To encrypt for someone else, import their public key and run gpg -e -r their-email yourfile.</p></details>
+          <details><summary>How do I encrypt a file with a public key using the gpg command line on Windows?</summary><p>Run gpg --import with their key file, check the fingerprint with gpg --fingerprint, certify the key with gpg --lsign-key their-email, then run gpg -e -r their-email -r your-email file. Only the people you list with -r can decrypt it.</p></details>
+          <details><summary>What's the difference between gpg -c and gpg -e?</summary><p>gpg -c encrypts with a passphrase you choose, so anyone who knows it can decrypt. gpg -e encrypts for public keys, so only the holders of the matching secret keys can decrypt, and no passphrase has to be shared.</p></details>
+          <details><summary>Does gpg -c use AES-256?</summary><p>Yes. The GnuPG manual says the default cipher for symmetric encryption is AES-256. You can add --cipher-algo AES256 to make it explicit.</p></details>          <details><summary>I forgot my GPG passphrase. Can I get my files back?</summary><p>No. The GnuPG FAQ says it can't help: without the passphrase you can't decrypt existing files. Revoke the key with your revocation certificate and create a new one.</p></details>
+          <details><summary>Can I use GPG on Windows without the command line?</summary><p>Yes. Kleopatra, which comes with Gpg4win, creates and manages keys and encrypts and decrypts files in windows, and GpgEX adds encryption to the File Explorer right-click menu.</p></details>
+        </div>
+
+        <h2>Sources</h2>
+        <ul class="sources">
+          <li><a href="https://www.gpg4win.org/about.html" rel="noopener">Gpg4win: About (official GnuPG distribution for Windows; GnuPG, Kleopatra, GpgOL and GpgEX)</a></li>
+          <li><a href="https://www.gpg4win.org/get-gpg4win.html" rel="noopener">Gpg4win: Download (version 5.1.1, 2026-09-23; optional donation)</a></li>
+          <li><a href="https://www.gpg4win.org/system-requirements.html" rel="noopener">Gpg4win: System requirements (Windows 10 1809 or later and Windows 11; 64-bit only from 5.0.0)</a></li>
+          <li><a href="https://www.gpg4win.org/version5.html" rel="noopener">Gpg4win: What's new in Gpg4win 5 (GnuPG 2.5, 64-bit only)</a></li>
+          <li><a href="https://www.gpg4win.org/features.html" rel="noopener">Gpg4win: Features (Kleopatra certificate management and certifying; GpgEX in Explorer; gpgtar archives)</a></li>
+          <li><a href="https://www.gpg4win.org/package-integrity.html" rel="noopener">Gpg4win: Check integrity (code-signing certificate, SHA-256 checksums)</a></li>
+          <li><a href="https://wiki.gnupg.org/Gpg4win/CheckIntegrity" rel="noopener">GnuPG wiki: Check integrity of Gpg4win packages (UAC, file properties, certutil)</a></li>
+          <li><a href="https://github.com/gpg/gpg4win/blob/master/src/nsis/inst-gnupg-w32.nsi" rel="noopener">Gpg4win installer source: GnuPG part (installs GnuPG next to Gpg4win, in a GnuPG folder)</a></li>
+          <li><a href="https://github.com/gpg/gnupg/blob/master/build-aux/speedo/w32/inst.nsi" rel="noopener">GnuPG Windows installer source (default folder Program Files\GnuPG; adds its bin folder to PATH)</a></li>
+          <li><a href="https://www.gnupg.org/documentation/manuals/gnupg/Operational-GPG-Commands.html" rel="noopener">GnuPG manual: Operational commands (--symmetric with AES-256 default and passphrase cache, --encrypt, --decrypt, --verify, --export, --export-secret-keys, --fingerprint, --import)</a></li>
+          <li><a href="https://www.gnupg.org/documentation/manuals/gnupg/OpenPGP-Key-Management.html" rel="noopener">GnuPG manual: Key management (--full-generate-key, --quick-generate-key, --lsign-key, revocation certificate in openpgp-revocs.d)</a></li>
+          <li><a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Key-related-Options.html" rel="noopener">GnuPG manual: Key-related options (--recipient)</a></li>
+          <li><a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Input-and-Output.html" rel="noopener">GnuPG manual: Input and output (--armor, --output)</a></li>
+          <li><a href="https://www.gnupg.org/documentation/manuals/gnupg/OpenPGP-Options.html" rel="noopener">GnuPG manual: OpenPGP protocol options (CFB+MDC and OCB integrity protection)</a></li>
+          <li><a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Esoteric-Options.html" rel="noopener">GnuPG manual: Esoteric options (--cipher-algo, --set-filename, --passphrase, --passphrase-file, --pinentry-mode, --no-symkey-cache)</a></li>
+          <li><a href="https://www.gnupg.org/faq/gnupg-faq.html" rel="noopener">GnuPG FAQ (Help! I lost my passphrase)</a></li>
+          <li><a href="https://www.gnupg.org/download/integrity_check.html" rel="noopener">GnuPG: Integrity check (gpg --verify, comparing fingerprints, not checking a download with itself)</a></li>
+          <li><a href="https://github.com/git-for-windows/build-extra/blob/main/ReleaseNotes.md" rel="noopener">Git for Windows release notes (comes with GNU Privacy Guard)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/psreadline/about/about_psreadline" rel="noopener">Microsoft Learn: about_PSReadLine (command history file and the words it filters)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_redirection" rel="noopener">Microsoft Learn: about_Redirection (byte-for-byte redirection of native commands from PowerShell 7.4)</a></li>
+        </ul>
+        <p class="muted-note"><em>Checked against the GnuPG manual (version 2.5.23) and gpg4win.org on November 11, 2026; commands tested with GnuPG 2.4. Gpg4win and Kleopatra change between versions; <code>gpg --help</code> on your own PC is the final word.</em></p>
+
+        <p>Related: <a href="blog-openssl-encrypt-file-windows.html">encrypting a file with OpenSSL</a>, <a href="blog-encrypt-files-before-emailing.html">encrypting files before emailing them</a> and <a href="blog-share-encrypted-files-without-password.html">sharing encrypted files without sending a password</a>.</p>
+
+        <div class="post-cta">
+          <a class="btn btn-primary" href="download.html?ref=blog-gpg">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>
+            Try Clavis Encrypt — free for Windows and Linux
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+          <p class="latin">clāvis — Latin, “key”</p>
+          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
+          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
+        </div>
+        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
+        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
+        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      </div>
+      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js?v=081703c843" defer></script>
+</body>
+</html>

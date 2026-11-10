@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to encrypt a file using PowerShell — Clavis Encrypt</title>
+  <meta name="description" content="PowerShell has no cmdlet that locks a file with a password. What cipher /e, Protect-CmsMessage, Export-Clixml, 7-Zip and clavis-cli can each do.">
+  <meta name="theme-color" content="#05080F">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to encrypt a file using PowerShell (and what isn't built in)">
+  <meta property="og:description" content="No built-in cmdlet adds a password to a file. Exact commands for EFS, certificates, stored passwords, 7-Zip and clavis-cli, which Windows editions they need, and a safe folder script.">
+  <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://clavisenc.com/blog-encrypt-file-powershell.html">
+  <meta property="og:url" content="https://clavisenc.com/blog-encrypt-file-powershell.html">
+  <meta property="og:site_name" content="Clavis Encrypt">
+  <meta property="article:published_time" content="2026-11-11">
+  <meta property="article:modified_time" content="2026-11-11">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link href="assets/css/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=78fb9366a3">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-encrypt-file-powershell.html#article","headline":"How to encrypt a file using PowerShell (and what isn't built in)","description":"PowerShell has no cmdlet that locks a file with a password. What cipher /e, Protect-CmsMessage, Export-Clixml, 7-Zip and clavis-cli can each do.","datePublished":"2026-11-11","dateModified":"2026-11-11","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-encrypt-file-powershell.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive","https://support.microsoft.com/en-us/windows/security/encryption/how-to-encrypt-a-file-or-folder","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cipher","https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc759177(v=ws.10)","https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/protect-cmsmessage","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/unprotect-cmsmessage","https://learn.microsoft.com/en-us/powershell/module/pki/new-selfsignedcertificate","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/convertfrom-securestring","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/convertto-securestring","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-credential","https://learn.microsoft.com/en-us/dotnet/api/system.management.automation.pscredential.getnetworkcredential","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_operators","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-5.1","https://learn.microsoft.com/en-us/powershell/module/psreadline/about/about_psreadline","https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-process","https://www.7-zip.org/7z.html","https://github.com/ip7z/7zip/blob/main/C/Util/7zipInstall/7zipInstall.c","https://7-zip.opensource.jp/chm/cmdline/switches/password.htm","https://7-zip.opensource.jp/chm/cmdline/exit_codes.htm"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"How to encrypt a file using PowerShell","item":"https://clavisenc.com/blog-encrypt-file-powershell.html"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can PowerShell encrypt a file with a password?","acceptedAnswer":{"@type":"Answer","text":"Not with a built-in cmdlet. Compress-Archive has no password parameter, cipher /e uses your Windows account rather than a password, and Protect-CmsMessage uses a certificate. To add a password, call 7-Zip (free) or clavis-cli (Clavis Encrypt Premium) from PowerShell."}},{"@type":"Question","name":"How do I encrypt a file with a certificate in PowerShell?","acceptedAnswer":{"@type":"Answer","text":"Create a document encryption certificate (for example New-SelfSignedCertificate -Type DocumentEncryptionCert), then run Protect-CmsMessage -To with the certificate's subject, -Path and -OutFile. Unprotect-CmsMessage decrypts it. It returns text, so it suits text files rather than photos or Office documents."}},{"@type":"Question","name":"How do I save an encrypted password to a file in PowerShell?","acceptedAnswer":{"@type":"Answer","text":"Pipe Get-Credential to Export-Clixml, and load it later with Import-Clixml. On Windows it's encrypted with DPAPI, so only your user account on that computer can read it. On Linux and macOS it's stored as plain text."}},{"@type":"Question","name":"Does cipher /e work on Windows 11 Home?","acceptedAnswer":{"@type":"Answer","text":"No. Microsoft says file encryption isn't available in the Home edition, and on a Windows 11 Home PC cipher /e answered \"The request is not supported.\" when we tried it. Use 7-Zip or a file-encryption app instead."}},{"@type":"Question","name":"Can I decrypt an Export-Clixml password on another computer?","acceptedAnswer":{"@type":"Answer","text":"No. Microsoft says the exported file can't be used on a different computer or by a different user. Save the password again on each PC that needs it."}},{"@type":"Question","name":"How do I encrypt every file in a folder with PowerShell?","acceptedAnswer":{"@type":"Answer","text":"Run 7-Zip with 7z a -p -mhe=on archive.7z and the folder, check $LASTEXITCODE, then test the archive with 7z t before you delete anything. With Clavis Encrypt Premium, clavis-cli encrypt --keep and the folder encrypts each file separately."}},{"@type":"Question","name":"Is ConvertTo-SecureString encryption?","acceptedAnswer":{"@type":"Answer","text":"ConvertTo-SecureString only makes a secure string. ConvertFrom-SecureString turns it into an encrypted string you can save, with DPAPI or, if you pass a key, AES. On Linux and macOS, SecureString contents aren't encrypted."}}]}</script>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
+      </button>
+      <nav class="nav-links" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="help.html">Help</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="block">
+      <div class="wrap post">
+        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 11, 2026</p>
+        <h1>How to encrypt a file using PowerShell (and what isn't built in)</h1>
+
+        <p>You want one PowerShell command that locks a file with a password. Windows doesn't include one. <code>Compress-Archive</code> has no password parameter, and the built-in commands that do encrypt use your Windows account, a certificate, or protect only a stored password. Here is what each option does, with exact commands and a safe folder script.</p>
+
+        <div class="callout"><b>Short answer:</b> there is no built-in PowerShell cmdlet that encrypts a file with a password. <code>cipher /e</code> uses EFS, which ties files to your Windows account and isn't available on Windows Home. <code>Protect-CmsMessage</code> encrypts text to a certificate, and <code>Export-Clixml</code> saves a password that only your account on that PC can read. To lock files with a password from PowerShell, call the free 7-Zip or <code>clavis-cli</code>, the command line in Clavis Encrypt Premium.</div>
+
+        <h2>What each option can and can't do</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Option</th><th>Windows editions</th><th>Locked with</th><th>Good for</th><th>Can't</th></tr></thead>
+            <tbody>
+              <tr><td><code>cipher /e</code> (EFS)</td><td>Pro, Enterprise, Education</td><td>An EFS certificate in your Windows account</td><td>Files that stay on this PC's NTFS drives</td><td>Not on Home. No password. Copies on non-NTFS drives or in zips come out decrypted.</td></tr>
+              <tr><td><code>Protect-CmsMessage</code></td><td>All, including Home</td><td>A document encryption certificate</td><td>Notes, tokens, config text; sending to someone's certificate</td><td>Built for text: it decrypts to a string, not a photo or PDF.</td></tr>
+              <tr><td><code>Export-Clixml</code>, <code>ConvertFrom-SecureString</code></td><td>All (encrypted on Windows only)</td><td>DPAPI: your account on this PC</td><td>Storing a password for a script</td><td>Doesn't encrypt your files. Other users and PCs can't read it.</td></tr>
+              <tr><td>7-Zip (<code>7z.exe</code>)</td><td>All (free download)</td><td>A password</td><td>Files and folders you keep or send</td><td>No password recovery. A password typed into the command is visible.</td></tr>
+              <tr><td><code>clavis-cli</code></td><td>Windows 10 and 11 (64-bit), Linux; Premium</td><td>Your Clavis vault password</td><td>Scripts and scheduled jobs (<code>--password-stdin</code>)</td><td>Not in the Microsoft Store version. Doesn't encrypt whole drives.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>None of these encrypt a whole drive. For a lost or stolen laptop, BitLocker or device encryption is a separate layer.</p>
+
+        <h2>1. cipher /e: EFS (Pro, Enterprise and Education)</h2>
+        <p><code>cipher</code> is a Windows command you can run in PowerShell. <code>/e</code> encrypts the files or folders you name; a folder is marked so that files added to it later are encrypted too. <code>/s:</code> does the same for every subfolder, and <code>/x</code> backs up your EFS certificate and keys to a file.</p>
+        <figure class="term" aria-label="cipher in PowerShell"><div class="term-bar"><i></i><i></i><i></i><span>PowerShell</span></div><pre><code>cipher /e /s:"$env:USERPROFILE\Documents\Private"
+cipher /x "$env:USERPROFILE\Desktop\efs-key-backup"</code></pre></figure>
+        <p>Microsoft says file encryption isn't available in the Home edition. On a Windows 11 Home PC, <code>cipher /e</code> answered "The request is not supported." when we tried it. EFS has no password of its own: Microsoft describes it as transparent to the user who encrypted the file, so anything running as you opens it. Files can become decrypted when copied to a drive that isn't NTFS, and EFS files added to a zipped folder are unencrypted when unzipped. More in <a href="blog-encrypt-contents-to-secure-data-greyed-out.html">why "Encrypt contents to secure data" is greyed out</a>.</p>
+
+        <h2>2. Protect-CmsMessage: encrypt with a certificate (all editions)</h2>
+        <p>This is the built-in answer to "PowerShell encrypt file with certificate". It uses the Cryptographic Message Syntax standard: anyone with your certificate's public key can encrypt, and only the matching private key decrypts. You need a certificate marked for document encryption first.</p>
+        <figure class="term" aria-label="Protect-CmsMessage"><div class="term-bar"><i></i><i></i><i></i><span>PowerShell</span></div><pre><code>New-SelfSignedCertificate -Subject "CN=you@example.com" -Type DocumentEncryptionCert -CertStoreLocation Cert:\CurrentUser\My
+Protect-CmsMessage -To "*you@example.com*" -Path .\notes.txt -OutFile .\notes.txt.cms
+Unprotect-CmsMessage -Path .\notes.txt.cms</code></pre></figure>
+        <p>This worked in our test on Windows 11 Home (Windows PowerShell 5.1). Microsoft's page shows another way to make one, with <code>certreq</code>. <code>notes.txt</code> stays as it was; delete it only after <code>Unprotect-CmsMessage</code> gives the text back. Two limits: <code>Unprotect-CmsMessage</code> returns a string, so this suits text, not photos, PDFs or Office files. And the private key lives in your certificate store: without a backup of it, a new PC can't decrypt. To send to someone, encrypt with their certificate.</p>
+
+        <h2>3. Encrypt a password to a file: Export-Clixml</h2>
+        <p>For "PowerShell encrypt password to file", this is the tool. It protects a stored password, not your documents.</p>
+        <figure class="term" aria-label="Export-Clixml"><div class="term-bar"><i></i><i></i><i></i><span>PowerShell</span></div><pre><code>Get-Credential -UserName backup -Message "Password to store" | Export-Clixml "$env:LOCALAPPDATA\backup.cred"
+$cred = Import-Clixml "$env:LOCALAPPDATA\backup.cred"</code></pre></figure>
+        <p>Microsoft says <code>Export-Clixml</code> encrypts credentials with the Windows Data Protection API, so "only your user account on only that computer" can decrypt them. <code>ConvertFrom-SecureString</code> does the same for one secure string when you give it no key. Windows PowerShell 5.1 shows a sign-in dialog for <code>Get-Credential</code>; PowerShell 7 asks in the console. On Linux and macOS, <code>Export-Clixml</code> stores the password as plain text.</p>
+
+        <h2>4. 7-Zip from PowerShell (free, any edition)</h2>
+        <figure class="term" aria-label="7-Zip in PowerShell"><div class="term-bar"><i></i><i></i><i></i><span>PowerShell</span></div><pre><code>$7z = "C:\Program Files\7-Zip\7z.exe"
+&amp; $7z a -p -mhe=on "D:\Encrypted\Reports.7z" "$env:USERPROFILE\Documents\Reports"
+&amp; $7z t "D:\Encrypted\Reports.7z"</code></pre></figure>
+        <p><code>-p</code> with nothing after it makes 7-Zip ask for the password, so it never lands in your history. <code>-mhe=on</code> encrypts the file names too (.7z only). The <code>&amp;</code> is PowerShell's call operator, which runs a command stored in a variable. The .7z uses AES-256. Details, quoting and extracting: <a href="blog-7zip-command-line-password.html">7-Zip command line password guide</a>.</p>
+
+        <h2>5. clavis-cli from PowerShell (Clavis Encrypt Premium)</h2>
+        <p><code>clavis-cli</code> is the command line of <a href="./">Clavis Encrypt</a>, part of Premium ($29 once, tax included). It comes with the download from clavisenc.com, whose Windows installer adds it to PATH; the Microsoft Store version has no command line. It uses your Clavis vault password, the same AES-256-GCM encryption as the app, and gives each file a random name with the real one stored inside. Clavis is closed source and hasn't been independently audited; its <a href="format.html">file format is public</a>, with an open-source decryptor. Open a new PowerShell window after installing; if <code>clavis-cli</code> isn't recognized, run the latest installer from the <a href="download.html">download page</a> once.</p>
+        <figure class="term" aria-label="clavis-cli in PowerShell"><div class="term-bar"><i></i><i></i><i></i><span>PowerShell</span></div><pre><code>clavis-cli encrypt --keep "$env:USERPROFILE\Documents\Reports"
+clavis-cli verify "$env:USERPROFILE\Documents\Reports"
+clavis-cli list "$env:USERPROFILE\Documents\Reports"</code></pre></figure>
+        <p>It asks for the password without showing it and never accepts one as an argument. Without <code>--keep</code>, it deletes the originals after encrypting (best effort on SSDs). Exit codes: 0 ok, 1 some files failed, 2 usage error, 3 needs Premium, 4 wrong password or key file. All options: <a href="help-command-line.html">clavis-cli help</a>.</p>
+
+        <h2>A short, safe script: encrypt the files in a folder</h2>
+        <p>It uses 7-Zip, so it works for anyone. It stops on any problem, puts everything in one dated .7z, tests it, and leaves your originals alone.</p>
+        <figure class="term" aria-label="Folder encryption script"><div class="term-bar"><i></i><i></i><i></i><span>encrypt-folder.ps1</span></div><pre><code>$ErrorActionPreference = 'Stop'
+$source = "$env:USERPROFILE\Documents\Reports"
+$target = "D:\Encrypted"
+$7z     = "C:\Program Files\7-Zip\7z.exe"   # 32-bit 7-Zip: C:\Program Files (x86)\7-Zip\7z.exe
+
+if (-not (Test-Path -LiteralPath $7z))     { throw "7-Zip not found: $7z" }
+if (-not (Test-Path -LiteralPath $source)) { throw "Folder not found: $source" }
+New-Item -ItemType Directory -Force -Path $target | Out-Null
+$archive = Join-Path $target ("Reports-" + (Get-Date -Format "yyyy-MM-dd") + ".7z")
+if (Test-Path -LiteralPath $archive) { throw "Already exists: $archive" }
+
+&amp; $7z a -p -mhe=on $archive $source    # asks for the password
+if ($LASTEXITCODE -ne 0) { throw "7-Zip stopped with exit code $LASTEXITCODE" }
+
+&amp; $7z t $archive                       # asks again: proves the password works
+if ($LASTEXITCODE -ne 0) { throw "Test failed. Keep your originals." }
+"Done: $archive. Your originals are untouched."</code></pre></figure>
+        <p>7-Zip documents only two ways to take a password, in <code>-p</code> or typed at the prompt, so an unattended 7-Zip job would need it in the command. <code>clavis-cli</code> reads it from standard input instead. Here it comes from a file saved with <code>Export-Clixml</code> as in step 3, named <code>clavis.cred</code>:</p>
+        <figure class="term" aria-label="clavis-cli with a stored password"><div class="term-bar"><i></i><i></i><i></i><span>PowerShell</span></div><pre><code>$ErrorActionPreference = 'Stop'
+Get-Command clavis-cli | Out-Null                      # stops here if clavis-cli isn't installed
+$OutputEncoding = [System.Text.UTF8Encoding]::new()   # Windows PowerShell 5.1 pipes ASCII by default
+$pw  = (Import-Clixml "$env:LOCALAPPDATA\clavis.cred").GetNetworkCredential().Password
+$out = Join-Path "D:\Encrypted" (Get-Date -Format "yyyy-MM-dd_HHmm")
+New-Item -ItemType Directory -Force -Path $out | Out-Null
+$pw | clavis-cli encrypt --keep --out $out --password-stdin "$env:USERPROFILE\Documents\Exports"
+if ($LASTEXITCODE -ne 0) { throw "clavis-cli stopped with exit code $LASTEXITCODE" }</code></pre></figure>
+        <p>With <code>--out</code>, every .enc file lands straight in that folder (subfolders aren't recreated), and each run makes a new copy of every file, hence a new folder per run. Run the scheduled task as the same Windows account that saved <code>clavis.cred</code>: DPAPI lets only that account unlock it. For a nightly pattern with a staging folder and a verify step, see <a href="blog-encrypt-files-command-line-windows.html">encrypting files from the command line</a>.</p>
+
+        <h2>What can go wrong</h2>
+        <ul>
+          <li><strong>A lost password or key means lost files.</strong> 7-Zip has no password reset. EFS files need your EFS key, so keep the <code>cipher /x</code> backup off the PC. CMS files need the certificate's private key. Clavis Encrypt gives you a recovery key; if you lose both it and the password, nobody can recover the files.</li>
+          <li><strong>Passwords in scripts and history.</strong> Microsoft warns that plain-text passwords typed in commands "can show up in event logs and command history logs". PSReadLine saves your commands to <code>%APPDATA%\Microsoft\Windows\PowerShell\PSReadLine</code>; it skips lines containing words like <em>password</em> or <em>secret</em>, but <code>7z a -pBlue42 …</code> contains neither. While a program runs, other programs can read its command line. Use the prompt, a DPAPI-protected file or <code>--password-stdin</code>.</li>
+          <li><strong>Accented letters turn into "?".</strong> Windows PowerShell 5.1 pipes text to programs as ASCII unless you set <code>$OutputEncoding</code>, as in the script above. In our test, "ä" arrived as "?".</li>        </ul>
+
+        <h2>Questions</h2>
+        <div class="faq">
+          <details><summary>Can PowerShell encrypt a file with a password?</summary><p>Not with a built-in cmdlet. Compress-Archive has no password parameter, cipher /e uses your Windows account rather than a password, and Protect-CmsMessage uses a certificate. To add a password, call 7-Zip (free) or clavis-cli (Clavis Encrypt Premium) from PowerShell.</p></details>
+          <details><summary>How do I encrypt a file with a certificate in PowerShell?</summary><p>Create a document encryption certificate (for example New-SelfSignedCertificate -Type DocumentEncryptionCert), then run Protect-CmsMessage -To with the certificate's subject, -Path and -OutFile. Unprotect-CmsMessage decrypts it. It returns text, so it suits text files rather than photos or Office documents.</p></details>
+          <details><summary>How do I save an encrypted password to a file in PowerShell?</summary><p>Pipe Get-Credential to Export-Clixml, and load it later with Import-Clixml. On Windows it's encrypted with DPAPI, so only your user account on that computer can read it. On Linux and macOS it's stored as plain text.</p></details>
+          <details><summary>Does cipher /e work on Windows 11 Home?</summary><p>No. Microsoft says file encryption isn't available in the Home edition, and on a Windows 11 Home PC cipher /e answered "The request is not supported." when we tried it. Use 7-Zip or a file-encryption app instead.</p></details>
+          <details><summary>Can I decrypt an Export-Clixml password on another computer?</summary><p>No. Microsoft says the exported file can't be used on a different computer or by a different user. Save the password again on each PC that needs it.</p></details>
+          <details><summary>How do I encrypt every file in a folder with PowerShell?</summary><p>Run 7-Zip with 7z a -p -mhe=on archive.7z and the folder, check $LASTEXITCODE, then test the archive with 7z t before you delete anything. With Clavis Encrypt Premium, clavis-cli encrypt --keep and the folder encrypts each file separately.</p></details>
+          <details><summary>Is ConvertTo-SecureString encryption?</summary><p>ConvertTo-SecureString only makes a secure string. ConvertFrom-SecureString turns it into an encrypted string you can save, with DPAPI or, if you pass a key, AES. On Linux and macOS, SecureString contents aren't encrypted.</p></details>
+        </div>
+
+        <h2>Sources</h2>
+        <ul class="sources">
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive" rel="noopener">Microsoft Learn: Compress-Archive (parameters; no password option)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/security/encryption/how-to-encrypt-a-file-or-folder" rel="noopener">Microsoft Support: How to encrypt a file or folder (not available in the Home edition)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cipher" rel="noopener">Microsoft Learn: cipher (/e, /s, /x)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc759177(v=ws.10)" rel="noopener">Microsoft Learn (archived): Encrypting File System overview (transparent to the user; copies to non-NTFS volumes can become decrypted)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5" rel="noopener">Microsoft Support: Zip and unzip files (encrypted files are unencrypted when unzipped)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/protect-cmsmessage" rel="noopener">Microsoft Learn: Protect-CmsMessage (CMS, certificate requirements, certreq example)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/unprotect-cmsmessage" rel="noopener">Microsoft Learn: Unprotect-CmsMessage (returns a string)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/pki/new-selfsignedcertificate" rel="noopener">Microsoft Learn: New-SelfSignedCertificate (-Type DocumentEncryptionCert)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml" rel="noopener">Microsoft Learn: Export-Clixml (DPAPI; only your account on that computer; plain text on Linux and macOS)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/convertfrom-securestring" rel="noopener">Microsoft Learn: ConvertFrom-SecureString (DPAPI without a key, AES with one)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/convertto-securestring" rel="noopener">Microsoft Learn: ConvertTo-SecureString (plain text can show up in event logs and history)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-credential" rel="noopener">Microsoft Learn: Get-Credential (dialog in Windows PowerShell 5.1, console in 6.0 and later)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.management.automation.pscredential.getnetworkcredential" rel="noopener">Microsoft Learn: PSCredential.GetNetworkCredential</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_operators" rel="noopener">Microsoft Learn: about_Operators (call operator &amp;)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables" rel="noopener">Microsoft Learn: about_Automatic_Variables ($LASTEXITCODE)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-5.1" rel="noopener">Microsoft Learn: about_Preference_Variables, Windows PowerShell 5.1 ($OutputEncoding defaults to ASCII)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/psreadline/about/about_psreadline" rel="noopener">Microsoft Learn: about_PSReadLine (history file and its sensitive-word filter)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-process" rel="noopener">Microsoft Learn: Win32_Process (CommandLine property)</a></li>
+          <li><a href="https://www.7-zip.org/7z.html" rel="noopener">7-Zip: 7z format (AES-256 encryption)</a></li>
+          <li><a href="https://github.com/ip7z/7zip/blob/main/C/Util/7zipInstall/7zipInstall.c" rel="noopener">7-Zip source: 7zipInstall.c (the installer's default folder: Program Files\7-Zip, from Windows' ProgramFilesDir setting)</a></li>
+          <li><a href="https://7-zip.opensource.jp/chm/cmdline/switches/password.htm" rel="noopener">7-Zip help: -p (set Password) switch, -mhe encrypts file names (online copy of the help that ships with 7-Zip; the manual in the current download adds that -p without a password makes 7-Zip ask for one)</a></li>
+          <li><a href="https://7-zip.opensource.jp/chm/cmdline/exit_codes.htm" rel="noopener">7-Zip help: exit codes</a></li>
+        </ul>
+        <p class="muted-note"><em>Last checked against Microsoft's and 7-Zip's documentation on November 11, 2026. The cipher, Protect-CmsMessage and $OutputEncoding results are from our own tests on a Windows 11 Home PC with Windows PowerShell 5.1, November 2026.</em></p>
+
+        <p>Related: <a href="blog-password-protect-zip-file-windows-11.html">password-protecting a zip file in Windows 11</a>, <a href="blog-openssl-encrypt-file-windows.html">encrypting a file with OpenSSL on Windows</a> and <a href="blog-gpg-encrypt-file-windows.html">encrypting a file with GPG on Windows</a>.</p>
+
+        <div class="post-cta">
+          <a class="btn btn-primary" href="download.html?ref=blog-powershell">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>
+            Try Clavis Encrypt — free for Windows and Linux
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+          <p class="latin">clāvis — Latin, “key”</p>
+          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
+          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
+        </div>
+        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
+        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
+        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      </div>
+      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js?v=081703c843" defer></script>
+</body>
+</html>
