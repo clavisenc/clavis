@@ -869,3 +869,10 @@ html.has-offer .readbar { top: var(--offer-h, 38px); }
 }
 .offer-bar .offer-short { display: none; }
 @media (max-width: 760px) { .offer-bar .offer-short { display: inline; } }
+
+/* Plan-matched closing buttons on blog posts, and plan anchors on the pricing page */
+.post-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.post-cta .btn svg { width: 18px; height: 18px; flex: none; }
+.post-cta .cta-note { flex-basis: 100%; margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+.plan { scroll-margin-top: calc(110px + var(--offer-h, 0px)); }
+.plan:target { outline: 2px solid var(--brass); outline-offset: 6px; }
