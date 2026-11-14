@@ -429,12 +429,14 @@
     const msg = form.querySelector(".signup-msg");
     const button = form.querySelector("button[type=submit]");
     const say = (text, kind) => { msg.textContent = text; msg.dataset.kind = kind || ""; };
+    const clearError = () => { if (msg.dataset.kind === "error") say(""); };
+    form.querySelectorAll("input").forEach((el) => el.addEventListener(el.type === "checkbox" ? "change" : "input", clearError));
     form.addEventListener("submit", async (ev) => {
       ev.preventDefault();
       const email = form.querySelector("input[name=EMAIL]");
       const consent = form.querySelector("input[name=OPT_IN]");
       if (!email.value.trim() || !email.checkValidity()) { say("Please enter a valid email address.", "error"); email.focus(); return; }
-      if (!consent.checked) { say("Please tick the box so we're allowed to email you.", "error"); consent.focus(); return; }
+      if (consent && consent.required && !consent.checked) { say("Please tick the box so we're allowed to email you.", "error"); consent.focus(); return; }
       button.disabled = true;
       say("Sending…");
       try {

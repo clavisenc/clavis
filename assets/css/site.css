@@ -876,3 +876,4 @@ html.has-offer .readbar { top: var(--offer-h, 38px); }
 .post-cta .cta-note { flex-basis: 100%; margin: 4px 0 0; font-size: 14px; color: var(--muted); }
 .plan { scroll-margin-top: calc(110px + var(--offer-h, 0px)); }
 .plan:target { outline: 2px solid var(--brass); outline-offset: 6px; }
+.signup .signup-note { margin: 8px 0 0; font-size: 13.5px; color: var(--muted); }
