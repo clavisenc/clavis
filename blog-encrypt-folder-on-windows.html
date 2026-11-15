@@ -138,6 +138,7 @@
         <p>On Home the option is greyed out because Home doesn't include EFS: Microsoft says “File encryption is not available in the Home edition of Windows.” For the other causes and a quick test, see <a href="blog-encrypt-contents-to-secure-data-greyed-out.html">why Encrypt contents to secure data is greyed out</a>.</p>
 
         <h2>6. What doesn't protect a folder</h2>
+        <p>More on these: <a href="blog-lock-folder-password-without-software.html">can you lock a folder with a password without software?</a> and <a href="blog-hide-folder-windows-11.html">how to hide a folder in Windows 11</a>.</p>
         <ul>
           <li><strong>The Locker.bat “command prompt” folder lock.</strong> We tried the batch file that many how-tos share, on Windows 11 Home. It encrypts nothing: it renames the folder and marks it hidden. In Command Prompt, <code>dir /a</code> still listed the “locked” folder, a file inside opened without the password, and <code>cipher</code> reported it as unencrypted. The password itself is written in plain text inside the <code>.bat</code> file, so anyone who opens it in Notepad can read it. We don't reproduce the script here.</li>
           <li><strong>The Hidden attribute.</strong> Anyone can show hidden folders: Microsoft's own File Explorer help says to select <strong>View → Show → Hidden items</strong>.</li>

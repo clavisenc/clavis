@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to hide a folder in Windows 11 — Clavis Encrypt</title>
+  <meta name="description" content="Hide a folder in Windows 11 with Properties or attrib +h +s, why anyone can still find it, what other accounts can't open, and how to add a real password.">
+  <meta name="theme-color" content="#05080F">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to hide a folder in Windows 11 (and really lock it)">
+  <meta property="og:description" content="The Hidden box, attrib +h +s and what the system attribute adds, why hiding isn't protection, what keeps other users out, and how to put a password on it.">
+  <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://clavisenc.com/blog-hide-folder-windows-11.html">
+  <meta property="og:url" content="https://clavisenc.com/blog-hide-folder-windows-11.html">
+  <meta property="og:site_name" content="Clavis Encrypt">
+  <meta property="article:published_time" content="2026-11-15">
+  <meta property="article:modified_time" content="2026-11-15">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link href="assets/css/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=94437f3e83">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-hide-folder-windows-11.html#article","headline":"How to hide a folder in Windows 11 (and really lock it)","description":"Hide a folder in Windows 11 with Properties or attrib +h +s, why anyone can still find it, what other accounts can't open, and how to add a real password.","datePublished":"2026-11-15","dateModified":"2026-11-15","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-hide-folder-windows-11.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/attrib","https://learn.microsoft.com/en-us/windows/win32/fileio/file-attribute-constants","https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/ne-shobjidl_core-_shcontf","https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-gppref/a6ca3a17-1971-4b22-bf3b-e1a5d5c50fca","https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-2000-server/cc961717(v=technet.10)","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/dir","https://support.microsoft.com/en-us/windows/security/identity-signin/manage-user-accounts-in-windows","https://learn.microsoft.com/en-us/windows/security/identity-protection/access-control/access-control","https://learn.microsoft.com/en-us/windows/win32/fileio/filesystem-functionality-comparison","https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/take-ownership-of-files-or-other-objects","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/takeown","https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc759177(v=ws.10)","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/","https://support.microsoft.com/en-us/onedrive/protect-your-onedrive-files-in-personal-vault","https://support.microsoft.com/en-us/windows/security/encryption/how-to-encrypt-a-file-or-folder","https://support.microsoft.com/en-us/windows/security/encryption/device-encryption-in-windows","https://www.7-zip.org/","https://7-zip.opensource.jp/chm/fm/plugins/7-zip/add.htm","https://clavisenc.com/format.html"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"How to hide a folder in Windows 11","item":"https://clavisenc.com/blog-hide-folder-windows-11.html"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I hide a folder in Windows 11?","acceptedAnswer":{"@type":"Answer","text":"Right-click the folder, select Properties, tick Hidden and select OK. If it's still visible, clear View, Show, Hidden items in File Explorer."}},{"@type":"Question","name":"How do I hide a folder in Windows 11 with a password?","acceptedAnswer":{"@type":"Answer","text":"Windows can't put a password on a folder. Encrypt the files instead, with a 7-Zip 7z archive (tick Encrypt file names) or an app such as Clavis Encrypt, then hide the folder too if you like. On Pro, EFS encrypts a folder but unlocks with your Windows sign-in, not a password."}},{"@type":"Question","name":"How do I completely hide a folder in Windows 11?","acceptedAnswer":{"@type":"Answer","text":"In Command Prompt, run attrib +h +s with the folder's path in quotes. It then stays hidden even with Hidden items on, until someone unticks Hide protected operating system files. dir /a still lists it, so nothing is completely hidden. Encrypt anything private."}},{"@type":"Question","name":"How do I hide files from other users on Windows 11?","acceptedAnswer":{"@type":"Answer","text":"Give each person their own Windows account as a standard user, and keep your files in your own user folder, which other standard accounts can't open. Administrators still can, so encrypt what really matters."}},{"@type":"Question","name":"How do I make a file private in Windows 11?","acceptedAnswer":{"@type":"Answer","text":"Keep it in your own user folder under your own account. To keep it from administrators, anyone using your account or anyone who gets the drive, encrypt it with a password. The Hidden box works on files too, but only hides them."}},{"@type":"Question","name":"Can an administrator see my hidden files?","acceptedAnswer":{"@type":"Answer","text":"Yes. Administrators can show hidden items, open other users' files and take ownership of files that deny them access. Files encrypted with your password they can see and delete, but not read, as long as they never get your password. An administrator can install software on the PC, so don't rely on that if the person you're hiding files from is its administrator."}},{"@type":"Question","name":"How do I unhide a folder in Windows 11?","acceptedAnswer":{"@type":"Answer","text":"In File Explorer, select View, Show, Hidden items, then open the folder's Properties and clear Hidden. If you hid its contents too, choose Apply changes to this folder, subfolders and files again. If you used attrib +h +s, run attrib -h -s with the folder's path in Command Prompt."}}]}</script>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
+      </button>
+      <nav class="nav-links" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="help.html">Help</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="block">
+      <div class="wrap post">
+        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 15, 2026</p>
+        <h1>How to hide a folder in Windows 11 (and really lock it)</h1>
+
+        <p>You want a folder out of sight: tax papers, private photos, a gift list. Windows 11 can hide it in a few clicks, and one Command Prompt line hides it a little more. Here are both, what hiding can't do, how to keep files from other people on the same PC, and what to use when you want a password.</p>
+
+        <div class="callout"><b>Short answer:</b> Right-click the folder, select <b>Properties</b>, tick <b>Hidden</b> and select <b>OK</b>. It disappears from File Explorer until someone selects <b>View → Show → Hidden items</b>. In Command Prompt, <b>attrib +h +s</b> followed by the folder's path also marks it as a system item, so it stays out of sight even then, until someone unticks <b>Hide protected operating system files</b>. Neither is protection: anyone using your account can reveal it, <b>dir /a</b> lists it, and administrators can open every unencrypted file. Windows has no folder password; to keep a folder private, encrypt its files.</div>
+
+        <h2>Hide a folder with Properties (every edition)</h2>
+        <p>It works on Windows 11 and 10, every edition, and for single files too.</p>
+        <ol>
+          <li>In File Explorer, right-click the folder and select <strong>Properties</strong>.</li>
+          <li>On the <strong>General</strong> tab, next to <strong>Attributes</strong>, tick <strong>Hidden</strong>.</li>
+          <li>Select <strong>OK</strong>. In <strong>Confirm Attribute Changes</strong>, choose <strong>Apply changes to this folder only</strong> or <strong>Apply changes to this folder, subfolders and files</strong>, then select <strong>OK</strong>. The second hides every item inside as well.</li>
+          <li>If the folder is still visible, File Explorer is set to show hidden items. Select <strong>View → Show</strong> and clear <strong>Hidden items</strong>.</li>
+        </ol>
+        <p>To unhide it, turn <strong>Hidden items</strong> back on, open the folder's <strong>Properties</strong> and clear <strong>Hidden</strong>. If you hid its contents too, choose <strong>Apply changes to this folder, subfolders and files</strong> again. On Windows 10, the switch is under <strong>View → Options → Change folder and search options</strong>, on the <strong>View</strong> tab: <strong>Show hidden files, folders, and drives</strong>.</p>
+
+        <h2>Hide it more completely with attrib +h +s</h2>
+        <ol>
+          <li>Open Command Prompt: select Start, type <strong>cmd</strong> and select <strong>Command Prompt</strong>.</li>
+          <li>Type the command with your folder's full path in quotes, then press Enter:<br><code>attrib +h +s "C:\Users\YourName\Documents\Private"</code></li>
+          <li>Check it: <code>attrib "C:\Users\YourName\Documents\Private"</code> shows <strong>S</strong> and <strong>H</strong> before the path.</li>
+        </ol>
+        <p><strong>What the system attribute adds.</strong> File Explorer treats an item that is both hidden and system as a protected operating system file, so turning on Hidden items doesn't show it. It appears only when someone unticks <strong>Hide protected operating system files (Recommended)</strong> in Folder Options: in File Explorer on Windows 11, select <strong>See more (…) → Options</strong>, then the <strong>View</strong> tab.</p>
+        <p>To undo it, clear both at once: <code>attrib -h -s "C:\Users\YourName\Documents\Private"</code>. In our test, <code>attrib -s</code> on its own answered "Not resetting hidden file". Use attrib only on your own folders, never on Windows folders or the top of a drive.</p>
+
+        <h2>Why hiding isn't protection</h2>
+        <ul>
+          <li><strong>Two clicks reveal it.</strong> Anyone using your account can turn on Hidden items, and the protected-files box is one more tick.</li>
+          <li><strong>Command Prompt lists it.</strong> Microsoft's dir reference says that with <code>/a</code>, dir "displays the names of all files, including hidden and system files". In our test on Windows 11 Home, <code>dir /s /a</code> found a file inside a folder hidden with +h +s.</li>
+          <li><strong>The files open normally.</strong> Hiding locks and encrypts nothing; in the same test, a file inside opened without any prompt.</li>
+          <li><strong>Administrators can open everything.</strong> Microsoft: administrators "have complete control over the system" and can "access all files".</li>
+          <li><strong>Recent lists show it.</strong> Files you open from it can appear under Recent in File Explorer and in apps. Microsoft warns of this even for its own OneDrive Personal Vault.</li>
+          <li><strong>Unless device encryption or BitLocker is on, the drive can be read in another PC.</strong> Microsoft's BitLocker overview notes that data on a lost or stolen device can be reached "by transferring the device's hard drive to a different device".</li>
+        </ul>
+
+        <h2>Hide files from other users on the same PC</h2>
+        <p>If other people use the PC, separate Windows accounts do more than any hidden folder.</p>
+        <ol>
+          <li>Give each person their own account: <strong>Settings → Accounts → Other users</strong>, then <strong>Add account</strong>. Microsoft describes separate accounts as "keeping family members' data private and secure from each other".</li>
+          <li>Make the other accounts standard users, and keep administrators few, as Microsoft advises.</li>
+          <li>Keep private files in your own user folder (C:\Users\YourName, with your Desktop, Documents and Pictures). On our Windows 11 Home PC, its permissions list only that user, SYSTEM and the Administrators group, so other standard accounts can't open it.</li>
+        </ol>
+        <p>For a folder elsewhere, such as on a second drive, the <strong>Security</strong> tab in its Properties sets who can open it. That works on NTFS drives only: FAT32 and exFAT, common on USB sticks, have no permissions. What permissions can't stop:</p>
+        <ul>
+          <li><strong>An administrator.</strong> By default, administrators have the right to take ownership of files, and an owner can always change permissions, even when denied access. The <strong>takeown</strong> command does exactly this.</li>
+          <li><strong>Anyone signed in as you.</strong> Your account opens your files for whoever is using it.</li>
+          <li><strong>Someone with the drive.</strong> Microsoft's archived EFS overview: "Permissions on files and folders does not protect against unauthorized physical attacks."</li>
+        </ul>
+
+        <h2>How to hide a folder with a password</h2>
+        <p>No edition of Windows puts a password on a folder. Encrypt the files instead, and hide the folder too if you like:</p>
+        <ul>
+          <li><strong>EFS (Pro, Enterprise, Education):</strong> Properties → <strong>Advanced...</strong> → <strong>Encrypt contents to secure data</strong>. It never asks for a password; it unlocks with your Windows sign-in. Microsoft: "File encryption is not available in the Home edition of Windows" (<a href="blog-encrypt-contents-to-secure-data-greyed-out.html">why it's greyed out</a>).</li>
+          <li><strong>A 7-Zip archive:</strong> the free, open-source 7-Zip packs the folder into a 7z archive with a password and AES-256, and <strong>Encrypt file names</strong> hides the names. You extract it to use the files. It's a copy: once the archive opens with your password, delete the original folder (deleting is best effort: see <a href="blog-shred-files-windows-11-what-actually-works.html">what deleting really does on Windows 11</a>). Steps: <a href="blog-password-protect-zip-file-windows-11.html">password-protecting a zip or 7z</a>.</li>
+          <li><strong>A file-encryption app</strong> such as Clavis Encrypt (below), which encrypts each file where it is.</li>
+        </ul>
+        <p>Also turn on <strong>Settings → Privacy &amp; security → Device encryption</strong> if your PC offers it; unlike BitLocker, it's available on Windows Home. It protects the drive, not one folder. Make sure you know where its recovery key is (with a Microsoft account, it's saved to that account): see <a href="blog-find-bitlocker-recovery-key-windows-11.html">how to find your recovery key</a>.</p>
+
+        <h2>What each option does</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Option</th><th>Out of sight?</th><th>Contents encrypted?</th><th>Keeps out other standard accounts?</th><th>Password of its own?</th><th>Editions</th></tr></thead>
+            <tbody>
+              <tr><td>Hidden (Properties)</td><td>Until someone turns on Hidden items</td><td>No</td><td>No</td><td>No</td><td>All</td></tr>
+              <tr><td>attrib +h +s</td><td>Until someone unticks Hide protected operating system files</td><td>No</td><td>No</td><td>No</td><td>All</td></tr>
+              <tr><td>Separate accounts, files in your user folder</td><td>No</td><td>No</td><td>Yes (not administrators)</td><td>No: your Windows sign-in</td><td>All</td></tr>
+              <tr><td>EFS</td><td>No</td><td>Yes</td><td>Yes</td><td>No: your Windows sign-in</td><td>Pro, Enterprise, Education</td></tr>
+              <tr><td>7-Zip, 7z with Encrypt file names</td><td>The archive shows; the names inside don't</td><td>Yes, AES-256</td><td>Yes</td><td>Yes</td><td>All</td></tr>
+              <tr><td>Clavis Encrypt</td><td>The .enc files show, with random names</td><td>Yes, AES-256-GCM</td><td>Yes</td><td>Yes</td><td>Windows 10 and 11, Home included</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>What can go wrong</h2>
+        <ul>
+          <li><strong>You can't find the folder again.</strong> Turn on Hidden items; for +h +s, run <code>attrib -h -s</code> with the path.</li>
+          <li><strong>Hidden is taken for protected.</strong> Anyone who looks can find and open it.</li>
+          <li><strong>A forgotten password means lost files.</strong> Nobody can open a 7-Zip archive without its password. Clavis Encrypt gives you a recovery key; keep it off the PC.</li>
+          <li><strong>The unencrypted folder stays behind.</strong> 7-Zip encrypts a copy; delete the original once the archive opens.</li>
+          <li><strong>Copies stay readable.</strong> Backups and cloud copies aren't hidden or encrypted just because the original is. See <a href="blog-is-windows-backup-encrypted.html">whether Windows backups are encrypted</a>.</li>
+        </ul>
+
+        <h2>Where Clavis Encrypt fits</h2>
+        <p><a href="./">Clavis Encrypt</a> encrypts files on Windows 10 and 11 (64-bit, Home included, no administrator rights) and Linux. The free plan encrypts files, one or many at once, with AES-256-GCM and a key made from your password with Argon2id. Each becomes an .enc file with a random name, the real name stored inside, so file names don't give anything away (the folder still shows how many files there are, their sizes and dates). You get a recovery key. Encrypting a whole folder in one step is part of Pro ($19 once); decrypting folders is free. It doesn't encrypt whole drives, so keep device encryption on too. It's closed source and hasn't been independently audited; its <a href="format.html">file format is public</a>, with an open-source decryptor.</p>
+
+        <h2>Questions</h2>
+        <div class="faq">
+          <details><summary>How do I hide a folder in Windows 11?</summary><p>Right-click the folder, select Properties, tick Hidden and select OK. If it's still visible, clear View, Show, Hidden items in File Explorer.</p></details>
+          <details><summary>How do I hide a folder in Windows 11 with a password?</summary><p>Windows can't put a password on a folder. Encrypt the files instead, with a 7-Zip 7z archive (tick Encrypt file names) or an app such as Clavis Encrypt, then hide the folder too if you like. On Pro, EFS encrypts a folder but unlocks with your Windows sign-in, not a password.</p></details>
+          <details><summary>How do I completely hide a folder in Windows 11?</summary><p>In Command Prompt, run attrib +h +s with the folder's path in quotes. It then stays hidden even with Hidden items on, until someone unticks Hide protected operating system files. dir /a still lists it, so nothing is completely hidden. Encrypt anything private.</p></details>
+          <details><summary>How do I hide files from other users on Windows 11?</summary><p>Give each person their own Windows account as a standard user, and keep your files in your own user folder, which other standard accounts can't open. Administrators still can, so encrypt what really matters.</p></details>
+          <details><summary>How do I make a file private in Windows 11?</summary><p>Keep it in your own user folder under your own account. To keep it from administrators, anyone using your account or anyone who gets the drive, encrypt it with a password. The Hidden box works on files too, but only hides them.</p></details>
+          <details><summary>Can an administrator see my hidden files?</summary><p>Yes. Administrators can show hidden items, open other users' files and take ownership of files that deny them access. Files encrypted with your password they can see and delete, but not read, as long as they never get your password. An administrator can install software on the PC, so don't rely on that if the person you're hiding files from is its administrator.</p></details>
+          <details><summary>How do I unhide a folder in Windows 11?</summary><p>In File Explorer, select View, Show, Hidden items, then open the folder's Properties and clear Hidden. If you hid its contents too, choose Apply changes to this folder, subfolders and files again. If you used attrib +h +s, run attrib -h -s with the folder's path in Command Prompt.</p></details>
+        </div>
+
+        <h2>Sources</h2>
+        <ul class="sources">
+          <li><a href="https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows" rel="noopener">Microsoft Support: File Explorer in Windows (View → Show → Hidden items; See more → Options; Windows 10: Show hidden files, folders, and drives)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/attrib" rel="noopener">Microsoft Learn: attrib (Hidden and System attributes; clear them before changing other attributes)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/win32/fileio/file-attribute-constants" rel="noopener">Microsoft Learn: File attribute constants (a hidden item "is not included in an ordinary directory listing")</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/ne-shobjidl_core-_shcontf" rel="noopener">Microsoft Learn: SHCONTF (hidden items and hidden system items are listed separately)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-gppref/a6ca3a17-1971-4b22-bf3b-e1a5d5c50fca" rel="noopener">Microsoft Learn: [MS-GPPREF] GlobalFolderOptionsVista (ShowSuperHidden "Displays protected operating system files")</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-2000-server/cc961717(v=technet.10)" rel="noopener">Microsoft Learn (archived): Managing Files, Folders, and Search Methods (to view system files, clear Hide protected operating system files)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/dir" rel="noopener">Microsoft Learn: dir (/a lists hidden and system files)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/security/identity-signin/manage-user-accounts-in-windows" rel="noopener">Microsoft Support: Manage user accounts in Windows (separate accounts; administrators can access all files)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/identity-protection/access-control/access-control" rel="noopener">Microsoft Learn: Access control overview (Security tab; the owner can always change permissions)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/win32/fileio/filesystem-functionality-comparison" rel="noopener">Microsoft Learn: File system functionality comparison (access control lists on NTFS, not on exFAT or FAT32)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/take-ownership-of-files-or-other-objects" rel="noopener">Microsoft Learn: Take ownership of files or other objects (Administrators by default)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/takeown" rel="noopener">Microsoft Learn: takeown (an administrator recovers access to a denied file)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc759177(v=ws.10)" rel="noopener">Microsoft Learn (archived): Encrypting File System overview (permissions don't protect against physical attacks)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/" rel="noopener">Microsoft Learn: BitLocker overview (a drive moved to a different device)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/onedrive/protect-your-onedrive-files-in-personal-vault" rel="noopener">Microsoft Support: Protect your OneDrive files in Personal Vault (an opened file's name might appear in an app's Recent list)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/security/encryption/how-to-encrypt-a-file-or-folder" rel="noopener">Microsoft Support: How to encrypt a file or folder (not available in the Home edition)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/security/encryption/device-encryption-in-windows" rel="noopener">Microsoft Support: Device Encryption in Windows (available on Home; Settings path; recovery key attached to your Microsoft account)</a></li>
+          <li><a href="https://www.7-zip.org/" rel="noopener">7-Zip home page (free, open source, AES-256 in 7z)</a></li>
+          <li><a href="https://7-zip.opensource.jp/chm/fm/plugins/7-zip/add.htm" rel="noopener">7-Zip help: Add to Archive dialog (Encrypt file names; Delete files after compression is a separate option)</a></li>
+          <li><a href="https://clavisenc.com/format.html" rel="noopener">Clavis Encrypt: the public .enc file format and open-source decryptor</a></li>
+        </ul>
+        <p class="muted-note"><em>Last checked against Microsoft's documentation on November 15, 2026. The dialog labels, the attrib and dir results and the user-folder permissions are from our own test on a Windows 11 Home PC. Menu names can differ slightly between Windows versions.</em></p>
+
+        <p>Related: <a href="blog-keep-files-private-shared-family-pc.html">keeping files private on a shared family PC</a>, <a href="blog-encrypt-folder-on-windows.html">how to encrypt a folder on Windows</a>, <a href="blog-lock-folder-password-without-software.html">locking a folder with a password without software</a> and <a href="encrypt.html">encrypting a file in your browser</a>.</p>
+
+        <div class="post-cta">
+          <a class="btn btn-primary" href="download.html?ref=blog-hide-folder">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>
+            Encrypt files with their names hidden — free
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+          <p class="latin">clāvis — Latin, “key”</p>
+          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
+          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
+        </div>
+        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
+        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
+        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      </div>
+      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js?v=6b89413203" defer></script>
+</body>
+</html>

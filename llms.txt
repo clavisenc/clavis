@@ -127,6 +127,10 @@ Not for: storing passwords (it is not a password manager), macOS, Android or iPh
 
 ## Guides
 
+- [How to hide a folder in Windows 11 (and really lock it)](https://clavisenc.com/blog-hide-folder-windows-11.html): Hide a folder in Windows 11 with Properties or attrib +h +s, why anyone can still find it, what other accounts can't open, and how to add a real password.
+- [Can you lock a folder with a password without software?](https://clavisenc.com/blog-lock-folder-password-without-software.html): Windows has no folder password. What the .bat locker, EFS and zip really do, and the honest ways to lock files without installing anything, on Home too.
+- [Is Windows Backup encrypted? What each backup protects](https://clavisenc.com/blog-is-windows-backup-encrypted.html): Windows Backup syncs to OneDrive; File History and system images have no password. What a thief could read, and how to make an encrypted backup.
+- [How to batch password protect PDFs (one or many passwords)](https://clavisenc.com/blog-batch-password-protect-pdf-files.html): Password-protect many PDFs at once with the free qpdf and a PowerShell loop, or Acrobat Pro. One password for all, or a different one per file.
 - [How to encrypt a file using PowerShell (and what isn't built in)](https://clavisenc.com/blog-encrypt-file-powershell.html): PowerShell has no cmdlet that locks a file with a password. What cipher /e, Protect-CmsMessage, Export-Clixml, 7-Zip and clavis-cli can each do.
 - [7-Zip command line: password-protect files, encrypt names and extract](https://clavisenc.com/blog-7zip-command-line-password.html): 7z a -p -mhe=on encrypts files and names. AES-256 zips, quoting special characters, extracting, 7zz on Linux, and keeping passwords out of history.
 - [How to encrypt a file with OpenSSL on Windows (password or public key)](https://clavisenc.com/blog-openssl-encrypt-file-windows.html): Encrypt and decrypt a file with OpenSSL on Windows: openssl enc with -pbkdf2, safer password options, and public-key encryption with openssl cms.

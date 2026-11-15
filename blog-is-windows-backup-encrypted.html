@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Is Windows Backup encrypted? — Clavis Encrypt</title>
+  <meta name="description" content="Windows Backup syncs to OneDrive; File History and system images have no password. What a thief could read, and how to make an encrypted backup.">
+  <meta name="theme-color" content="#05080F">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Is Windows Backup encrypted? What each backup protects">
+  <meta property="og:description" content="What Microsoft says about Windows Backup, File History and system images, what someone holding your backup could read, and three ways to encrypt one.">
+  <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://clavisenc.com/blog-is-windows-backup-encrypted.html">
+  <meta property="og:url" content="https://clavisenc.com/blog-is-windows-backup-encrypted.html">
+  <meta property="og:site_name" content="Clavis Encrypt">
+  <meta property="article:published_time" content="2026-11-15">
+  <meta property="article:modified_time" content="2026-11-15">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link href="assets/css/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=94437f3e83">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-is-windows-backup-encrypted.html#article","headline":"Is Windows Backup encrypted? What each backup protects","description":"Windows Backup syncs to OneDrive; File History and system images have no password. What a thief could read, and how to make an encrypted backup.","datePublished":"2026-11-15","dateModified":"2026-11-15","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-is-windows-backup-encrypted.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://support.microsoft.com/en-us/windows/back-up-and-restore-with-windows-backup-87a81f8a-78fa-456e-b521-ac0560e32338","https://learn.microsoft.com/en-us/sharepoint/redirect-known-folders","https://support.microsoft.com/en-us/windows/experience/backup-recovery/backup-and-restore-with-file-history","https://support.microsoft.com/en-us/windows/experience/backup-recovery/backup-restore-and-recovery-in-windows","https://support.microsoft.com/en-US/accessibility/windows/use-a-screen-reader-to-back-up-and-restore-data-on-windows","https://learn.microsoft.com/en-us/windows/whats-new/deprecated-features","https://learn.microsoft.com/en-us/archive/blogs/b8/protecting-user-files-with-file-history","https://support.microsoft.com/en-us/windows/security/encryption/bitlocker-drive-encryption","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/faq","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/","https://support.microsoft.com/en-us/windows/security/encryption/back-up-your-bitlocker-recovery-key","https://support.microsoft.com/en-us/onedrive/how-onedrive-safeguards-your-data-in-the-cloud","https://support.microsoft.com/en-us/office/protect-your-onedrive-files-in-personal-vault-6540ef37-e9bf-4121-a773-56f98dce78c4","https://www.7-zip.org/","https://7-zip.opensource.jp/chm/cmdline/switches/password.htm","https://github.com/ip7z/7zip/blob/main/CPP/7zip/UI/Console/Main.cpp","https://github.com/ip7z/7zip/blob/main/CPP/7zip/UI/Console/UpdateCallbackConsole.cpp","https://veracrypt.io/en/Home.html","https://veracrypt.io/en/Using%20VeraCrypt%20Without%20Administrator%20Privileges.html"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"Is Windows Backup encrypted?","item":"https://clavisenc.com/blog-is-windows-backup-encrypted.html"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Windows Backup encrypted?","acceptedAnswer":{"@type":"Answer","text":"Not with a password of your own. The Windows Backup app syncs your folders to OneDrive, where Microsoft encrypts each file at rest with its own AES256 key, but anyone who signs in to your Microsoft account can open them."}},{"@type":"Question","name":"Is File History encrypted?","acceptedAnswer":{"@type":"Answer","text":"File History has no password or encryption setting. Its copies are encrypted only if the drive it saves to is, for example with BitLocker To Go on Windows Pro, Enterprise or Education."}},{"@type":"Question","name":"Is there an encryption key for Windows Backup?","acceptedAnswer":{"@type":"Answer","text":"No. Windows Backup, File History and Backup and Restore (Windows 7) don't give you a key of their own. If your backup drive uses BitLocker To Go, its password and BitLocker recovery key unlock it, so save the recovery key to your Microsoft account, a file or a printout, never on the backup drive."}},{"@type":"Question","name":"Does BitLocker or device encryption protect my backup drive?","acceptedAnswer":{"@type":"Answer","text":"Not unless the backup drive itself is encrypted. BitLocker on your PC's drive decrypts data as it's read, so backups are written in readable form, and device encryption doesn't cover external or USB drives. Turn on BitLocker To Go for the backup drive (Pro, Enterprise or Education), or use an encrypted archive or container."}},{"@type":"Question","name":"Is a system image backup encrypted?","acceptedAnswer":{"@type":"Answer","text":"The Backup and Restore (Windows 7) tool, deprecated since Windows 10 version 1709, has no password option. Treat the image as readable by anyone with the drive unless that drive is encrypted."}},{"@type":"Question","name":"How do I encrypt my backup on Windows 11 Home?","acceptedAnswer":{"@type":"Answer","text":"Home can't turn on BitLocker To Go. Use an encrypted 7-Zip archive, a VeraCrypt container, or encrypt the files first with a tool such as Clavis Encrypt."}}]}</script>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
+      </button>
+      <nav class="nav-links" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="help.html">Help</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="block">
+      <div class="wrap post">
+        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 15, 2026</p>
+        <h1>Is Windows Backup encrypted? What each backup protects</h1>
+
+        <p>A backup saves you when a drive dies or a laptop is stolen. It is also a second copy of everything private, often on a USB drive in a drawer. Whether it's encrypted depends on which Windows backup made it. Here is what Microsoft says about each, what someone holding your backup could read, and three ways to make an encrypted backup.</p>
+
+        <div class="callout"><b>Short answer:</b> not with a password of your own. The Windows Backup app syncs your folders to OneDrive, where Microsoft encrypts each file at rest, but anyone who signs in to your Microsoft account sees them. File History and the older Backup and Restore (Windows 7) system image have no password or encryption setting, so the copy is only as safe as the drive it's on, and device encryption doesn't cover external drives. Encrypt the backup drive with BitLocker To Go (Windows Pro, Enterprise or Education), use an encrypted 7-Zip archive or VeraCrypt container, or encrypt the files first. Keep the password or recovery key away from the backup.</div>
+
+        <h2>What each Windows backup does, and where it goes</h2>
+        <ul>
+          <li><strong>Windows Backup (the app).</strong> Select Start, type <em>backup</em> and select <strong>Windows Backup</strong>. It syncs the Desktop, Documents, Pictures, Videos and Music folders you switch on to OneDrive, and stores settings, apps and "Accounts, Wi-Fi network and passwords" with your Microsoft account. It needs a personal Microsoft account; a free one includes 5 GB of OneDrive storage.</li>
+          <li><strong>File History.</strong> In Control Panel, under <strong>System and Security</strong>, select <strong>Save backup copies of your files with File History</strong>. It copies your libraries to an external drive or network location and keeps earlier versions. Microsoft's steps include no password or encryption option.</li>
+          <li><strong>Backup and Restore (Windows 7).</strong> The legacy Control Panel tool that saves a system image, a copy of the whole drive, to a hard disk, DVDs or a network location. Microsoft deprecated it in Windows 10 version 1709 and suggests a third-party product for full-disk backups. No password option either.</li>
+        </ul>
+
+        <h2>What someone with your backup can read</h2>
+        <p>Encryption on your PC doesn't travel with the copy. Microsoft's BitLocker FAQ says encrypted sectors are decrypted "as they're requested from system read operations", so a backup tool reads your files in readable form and writes them out that way unless the backup drive is encrypted too. Device encryption "doesn't encrypt external/USB drives".</p>
+        <p>So treat an unencrypted backup drive like an open folder: whoever has it can open your documents and photos on another PC, including earlier versions and files you've since deleted. A system image holds the whole drive.</p>
+        <p>In OneDrive, Microsoft says each file "is encrypted at rest with a unique AES256 key" and travels over TLS. That protects it in Microsoft's data centers, not from someone who gets into your account. Microsoft's extra layer is <strong>Personal Vault</strong>, a OneDrive folder that asks for a second check, such as a fingerprint, PIN or code, and locks after 20 minutes of inactivity on the web. Without a Microsoft 365 Personal or Family subscription it holds only three files.</p>
+
+        <h2>Three ways to make an encrypted backup</h2>
+
+        <h3>1. Encrypt the backup drive with BitLocker To Go (Pro, Enterprise, Education)</h3>
+        <p>Microsoft says BitLocker "isn't available on Windows Home edition". On a Pro, Enterprise or Education PC:</p>
+        <ol>
+          <li>Sign in with an administrator account and connect the backup drive.</li>
+          <li>Select Start, type <em>BitLocker</em> and select <strong>Manage BitLocker</strong>.</li>
+          <li>Find the drive. USB sticks are under <strong>Removable data drives - BitLocker To Go</strong>; an external hard disk may be under <strong>Fixed data drives</strong>. Select <strong>Turn on BitLocker</strong>.</li>
+          <li>Choose to unlock the drive with a password.</li>
+          <li>Back up the recovery key to your Microsoft account, a file or a printout, never to the backup drive.</li>
+          <li>Let encryption finish, then point File History (or your copy job) at the drive.</li>
+        </ol>
+        <p>From then on, Microsoft says, blocks "are encrypted before the system writes them to the physical disk", and the drive locks when you unplug it. Microsoft's 2012 File History design post says it supports BitLocker "on both source and destination drives". The drive opens with its password on other computers, but Microsoft doesn't document unlocking it on Windows Home, so test first. File History can't save to the drive while it's locked; Microsoft's FAQ says you can turn on automatic unlocking for it in <strong>Manage BitLocker</strong> (for a fixed data drive, only if the Windows drive also uses BitLocker). More: <a href="blog-encrypt-usb-drive-windows-11-home.html">encrypting a USB drive without BitLocker</a>.</p>
+
+        <h3>2. An encrypted 7-Zip archive or VeraCrypt container (any edition)</h3>
+        <p>The free 7-Zip offers "strong AES-256 encryption in 7z and ZIP formats". This packs your Documents folder into one encrypted archive on the backup drive:</p>
+        <figure class="term" aria-label="7-Zip backup in PowerShell"><div class="term-bar"><i></i><i></i><i></i><span>PowerShell</span></div><pre><code>&amp; "C:\Program Files\7-Zip\7z.exe" a -p -mhe=on "E:\Backup\Documents-2026-11-15.7z" "$([Environment]::GetFolderPath('MyDocuments'))"
+&amp; "C:\Program Files\7-Zip\7z.exe" t "E:\Backup\Documents-2026-11-15.7z"</code></pre></figure>
+        <p><code>-p</code> with nothing after it makes 7-Zip ask for the password, so it stays out of your command history. 7-Zip asks only once and doesn't ask you to confirm it, so the <code>t</code> step is your check: it asks again, and if it reports a wrong password, delete the archive and run the command again. <code>-mhe=on</code> encrypts the file names too. The command asks Windows where your Documents folder is: if Windows Backup is on, Documents lives inside your OneDrive folder. Each archive is a snapshot, not a running history.</p>
+        <p>VeraCrypt, free and open source, "creates a virtual encrypted disk within a file and mounts it as a real disk". Put the container on the backup drive, mount it and copy into it. Installing VeraCrypt needs administrator rights.</p>
+
+        <h3>3. Encrypt the files first, so every backup is encrypted</h3>
+        <p>If the files are encrypted, every backup copy is too. <a href="./">Clavis Encrypt</a> does this for the files you choose, on Windows 10 and 11 (64-bit) and Linux. Encrypting and decrypting files is free: each becomes a <code>.enc</code> file sealed with AES-256-GCM, with a random name and the real name stored inside. Clavis Premium ($29 once) adds:</p>
+        <ul>
+          <li><strong>Encrypt to cloud folder</strong>: encrypted copies go into your OneDrive, Google Drive or Dropbox folder; originals stay put.</li>
+          <li><strong>One-file vault backups</strong> (<code>.clavisbackup</code>) with your recovery key, Clavis ID, contacts and secure notes, opened only with the vault's password. Your <code>.enc</code> files aren't inside, so copy them separately. Restoring is free (<a href="help-backup-restore.html">how</a>).</li>
+          <li><strong>clavis-cli</strong>, the command line, for scheduled encrypted copies:</li>
+        </ul>
+        <figure class="term" aria-label="clavis-cli backup"><div class="term-bar"><i></i><i></i><i></i><span>PowerShell</span></div><pre><code>clavis-cli encrypt --keep --out "E:\Backup\Encrypted" "$([Environment]::GetFolderPath('MyDocuments'))\Reports"
+clavis-cli verify "E:\Backup\Encrypted"</code></pre></figure>
+        <p><code>--keep</code> keeps your originals and <code>--out</code> writes the encrypted copies to the backup drive. It asks for your password without showing it; in Task Scheduler, pipe it in with <code>--password-stdin</code>. The command line comes with the download from clavisenc.com, not the Microsoft Store version (<a href="blog-encrypt-files-command-line-windows.html">more on clavis-cli</a>). Clavis encrypts files, not whole drives. It is closed source and hasn't been independently audited; its <a href="format.html">file format is public</a>, with an open-source decryptor.</p>
+        <p>Encrypt to cloud folder and <code>--keep</code> make encrypted copies and leave the originals readable. If Windows Backup or File History also covers that folder, those backups still hold readable copies, so encrypt the originals themselves or keep them out of those backups.</p>
+
+        <h2>Which backups are encrypted</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Backup</th><th>Where it goes</th><th>Encrypted with your own password?</th><th>Who can read a copy</th></tr></thead>
+            <tbody>
+              <tr><td>Windows Backup app</td><td>OneDrive and your Microsoft account</td><td>No. Microsoft encrypts OneDrive files at rest</td><td>Anyone signed in to your Microsoft account</td></tr>
+              <tr><td>File History</td><td>External drive or network location</td><td>No setting for it</td><td>Anyone with the drive, unless it's encrypted</td></tr>
+              <tr><td>Backup and Restore (Windows 7) system image</td><td>Hard disk, DVDs or network location</td><td>No setting for it</td><td>Anyone with the drive, unless it's encrypted</td></tr>
+              <tr><td>File History or a system image on a BitLocker To Go drive</td><td>That drive</td><td>Yes, the drive's password</td><td>Only with the password or recovery key</td></tr>
+              <tr><td>7-Zip 7z archive</td><td>Wherever you save it</td><td>Yes, AES-256</td><td>Only with the password</td></tr>
+              <tr><td>VeraCrypt container</td><td>Wherever you save it</td><td>Yes</td><td>Only with the password</td></tr>
+              <tr><td>Files encrypted with Clavis Encrypt</td><td>Every backup that copies them</td><td>Yes, before any backup runs</td><td>Only with your password or recovery key</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Keep the key away from the backup</h2>
+        <p>An encrypted backup is useless without its password or recovery key. Microsoft says BitLocker "is designed to make the encrypted drive unrecoverable without the required authentication"; 7-Zip and VeraCrypt have no password reset; and if you lose both your Clavis password and recovery key, nobody can recover your files. Keep the key somewhere you control that isn't the backup drive or the PC (Microsoft warns against keeping a recovery key with the computer), then test a restore. Lost a BitLocker key? See <a href="blog-find-bitlocker-recovery-key-windows-11.html">where your BitLocker recovery key is</a>.</p>
+
+        <h2>What can go wrong</h2>
+        <ul>
+          <li><strong>Old unencrypted backups.</strong> Backups already on other drives or DVDs stay readable. Encrypt or wipe them.</li>
+          <li><strong>Decrypted working copies.</strong> File History "continuously monitors your files and folders", so a file you decrypt to edit can be backed up while it's readable, and File History keeps that version. Encrypt it again when you're done, and remove that version from the backup.</li>
+          <li><strong>A lost password or key.</strong> No reset. Keep two copies of the key, in different places.</li>
+          <li><strong>Windows Home.</strong> No BitLocker To Go. Use option 2 or 3.</li>
+          <li><strong>Your Microsoft account.</strong> A OneDrive backup is only as safe as the account's password and sign-in checks.</li>
+        </ul>
+
+        <h2>Questions</h2>
+        <div class="faq">
+          <details><summary>Is Windows Backup encrypted?</summary><p>Not with a password of your own. The Windows Backup app syncs your folders to OneDrive, where Microsoft encrypts each file at rest with its own AES256 key, but anyone who signs in to your Microsoft account can open them.</p></details>
+          <details><summary>Is File History encrypted?</summary><p>File History has no password or encryption setting. Its copies are encrypted only if the drive it saves to is, for example with BitLocker To Go on Windows Pro, Enterprise or Education.</p></details>
+          <details><summary>Is there an encryption key for Windows Backup?</summary><p>No. Windows Backup, File History and Backup and Restore (Windows 7) don't give you a key of their own. If your backup drive uses BitLocker To Go, its password and BitLocker recovery key unlock it, so save the recovery key to your Microsoft account, a file or a printout, never on the backup drive.</p></details>
+          <details><summary>Does BitLocker or device encryption protect my backup drive?</summary><p>Not unless the backup drive itself is encrypted. BitLocker on your PC's drive decrypts data as it's read, so backups are written in readable form, and device encryption doesn't cover external or USB drives. Turn on BitLocker To Go for the backup drive (Pro, Enterprise or Education), or use an encrypted archive or container.</p></details>
+          <details><summary>Is a system image backup encrypted?</summary><p>The Backup and Restore (Windows 7) tool, deprecated since Windows 10 version 1709, has no password option. Treat the image as readable by anyone with the drive unless that drive is encrypted.</p></details>
+          <details><summary>How do I encrypt my backup on Windows 11 Home?</summary><p>Home can't turn on BitLocker To Go. Use an encrypted 7-Zip archive, a VeraCrypt container, or encrypt the files first with a tool such as Clavis Encrypt.</p></details>
+        </div>
+
+        <h2>Sources</h2>
+        <ul class="sources">
+          <li><a href="https://support.microsoft.com/en-us/windows/back-up-and-restore-with-windows-backup-87a81f8a-78fa-456e-b521-ac0560e32338" rel="noopener">Microsoft Support: Back up and restore with Windows Backup (folders synced to OneDrive; settings stored with your Microsoft account; personal accounts only; 5 GB free)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/sharepoint/redirect-known-folders" rel="noopener">Microsoft Learn: Redirect and move Windows known folders to OneDrive (Documents and other known folders moved, or redirected, to OneDrive)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/experience/backup-recovery/backup-and-restore-with-file-history" rel="noopener">Microsoft Support: Backup and restore with File History (libraries; external drive or network location; restoring deleted files)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/experience/backup-recovery/backup-restore-and-recovery-in-windows" rel="noopener">Microsoft Support: Backup, restore, and recovery in Windows</a></li>
+          <li><a href="https://support.microsoft.com/en-US/accessibility/windows/use-a-screen-reader-to-back-up-and-restore-data-on-windows" rel="noopener">Microsoft Support: Use a screen reader to back up and restore data on Windows (system image destinations)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/whats-new/deprecated-features" rel="noopener">Microsoft Learn: Deprecated features in the Windows client (System Image Backup, also known as Backup and Restore (Windows 7), version 1709)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/archive/blogs/b8/protecting-user-files-with-file-history" rel="noopener">Microsoft Learn (archived Building Windows 8 blog, 2012): Protecting user files with File History (supports BitLocker on source and destination drives)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/security/encryption/bitlocker-drive-encryption" rel="noopener">Microsoft Support: BitLocker Drive Encryption (Pro, Enterprise or Education; not on Home; Manage BitLocker; Removable data drives - BitLocker To Go)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/faq" rel="noopener">Microsoft Learn: BitLocker FAQ (decrypted as read; encrypted before written; removable drive keys; automatic lock; automatic unlocking; unrecoverable without authentication)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/" rel="noopener">Microsoft Learn: BitLocker overview (device encryption doesn't encrypt external/USB drives)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/security/encryption/back-up-your-bitlocker-recovery-key" rel="noopener">Microsoft Support: Back up your BitLocker recovery key (don't keep it with the computer)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/onedrive/how-onedrive-safeguards-your-data-in-the-cloud" rel="noopener">Microsoft Support: How OneDrive safeguards your data in the cloud (per-file AES256 keys, TLS)</a></li>
+          <li><a href="https://support.microsoft.com/en-us/office/protect-your-onedrive-files-in-personal-vault-6540ef37-e9bf-4121-a773-56f98dce78c4" rel="noopener">Microsoft Support: Protect your OneDrive files in Personal Vault (identity check, 20-minute lock, three files without a subscription)</a></li>
+          <li><a href="https://www.7-zip.org/" rel="noopener">7-Zip home page (AES-256 encryption in 7z and ZIP formats)</a></li>
+          <li><a href="https://7-zip.opensource.jp/chm/cmdline/switches/password.htm" rel="noopener">7-Zip help: -p switch and -mhe (encrypted file names); online copy of the help that ships with 7-Zip</a></li>
+          <li><a href="https://github.com/ip7z/7zip/blob/main/CPP/7zip/UI/Console/Main.cpp" rel="noopener">7-Zip source: Main.cpp (an empty -p makes 7-Zip ask for the password when adding files)</a></li>
+          <li><a href="https://github.com/ip7z/7zip/blob/main/CPP/7zip/UI/Console/UpdateCallbackConsole.cpp" rel="noopener">7-Zip source: UpdateCallbackConsole.cpp (the password is asked for once, without a confirmation)</a></li>
+          <li><a href="https://veracrypt.io/en/Home.html" rel="noopener">VeraCrypt (free, open source; encrypted disk within a file)</a></li>
+          <li><a href="https://veracrypt.io/en/Using%20VeraCrypt%20Without%20Administrator%20Privileges.html" rel="noopener">VeraCrypt documentation: Using VeraCrypt without administrator privileges</a></li>
+        </ul>
+        <p class="muted-note"><em>Last checked against Microsoft's, 7-Zip's and VeraCrypt's documentation on November 15, 2026.</em></p>
+
+        <p>Related: <a href="blog-encrypt-before-onedrive-google-drive-dropbox.html">encrypting files before OneDrive, Google Drive or Dropbox</a>, <a href="blog-batch-password-protect-pdf-files.html">batch password-protecting PDF files</a> and <a href="blog-lock-folder-password-without-software.html">locking a folder with a password without software</a>.</p>
+
+        <div class="post-cta">
+          <a class="btn btn-primary" href="pricing.html?ref=blog-backup-encrypted#premium">Get Clavis Premium — $29 once</a>
+          <a class="btn btn-ghost" href="download.html?ref=blog-backup-encrypted#dl-btn">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>
+            Try the free installer first
+          </a>
+          <p class="cta-note">One-time payment, tax included, no subscription. The command line comes with the installer from clavisenc.com, not the Microsoft Store version, so start with the free installer.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
+          <p class="latin">clāvis — Latin, “key”</p>
+          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
+          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
+        </div>
+        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
+        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
+        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      </div>
+      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js?v=6b89413203" defer></script>
+</body>
+</html>
