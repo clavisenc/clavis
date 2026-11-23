@@ -1,326 +1,1683 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Clavis Encrypt — free, local file encryption for Windows and Linux</title>
-  <meta name="description" content="Clavis Encrypt locks your files and folders with a password on your own Windows or Linux PC, using AES-256-GCM. No account, no cloud — only you hold the key. Free, with one-time Pro and Premium.">
-  <meta name="theme-color" content="#05080F">
-  <meta property="og:title" content="Clavis — Lock what matters. Keep the key.">
-  <meta property="og:description" content="Private, local file encryption for Windows and Linux. No account, no cloud.">
-  <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://clavisenc.com/">
-  <meta property="og:url" content="https://clavisenc.com/">
-  <meta property="og:site_name" content="Clavis Encrypt">
-  <meta property="og:type" content="website">
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link href="assets/css/fonts.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=94437f3e83">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://clavisenc.com/#website","url":"https://clavisenc.com/","name":"Clavis Encrypt","alternateName":["Clavis","Clavis Encrypt"],"description":"Clavis Encrypt is a file-encryption app for Windows 10 and 11 and Linux. It encrypts files on your own PC with AES-256-GCM, deriving keys from your password with Argon2id. No account, no cloud and nothing uploaded: only you hold the key. Free to use; Pro ($19) and Premium ($29) are one-time purchases.","inLanguage":"en","publisher":{"@id":"https://clavisenc.com/#author"}},{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html","email":"hello@clavisenc.com","logo":{"@type":"ImageObject","url":"https://clavisenc.com/assets/img/icon-512.png","width":512,"height":512},"sameAs":["https://apps.microsoft.com/detail/9PCWJ9HG0TNN","https://github.com/clavisenc"]},{"@type":"SoftwareApplication","@id":"https://clavisenc.com/#software","name":"Clavis Encrypt","alternateName":["Clavis","Clavis Encrypt","Clavis file encryption for Windows"],"description":"Clavis Encrypt is a file-encryption app for Windows 10 and 11 and Linux. It encrypts files on your own PC with AES-256-GCM, deriving keys from your password with Argon2id. No account, no cloud and nothing uploaded: only you hold the key. Free to use; Pro ($19) and Premium ($29) are one-time purchases.","url":"https://clavisenc.com/","applicationCategory":"SecurityApplication","applicationSubCategory":"File encryption","operatingSystem":"Windows 10, Windows 11, Linux (64-bit)","softwareVersion":"3.16.1","dateModified":"2026-10-28","downloadUrl":"https://github.com/clavisenc/FileEncryptionApp-updates/releases/latest/download/Clavis-Setup.exe","installUrl":"https://clavisenc.com/download.html","fileSize":"43 MB","image":"https://clavisenc.com/assets/img/icon-512.png","screenshot":"https://clavisenc.com/assets/img/app-light.png","featureList":["AES-256-GCM authenticated encryption","Argon2id password-based key derivation","Streaming encryption of large files in 64 KiB authenticated chunks","Integrity verification on every decrypt","Post-quantum recovery key (X25519 + ML-KEM-768)","Encrypted file names","Best-effort secure delete of originals","Shred files and folders (best effort on SSDs and flash)","Clavis on a USB stick: run from a stick on other Windows PCs (Pro)","Team folders: one encrypted folder shared in OneDrive, Google Drive or Dropbox, each person with their own key (Premium to create, free to join)","Auto-lock on system sleep, Windows lock and inactivity","File Explorer right-click menu (direct download; the Microsoft Store version has no right-click menu)","Activity history","Ed25519-signed in-app updates","Installer or portable ZIP; per-user install without administrator rights; Linux .deb","English, French, German, Tamil and Hindi","Pro: whole-folder encryption, find sensitive files (ID and bank documents) and encrypt them in one go, open encrypted files without a decrypted copy, browse encrypted folders by real names, watch folders, secure notes, multiple vaults, key-file two-factor, Clavis on a USB stick","Premium: encrypt into OneDrive, Google Drive or Dropbox folders, public-key file sharing with signed files, one-file vault backups, previous versions, command-line tool (clavis-cli)"],"isAccessibleForFree":true,"offers":[{"@type":"Offer","name":"Clavis Free","description":"Free forever: encrypt, decrypt and verify files, recovery key, Shred.","price":"0","priceCurrency":"USD","url":"https://clavisenc.com/pricing.html","availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Clavis Pro (lifetime licence)","description":"One-time purchase, no subscription; future updates included.","price":"19","priceCurrency":"USD","url":"https://clavisenc.com/pricing.html","availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Clavis Premium (lifetime licence)","description":"One-time purchase, no subscription; everything in Pro plus cloud folders, sharing, team folders and the command line.","price":"29","priceCurrency":"USD","url":"https://clavisenc.com/pricing.html","availability":"https://schema.org/InStock"}],"author":{"@id":"https://clavisenc.com/#author"},"publisher":{"@id":"https://clavisenc.com/#author"},"sameAs":["https://apps.microsoft.com/detail/9PCWJ9HG0TNN"]}]}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clavis Encrypt: free file encryption for Windows 11 Home &amp; Linux</title>
+<meta name="description" content="Lock the files you choose with a password only you know, on your own PC. Works on Windows 11 Home without BitLocker, and on Linux. Free, no account.">
+<meta name="theme-color" content="#F6F1E9">
+<meta property="og:title" content="Clavis Encrypt: encrypt files on Windows 11 Home, free">
+<meta property="og:description" content="Lock the files you choose with a password only you know, on your own Windows or Linux PC. No account, no cloud, works offline.">
+<meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://clavisenc.com/">
+<meta property="og:url" content="https://clavisenc.com/">
+<meta property="og:site_name" content="Clavis Encrypt">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<script>(function (d) { d.classList.add("js"); if (/Windows NT/.test(navigator.userAgent)) d.classList.add("win");
+  /* a visit that lands on an anchor or restores a scroll position (reload, back, forward) lays out every section at once, so it lands right */
+  var n = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+  if (location.hash.length > 1 || (n && n.type !== "navigate")) d.classList.add("cv-all");
+  /* site.js adds the launch-offer bar later: reserve its height now, so the page doesn't shift down after the first paint */
+  try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
+<!-- The leaf-shadow overlay covers much of the first screen but is a CSS background, which the browser would find late: fetch it first.
+     The hero leaf photo needs no preload (its <img> is found at once). Only the roman serif is preloaded; the italic swaps in with a fitted fallback. -->
+<link rel="preload" as="image" href="assets/img/home/leaf-overlay-1200.webp" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://clavisenc.com/#website","url":"https://clavisenc.com/","name":"Clavis Encrypt","alternateName":["Clavis","Clavis Encrypt"],"description":"Clavis Encrypt is a file-encryption app for Windows 10 and 11 and Linux. Works on Windows 11 Home without BitLocker. It encrypts files on your own PC with AES-256-GCM, deriving keys from your password with Argon2id. No account, no cloud and nothing uploaded: only you hold the key. Free to use; Pro ($19) and Premium ($29) are one-time purchases.","inLanguage":"en","publisher":{"@id":"https://clavisenc.com/#author"}},{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html","email":"hello@clavisenc.com","logo":{"@type":"ImageObject","url":"https://clavisenc.com/assets/img/icon-512.png","width":512,"height":512},"sameAs":["https://apps.microsoft.com/detail/9PCWJ9HG0TNN","https://github.com/clavisenc"]},{"@type":"SoftwareApplication","@id":"https://clavisenc.com/#software","name":"Clavis Encrypt","alternateName":["Clavis","Clavis Encrypt","Clavis file encryption for Windows"],"description":"Clavis Encrypt is a file-encryption app for Windows 10 and 11 and Linux. Works on Windows 11 Home without BitLocker. It encrypts files on your own PC with AES-256-GCM, deriving keys from your password with Argon2id. No account, no cloud and nothing uploaded: only you hold the key. Free to use; Pro ($19) and Premium ($29) are one-time purchases.","url":"https://clavisenc.com/","applicationCategory":"SecurityApplication","applicationSubCategory":"File encryption","operatingSystem":"Windows 10, Windows 11, Linux (64-bit)","softwareVersion":"3.16.1","dateModified":"2026-10-28","downloadUrl":"https://github.com/clavisenc/FileEncryptionApp-updates/releases/latest/download/Clavis-Setup.exe","installUrl":"https://clavisenc.com/download.html","fileSize":"43 MB","image":"https://clavisenc.com/assets/img/icon-512.png","screenshot":"https://clavisenc.com/assets/img/app-light.png","featureList":["AES-256-GCM authenticated encryption","Argon2id password-based key derivation","Streaming encryption of large files in 64 KiB authenticated chunks","Integrity verification on every decrypt","Post-quantum recovery key (X25519 + ML-KEM-768)","Encrypted file names","Best-effort secure delete of originals","Shred files and folders (best effort on SSDs and flash)","Clavis on a USB stick: run from a stick on other Windows PCs (Pro)","Team folders: one encrypted folder shared in OneDrive, Google Drive, Dropbox or a network drive, each person with their own key (Premium to create, free to join)","Auto-lock on system sleep, Windows lock and inactivity","File Explorer right-click menu (direct download; the Microsoft Store version has no right-click menu)","Activity history","Ed25519-signed in-app updates","Installer or portable ZIP; per-user install without administrator rights; Linux .deb","English, French, German, Tamil and Hindi","Pro: whole-folder encryption, find sensitive files (ID and bank documents) and encrypt them in one go, open encrypted files without leaving a decrypted copy, browse encrypted folders by real names, watch folders, secure notes, multiple vaults, key-file two-factor, Clavis on a USB stick","Premium: encrypt into OneDrive, Google Drive or Dropbox folders, public-key file sharing with signed files, one-file vault backups, previous versions, command-line tool (clavis-cli)"],"isAccessibleForFree":true,"offers":[{"@type":"Offer","name":"Clavis Free","description":"Free forever: encrypt, decrypt and verify files, send files with a password, recovery key, Shred.","price":"0","priceCurrency":"USD","url":"https://clavisenc.com/pricing.html","availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Clavis Pro (lifetime licence)","description":"One-time purchase, no subscription; future updates included.","price":"19","priceCurrency":"USD","url":"https://clavisenc.com/pricing.html","availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Clavis Premium (lifetime licence)","description":"One-time purchase, no subscription; everything in Pro plus cloud folders, sharing, team folders and the command line.","price":"29","priceCurrency":"USD","url":"https://clavisenc.com/pricing.html","availability":"https://schema.org/InStock"}],"author":{"@id":"https://clavisenc.com/#author"},"publisher":{"@id":"https://clavisenc.com/#author"},"sameAs":["https://apps.microsoft.com/detail/9PCWJ9HG0TNN"]}]}</script>
+<style>
+/* ==========================================================================
+   Clavis Encrypt: one page from three directions.
+   Colour, type and voice: Dusk. Structure and chapters: Ivory. Light, paper and leaves: Sunlit,
+   re-graded into the Dusk palette. All fonts are self-hosted (assets/fonts/).
+   Type: Newsreader (headlines and serif text; variable opsz 14-72 + wght, so captions get the text cut and the hero the
+   display cut), Hanken Grotesk (body), IBM Plex Mono (numbers, tokens, cipher). All SIL Open Font License 1.1: assets/fonts/OFL.txt.
+   ========================================================================== */
+/* Newsreader files are cut down from the Google Fonts latin subset: axes limited to what this page uses
+   (fonttools varLib.instancer wght=360:560 opsz=14:72) and proportional figures frozen in as the default
+   (pyftfeatfreeze -f pnum), so "Windows 11" never sets wide tabular ones; no per-selector font-variant-numeric needed.
+   Glyphs are then cut down to Basic Latin plus common punctuation (fontTools subset), which leaves the metrics unchanged.
+   Newsreader's own line box is short (ascent .735, descent .265), which sits text high in the line-heights and
+   icon rows tuned on this page; these overrides give it a cap-centred box (like Hanken's) in Chromium and Firefox.
+   Safari (to iOS 26) ignores ascent/descent/line-gap-override, so there serif text sits about 0.1em high next to icons:
+   cosmetic only. Safari does apply size-adjust, so the fallback still fits. */
+@font-face { font-family: "Newsreader"; font-style: normal; font-weight: 360 560; font-display: swap; src: url(assets/fonts/newsreader-roman-latin.woff2) format("woff2");
+  ascent-override: 96%; descent-override: 25%; line-gap-override: 0%; }
+@font-face { font-family: "Newsreader"; font-style: italic; font-weight: 360 560; font-display: swap; src: url(assets/fonts/newsreader-italic-latin.woff2) format("woff2");
+  ascent-override: 96%; descent-override: 25%; line-gap-override: 0%; }
+/* Georgia scaled to Newsreader's width and line box (overrides = 96% and 25% divided by size-adjust), so the swap on a
+   slow connection does not rewrap headings. Georgia Italic is ~14% wider than Newsreader Italic, so it gets its own face
+   (without it, italics fall back to slanted Georgia roman and "Keep the key." rewraps on phones). */
+@font-face { font-family: "Newsreader Fallback"; font-style: normal; src: local("Georgia"); size-adjust: 94%; ascent-override: 102.1%; descent-override: 26.6%; line-gap-override: 0%; }
+@font-face { font-family: "Newsreader Fallback"; font-style: italic; src: local("Georgia Italic"), local("Georgia-Italic"); size-adjust: 87.5%; ascent-override: 109.7%; descent-override: 28.6%; line-gap-override: 0%; }
+@font-face { font-family: "Hanken Grotesk"; font-weight: 100 900; font-display: swap; src: url(assets/fonts/hanken-grotesk-normal-latin.woff2) format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url(assets/fonts/ibm-plex-mono-400-latin.woff2) format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url(assets/fonts/ibm-plex-mono-500-latin.woff2) format("woff2"); }
+
+:root {
+  --paper: #F6F1E9;
+  --card: #FFFFFF;
+  --ink-rgb: 26, 30, 44;
+  --ink: rgba(var(--ink-rgb), .92);
+  --ink-2: rgba(var(--ink-rgb), .76);
+  --ink-3: rgba(var(--ink-rgb), .66);
+  --ink-4: rgba(var(--ink-rgb), .5);
+  --hair: rgba(var(--ink-rgb), .09);
+  --edge: rgba(var(--ink-rgb), .16);
+
+  --dusk: #232F4B;  --dusk-hi: #2D3B5C;
+  --peach: #EFBC9E; --peach-50: #FBEADF; --peach-ink: #6A3D27;
+  --rose: #E5B3B9;  --rose-50: #F8E7E7;  --rose-ink: #7A3F49;
+  --lav: #BCAFE0;   --lav-50: #EEEAF8;   --lav-ink: #4B4272;
+  --dusty: #9FB0CF; --dusty-50: #E7ECF5; --dusty-ink: #3E4C6B;
+  --sage-ink: #4E6146;
+  --glow: #F6DACA;
+
+  --serif: "Newsreader", "Newsreader Fallback", "Iowan Old Style", Georgia, serif;
+  --sans: "Hanken Grotesk", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", Consolas, ui-monospace, monospace;
+  --win: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+
+  --r-sm: 6px; --r-md: 12px; --r-lg: 20px; --r-xl: 28px; --r-sheet: 36px;
+  --sh-card: 0 1px 2px rgba(var(--ink-rgb), .05), 0 12px 28px -12px rgba(var(--ink-rgb), .12), 0 28px 56px -28px rgba(var(--ink-rgb), .16);
+  --sh-float: 0 2px 8px rgba(var(--ink-rgb), .07), 0 0 1px rgba(var(--ink-rgb), .08);
+  --sh-win: 0 2px 4px rgba(var(--ink-rgb), .06), 0 24px 48px -16px rgba(60, 40, 70, .26), 0 70px 120px -40px rgba(90, 60, 90, .32);
+
+  --ease-ui: cubic-bezier(.4, 0, .2, 1);
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --t-fast: 160ms; --t-ui: 200ms;
+  --container: 1180px;
+  --grain: url(assets/img/home/grain.webp);
+  --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+* { box-sizing: border-box; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.6 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 1px; }
+img { max-width: 100%; height: auto; display: block; }
+button, input, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--dusk); outline-offset: 3px; border-radius: 4px; }
+.sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: fixed; z-index: 200; left: 16px; top: -80px; padding: 12px 18px; border-radius: 10px; background: var(--dusk); color: #fff; font-weight: 600; text-decoration: none; }
+.skip:focus { top: 16px; }
+main:focus { outline: none; }
+.wrap { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+section[id], header[id] { scroll-margin-top: 84px; }
+.nw { white-space: nowrap; }
+/* Sections below the hero are laid out and painted only when they come near the screen, so the first paint never waits for the
+   whole page. Paint containment clips at the padding edge, so each section carries 64px of extra padding at the bottom (taken
+   back with a negative margin) for card and photo shadows that reach past its last line. */
+#risk, #how, #try, #recovery, #home, #proof, #share, #pricing, #faq, #get, body > footer { content-visibility: auto; contain-intrinsic-size: auto 1000px; }
+/* until a section has been on screen its height is only an estimate: in-page jumps and restored scroll positions lay them all out first (cv-all) */
+html.cv-all :is(#risk, #how, #try, #recovery, #home, #proof, #share, #pricing, #faq, #get), html.cv-all body > footer { content-visibility: visible; }
+.sheet > section[id]:not(:last-child) { padding-bottom: 64px; margin-bottom: -64px; }
+
+/* computers with a mouse get the download; phones and tablets without one get the email link */
+@media (hover: hover), (pointer: fine), (pointer: none) { .phone { display: none !important; } }
+/* a touch-only Windows PC (a Surface in tablet mode) can still install Clavis, so it keeps the download */
+@media (hover: none) and (pointer: coarse) { html:not(.win) .desk { display: none !important; } }
+html.win .phone { display: none !important; }
+
+/* film grain over photographs (Dusk) */
+.grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; opacity: .14; mix-blend-mode: overlay; background: var(--noise); z-index: 3; }
+
+/* ---------- type ---------- */
+/* chapter label (Ivory): "01 —— How it works" */
+.chap { display: flex; align-items: center; gap: 12px; margin: 0 0 20px; font: 600 11.5px/1.3 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.chap > span:last-child { text-wrap: balance; }
+.chap .no { font: 500 12.5px/1 var(--mono); letter-spacing: .02em; color: var(--ink); }
+.chap .bar { width: 30px; height: 1px; flex: none; background: currentColor; opacity: .55; }
+.center .chap { justify-content: center; }
+.h2 { margin: 0; font: 400 clamp(32px, 3.1vw, 44px)/1.08 var(--serif); letter-spacing: -.022em; color: var(--ink); text-wrap: balance; }
+.h2 em { font-style: italic; font-weight: 380; letter-spacing: -.01em; color: rgba(var(--ink-rgb), .78); }
+.lead { margin: 18px 0 0; font-size: 19px; line-height: 1.6; color: var(--ink-2); max-width: 58ch; text-wrap: pretty; }
+.center { text-align: center; }
+.center .lead { margin-left: auto; margin-right: auto; text-wrap: balance; }
+.tlink { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--edge); padding-bottom: 2px; transition: border-color var(--t-ui) var(--ease-ui), gap var(--t-ui) var(--ease-ui); }
+.tlink:hover { border-color: var(--ink); gap: 9px; }
+.tlink > span[aria-hidden] { white-space: nowrap; }   /* holds the space before the arrow, so the arrow never starts a line alone */
+.token { display: inline-block; font: 500 12.5px/1 var(--mono); letter-spacing: .02em; padding: 6px 9px; border-radius: var(--r-sm); background: rgba(var(--ink-rgb), .055); color: var(--ink); white-space: nowrap; }
+.kbd { font: 500 13px/1.7 var(--mono); padding: 2px 6px; border-radius: 5px; background: rgba(var(--ink-rgb), .06); color: var(--ink); -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.pill { display: inline-flex; align-items: center; gap: 7px; font: 500 12.5px/1 var(--sans); padding: 7px 11px; border-radius: 999px; background: var(--peach-50); color: #7A4B33; }
+.pill.r { background: var(--rose-50); color: var(--rose-ink); }
+.pill.l { background: var(--lav-50); color: var(--lav-ink); }
+.pill.b { background: var(--dusty-50); color: var(--dusty-ink); }
+.pill.n { background: rgba(var(--ink-rgb), .055); color: var(--ink-2); }
+
+/* ---------- buttons ---------- */
+.btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 12px; height: 56px; padding: 0 30px 0 34px; border-radius: 999px; background: var(--dusk); color: #fff; text-decoration: none; white-space: nowrap; border: 0; cursor: pointer;
+  font: 500 18px/1 var(--sans); letter-spacing: -.005em;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 1px 2px rgba(var(--ink-rgb), .2), 0 12px 26px -10px rgba(35, 47, 75, .55);
+  transition: transform var(--t-fast) var(--ease-ui), box-shadow var(--t-ui) var(--ease-ui), background var(--t-ui) var(--ease-ui); }
+.btn-primary:hover { background: var(--dusk-hi); transform: translateY(-1px); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 1px 2px rgba(var(--ink-rgb), .2), 0 16px 32px -10px rgba(35, 47, 75, .55), 0 0 0 6px rgba(239, 188, 158, .38); }
+.btn-primary:active { transform: scale(.98); }
+.btn-primary svg { flex: none; }
+.btn-quiet { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--edge); background: rgba(255,255,255,.6); color: var(--ink); font: 500 15px/1 var(--sans); cursor: pointer; text-decoration: none; transition: background var(--t-ui) var(--ease-ui), border-color var(--t-ui) var(--ease-ui); }
+.btn-quiet:hover { background: #fff; border-color: rgba(var(--ink-rgb), .3); }
+.hero-cta .facts a, .closing .cta-inline p a, .teams a, .offer a, .legal a, .reducers a { display: inline-block; padding: 12px 4px; margin: -12px -4px; }
+.copy { display: inline-block; padding: 13px 8px; margin: -13px -8px; background: none; border: 0; text-decoration: underline; text-underline-offset: .2em; text-decoration-thickness: 1px; cursor: pointer; color: inherit; font-size: inherit; line-height: inherit; }
+
+/* reveal: content is visible without JS; only .js pages hide it until it scrolls in */
+.js .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+.js .rv.h { transform: translateY(6px); }
+.js .rv.i { transform: scale(.975); filter: blur(4px); transition: opacity .8s var(--ease-out), transform .8s var(--ease-out), filter .8s var(--ease-out); }
+.js .rv.in { opacity: 1; transform: none; filter: none; }
+.rv.d1 { transition-delay: 70ms; } .rv.d2 { transition-delay: 140ms; } .rv.d3 { transition-delay: 210ms; }
+
+/* ================= nav (Dusk: a floating glass bar) ================= */
+.nav { position: fixed; z-index: 90; top: 14px; left: 50%; transform: translateX(-50%); width: min(var(--container), calc(100% - 28px));
+  display: flex; align-items: center; justify-content: space-between; height: 58px; padding: 0 10px 0 14px; border-radius: 16px;
+  background: rgba(252, 249, 245, .58); border: 1px solid rgba(255,255,255,.72);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow: var(--sh-float), inset 0 1px 0 rgba(255,255,255,.6); transition: background var(--t-ui) var(--ease-ui); }
+.nav.solid { background: rgba(250, 247, 242, .9); }
+.nav.on-dark { background: rgba(250, 247, 242, .97); border-color: rgba(255,255,255,.9); }
+.nav .wordmark { padding: 12px 0; margin: -12px 0; }
+.wordmark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 540 21px/1 var(--serif); letter-spacing: -.012em; color: var(--ink); white-space: nowrap; }
+.wordmark svg { width: 31px; height: 19px; flex: none; }
+.nav ul { display: flex; gap: 2px; list-style: none; margin: 0; padding: 0; }
+.nav ul a { display: block; padding: 9px 14px; border-radius: 10px; text-decoration: none; font-size: 15.5px; font-weight: 500; color: var(--ink-2); transition: background var(--t-fast) var(--ease-ui), color var(--t-fast) var(--ease-ui); }
+.nav ul a:hover { background: rgba(var(--ink-rgb), .05); color: var(--ink); }
+
+/* ================= launch-offer bar (added by site.js until 30 Nov 2026; styled here because this page does not load site.css) ================= */
+.offer-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 95; min-height: 38px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+  column-gap: 10px; row-gap: 2px; padding: 6px 48px 6px 16px; background: var(--dusk); color: #fff; font: 600 14px/1.35 var(--sans); text-align: center; }
+.offer-bar a { color: #fff; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.offer-bar code { font: inherit; font-weight: 800; letter-spacing: .04em; }
+.offer-bar .offer-close { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border: 0; border-radius: 8px;
+  background: transparent; color: #fff; font-size: 20px; line-height: 1; cursor: pointer; }
+.offer-bar .offer-close:hover { background: rgba(255,255,255,.14); }
+.offer-bar .offer-short { display: none; }
+html.has-offer body { padding-top: var(--offer-h, 38px); }
+html.has-offer .nav { top: calc(var(--offer-h, 38px) + 14px); }
+html.has-offer section[id] { scroll-margin-top: calc(84px + var(--offer-h, 38px)); }
+@media (max-width: 760px) { .offer-bar { font-size: 13px; padding: 6px 44px 6px 12px; } .offer-bar .offer-long { display: none; } .offer-bar .offer-short { display: inline; } }
+
+/* ================= download bar (Dusk): only when no other download button is on screen ================= */
+.dock { position: fixed; z-index: 85; left: 50%; bottom: 18px; display: flex; align-items: center; gap: 18px; padding: 6px 6px 6px 22px; border-radius: 999px;
+  background: rgba(252, 249, 245, .84); border: 1px solid rgba(255,255,255,.85); -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow: 0 1px 2px rgba(var(--ink-rgb), .06), 0 16px 36px -16px rgba(var(--ink-rgb), .32);
+  transform: translate(-50%, calc(100% + 28px)); opacity: 0; visibility: hidden; transition: transform .5s var(--ease-out), opacity .3s var(--ease-ui), visibility 0s .5s; }
+.dock.show { transform: translate(-50%, 0); opacity: 1; visibility: visible; transition: transform .5s var(--ease-out), opacity .3s var(--ease-ui), visibility 0s; }
+.dock .lbl { font-size: 14.5px; color: var(--ink-2); white-space: nowrap; }
+.dock .btn-primary { height: 46px; padding: 0 20px 0 22px; font-size: 16px; gap: 10px; box-shadow: inset 0 1px 0 rgba(255,255,255,.14); }
+
+/* ================= hero: centred (Dusk) in re-graded leaf light (Sunlit) ================= */
+.hero { position: relative; isolation: isolate; overflow: hidden; padding: 132px 24px 150px; text-align: center; }
+.hero-bg { position: absolute; z-index: -1; inset: 0; overflow: hidden; background: #F4D8CB; }
+.hero-bg .leaf { position: absolute; inset: -5% -3% -12%; transform: translate3d(0, var(--py, 0px), 0); }
+.hero-bg .leaf img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; animation: breeze 30s ease-in-out 2 alternate both; }
+@keyframes breeze { from { transform: scale(1.05) translate(-1.1%, -.6%) rotate(-.25deg); } to { transform: scale(1.05) translate(1.1%, .8%) rotate(.25deg); } }
+/* crisp leaf shadows fall in from the top corners (Sunlit), lilac in the dusk light; the centre stays calm for reading */
+.hero-bg .crisp { position: absolute; top: -6%; width: 52%; height: 84%; background: url(assets/img/home/leaf-overlay-1200.webp) 30% 20% / cover; mix-blend-mode: multiply; opacity: .55; pointer-events: none;
+  -webkit-mask-image: radial-gradient(85% 80% at 18% 20%, #000 45%, transparent 82%); mask-image: radial-gradient(85% 80% at 18% 20%, #000 45%, transparent 82%); animation: sway 17s ease-in-out 2 alternate both; }
+.hero-bg .crisp.l { left: -10%; }
+.hero-bg .crisp.r { right: -10%; transform: scaleX(-1); animation-name: sway-r; animation-duration: 21s; opacity: .5; }
+@keyframes sway { from { translate: 0 0; rotate: -.6deg; } to { translate: 1.2% 1%; rotate: .6deg; } }
+@keyframes sway-r { from { translate: 0 0; rotate: .5deg; } to { translate: -1.2% .8%; rotate: -.5deg; } }
+.hero-bg .wash { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255, 249, 243, .5) 0%, rgba(255, 249, 243, .1) 24%, rgba(255, 249, 243, 0) 46%); }
+.hero-bg .sun { position: absolute; left: 50%; top: 30px; width: 1300px; height: 620px; margin-left: -650px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 247, 240, .62), rgba(255, 243, 235, .26) 54%, rgba(255, 243, 235, 0)); }
+.hero-bg.paused img, .hero-bg.paused .crisp { animation-play-state: paused; }
+.hero-bg .grain { position: absolute; inset: 0; }
+.hero h1 { margin: 0 auto; max-width: 1200px; font: 400 clamp(40px, 4.5vw, 66px)/1.03 var(--serif); letter-spacing: -.024em; color: var(--ink); text-wrap: balance; }
+.hero h1 span { display: block; }
+.hero h1 em { font-style: italic; font-weight: 380; letter-spacing: -.01em; color: rgba(var(--ink-rgb), .8); }
+.hero .sub { margin: 20px auto 0; max-width: 52ch; font-size: 19.5px; line-height: 1.55; color: var(--ink-2); text-wrap: balance; }
+.hero .sub b { font-weight: 600; color: var(--ink); }
+.hero-cta { margin-top: 30px; }
+.hero-cta .reassure { margin: 16px 0 0; font-size: 15px; line-height: 1.45; color: var(--ink); }
+.hero-cta .facts { margin: 6px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--ink-2); }
+.hero-cta .facts a { color: var(--ink); }
+.hero-cta .reassure, .hero-cta .facts, .closing .cta-inline p { text-wrap: balance; }
+
+/* ---------- live app window: a faithful redraw of the real Clavis window, set in a glass frame (Sunlit) ---------- */
+.stage { position: relative; width: min(856px, 100%); margin: 54px auto 0; }
+.bezel { position: relative; padding: 7px; border-radius: 19px; background: rgba(255, 250, 246, .36); border: 1px solid rgba(255,255,255,.7);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2); box-shadow: var(--sh-win); }
+/* the same leaves that fall on the wall fall across the window, lightly */
+.bezel::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 8; background: url(assets/img/home/leaf-overlay-1200.webp) 80% 0 / 150% auto; mix-blend-mode: multiply; opacity: .09;
+  -webkit-mask-image: radial-gradient(70% 60% at 0% 100%, #000 20%, transparent 70%); mask-image: radial-gradient(70% 60% at 0% 100%, #000 20%, transparent 70%); }
+.appbox { position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 1040 / 624; }
+.app { --s: .8; position: absolute; left: 0; top: 0; width: 1040px; height: 624px; transform: scale(var(--s)); transform-origin: 0 0; background: #fff;
+  display: grid; grid-template-rows: 32px 1fr; font-family: var(--win); text-align: left; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,.06);
+  transition: opacity .9s var(--ease-out), translate .9s var(--ease-out); }
+.js .app:not(.ready) { opacity: 0; translate: 0 16px; }
+.app .tbar { display: flex; align-items: center; gap: 9px; padding-left: 12px; background: #F3F3F3; border-bottom: 1px solid #E6E6E6; font-size: 12.5px; color: #1A1A1A; white-space: nowrap; }
+.app .tbar img { width: 16px; height: 16px; border-radius: 4px; }
+.app .tbar .ctl { margin-left: auto; display: flex; height: 100%; }
+.app .tbar .ctl span { width: 46px; display: grid; place-items: center; color: #333; }
+.app .abody { display: grid; grid-template-columns: 233px 1fr; min-height: 0; }
+.app .side { background: #1C1F26; color: #C9CDD6; padding: 18px 14px 12px; display: flex; flex-direction: column; font-size: 13.5px; min-height: 0; overflow: hidden; }
+.app .side .brand { display: flex; gap: 11px; align-items: center; padding: 0 2px 22px 8px; }
+.app .side .brand img { width: 34px; height: 34px; border-radius: 8px; }
+.app .side .brand b { display: block; color: #fff; font-size: 16.5px; font-weight: 700; line-height: 1.15; }
+.app .side .brand small { display: block; color: #A9AFBD; font-size: 13px; font-weight: 600; }
+.app .side .h { font-size: 11px; letter-spacing: .04em; color: #9DA3B2; padding: 0 6px 7px; font-weight: 700; }
+.app .side .it { flex: none; height: 34px; padding: 0 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; color: #C9CDD6; white-space: nowrap; }
+.app .side .it.on { background: #263046; color: #fff; font-weight: 700; box-shadow: inset 3px 0 0 #2F6BFF; }
+.app .side .new { background: #2F6BFF; color: #fff; font-size: 10.5px; padding: 2px 7px; border-radius: 4px; font-weight: 700; }
+.app .side .vault { margin-top: auto; padding-top: 10px; }
+.app .side .vbox { height: 36px; border: 1px solid #343A48; border-radius: 6px; padding: 0 12px; display: flex; align-items: center; gap: 9px; color: #fff; background: #20242D; }
+.app .side .vbox i { width: 9px; height: 9px; border-radius: 50%; background: #2EC27E; }
+.app .side .vbox span { margin-left: auto; color: #A9AFBD; }
+.app .side .dm { text-align: center; padding: 12px 0 8px; color: #E6E8EE; }
+.app .side .sb { display: flex; gap: 28px; padding: 4px 12px 0; color: #E6E8EE; }
+.app .main { position: relative; background: #F6F7F9; padding: 26px 32px 0; display: flex; flex-direction: column; min-width: 0; }
+.app .mh { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+.app .mh .mt { margin: 0; font-size: 23px; font-weight: 700; color: #16181D; letter-spacing: -.01em; }
+.app .mh .sub2 { font-size: 12.5px; color: #7D8290; margin-top: 4px; }
+.app .quit { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 13px; border: 1px solid #C9CDD5; border-radius: 999px; font-size: 12.5px; color: #222; background: #fff; }
+.app .card { background: #fff; border: 1px solid #E3E5EA; border-radius: 9px; padding: 14px 16px 15px; margin-bottom: 14px; }
+.app .lab { font-size: 10.5px; font-weight: 700; color: #6B7080; letter-spacing: .05em; margin-bottom: 9px; }
+.app .row { display: flex; gap: 10px; align-items: center; }
+.app .field { flex: 1; min-width: 0; height: 30px; border: 1px solid #CDD1D9; border-radius: 4px; display: flex; align-items: center; padding: 0 9px; font-size: 12.5px; color: #8E94A2; background: #fff; overflow: hidden; white-space: nowrap; transition: border-color .3s, box-shadow .3s, color .3s; }
+.app .field > span:first-child { overflow: hidden; text-overflow: ellipsis; }
+.app .field .chev { margin-left: auto; padding-left: 10px; border-left: 1px solid #E1E4EA; height: 100%; display: grid; place-items: center; color: #666; }
+.app .field.filled { color: #15171C; border-color: #2F6BFF; box-shadow: 0 0 0 2px rgba(47,107,255,.15); }
+.app .wbtn { height: 30px; padding: 0 15px; border: 1px solid #C8CCD4; border-radius: 4px; display: grid; place-items: center; font-size: 12.5px; color: #222; background: #fff; white-space: nowrap; }
+.app .tip { font-size: 11px; color: #9095A2; margin-top: 7px; }
+.app .seg { display: grid; grid-template-columns: repeat(3, 1fr); background: #EEF0F3; border: 1px solid #E1E4EA; border-radius: 6px; padding: 3px; font-size: 13px; font-weight: 700; text-align: center; color: #1E2026; }
+.app .seg span { height: 36px; display: grid; place-items: center; border-radius: 4px; }
+.app .seg span.on { background: #2F6BFF; color: #fff; }
+.app .note { font-size: 11px; color: #8D92A0; margin: 8px 0 10px; }
+.app .go { flex: 1; height: 36px; border: 2px solid #5B8BFF; border-radius: 5px; display: grid; place-items: center; font-weight: 700; font-size: 13px; color: #111; background: #fff; transition: transform .12s, background .2s, color .2s; }
+.app .go.press { transform: scale(.97); background: #2F6BFF; color: #fff; border-color: #2F6BFF; }
+.app .status { margin: auto -32px 0; border-top: 1px solid #E3E5EA; background: #fff; height: 38px; flex: none; padding: 0 32px; font-size: 12.5px; color: #2A2C33; display: flex; align-items: center; gap: 9px; position: relative; }
+.app .status i { width: 9px; height: 9px; border-radius: 50%; background: #2EC27E; flex: none; }
+.app .status.busy i { background: #2F6BFF; }
+.app .status .bar { position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: #2F6BFF; }
+.app .status.busy .bar { width: 100%; transition: width 1.2s linear; }
+.app .fchip { position: absolute; z-index: 5; left: 0; top: 0; display: flex; align-items: center; gap: 9px; background: #fff; border: 1px solid #D7DAE1; border-radius: 8px; padding: 8px 14px 8px 9px; font-size: 13px; font-weight: 600; color: #1D1F24; white-space: nowrap;
+  box-shadow: 0 14px 30px rgba(0,0,0,.16); opacity: 0; transform: rotate(5deg) scale(.96);
+  transition: translate 1s var(--ease-out), opacity .35s, transform .5s var(--ease-out); }
+.app .fchip svg { width: 18px; height: 20px; flex: none; }
+.app .fchip.in { opacity: 1; transform: rotate(-2deg); }
+.app .fchip.drop { opacity: 0; transform: scale(.82); }
+.app .cursor { position: absolute; z-index: 6; left: 0; top: 0; width: 20px; height: 20px; opacity: 0; transition: translate 1s var(--ease-out), opacity .3s; pointer-events: none; }
+/* the result: a small toast docked to the window's corner, never a modal over it */
+.app .done { position: absolute; z-index: 7; right: 24px; top: 18px; width: 336px; display: grid; grid-template-columns: 26px 1fr 12px; gap: 11px; padding: 13px 14px 14px; background: #fff; border-radius: 9px;
+  box-shadow: 0 18px 40px -14px rgba(15, 20, 35, .32), 0 0 0 1px rgba(0,0,0,.08); opacity: 0; transform: translateY(-8px); transition: opacity .4s var(--ease-out), transform .5s var(--ease-out); }
+.app .done.show { opacity: 1; transform: none; }
+.app .done .ck { width: 26px; height: 26px; border-radius: 50%; background: #2EC27E; display: grid; place-items: center; }
+.app .done b { display: block; font-size: 13.5px; color: #15171C; }
+.app .done p { margin: 3px 0 0; font-size: 12px; line-height: 1.45; color: #555B68; }
+.app .done .x { font-size: 11px; color: #8A8F99; line-height: 1; }
+.stage-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 14px; min-height: 34px; text-align: left; }
+.figcap { margin: 0; font: italic 420 16px/1.45 var(--serif); color: var(--ink-2); }
+.figcap { text-wrap: pretty; }
+.figcap b { font: 600 11.5px/1 var(--sans); font-style: normal; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-right: 10px; }
+.stage .figcap { color: var(--ink); }
+.replay { display: inline-flex; gap: 6px; align-items: center; height: 34px; padding: 0 13px; border-radius: 999px; border: 1px solid rgba(var(--ink-rgb), .12); background: rgba(255,255,255,.55); font: 500 13.5px/1 var(--sans); color: var(--ink-2); cursor: pointer; opacity: 0; visibility: hidden; transition: opacity .3s var(--ease-ui), visibility .3s, color .2s, background .2s; flex: none; }
+.replay.show { opacity: 1; visibility: visible; }
+.replay:hover { color: var(--ink); background: rgba(255,255,255,.85); }
+
+/* ================= the paper sheet (Sunlit): cream paper that slides over the hero ================= */
+.sheet { position: relative; z-index: 2; margin-top: -60px; padding-bottom: 128px; background: var(--paper) var(--grain); border-radius: var(--r-sheet);
+  box-shadow: 0 -1px 0 rgba(255,255,255,.95), 0 -20px 44px -26px rgba(236, 160, 128, .7), 0 -60px 110px -50px rgba(176, 160, 222, .62), 0 34px 60px -34px rgba(80, 60, 100, .4); }
+section.s { padding: 124px 0 0; }
+.sheet > section.s:first-child { padding-top: 96px; }
+.head { max-width: 760px; margin-bottom: 52px; }
+.head.center { margin-left: auto; margin-right: auto; }
+.head.duo { max-width: none; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); column-gap: 64px; align-items: end; }
+.head.duo .chap { grid-column: 1 / -1; }
+.head.duo .lead { margin: 0 0 6px; }
+
+/* ================= 02 how it works (Ivory: sticky, scroll-linked steps + File Explorer) ================= */
+.how-track { position: relative; height: 170vh; }
+.how-sticky { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 96px 0 100px; }
+.how-grid { display: grid; grid-template-columns: minmax(0, 4.1fr) minmax(0, 7.9fr); gap: 60px; align-items: center; margin-top: 30px; }
+.steps { list-style: none; margin: 0; padding: 0; }
+.step { all: unset; box-sizing: border-box; display: grid; grid-template-columns: 38px 1fr; width: 100%; padding: 18px 0 20px 18px; position: relative; cursor: pointer; border-top: 1px solid var(--hair); }
+.steps li:last-child .step { border-bottom: 1px solid var(--hair); }
+.step::before { content: ""; position: absolute; left: 0; top: 18px; bottom: 20px; width: 2px; border-radius: 2px; background: linear-gradient(var(--peach), var(--lav)); transform: scaleY(0); transform-origin: top; transition: transform .4s var(--ease-out); }
+.step .sn { font: italic 420 25px/1.1 var(--serif); color: var(--ink-4); transition: color .3s; grid-row: span 3; }
+.step .st { font: 430 24px/1.25 var(--serif); letter-spacing: -.012em; color: var(--ink-3); transition: color .3s; }
+.step .sd { font-size: 16.5px; line-height: 1.55; color: var(--ink-3); margin-top: 6px; transition: color .3s; }
+.step .pill { justify-self: start; margin-top: 12px; }
+.step.on::before { transform: scaleY(1); }
+.step.on .sn, .step.on .st { color: var(--ink); }
+.step.on .sd { color: var(--ink-2); }
+.step:focus-visible { outline: 2px solid var(--dusk); outline-offset: 2px; }
+.how-note { margin: 22px 0 0; font-size: 16px; color: var(--ink-3); max-width: 32em; }
+.how-note b { color: var(--ink); font-weight: 600; }
+.how-more { margin-top: 16px; }
+.fig { margin: 0; }
+.fig .figcap { margin-top: 14px; max-width: none; }
+/* the Explorer sits on a sunlit wall, re-graded to dusk */
+.xplate { position: relative; border-radius: var(--r-xl); padding: 70px 40px 46px; background: #F0D3CB 50% 12% / cover;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.4), 0 30px 60px -40px rgba(120, 80, 100, .4); }
+.near .xplate, html:not(.js) .xplate { background-image: url(assets/img/home/plate-leaf-1600.webp); }
+.ex { position: relative; z-index: 4; border-radius: 10px; background: #FFFFFF; color: #1B1B1B; box-shadow: 0 30px 60px -18px rgba(60, 35, 60, .38), 0 0 0 1px rgba(0,0,0,.08); font: 400 13px/1.3 var(--win); }
+.ex-title { height: 42px; background: #EEF1F5; border-radius: 10px 10px 0 0; display: flex; align-items: flex-end; padding-left: 10px; }
+.ex-tab { display: flex; align-items: center; gap: 8px; background: #FFFFFF; border-radius: 8px 8px 0 0; padding: 0 14px; height: 33px; min-width: 196px; font-size: 12.5px; }
+.ex-tab .x { margin-left: auto; color: #666; font-size: 11px; }
+.ex-title .ctl { margin-left: auto; display: flex; align-self: stretch; }
+.ex-title .ctl span { width: 42px; display: grid; place-items: center; }
+.ex-title .ctl svg { width: 10px; height: 10px; stroke: #333; fill: none; stroke-width: 1; }
+.ex-bar { height: 46px; display: flex; align-items: center; gap: 12px; padding: 0 14px; border-bottom: 1px solid #ECECEC; }
+.ex-bar .nv { display: flex; gap: 14px; color: #555; }
+.ex-bar .nv svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.3; }
+.ex-crumb { flex: 1; height: 30px; border-radius: 5px; background: #F5F5F5; display: flex; align-items: center; gap: 8px; padding: 0 10px; color: #222; min-width: 0; white-space: nowrap; }
+.ex-crumb span { color: #888; }
+.ex-search { width: 170px; height: 30px; border-radius: 5px; background: #F5F5F5; display: flex; align-items: center; gap: 8px; padding: 0 10px; color: #777; white-space: nowrap; }
+.ex-search svg { width: 13px; height: 13px; stroke: #666; fill: none; stroke-width: 1.4; flex: none; }
+.ex-list { padding: 6px 8px 14px; position: relative; }
+.ex-hd, .ex-row { display: grid; grid-template-columns: minmax(0, 1fr) 118px 132px 64px; align-items: center; column-gap: 12px; padding: 0 10px; }
+.ex-hd { height: 32px; color: #555; font-size: 12px; border-bottom: 1px solid #F0F0F0; margin-bottom: 4px; }
+.ex-row { height: 36px; border-radius: 4px; position: relative; overflow: hidden; }
+.ex-row .nm { display: flex; align-items: center; gap: 10px; min-width: 0; position: relative; }
+.ex-row .t { color: #666; font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ex-row .z { color: #666; font-size: 12.5px; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ex .ico { width: 18px; height: 22px; border-radius: 2.5px; flex: none; position: relative; display: grid; place-items: center; font: 700 6px/1 var(--win); color: #fff; letter-spacing: .02em; }
+.ex .ico.fold { width: 22px; height: 17px; border-radius: 2px; background: #F2C14E; box-shadow: inset 0 3px 0 #E5AE2F; }
+.ex .ico.pdfi { background: #D93F3F; }
+.ex .ico.xls { background: #1D7A45; }
+.ex .ico.enc { background: #1C1F26; }
+.ex .ico.enc svg { width: 8px; height: 10px; }
+.ex .swap { position: relative; display: grid; min-width: 0; }
+.ex .swap > * { grid-area: 1 / 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: opacity .45s var(--ease-ui), filter .45s var(--ease-ui), transform .45s var(--ease-out); }
+.ex .swap .b { opacity: 0; filter: blur(4px); transform: translateY(3px); }
+.ex-row .nm .swap .b { font-family: var(--mono); font-size: 12px; letter-spacing: -.01em; }
+.ex-row.sel { background: transparent; transition: background-color .25s; }
+.ex[data-state="1"] .ex-row.sel { background: #CCE8FF; }
+.ex[data-state="2"] .ex-row.sel .swap .a { opacity: 0; filter: blur(4px); transform: translateY(-3px); }
+.ex[data-state="2"] .ex-row.sel .swap .b { opacity: 1; filter: none; transform: none; }
+.ex-row.sel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(251, 226, 212, .95) 40%, rgba(232, 222, 246, .95) 60%, transparent); transform: translateX(-110%); pointer-events: none; }
+.ex[data-state="2"] .ex-row.sel::after { animation: sweep .9s var(--ease-out) both; }
+.ex[data-state="2"] .ex-row.sel + .ex-row.sel::after { animation-delay: .12s; }
+@keyframes sweep { to { transform: translateX(110%); } }
+.ex-tag { position: absolute; right: 0; top: -48px; z-index: 3; font: 600 11.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; padding: 9px 13px; border-radius: 999px; background: rgba(255,255,255,.9); color: var(--ink-2); box-shadow: var(--sh-float); transition: color .3s, background-color .3s; display: inline-flex; gap: 8px; align-items: center; white-space: nowrap; }
+.ex-tag i { width: 7px; height: 7px; border-radius: 50%; background: var(--peach); }
+.ex[data-state="2"] .ex-tag { background: var(--dusk); color: #fff; }
+.ex[data-state="2"] .ex-tag i { background: var(--lav); }
+.ex-tag .tb { display: none; } .ex[data-state="2"] .ex-tag .ta { display: none; } .ex[data-state="2"] .ex-tag .tb { display: inline; }
+.cm { position: absolute; z-index: 4; left: 228px; top: 146px; width: 192px; background: #FBFBFB; border: 1px solid #D8D8D8; border-radius: 8px; padding: 4px; box-shadow: 0 10px 26px rgba(40,20,40,.2); font-size: 12.5px; color: #1B1B1B;
+  opacity: 0; transform: translateY(-4px) scale(.98); transform-origin: 0 0; transition: opacity .18s var(--ease-ui), transform .22s var(--ease-out); pointer-events: none; }
+.cm div { height: 28px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px 0 30px; border-radius: 4px; position: relative; }
+.cm hr { border: 0; border-top: 1px solid #E6E6E6; margin: 4px 6px; }
+.cm .hi { background: #E8E8E8; }
+.cm .pick { background: #DCE8FB; }
+.cm img { position: absolute; left: 8px; width: 15px; height: 15px; border-radius: 4px; }
+.cm.sub { left: 416px; top: 211px; width: 210px; }
+.ex[data-state="1"] .cm { opacity: 1; transform: none; }
+.ex[data-state="1"] .cm.sub { transition-delay: .12s; }
+.ptr { position: absolute; z-index: 5; left: 520px; top: 226px; width: 20px; height: 20px; opacity: 0; transition: opacity .2s .25s; filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
+.ex[data-state="1"] .ptr { opacity: 1; }
+
+/* ================= 03 try it (Dusk, kept as it was), in the same panel frame as 06 ================= */
+.tryit { position: relative; margin: 0 24px; border-radius: var(--r-xl); overflow: hidden; padding: 96px 0 84px; background: #F3D6C9 center 40% / cover; }
+.tryit::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255, 249, 243, .35), rgba(255, 249, 243, 0)); }
+.tryit > * { position: relative; z-index: 4; }
+.near .tryit, html:not(.js) .tryit { background-image: url(assets/img/home/try-leaf-1400.webp); }
+.tryit .head { margin-bottom: 0; }
+.lab-card { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--r-lg); background: rgba(255,255,255,.62); border: 1px solid rgba(255,255,255,.75);
+  -webkit-backdrop-filter: blur(22px) saturate(1.35); backdrop-filter: blur(22px) saturate(1.35); box-shadow: var(--sh-card), inset 0 1px 0 rgba(255,255,255,.7); overflow: hidden; }
+.lab-card .col { padding: 26px 28px 28px; min-width: 0; }
+.lab-card .col + .col { border-left: 1px solid rgba(var(--ink-rgb), .08); background: rgba(255,255,255,.35); }
+.lab-card h3 { margin: 0 0 14px; display: flex; align-items: center; gap: 10px; font: 600 11.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.lab-card h3 i { width: 8px; height: 8px; border-radius: 50%; background: var(--peach); }
+.lab-card .col + .col h3 i { background: var(--lav); }
+.lab-card textarea { width: 100%; height: 132px; resize: none; border: 1px solid rgba(var(--ink-rgb), .14); border-radius: var(--r-md); background: rgba(255,255,255,.85); padding: 14px 16px; font: 400 17px/1.55 var(--sans); color: var(--ink); }
+.lab-card textarea:focus, .lab-card input:focus { outline: 2px solid var(--dusk); outline-offset: 1px; }
+.pwrow { margin-top: 14px; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 12px; font-size: 15px; color: var(--ink-2); }
+.lab-card input { height: 44px; width: 100%; border: 1px solid rgba(var(--ink-rgb), .14); border-radius: var(--r-md); background: rgba(255,255,255,.85); padding: 0 14px; font: 500 15px/1 var(--mono); color: var(--ink); }
+.lab-card input::placeholder { font-family: var(--sans); font-weight: 400; color: var(--ink-3); }
+.cipher { height: 132px; overflow: hidden; border-radius: var(--r-md); background: rgba(var(--ink-rgb), .035); border: 1px solid rgba(var(--ink-rgb), .1); padding: 13px 15px; font: 400 13.5px/1.6 var(--mono); color: var(--ink-2); word-break: break-all; position: relative; }
+.ciphermeta { margin-top: 10px; font-size: 14px; color: var(--ink-3); min-height: 22px; }
+.hint { margin: 16px 0 0; font-size: 15px; line-height: 1.55; color: var(--ink-3); }
+.openrow { margin-top: 14px; display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+.openout { margin-top: 12px; min-height: 48px; padding: 12px 14px; border-radius: var(--r-md); font-size: 15.5px; line-height: 1.5; background: rgba(255,255,255,.6); color: var(--ink-3); }
+.openout.good { background: #E4EBDF; color: #2F4128; }
+.openout.bad { background: var(--peach-50); color: var(--peach-ink); }
+.openout a { display: inline-block; margin-top: 6px; color: #2F4128; font-weight: 600; }
+.lab-note a { display: inline-block; padding: 10px 0; margin: -10px 0; }
+.lab-note { margin: 20px auto 0; max-width: 820px; text-align: center; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
+
+/* ================= 01 the risk ================= */
+.risks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.risk { position: relative; display: flex; flex-direction: column; padding: 26px 28px 24px; border-radius: var(--r-lg); background: var(--card); box-shadow: var(--sh-card); }
+.risk .tag { display: inline-flex; align-items: center; gap: 8px; font: 600 11.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.risk .tag i { width: 8px; height: 8px; border-radius: 50%; background: var(--c, var(--peach)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c, var(--peach)) 25%, transparent); }
+.risk p { margin: 14px 0 18px; font: 430 22px/1.4 var(--serif); letter-spacing: -.008em; color: var(--ink); max-width: 31ch; }
+.risk .fix { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--hair); display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 15.5px; line-height: 1.45; color: var(--ink-2); }
+.risk .fix svg { margin-top: 2px; }
+.risk .fix b { font-weight: 600; color: var(--ink); }
+.risk .fix a { color: var(--ink); font-weight: 500; padding: 12px 0; }
+.cta-inline { margin-top: 44px; text-align: center; }
+.cta-inline p { margin: 14px 0 0; font-size: 15px; color: var(--ink-3); }
+.cta-inline p a { color: var(--ink-2); }
+
+/* ================= 05 windows 11 home (Ivory's table, Dusk's paper) ================= */
+.home-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 72px; align-items: start; }
+.home-grid .lead { margin-top: 0; font-size: 18.5px; }
+.checkpc { margin: 28px 0 26px; padding: 18px 20px 20px; border-radius: var(--r-md); background: rgba(255,255,255,.62); border: 1px solid var(--hair); }
+.checkpc b { display: block; font: 600 11.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 12px; }
+.crumbs { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font: 400 15px/1.2 var(--win); color: var(--ink); }
+.crumbs span { padding: 7px 11px; border-radius: 6px; background: #fff; box-shadow: inset 0 0 0 1px var(--edge); }
+.crumbs i { font-style: normal; color: var(--ink-3); }
+.checkpc .note { margin: 14px 0 0; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.checkpc .note a { color: var(--ink); }
+.home-links { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.cmp-card { border-radius: var(--r-lg); background: var(--card); box-shadow: var(--sh-card); padding: 8px 28px 6px; overflow: hidden; }
+table.cmp { width: 100%; border-collapse: collapse; font-size: 17px; }
+.cmp caption { text-align: left; font: 600 11.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); padding: 20px 0 14px; }
+.cmp th, .cmp td { padding: 18px 10px 18px 0; text-align: left; vertical-align: top; border-top: 1px solid var(--hair); }
+.cmp thead th { font: 600 11.5px/1.3 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); padding: 14px 10px 14px 0; border-top: 0; border-bottom: 1px solid var(--edge); }
+.cmp thead th.us { color: var(--lav-ink); }
+.cmp tbody th { font: 440 19.5px/1.35 var(--serif); letter-spacing: -.006em; color: var(--ink); width: 46%; padding-right: 22px; }
+.cmp td { width: 27%; color: var(--ink-2); }
+.cmp .y, .cmp .no { display: inline-flex; gap: 10px; align-items: baseline; font-weight: 500; }
+.cmp .y::before { content: ""; flex: none; width: 11px; height: 5.5px; border-left: 1.8px solid var(--sage-ink); border-bottom: 1.8px solid var(--sage-ink); transform: rotate(-45deg) translateY(-6px) translateX(2px); }
+.cmp .no::before { content: ""; flex: none; width: 9px; height: 1.5px; background: var(--ink-4); transform: translateY(-5px); }
+.cmp td.us, .cmp thead th.us { background: var(--lav-50); padding-left: 16px; }
+.cmp td.us { color: var(--ink); }
+.cmp tbody tr:last-child td.us { border-radius: 0 0 10px 10px; }
+.cmp thead th.us { border-radius: 10px 10px 0 0; }
+.cmp small { display: block; font-size: 14px; color: var(--ink-3); margin-top: 3px; }
+
+/* ================= 04 recovery: the key on the desk, leaf shadows around it (Sunlit) ================= */
+.recover { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 80px; align-items: center; }
+.rdesk { position: relative; border-radius: var(--r-xl); aspect-ratio: 560 / 520; overflow: hidden; background: linear-gradient(155deg, #F8DED0 0%, #F1D3D0 46%, #DCD3EC 100%);
+  box-shadow: inset 0 0 0 1px rgba(60, 40, 80, .06), 0 30px 60px -40px rgba(120, 80, 110, .4); }
+.rdesk::before { content: ""; position: absolute; inset: 0; z-index: 0; background: radial-gradient(70% 60% at 36% 28%, rgba(255, 245, 236, .8), transparent 70%); }
+.rdesk::after { content: ""; position: absolute; inset: -10%; z-index: 4; background: url(assets/img/home/leaf-overlay-1200.webp) 30% 20% / cover; mix-blend-mode: multiply; opacity: .5; pointer-events: none;
+  -webkit-mask-image: radial-gradient(42% 46% at 6% 8%, #000 30%, transparent 78%), radial-gradient(46% 40% at 100% 100%, #000 30%, transparent 78%), linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3));
+  mask-image: radial-gradient(42% 46% at 6% 8%, #000 30%, transparent 78%), radial-gradient(46% 40% at 100% 100%, #000 30%, transparent 78%), linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)); }
+.rdesk .scene { position: absolute; left: 0; top: 0; width: 560px; height: 520px; transform-origin: 0 0; z-index: 1; }
+.rdlg { position: absolute; left: 140px; top: 30px; width: 392px; border-radius: 10px; overflow: hidden; background: #F6F6F8; font-family: var(--win); font-size: 12.5px; color: #1A1C22; line-height: 1.4;
+  box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 26px 50px -22px rgba(70, 40, 80, .5), 0 0 0 1px rgba(0,0,0,.07); }
+.rdlg .dt { height: 32px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px 0 14px; background: #F3F3F3; font-size: 12.5px; color: #222; }
+.rdlg .dt svg { width: 10px; height: 10px; stroke: #333; stroke-width: 1.1; }
+.rdlg .dh { display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: linear-gradient(100deg, #2F6BFF, #2152DC); color: #fff; }
+.rdlg .dh b { display: block; font-size: 16px; font-weight: 700; line-height: 1.2; }
+.rdlg .dh small { font-size: 11.5px; opacity: .86; }
+.rdlg .db { padding: 14px 16px; }
+.rdlg .kf { height: 36px; border: 2px solid #6E95FF; border-radius: 5px; background: #fff; display: grid; place-items: center; font: 700 12.5px/1 Consolas, "Cascadia Mono", monospace; letter-spacing: .03em; color: #111; white-space: nowrap; }
+.rdlg .br { display: flex; gap: 8px; margin-top: 8px; }
+.rdlg .br span { height: 28px; padding: 0 14px; border: 1px solid #C8CCD4; border-radius: 4px; background: #fff; display: grid; place-items: center; font-size: 12.5px; }
+.rdlg p { margin: 10px 0 0; font-size: 12px; color: #333; }
+.rdlg .ck { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 12.5px; }
+.rdlg .ck i { width: 15px; height: 15px; border-radius: 3px; background: #2F6BFF; display: grid; place-items: center; }
+.rdlg .r-done { margin: 10px 0 0 auto; width: max-content; height: 30px; padding: 0 20px; border-radius: 5px; background: #2F6BFF; color: #fff; font-weight: 700; display: grid; place-items: center; }
+.keycard { position: absolute; left: 30px; top: 318px; width: 340px; background: #FFFCF8 var(--grain); border-radius: 4px; padding: 20px 24px 18px; transform: rotate(-2.2deg);
+  box-shadow: 0 1px 1px rgba(60, 35, 60, .12), 0 18px 34px -16px rgba(70, 40, 80, .45), 0 40px 70px -40px rgba(70, 40, 80, .4); }
+.keycard .kt { margin: 0 0 10px; font: 440 26px/1.05 var(--serif); letter-spacing: -.018em; color: var(--ink); }
+.keycard .key { font: 400 15.5px/1.75 var(--mono); letter-spacing: .06em; color: var(--ink); }
+.keycard .hand { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(var(--ink-rgb), .12); font: italic 430 18px/1.3 var(--serif); white-space: nowrap; letter-spacing: -.006em; color: #4B3E5E; }
+.keycard .stk { position: absolute; left: -10px; top: -13px; transform: rotate(-4deg); background: #F6CBB4; color: #5C3020; font: 600 12px/1 var(--sans); letter-spacing: .04em; padding: 7px 10px; border-radius: 4px; box-shadow: 0 6px 14px -6px rgba(110, 60, 50, .5); }
+.recover .copy-col .h2 { font-size: clamp(32px, 2.9vw, 42px); }
+.recover .copy-col p.body { margin: 16px 0 0; font-size: 18px; color: var(--ink-2); max-width: 46ch; }
+.recover .copy-col p b { color: var(--ink); font-weight: 600; }
+.mini-spec { margin: 26px 0 28px; display: grid; grid-template-columns: max-content 1fr; column-gap: 14px; row-gap: 10px; align-items: baseline; font-size: 15.5px; color: var(--ink-2); }
+.mini-spec div { display: contents; }
+.mini-spec .token, .mini-spec .pill { justify-self: start; }
+
+/* ================= 07 send, carry, share (Ivory's cards on Sunlit plates, lit to match each plan colour) ================= */
+.travel-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 48px; }
+.sc { display: flex; flex-direction: column; }
+.plate3 { position: relative; aspect-ratio: 1 / .94; border-radius: var(--r-lg); overflow: hidden; background: var(--peach-50); box-shadow: 0 30px 60px -42px rgba(90, 60, 100, .45); }
+.plate3 > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out); }
+.sc:hover .plate3 > img { transform: scale(1.03); }
+/* the dialog sits fully inside its plate, cropped only at the bottom */
+.plate3 .idlg { position: absolute; z-index: 1; left: 50%; top: 30px; width: 400px; transform: translateX(-50%) scale(.8); transform-origin: 50% 0; transition: transform .6s var(--ease-out); }
+.sc:hover .plate3 .idlg { transform: translateX(-50%) scale(.8) translateY(-5px); }
+.inapp { margin: 14px 0 0; display: flex; gap: 10px; align-items: baseline; }
+.inapp b { font: 600 11.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink); flex: none; }
+.inapp span { font: italic 420 16px/1.4 var(--serif); color: var(--ink-2); }
+.sc .pill { align-self: flex-start; margin-top: 22px; font-weight: 600; letter-spacing: .04em; }
+.sc h3 { margin: 12px 0 0; font: 430 25px/1.2 var(--serif); letter-spacing: -.012em; color: var(--ink); text-wrap: balance; }
+.sc .cbody { margin: 10px 0 0; font-size: 16.5px; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+.sc .more { margin: auto 0 0; padding-top: 16px; display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 16px; }
+/* app dialogs, redrawn from the real app (blue inside the app only) */
+.idlg { border-radius: 10px; overflow: hidden; background: #F6F7F9; color: #15171C; font: 400 13px/1.38 var(--win); text-align: left; box-shadow: 0 2px 4px rgba(0,0,0,.06), 0 26px 50px -20px rgba(60, 35, 60, .45), 0 0 0 1px rgba(0,0,0,.08); }
+.d-t { height: 34px; display: flex; align-items: center; gap: 9px; padding-left: 12px; background: #F0F1F3; color: #1D1F23; font-size: 12.5px; }
+.d-t img { width: 16px; height: 16px; border-radius: 4px; }
+.d-t .x { margin-left: auto; width: 44px; display: grid; place-items: center; }
+.d-t .x svg { width: 10px; height: 10px; stroke: #333; fill: none; stroke-width: 1; }
+.d-b { padding: 14px 14px 16px; }
+.d-card { background: #fff; border: 1px solid #E3E6EB; border-radius: 8px; padding: 13px 14px; }
+.d-card + .d-card { margin-top: 10px; }
+.d-blue { display: inline-flex; align-items: center; height: 30px; padding: 0 14px; border-radius: 5px; background: #2F6BFF; color: #fff; font-weight: 700; font-size: 12.5px; margin-top: 11px; }
+.d-plain { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border: 1px solid #C9CDD5; border-radius: 5px; background: #fff; font-size: 12.5px; }
+.d-tabs { display: flex; gap: 2px; padding: 0 12px; background: #F0F1F3; border-bottom: 1px solid #E3E6EB; font-size: 12.5px; }
+.d-tabs span { padding: 9px 12px 10px; color: #6B7180; }
+.d-tabs span.on { color: #15171C; background: #F6F7F9; box-shadow: inset 0 -2px 0 #2F6BFF; }
+.d-p { margin: 0; font-size: 12.5px; color: #6B7180; line-height: 1.45; }
+.a-lab { font-size: 11px; font-weight: 700; letter-spacing: .03em; color: #646A79; margin-bottom: 6px; }
+.d-ready { display: grid; grid-template-columns: 30px 1fr; gap: 12px; }
+.d-ready .ok { width: 30px; height: 30px; border-radius: 50%; background: #2EBF7A; display: grid; place-items: center; }
+.d-ready b { display: block; font-size: 15px; font-weight: 700; }
+.d-ready p { margin: 4px 0 0; font-size: 12.5px; line-height: 1.45; }
+.d-tree { margin-top: 10px; padding: 9px 12px; border-radius: 6px; background: #EFF2F8; border: 1px solid #E0E5EF; font: 400 12px/1.6 Consolas, "Cascadia Mono", monospace; white-space: pre; color: #1B1D22; }
+.d-tree i { font: 400 11.5px var(--win); color: #8A8F99; font-style: normal; }
+.d-tf { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; white-space: nowrap; }
+.d-tf b { font-size: 14px; font-weight: 700; }
+.pill-b, .pill-g { font-size: 11px; font-weight: 700; padding: 1px 8px 2px; border-radius: 999px; }
+.pill-b { color: #2157E8; background: #E8EFFF; box-shadow: inset 0 0 0 1px #C6D6FF; }
+.pill-g { color: #17804F; background: #E5F6EC; box-shadow: inset 0 0 0 1px #BFE6CF; }
+.d-tbl { background: #fff; border: 1px solid #E3E6EB; border-radius: 6px; overflow: hidden; font-size: 12.5px; }
+.d-tbl > div { display: grid; grid-template-columns: minmax(0, 1fr) 92px; align-items: center; height: 30px; padding: 0 12px; gap: 10px; white-space: nowrap; }
+.d-tbl > div > span:first-child { display: flex; align-items: center; gap: 8px; overflow: hidden; text-overflow: ellipsis; }
+.d-tbl .hd { height: 28px; color: #6B7180; border-bottom: 1px solid #E3E6EB; font-size: 12px; }
+.d-tbl .sel { background: #2B72C0; color: #fff; }
+.d-tbl .fl { width: 12px; height: 14px; flex: none; }
+
+/* ================= 06 proof you can check (Ivory's list, Dusk's blue-hour panel) ================= */
+.night-panel { position: relative; margin: 124px 24px 0; border-radius: var(--r-xl); overflow: hidden; padding: 96px 0 84px; color: #F2F1EE; isolation: isolate;
+  background: radial-gradient(60% 50% at 88% 0%, rgba(239, 188, 158, .36), rgba(239, 188, 158, 0) 70%), linear-gradient(180deg, rgba(30, 40, 68, .12), rgba(22, 29, 50, .5)), #2B3555 center / cover; }
+.night-panel > .wrap { position: relative; z-index: 4; }
+#proof { display: flow-root; }   /* the top margin of the panel stays inside the section whether or not it is contained */
+.near .night-panel, html:not(.js) .night-panel { background-image: radial-gradient(60% 50% at 88% 0%, rgba(239, 188, 158, .36), rgba(239, 188, 158, 0) 70%), linear-gradient(180deg, rgba(30, 40, 68, .12), rgba(22, 29, 50, .5)), url(assets/img/home/night-leaf-1600.webp); }
+.night-panel .chap { color: rgba(242, 241, 238, .9); }
+.night-panel .chap .no { color: #FBFAF7; }
+.night-panel .h2 { color: #FBFAF7; }
+.night-panel .h2 em { color: rgba(251, 250, 247, .8); }
+.night-panel .lead { color: rgba(242, 241, 238, .94); font-size: 18.5px; }
+.night-panel .tlink { color: #FBFAF7; border-color: rgba(255,255,255,.35); }
+.night-panel .tlink:hover { border-color: #fff; }
+.proof .head { margin-bottom: 44px; }
+#proof .head.duo { align-items: start; }
+#proof .head.duo > .rv { padding-top: 10px; }
+.proof .head .lead { margin: 0; }
+.proof .links2 { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 14px 28px; }
+.pdl { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 40px; }
+.pdl > div { padding: 18px 0 20px; border-top: 1px solid rgba(255,255,255,.16); }
+.pdl dt { font: 600 11.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: #F4CDB7; }
+.pdl dd { margin: 10px 0 0; }
+.pdl strong { display: block; font: 430 22px/1.25 var(--serif); letter-spacing: -.008em; color: #FBFAF7; }
+.pdl dd span { display: block; margin-top: 5px; font-size: 15px; line-height: 1.5; color: rgba(242, 241, 238, .78); }
+.pdl .honest { grid-column: span 2; }
+.pdl .honest dd span { max-width: 62ch; }
+
+/* ================= 08 pricing (Dusk) ================= */
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+.plan { position: relative; display: flex; flex-direction: column; padding: 28px 28px 26px; border-radius: var(--r-lg); background: var(--card); box-shadow: var(--sh-card); }
+.plan.free { background: linear-gradient(162deg, #FDEDE2 0%, #F8E4E3 52%, #EEE7F6 100%); box-shadow: var(--sh-card), inset 0 0 0 1px rgba(255,255,255,.75); }
+.plan .top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 10px; }
+#pricing .h2 em { display: block; }
+.plan h3 { margin: 0; font: 430 29px/1 var(--serif); letter-spacing: -.015em; }
+.plan .tag { display: inline-flex; align-items: center; height: 26px; padding: 0 11px; border-radius: 999px; font: 500 12.5px/1 var(--sans); white-space: nowrap; }
+.plan.free .tag { background: #F7D9C6; color: var(--peach-ink); }
+#pro .tag { background: var(--rose-50); color: var(--rose-ink); }
+#premium .tag { background: var(--lav-50); color: var(--lav-ink); }
+.plan .who { margin: 10px 0 0; font-size: 15.5px; color: var(--ink-3); }
+.plan .price { margin: 22px 0 0; display: flex; align-items: baseline; gap: 8px; font: 460 52px/1 var(--serif); letter-spacing: -.02em; font-variant-numeric: lining-nums proportional-nums; }
+.plan .price small { font: 500 15px/1.2 var(--sans); letter-spacing: 0; color: var(--ink-3); }
+.plan ul { list-style: none; margin: 22px 0; padding: 0; flex: 1; }
+.plan li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; padding: 9px 0; border-top: 1px solid var(--hair); font-size: 15.5px; line-height: 1.45; color: var(--ink-2); }
+.plan li:first-child { color: var(--ink); font-weight: 500; }
+.plan li svg { margin-top: 4px; }
+.plan li .iv { display: inline-block; margin-left: 4px; font-size: 12.5px; color: var(--ink-3); white-space: nowrap; }
+.plan .more-link { align-self: stretch; height: 52px; font-size: 16px; }
+.plan .cta-inline { margin-top: 0; text-align: left; }
+.plan .cta-inline .btn-primary { width: 100%; height: 52px; font-size: 17px; }
+.plan .cta-inline p { margin-top: 12px; font-size: 14px; text-align: center; color: var(--ink-2); text-wrap: balance; }
+.plan-notes { margin: 30px auto 0; max-width: 760px; text-align: center; font-size: 15.5px; color: var(--ink-2); }
+.reducers { margin: 34px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; font-size: 15.5px; color: var(--ink-2); }
+.reducers > span { display: inline-flex; align-items: flex-start; gap: 8px; }
+.reducers > span > svg { flex: none; margin-top: 6px; }
+.offer { margin: 22px auto 0; max-width: 760px; text-align: center; font-size: 15.5px; line-height: 1.7; color: var(--ink-2); text-wrap: balance; }
+.offer a { color: var(--ink); white-space: nowrap; }
+.teams { margin: 14px 0 0; text-align: center; font-size: 15px; color: var(--ink-3); }
+
+/* ================= 09 faq ================= */
+.faq-grid { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 72px; align-items: start; }
+.faq details { border-top: 1px solid var(--hair); }
+.faq details:last-child { border-bottom: 1px solid var(--hair); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 24px; align-items: center; padding: 22px 0; font: 440 23.5px/1.3 var(--serif); letter-spacing: -.01em; color: var(--ink); text-wrap: balance; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary i { flex: none; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--edge); position: relative; transition: transform .3s var(--ease-out), background .2s; }
+.faq summary i::before, .faq summary i::after { content: ""; position: absolute; left: 50%; top: 50%; width: 11px; height: 1.5px; margin: -.75px 0 0 -5.5px; background: var(--ink-2); }
+.faq summary i::after { transform: rotate(90deg); transition: transform .3s var(--ease-out); }
+.faq details[open] summary i { background: var(--peach-50); }
+.faq details[open] summary i::after { transform: rotate(0); }
+.faq summary:hover i { background: #fff; }
+.faq details > p { margin: 0; padding: 0 54px 34px 0; font-size: 17px; line-height: 1.65; color: var(--ink-2); }
+
+/* ================= 10 closing: the sun comes back (Sunlit), in dusk colours ================= */
+.closing { position: relative; z-index: 1; isolation: isolate; margin-top: -60px; padding: 208px 24px 168px; text-align: center; overflow: hidden; }
+.closing .bg { position: absolute; z-index: -2; inset: -4% 0 -4%; background: #DCC6D8 50% 38% / cover; transform: translate3d(0, var(--py, 0px), 0); }
+.closing.near .bg, html:not(.js) .closing .bg { background-image: url(assets/img/home/close-leaf-1920.webp); }
+.closing::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(62% 60% at 50% 40%, rgba(255, 247, 240, .9), rgba(255, 245, 238, .5) 70%, rgba(255, 245, 238, .16)); }
+.closing .chap { justify-content: center; color: var(--ink-2); }
+.close-h { margin: 0; font: 400 clamp(40px, 4.4vw, 62px)/1.02 var(--serif); letter-spacing: -.024em; color: var(--ink); }
+.close-h em { display: block; margin-top: 4px; font-style: italic; font-weight: 370; font-size: clamp(64px, 8.2vw, 124px); line-height: 1; letter-spacing: -.022em; color: rgba(var(--ink-rgb), .86); }
+.closing .cta-inline { margin-top: 36px; }
+.closing .cta-inline p { color: var(--ink-2); }
+.closing .cta-inline p.alt { margin-top: 6px; }
+.next { max-width: 1040px; margin: 60px auto 0; padding: 26px 28px 24px; border-radius: var(--r-lg); text-align: left; background: rgba(255, 251, 247, .8); border: 1px solid rgba(255,255,255,.75);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15); backdrop-filter: blur(16px) saturate(1.15); box-shadow: 0 30px 60px -36px rgba(80, 60, 110, .5); }
+.next .top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.next h3 { margin: 0; font: 430 25px/1.1 var(--serif); letter-spacing: -.018em; color: var(--ink); }
+.next ol { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: n; }
+.next li { counter-increment: n; padding-top: 14px; border-top: 1px solid var(--edge); font-size: 15.5px; line-height: 1.45; color: var(--ink-2); text-wrap: pretty; }
+.next li b { display: block; font: 440 20px/1.25 var(--serif); letter-spacing: -.006em; color: var(--ink); margin-bottom: 4px; }
+.next li::before { content: "0" counter(n); display: block; font: 500 12px/1 var(--mono); letter-spacing: .04em; color: var(--ink-3); margin-bottom: 9px; }
+
+/* ================= footer: a second sheet, and the big pale wordmark (Sunlit) ================= */
+footer { position: relative; z-index: 2; margin-top: -48px; padding: 72px 0 0; overflow: hidden; background: var(--paper) var(--grain); border-radius: var(--r-sheet) var(--r-sheet) 0 0;
+  box-shadow: 0 -1px 0 rgba(255,255,255,.9), 0 -18px 40px -26px rgba(110, 80, 130, .45); }
+.fcols { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: 32px; }
+.fcols .wordmark { font-size: 23px; padding: 10px 0; margin: -10px 0; }
+.fcols .tagline { margin: 12px 0 0; font: italic 420 18px/1.4 var(--serif); color: var(--ink-2); max-width: 26ch; }
+.fcols .fh { margin: 4px 0 14px; font: 600 11.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+.fcols a:not(.wordmark) { display: block; padding: 5px 0; font-size: 15.5px; color: var(--ink-2); text-decoration: none; }
+.fcols a:not(.wordmark):hover { color: var(--ink); text-decoration: underline; }
+.legal { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--hair); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 14px; color: var(--ink-3); }
+.legal a { color: inherit; text-decoration: none; }
+.bigmark { margin: 24px 0 -.14em; text-align: center; white-space: nowrap; user-select: none; font: italic 360 clamp(100px, 19vw, 300px)/.9 var(--serif); letter-spacing: -.035em; padding: 0 .06em;
+  background: linear-gradient(180deg, rgba(232, 168, 140, .5) 12%, rgba(188, 175, 224, .36) 60%, rgba(188, 175, 224, .2) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+
+/* ================= responsive ================= */
+@media (max-height: 820px) and (min-width: 901px) {
+  .hero { padding-top: 112px; }
+  .hero h1 { font-size: clamp(38px, 3.9vw, 56px); }
+  .hero .sub { margin-top: 14px; font-size: 18px; }
+  .hero-cta { margin-top: 24px; }
+  .stage { margin-top: 42px; }
+}
+@media (min-width: 1180px) and (min-height: 860px) and (prefers-reduced-motion: no-preference) {
+  #how.s { padding-top: 28px; }
+  .how-sticky { justify-content: flex-start; }
+  /* while the launch-offer bar pushes the nav down, start the pinned panel below it too */
+  html.has-offer .how-sticky { padding-top: calc(84px + var(--offer-h, 38px)); }
+}
+/* the scroll story needs a wide and tall screen; anywhere else it is a plain figure that plays once */
+@media (max-width: 1179px), (max-height: 859px) {
+  .how-track { height: auto; }
+  .how-sticky { position: static; height: auto; min-height: 0; padding: 0; display: block; }
+  .step { cursor: default; }
+  .step::before { display: none; }
+  .step .sn, .step .st { color: var(--ink); }
+  .step .sd { color: var(--ink-2); }
+}
+@media (max-width: 1179px) {
+  .how-grid { grid-template-columns: 1fr; gap: 36px; margin-top: 40px; }
+  .home-grid { grid-template-columns: 1fr; gap: 44px; }
+  .pdl { grid-template-columns: 1fr 1fr; }
+  .pdl .honest { grid-column: 1 / -1; }
+  .recover { gap: 56px; }
+}
+/* on a mid-size screen the plan name and its tag stack, so the tag never pokes out of the card */
+@media (max-width: 1179px) and (min-width: 901px) {
+  .plan .top { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 1100px) {
+  .cards { grid-template-columns: 1fr 1fr; }
+  .cards .sc:last-child { grid-column: 1 / -1; max-width: calc(50% - 14px); }
+}
+@media (max-width: 900px) {
+  body { font-size: 17px; }
+  .nav { height: 54px; }
+  .nav ul li.hide-s { display: none; }
+  .nav ul a { padding: 8px 9px; font-size: 15px; }
+  .wordmark { font-size: 20px; gap: 8px; }
+  .wordmark svg { width: 28px; height: 17px; }
+  .hero { padding: 104px 16px 120px; }
+  .hero .sub { font-size: 17.5px; }
+  .sheet { border-radius: 26px; margin-top: -44px; padding-bottom: 96px; }
+  section.s { padding-top: 96px; }
+  .sheet > section.s:first-child { padding-top: 72px; }
+  .wrap { padding: 0 16px; }
+  .head { margin-bottom: 34px; }
+  .head.duo { grid-template-columns: 1fr; }
+  .head.duo .lead { margin: 16px 0 0; }
+  #proof .head.duo > .rv { padding-top: 0; }
+  .xplate { padding: 62px 18px 22px; border-radius: 22px; }
+  .tryit { padding: 60px 0 56px; border-radius: 24px; margin: 0 8px; }
+  .lab-card { grid-template-columns: 1fr; }
+  .lab-card .col + .col { border-left: 0; border-top: 1px solid rgba(var(--ink-rgb), .08); }
+  .lab-card .col { padding: 22px 18px; }
+  .risks { grid-template-columns: 1fr; }
+  .recover { grid-template-columns: 1fr; gap: 40px; }
+  .recover .rdesk { order: 2; }
+  .travel-head { display: block; }
+  .travel-head .tlink { margin-top: 18px; }
+  .cards { grid-template-columns: 1fr; gap: 52px; }
+  .cards .sc:last-child { max-width: none; }
+  .night-panel { margin: 96px 8px 0; border-radius: 24px; padding: 72px 0 64px;
+    background-image: radial-gradient(50% 30% at 100% 0%, rgba(239, 188, 158, .22), rgba(239, 188, 158, 0) 70%), linear-gradient(180deg, rgba(30, 40, 68, .2), rgba(22, 29, 50, .55)), none; }
+  .near .night-panel, html:not(.js) .night-panel { background-image: radial-gradient(50% 30% at 100% 0%, rgba(239, 188, 158, .22), rgba(239, 188, 158, 0) 70%), linear-gradient(180deg, rgba(30, 40, 68, .2), rgba(22, 29, 50, .55)), url(assets/img/home/night-leaf-1600.webp); }
+  .pdl { grid-template-columns: 1fr; }
+  .plans { grid-template-columns: minmax(0, 1fr); }
+  .faq-grid { grid-template-columns: 1fr; gap: 24px; }
+  .faq details > p { padding-right: 0; }
+  .closing { padding: 150px 16px 128px; margin-top: -44px; }
+  .next { padding: 22px 18px 20px; }
+  .next ol { grid-template-columns: 1fr 1fr; }
+  footer { border-radius: 26px 26px 0 0; padding-top: 60px; }
+  .fcols { grid-template-columns: 1fr 1fr; }
+  .fcols > div:first-child { grid-column: 1 / -1; }
+}
+/* tablets: one card per row, so a wider plate and the dialog at full size */
+@media (max-width: 900px) and (min-width: 601px) {
+  .plate3 { aspect-ratio: 4 / 3; }
+  .plate3 .idlg { transform: translateX(-50%); }
+  .sc:hover .plate3 .idlg { transform: translateX(-50%) translateY(-5px); }
+  .app { width: 860px; height: 600px; }
+  .appbox { aspect-ratio: 860 / 600; }
+}
+@media (max-width: 760px) {
+  .ex-hd, .ex-row { grid-template-columns: minmax(0, 1fr) 62px; }
+  .ex-hd span:nth-child(2), .ex-hd span:nth-child(3), .ex-row .d, .ex-row .ty { display: none; }
+  .ex-search, .ex-tab .x { display: none; }
+  .ex-tab { min-width: 0; }
+  .ex-crumb { font-size: 12px; }
+  .ex-bar { gap: 10px; padding: 0 10px; }
+  .ex-bar .nv { gap: 10px; }
+  .cm, .ptr { display: none; }
+  .ex-tag { right: 6px; top: -46px; }
+  .cmp-card { padding: 4px 16px 4px; }
+  .cmp tbody th { width: 42%; padding-right: 10px; font-size: 17.5px; }
+  .cmp td { font-size: 15px; }
+  .cmp td.us, .cmp thead th.us { padding-left: 10px; }
+  .cmp thead th { font-size: 11px; letter-spacing: .05em; }
+  .next ol { grid-template-columns: 1fr; gap: 14px; }
+}
+@media (max-width: 700px) {
+  .hero h1 { font-size: 38px; line-height: 1.06; }
+  .hero h1 span { display: inline; }
+  .hero .sub { margin-top: 16px; }
+  .hero-cta { margin-top: 26px; }
+  .hero-cta .btn-primary, .cta-inline .btn-primary { width: 100%; height: 54px; font-size: 17px; }
+  .hero-cta .reassure { font-size: 14px; }
+  .stage { margin-top: 40px; }
+  .stage-foot { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+  .reducers { flex-direction: column; align-items: center; text-align: center; }
+  .reducers > span { display: block; }
+  .reducers > span > svg { display: inline-block; vertical-align: -1px; margin: 0 7px 0 0; }
+  .brk { display: block; }
+  .brk .sep { display: none; }
+  .facts .brk::first-letter { text-transform: uppercase; }
+  .tlink { display: inline-block; padding: 8px 0 6px; }
+  .closing::before { background: radial-gradient(110% 44% at 50% 34%, rgba(255, 247, 240, .88), rgba(255, 245, 238, .42) 70%, rgba(255, 245, 238, .12)); }
+  .mini-spec { grid-template-columns: 1fr; row-gap: 6px; }
+  .mini-spec .token, .mini-spec .pill { margin-top: 10px; }
+  .chap { align-items: flex-start; }
+  .chap .bar { margin-top: 7px; }
+  .figcap { font-size: 15px; }
+  .h2 { font-size: 33px; }
+  .recover .copy-col .h2 { font-size: 33px; }
+  .step .st { font-size: 22px; }
+  .close-h { font-size: 36px; }
+  .close-h em { font-size: 64px; }
+  .bigmark { font-size: 118px; }
+  .dock { left: 12px; right: 12px; bottom: 12px; padding: 5px; gap: 0; transform: translateY(calc(100% + 24px)); }
+  .dock.show { transform: none; }
+  .dock .lbl { display: none; }
+  .dock .btn-primary { width: 100%; height: 48px; }
+}
+/* phones: the window becomes a narrower, zoomed-in redraw so no text is smaller than 10px */
+@media (max-width: 600px) {
+  /* Newsreader at 32-38px reads grey on small and 1x screens: a touch more weight for the hero and headings */
+  .hero h1, .close-h { font-weight: 450; }
+  .hero h1 em, .close-h em { font-weight: 410; }
+  .h2 { font-weight: 440; }
+  .bezel { padding: 5px; border-radius: 16px; }
+  .appbox { border-radius: 11px; aspect-ratio: 460 / 420; }
+  .app { width: 460px; height: 420px; grid-template-rows: 34px 1fr; }
+  .app .mh > div { min-width: 0; }
+  .app .mh .sub2 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .app .tbar { font-size: 13.5px; gap: 8px; }
+  .app .tbar .ctl span { width: 34px; }
+  .app .tbar .vlt { display: none; }
+  .app .abody { grid-template-columns: 204px 1fr; }
+  .app .side { padding: 14px 7px 10px; font-size: 13.5px; }
+  .app .side .brand { padding: 0 2px 14px 6px; gap: 9px; }
+  .app .side .brand img { width: 30px; height: 30px; }
+  .app .side .brand b { font-size: 16px; }
+  .app .side .brand small { font-size: 13.5px; }
+  .app .side .h { font-size: 13.5px; padding: 0 6px 5px; }
+  .app .side .it { height: 28px; padding: 0 6px; }
+  .app .side .new { font-size: 13.5px; padding: 1px 5px; }
+  .app .side .vault { display: none; }
+  .app .main { padding: 14px 13px 0; }
+  .app .mh { margin-bottom: 12px; }
+  .app .mh .mt { font-size: 20px; }
+  .app .mh .sub2 { font-size: 13.5px; }
+  .app .quit, .app .tip, .app .note, .app .card.find, .app .wbtn.chg { display: none; }
+  .app .card { padding: 10px 11px 11px; margin-bottom: 11px; }
+  .app .lab { font-size: 13.5px; margin-bottom: 7px; }
+  .app .field, .app .wbtn { font-size: 13.5px; height: 32px; }
+  .app .wbtn { padding: 0 10px; }
+  .app .seg { font-size: 13.5px; }
+  .app .seg span { height: 34px; }
+  .app .go { margin-top: 10px; font-size: 14px; }
+  .app .status { margin: auto -13px 0; padding: 0 13px; font-size: 13.5px; }
+  .app .fchip { font-size: 13.5px; }
+  .app .done { right: 8px; top: 8px; width: calc(100% - 16px); grid-template-columns: 24px 1fr; gap: 9px; padding: 11px 12px 12px; }
+  .app .done .ck { width: 24px; height: 24px; }
+  .app .done b { font-size: 14px; }
+  .app .done p { font-size: 13.5px; }
+  .app .done .x, .app .done .more { display: none; }
+  .closing .bg { background-position: 50% 30%; }
+  .closing.near .bg, html:not(.js) .closing .bg { background-image: url(assets/img/home/close-leaf-900p.webp); }
+  .near .xplate, html:not(.js) .xplate { background-image: url(assets/img/home/plate-leaf-900.webp); }
+  .hero-bg .crisp { width: 120%; height: 40%; top: 0; }
+  .hero-bg .crisp.l { display: none; }
+  .hero-bg .crisp.r { right: -14%; opacity: .5; }
+  /* below ~392px the 400px dialog (344px at .86) is wider than its plate and the plate clips its edges: keep 8px clear */
+  .plate3 .idlg { width: min(400px, calc((100vw - 48px) / .86)); transform: translateX(-50%) scale(.86); }
+  .sc:hover .plate3 .idlg { transform: translateX(-50%) scale(.86) translateY(-5px); }
+  .rdesk::after { opacity: .42; }
+  .rdlg .kf { font-size: 16px; letter-spacing: .01em; }
+  .a-lab, .pill-b, .pill-g, .d-tree i { font-size: 12px; }
+  /* the recovery scene is shown at about 0.64: keep only what reads at 10px or more */
+  .rdlg p, .rdlg .ck, .rdlg .br { display: none; }
+  .rdlg { left: 60px; top: 24px; width: 480px; }
+  .rdlg .dt { height: 40px; font-size: 16px; }
+  .rdlg .dt svg { width: 13px; height: 13px; }
+  .rdlg .dh b { font-size: 19px; }
+  .rdlg .dh small { font-size: 16px; }
+  .rdlg .kf { height: 44px; }
+  .rdlg .r-done { height: 40px; font-size: 16px; margin-top: 14px; }
+  .keycard { top: 250px; left: 16px; width: 400px; }
+  .keycard .kt { font-size: 29px; }
+  .keycard .key { font-size: 19px; }
+  .keycard .hand { font-size: 20px; }
+  .keycard .stk { font-size: 16px; }
+  /* try it: the scrambled output sits right under the text, so typing visibly changes it */
+  .lab-card { display: flex; flex-direction: column; padding: 20px 18px; }
+  .lab-card .col { display: contents; }
+  .lab-card .col:first-child h3 { order: 0; }
+  #plain { order: 1; height: 88px; }
+  .lab-card .col + .col h3 { order: 2; margin-top: 18px; }
+  .cipher { order: 3; height: 104px; }
+  .ciphermeta { order: 4; }
+  .pwrow { order: 5; }
+  .openrow { order: 6; }
+  .openout { order: 7; }
+  .lab-card .hint { order: 8; }
+}
+/* very small phones */
+@media (max-width: 359px) {
+  .nav ul { display: none; }
+  .dock .btn-primary { font-size: 15px; padding: 0 14px; }
+  .hero h1 { font-size: 32px; }
+  .d-tree i { display: none; } /* the narrowed USB dialog has no room for it; the line above already names Clavis.exe */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .js .rv { opacity: 1; transform: none; filter: none; }
+  .js .app:not(.ready) { opacity: 1; translate: 0 0; }
+  .replay { display: none; }
+  .how-track { height: auto; }
+  .how-sticky { position: static; height: auto; min-height: 0; padding: 0; display: block; }
+  .step::before { display: none; }
+  .step .sn, .step .st { color: var(--ink); }
+  .step .sd { color: var(--ink-2); }
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should I use the installer or the Microsoft Store version?","acceptedAnswer":{"@type":"Answer","text":"Both use the same encryption. The installer from the download page adds the File Explorer right-click menu, the command line and USB stick setup. The Microsoft Store version has none of those three."}},{"@type":"Question","name":"Is the original file really gone?","acceptedAnswer":{"@type":"Answer","text":"Not always. The overwrite is best effort: on SSDs and USB drives, and where backups or File History exist, earlier copies can survive. For the drive itself, keep device encryption or BitLocker on. See how Shred handles other copies."}},{"@type":"Question","name":"Will I always be able to open my files?","acceptedAnswer":{"@type":"Answer","text":"Decrypting is part of the free version. It runs on your own PC, offline and with no account, so opening the files you've locked doesn't depend on a Clavis server."}}]}</script>
 </head>
 <body>
-  <div class="sky" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
-      </button>
-      <nav class="nav-links" aria-label="Main">
-        <a href="./" aria-current="page">Home</a>
-        <a href="about.html">About</a>
-        <a href="security.html">Security</a>
-        <a href="blog.html">Blog</a>
-        <a href="help.html">Help</a>
-        <a href="pricing.html">Pricing</a>
-        <a class="btn btn-primary" href="download.html">Download</a>
-      </nav>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+<nav class="nav" id="nav" aria-label="Main">
+  <a class="wordmark" href="./" aria-label="Clavis Encrypt home"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a>
+  <ul>
+    <li class="hide-s"><a href="#how">How it works</a></li>
+    <li><a href="#proof">Security</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li class="hide-s"><a href="blog.html">Guides</a></li>
+    <li class="hide-s"><a href="help.html">Help</a></li>
+  </ul>
+</nav>
+</header>
+
+<!-- Download bar: appears only when no other download button is on screen. Phones get the email link instead of a dead button. -->
+<div class="dock" id="dock" aria-hidden="true">
+  <span class="lbl desk">Free · <span data-release="size">43 MB</span> · no account</span>
+  <a class="btn-primary desk" href="download.html" tabindex="-1">Download free for Windows
+    <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a class="btn-primary phone" href="download.html#signup" tabindex="-1">Email me the download link</a>
+</div>
+
+<main id="main">
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="leaf" id="heroLeaf">
+      <picture>
+        <source media="(max-width: 600px)" srcset="assets/img/home/hero-leaf-780.webp" width="780" height="1170">
+        <img src="assets/img/home/hero-leaf-1920.webp" srcset="assets/img/home/hero-leaf-1280.webp 1280w, assets/img/home/hero-leaf-1920.webp 1920w" sizes="100vw" width="1920" height="1440" alt="" fetchpriority="high">
+      </picture>
     </div>
-  </header>
+    <div class="crisp l"></div><div class="crisp r"></div>
+    <div class="wash"></div>
+    <div class="sun"></div>
+    <div class="grain"></div>
+  </div>
 
-  <main>
-    <!-- Scroll story on the real Clavis window: three files fly into Source, the key turns,
-         they come back out as .enc. site.js measures the stage so copy, window and tray never overlap. -->
-    <section class="story" id="story">
-      <div class="stage" id="stage">
-        <div class="hero-copy intro" id="hero">
-          <span class="eyebrow">Free file encryption · Windows &amp; Linux</span>
-          <h1 class="display">Lock what matters.<br><em>Keep the key.</em></h1>
-          <p class="lede">Tax returns, passport scans, the photos you'd never post. Lock them on your own PC with a password only you know. No account, no cloud, nothing to learn.</p>
-          <div class="btn-row" style="justify-content:center">
-            <a class="btn btn-primary" href="download.html">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>
-              Download free
-            </a>
-            <a class="btn btn-ghost" href="pricing.html">Compare plans</a>
-          </div>
-          <div class="checkline">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>No sign-up</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Works offline</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Works on Windows Home</span>
-          </div>
-        </div>
+  <h1><span>Encrypt your files on Windows&nbsp;11 Home.</span> <em>Without BitLocker.</em></h1>
+  <p class="sub">Clavis locks the files you choose with a password only you know, <b>right on your own PC, even offline.</b></p>
 
-        <div class="copy" id="copy">
-          <div class="chap" data-a=".15" data-b=".41"><span class="eyebrow">Step one</span><h2>Point it at what matters.</h2><p>Drag a file or folder onto Clavis, or right-click it in File Explorer. Nothing is uploaded.</p></div>
-          <div class="chap" data-a=".41" data-b=".67"><span class="eyebrow">Step two</span><h2>Turn the key.</h2><p>Your password becomes a 256-bit key through Argon2id. Every 64 KiB piece is sealed with AES-256-GCM and checked when you open it.</p></div>
-          <div class="chap" data-a=".67" data-b=".86"><span class="eyebrow">Step three</span><h2>Locked, and still yours.</h2><p>Open a locked file in its usual app, put it in OneDrive, or send it to a contact. No decrypted copy is left behind.</p></div>
-          <div class="chap" data-a=".86" data-b="9"><h2>Your files. <em class="grad-text">Your key.</em></h2>
-            <div class="btn-row" style="justify-content:center"><a class="btn btn-primary" href="download.html">Download free</a><a class="btn btn-ghost" href="help.html">See every feature</a></div></div>
-        </div>
+  <div class="hero-cta" id="hero-cta">
+    <a class="btn-primary desk" href="download.html">Download free for Windows
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a class="btn-primary phone" href="download.html#signup">Email me the download link</a>
+    <p class="reassure">Free forever <span class="nw">· No account, <span class="desk">no email, </span>no card</span> <span class="nw brk"><span class="sep">· </span>Same encryption as the paid plans</span></p>
+    <p class="facts desk">Windows&nbsp;10 and&nbsp;11 · <span class="nw">64-bit</span> · <span data-release="size" class="nw">43 MB</span><span class="brk"><span class="sep"> · </span>version <span data-release="version">3.16.1</span></span><span class="brk"><span class="sep"> · </span><span class="nw">also in the <a href="https://apps.microsoft.com/detail/9PCWJ9HG0TNN">Microsoft Store</a></span> <span class="nw">and for <a href="download.html#linux">Linux</a></span></span></p>
+    <p class="facts phone">Clavis runs on Windows and <a href="download.html#linux">Linux</a> PCs <span class="brk"><span class="sep">· </span><button class="copy" type="button" data-copy-url="https://clavisenc.com/download.html">Copy link</button> · <a href="download.html">Download anyway</a></span></p>
+  </div>
 
-        <div class="device" id="device">
-          <div class="win" id="win" role="img" aria-label="The Clavis window: the Encrypt and Decrypt page, a folder chosen as the source and Encrypt selected">
-            <div class="tb">
-              <img src="assets/img/icon-64.png" alt="">Clavis — Vault: Personal
-              <span class="ctl" aria-hidden="true"><span><svg viewBox="0 0 10 10"><path d="M0 5h10"/></svg></span><span><svg viewBox="0 0 10 10"><rect x=".5" y=".5" width="9" height="9"/></svg></span><span><svg viewBox="0 0 10 10"><path d="M0 0l10 10M10 0 0 10"/></svg></span></span>
+  <div class="stage" id="stage">
+    <div class="bezel">
+      <div class="appbox" id="appbox">
+        <div class="app" id="app" role="img" aria-label="The Clavis Encrypt window encrypting tax_return_2025.pdf: the file is dropped in, Encrypt now is pressed, and Clavis reports 1 file encrypted." title="Play the demo again">
+          <div class="tbar"><img src="assets/img/favicon.svg" alt="">Clavis Encrypt<span class="vlt">&nbsp;—&nbsp; Vault: default</span><div class="ctl"><span>—</span><span>☐</span><span>✕</span></div></div>
+          <div class="abody">
+            <div class="side">
+              <div class="brand"><img src="assets/img/favicon.svg" alt=""><div><b>Clavis Encrypt</b><small>File encryption</small></div></div>
+              <div class="h">MENU</div>
+              <div class="it on">Encrypt &amp; Decrypt</div>
+              <div class="it">Find Sensitive Files <span class="new">New</span></div>
+              <div class="it">Watch Folders</div>
+              <div class="it">Encrypt to Cloud</div>
+              <div class="it">USB Stick</div>
+              <div class="it">Secure Notes</div>
+              <div class="it">Sharing</div>
+              <div class="it">Browse Encrypted</div>
+              <div class="it">Shred Files</div>
+              <div class="it">Activity</div>
+              <div class="vault"><div class="h">VAULT</div><div class="vbox"><i></i>default<span>⇄</span></div><div class="dm">Dark mode</div><div class="sb"><span>Settings</span><span>About</span></div></div>
             </div>
-            <div class="wb">
-              <div class="sb">
-                <div class="sb-brand"><img src="assets/img/icon-64.png" alt=""><div><b>Clavis</b><small>File encryption</small></div></div>
-                <div class="sb-lbl">MENU</div>
-                <div class="sb-item on">Encrypt &amp; Decrypt</div>
-                <div class="sb-item">Watch Folders</div>
-                <div class="sb-item">Activity</div>
-                <div class="sb-item">Settings</div>
-                <div class="sb-sp"></div>
-                <div class="sb-lbl">VAULT</div>
-                <div class="vault"><i></i>Personal<svg viewBox="0 0 16 16"><path d="M2 5h11l-3-3M14 11H3l3 3"/></svg></div>
-                <div class="sb-foot c">Dark mode</div>
-                <div class="sb-foot">About</div>
-              </div>
-              <div class="mn">
-                <div class="mn-h">Encrypt &amp; Decrypt</div>
-                <div class="mn-sub">AES-256-GCM · Argon2id · Vault: Personal</div>
-                <div class="w-card">
-                  <div class="w-lbl">SOURCE</div>
-                  <div class="src">
-                    <div class="field" id="field"><span class="path" id="path"><span class="ph">Choose a file or folder…</span></span><span class="chev"><svg viewBox="0 0 10 10"><path d="M1 3l4 4 4-4"/></svg></span></div>
-                    <div class="abtn">Browse…</div>
-                  </div>
-                  <div class="tip">Tip — drag &amp; drop files or folders anywhere on this window</div>
-                </div>
-                <div class="w-card">
-                  <div class="w-lbl">OPERATION</div>
-                  <div class="segm"><span class="on">Encrypt</span><span>Decrypt</span><span>Verify</span></div>
-                  <div class="desc">Encrypts files in place — originals are overwritten, then deleted.</div>
-                  <div class="ops"><div class="exec" id="exec">Encrypt now</div><div class="chpw">Change Password</div></div>
-                </div>
-                <div class="seal" id="seal">
-                  <div class="seal-in">
-                    <!-- Combination padlock: the dial turns right to 27, left to 04, right to 91, then the shackle snaps shut. -->
-                    <svg class="combolock" viewBox="0 0 220 236" aria-hidden="true">
-                      <defs>
-                        <linearGradient id="pl-shk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9AA5BF"/><stop offset=".5" stop-color="#E8ECF6"/><stop offset="1" stop-color="#7C879F"/></linearGradient>
-                        <linearGradient id="pl-body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D592"/><stop offset=".45" stop-color="#D9A84F"/><stop offset="1" stop-color="#8E6224"/></linearGradient>
-                        <radialGradient id="pl-face" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#2A3556"/><stop offset="1" stop-color="#0A0F1E"/></radialGradient>
-                        <radialGradient id="pl-knob" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#F3D592"/><stop offset="1" stop-color="#8E6224"/></radialGradient>
-                      </defs>
-                      <g id="pl-shackle"><path d="M80 92 V58 a30 30 0 0 1 60 0 V92" fill="none" stroke="url(#pl-shk)" stroke-width="13" stroke-linecap="round"/></g>
-                      <rect x="42" y="80" width="136" height="136" rx="26" fill="url(#pl-body)"/>
-                      <rect x="42" y="80" width="136" height="50" rx="26" fill="#fff" opacity=".12"/>
-                      <rect id="pl-glow" x="42" y="80" width="136" height="136" rx="26" fill="none" stroke="#F3D592" stroke-width="2.5" opacity="0"/>
-                      <circle cx="110" cy="152" r="46" fill="#141A2B" stroke="#7A5520" stroke-width="3"/>
-                      <path d="M110 100 l-6 -8 h12 z" fill="#1C1305"/>
-                      <g id="pl-dial">
-                        <circle cx="110" cy="152" r="42" fill="url(#pl-face)"/>
-                        <g id="pl-ticks" stroke="#D9A84F"></g>
-                        <g id="pl-nums" font-family="JetBrains Mono, monospace" font-size="7" fill="#F0CD86" text-anchor="middle"></g>
-                        <circle cx="110" cy="152" r="15" fill="url(#pl-knob)"/>
-                        <g id="pl-grip" stroke="#6E4A18" stroke-width="1.5"></g>
-                      </g>
-                    </svg>
-                  </div>
-                </div>
-                <div class="sbar" id="sbar"><span class="pbar" id="pbar"></span><i></i><span id="stxt">Ready</span><small id="ssub"></small></div>
+            <div class="main" id="amain">
+              <div class="mh"><div><div class="mt">Encrypt &amp; Decrypt</div><div class="sub2">AES-256-GCM · Argon2id · Vault: default</div></div>
+                <span class="quit"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v5M3.2 3a4 4 0 1 0 5.6 0" fill="none" stroke="#222" stroke-width="1.4" stroke-linecap="round"/></svg>Quit Clavis</span></div>
+              <div class="card"><div class="lab">SOURCE</div>
+                <div class="row"><div class="field" id="field"><span id="ftext">Choose a file or folder…</span><span class="chev">⌄</span></div><div class="wbtn">Browse…</div></div>
+                <div class="tip">Tip — drag &amp; drop files or folders anywhere on this window</div></div>
+              <div class="card"><div class="lab">OPERATION</div>
+                <div class="seg"><span class="on">Encrypt</span><span>Decrypt</span><span>Verify</span></div>
+                <div class="note">Encrypts files in place — originals are overwritten, then deleted.</div>
+                <div class="row"><div class="go" id="go">Encrypt now</div><div class="wbtn chg" style="flex:1;height:36px">Change Password</div></div></div>
+              <div class="card find"><div class="lab">FIND SENSITIVE FILES</div>
+                <div class="row" style="font-size:13px;color:#2A2C33"><div style="flex:1">Look for ID, bank and tax documents on this PC that aren't encrypted yet. Nothing leaves this PC.</div><div class="wbtn">Find sensitive files…</div></div></div>
+              <div class="status" id="status"><i></i><span id="stext">Ready</span><span class="bar"></span></div>
+              <div class="fchip" id="fchip"><svg viewBox="0 0 18 20"><path d="M2 1h9l5 5v13H2z" fill="#fff" stroke="#B8BCC6"/><path d="M11 1v5h5" fill="#EEF0F3" stroke="#B8BCC6"/><rect x="0" y="10" width="12" height="7" rx="1.5" fill="#D93F3F"/><text x="6" y="15.6" font-size="5" font-weight="700" fill="#fff" text-anchor="middle" font-family="Segoe UI, sans-serif">PDF</text></svg>tax_return_2025.pdf</div>
+              <svg class="cursor" id="cursor" viewBox="0 0 24 24"><path d="M3 2l17 9-7.5 1.6L9 20z" fill="#111" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              <div class="done" id="done">
+                <span class="ck"><svg width="13" height="13" viewBox="0 0 14 14"><path d="M2.5 7.5 5.5 10.5 11.5 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <div><b>1 file encrypted · 1.2 MB</b><p>They now end in .enc.<span class="more"> Double-click one to open it, or choose Decrypt to get the originals back.</span></p></div>
+                <span class="x">✕</span>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="tray" id="tray" aria-hidden="true">
-          <div class="chips">
-            <div class="chip"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4"/></svg></span><span class="nm"><b data-in="tax_return_2025.pdf" data-out="3f9a1c7e…b21d.enc">tax_return_2025.pdf</b><small data-in="PDF · 1.2 MB" data-out="AES-256-GCM">PDF · 1.2 MB</small></span></div>
-            <div class="chip"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4"/></svg></span><span class="nm"><b data-in="W-2_2025.pdf" data-out="a7d40e91…6c3f.enc">W-2_2025.pdf</b><small data-in="PDF · 214 KB" data-out="AES-256-GCM">PDF · 214 KB</small></span></div>
-            <div class="chip"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 15h16M10 9v12"/></svg></span><span class="nm"><b data-in="receipts_2025.xlsx" data-out="e12b58c0…9a7e.enc">receipts_2025.xlsx</b><small data-in="Excel · 88 KB" data-out="AES-256-GCM">Excel · 88 KB</small></span></div>
-          </div>
-          <div class="pills">
-            <span class="feat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l6 17 2.2-6.8L20 11z"/></svg>Right-click in File Explorer</span>
-            <span class="feat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19 10a4 4 0 0 1-1 8z"/></svg>Straight into OneDrive</span>
-            <span class="feat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M19 8v6M16 11h6"/></svg>Share by Clavis ID</span>
-            <span class="feat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Open with no decrypted copy</span>
-          </div>
-        </div>
-
-        <div class="rail" id="rail" aria-hidden="true"><div>Choose</div><div>Lock</div><div>Live</div><div>Keep</div></div>
-      </div>
-    </section>
-
-    <div class="facts" aria-label="At a glance">
-      <div class="wrap">
-        <div class="fact"><b>AES-256-GCM</b><span>Encryption</span></div>
-        <div class="fact"><b>Argon2id</b><span>Password to key</span></div>
-        <div class="fact"><b>ML-KEM-768</b><span>Recovery key</span></div>
-        <div class="fact"><b>0 accounts</b><span>Nothing to sign up for</span></div>
-        <div class="fact"><b>$0</b><span>To start, forever</span></div>
       </div>
     </div>
+    <div class="stage-foot">
+      <p class="figcap"><b>Fig. 1</b>Clavis, redrawn from the real app. Demo file.</p>
+      <button class="replay" id="replay" type="button"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7a4.5 4.5 0 1 0 1.4-3.3M2.5 1.8v2.4h2.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Play again</button>
+    </div>
+  </div>
+</header>
 
-    <section class="block" id="features">
+<!-- ================= THE PAPER SHEET: slides over the hero, carries chapters 01 to 09 ================= -->
+<div class="sheet">
+
+<!-- ================= 01 THE RISK (Dusk and Sunlit open with the why) ================= -->
+<section class="s" id="risk">
+  <div class="wrap">
+    <div class="head duo">
+      <p class="chap rv h"><span class="no">01</span><span class="bar"></span><span>Your laptop goes places</span></p>
+      <h2 class="h2 rv h">Your Windows <span class="nw">sign-in</span> doesn't lock your files</h2>
+      <p class="lead rv">It protects the screen, not the files themselves. Four everyday ways that matters, and what fixes each one.</p>
+    </div>
+    <div class="risks">
+      <article class="risk rv" style="--c: var(--peach)">
+        <span class="tag"><i></i>At the repair shop</span>
+        <p>The shop may ask for your Windows password. With it, they can open every file in Documents.</p>
+        <div class="fix"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8.5" fill="#E4EBDF"/><path d="M5 9.3 7.7 12 13 6.5" fill="none" stroke="#4E6146" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Encrypt those files before you hand it over</b>, and turn off Unlock with Windows Hello if they'll have your PIN. They stay locked while the laptop is away. <a href="blog-protect-files-before-laptop-repair.html">Protect files before a repair&nbsp;<span aria-hidden="true">→</span></a></span></div>
+      </article>
+      <article class="risk rv d1" style="--c: var(--rose)">
+        <span class="tag"><i></i>On a shared family PC</span>
+        <p>Anyone who signs in as you, or uses the PC while you're signed in, can open your payslips, ID scans and statements.</p>
+        <div class="fix"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8.5" fill="#E4EBDF"/><path d="M5 9.3 7.7 12 13 6.5" fill="none" stroke="#4E6146" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Lock them with a password</b> only you know, separate from your Windows sign-in. <a href="blog-keep-files-private-shared-family-pc.html">Keep files private on a shared PC&nbsp;<span aria-hidden="true">→</span></a></span></div>
+      </article>
+      <article class="risk rv d2" style="--c: var(--lav)">
+        <span class="tag"><i></i>If it's lost or stolen</span>
+        <p>On Windows Home, the drive may not be encrypted at all, so it can be read in another computer.</p>
+        <div class="fix"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8.5" fill="#E4EBDF"/><path d="M5 9.3 7.7 12 13 6.5" fill="none" stroke="#4E6146" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Files you lock with Clavis</b> stay locked either way. <a href="#home">Check your PC&nbsp;<span aria-hidden="true">→</span></a></span></div>
+      </article>
+      <article class="risk rv d3" style="--c: var(--dusty)">
+        <span class="tag"><i></i>In your cloud folder</span>
+        <p>Anyone who gets into your OneDrive, Google Drive or Dropbox account can open what you sync.</p>
+        <div class="fix"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8.5" fill="#E4EBDF"/><path d="M5 9.3 7.7 12 13 6.5" fill="none" stroke="#4E6146" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Encrypt before it syncs.</b> The cloud stores only scrambled data. <a href="blog-encrypt-before-onedrive-google-drive-dropbox.html">Encrypt before you sync&nbsp;<span aria-hidden="true">→</span></a></span></div>
+      </article>
+    </div>
+    <div class="cta-inline rv">
+      <a class="btn-primary desk" href="download.html">Download free for Windows <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn-primary phone" href="download.html#signup">Email me the download link</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 HOW IT WORKS (Ivory) ================= -->
+<section class="s" id="how">
+  <div class="how-track" id="howTrack">
+    <div class="how-sticky">
       <div class="wrap">
-        <div class="block-head">
-          <span class="eyebrow">The details</span>
-          <h2 class="h2">Serious underneath. <em>Calm on top.</em></h2>
+        <div class="head" style="margin-bottom:0">
+          <p class="chap rv h"><span class="no">02</span><span class="bar"></span><span>How it works</span></p>
+          <h2 class="h2 rv h">Right-click a file to lock it</h2>
         </div>
-        <div class="bento">
-          <article class="tile w4">
-            <div class="tiers"><span class="tier">Free</span></div>
-            <h3>Right-click. Encrypt. Done.</h3>
-            <p>Clavis sits in the File Explorer menu, so you lock files where they already live. <a class="tile-link" href="help-explorer-menu.html">How it works →</a></p>
-            <div class="fill menus" aria-hidden="true">
-              <ul><li>Open</li><li>Open with <span>›</span></li><li class="sep"></li><li>Copy as path</li><li>Share</li><li class="hi">Clavis <span>›</span></li><li class="sep"></li><li>Properties</li></ul>
-              <ul class="subm"><li class="go">Encrypt</li><li>Decrypt</li><li>Verify</li><li class="sep"></li><li>Encrypt to cloud folder</li></ul>
+        <div class="how-grid">
+          <div class="rv">
+            <ol class="steps">
+              <li><button class="step on" type="button" data-i="0" aria-pressed="true"><span class="sn">1</span><span class="st">Select the files</span><span class="sd">Pick one file or several in File Explorer. Right now, anyone who opens this PC can read them.</span></button></li>
+              <li><button class="step" type="button" data-i="1" aria-pressed="false"><span class="sn">2</span><span class="st">Right-click › Clavis › Encrypt</span><span class="sd">Or drop them onto the Clavis window.</span><span class="pill n">Right-click menu: installer version</span></button></li>
+              <li><button class="step" type="button" data-i="2" aria-pressed="false"><span class="sn">3</span><span class="st">Your files become locked .enc files</span><span class="sd">Each original is overwritten once, then deleted (best effort on SSDs and USB drives). Only your password, or your recovery key, opens them.</span></button></li>
+            </ol>
+            <p class="how-note"><b>One password.</b> You choose it the first time you open Clavis.</p>
+            <a class="tlink how-more" href="help-explorer-menu.html">How the right-click menu works<span aria-hidden="true"> →</span></a>
+          </div>
+
+          <figure class="fig rv i">
+            <div class="xplate grain">
+              <div class="ex" id="ex" data-state="0" role="img" aria-label="File Explorer showing passport_scan.pdf and tax_return_2025.pdf being encrypted with the Clavis right-click menu. Afterwards they are Clavis encrypted files with hidden names.">
+                <span class="ex-tag" aria-hidden="true"><i></i><span class="ta">Readable</span><span class="tb">Locked · names hidden</span></span>
+                <div class="ex-title"><div class="ex-tab"><span class="ico fold" style="width:16px;height:12px"></span>Documents<span class="x">✕</span></div>
+                  <div class="ctl"><span><svg viewBox="0 0 10 10"><path d="M0 5h10"/></svg></span><span><svg viewBox="0 0 10 10"><rect x=".5" y=".5" width="9" height="9"/></svg></span><span><svg viewBox="0 0 10 10"><path d="M0 0l10 10M10 0 0 10"/></svg></span></div></div>
+                <div class="ex-bar">
+                  <span class="nv"><svg viewBox="0 0 14 14"><path d="M12 7H2M6 3 2 7l4 4"/></svg><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg><svg viewBox="0 0 14 14"><path d="M7 12V2M3 6l4-4 4 4"/></svg></span>
+                  <span class="ex-crumb">This PC <span>›</span> Documents</span>
+                  <span class="ex-search"><svg viewBox="0 0 14 14"><circle cx="6" cy="6" r="4.2"/><path d="M9.2 9.2 12.5 12.5"/></svg>Search Documents</span>
+                </div>
+                <div class="ex-list">
+                  <div class="ex-hd"><span>Name</span><span>Date modified</span><span>Type</span><span style="text-align:right">Size</span></div>
+                  <div class="ex-row"><span class="nm"><span class="ico fold"></span><span class="swap"><span class="a">family_photos</span></span></span><span class="t d">2026-09-30 18:04</span><span class="t ty">File folder</span><span class="z"></span></div>
+                  <div class="ex-row"><span class="nm"><span class="ico xls">XLS</span><span class="swap"><span class="a">household_budget.xlsx</span></span></span><span class="t d">2026-10-12 21:40</span><span class="t ty">XLSX File</span><span class="z">88 KB</span></div>
+                  <div class="ex-row sel"><span class="nm"><span class="swap"><span class="a ico pdfi">PDF</span><span class="b ico enc"><svg viewBox="0 0 8 10"><rect x=".4" y="4.3" width="7.2" height="5.3" rx="1.2" fill="#F6F1E9"/><path d="M2 4.3V3a2 2 0 0 1 4 0v1.3" fill="none" stroke="#F6F1E9" stroke-width="1.1"/></svg></span></span><span class="swap"><span class="a">passport_scan.pdf</span><span class="b">a7d40e91…6c3f.enc</span></span></span><span class="t d">2026-10-03 09:15</span><span class="t ty"><span class="swap"><span class="a">PDF File</span><span class="b">Clavis encrypted file</span></span></span><span class="z"><span class="swap"><span class="a">640 KB</span><span class="b">641 KB</span></span></span></div>
+                  <div class="ex-row sel"><span class="nm"><span class="swap"><span class="a ico pdfi">PDF</span><span class="b ico enc"><svg viewBox="0 0 8 10"><rect x=".4" y="4.3" width="7.2" height="5.3" rx="1.2" fill="#F6F1E9"/><path d="M2 4.3V3a2 2 0 0 1 4 0v1.3" fill="none" stroke="#F6F1E9" stroke-width="1.1"/></svg></span></span><span class="swap"><span class="a">tax_return_2025.pdf</span><span class="b">3f9a1c7e…b21d.enc</span></span></span><span class="t d">2026-10-14 11:02</span><span class="t ty"><span class="swap"><span class="a">PDF File</span><span class="b">Clavis encrypted file</span></span></span><span class="z"><span class="swap"><span class="a">1,204 KB</span><span class="b">1,205 KB</span></span></span></div>
+                  <div class="ex-row"><span class="nm"><span class="ico" style="background:#4A7BD0">TXT</span><span class="swap"><span class="a">recipes.txt</span></span></span><span class="t d">2026-08-21 19:30</span><span class="t ty">Text Document</span><span class="z">4 KB</span></div>
+                  <div class="ex-row"><span class="nm"><span class="ico" style="background:#2B5DB9">DOC</span><span class="swap"><span class="a">cover_letter.docx</span></span></span><span class="t d">2026-07-02 08:47</span><span class="t ty">DOCX File</span><span class="z">32 KB</span></div>
+                </div>
+                <div class="cm" aria-hidden="true">
+                  <div>Open</div><div>Open with <span>›</span></div><hr>
+                  <div class="hi"><img src="assets/img/favicon.svg" alt="">Clavis <span>›</span></div>
+                  <div>Send to <span>›</span></div><hr>
+                  <div>Copy</div><hr>
+                  <div>Properties</div>
+                </div>
+                <div class="cm sub" aria-hidden="true">
+                  <div class="pick"><img src="assets/img/favicon.svg" alt="">Encrypt</div><div><img src="assets/img/favicon.svg" alt="">Encrypt to cloud folder</div><div><img src="assets/img/favicon.svg" alt="">Encrypt for someone…</div>
+                </div>
+                <svg class="ptr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5 19 11l-7 1.6L8.6 19.5z" fill="#111" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
             </div>
-          </article>
-          <article class="tile">
-            <div class="tiers"><span class="tier">Every plan</span></div>
-            <h3>The same lock for everyone.</h3>
-            <div class="big-mono">AES&#8209;256&#8209;GCM</div>
-            <p>Keys come from Argon2id. Free has the same encryption as paid. <a class="tile-link" href="security.html">The details →</a></p>
-            <div class="fill"><div class="chunks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="chunk-cap">64 KiB chunks · each one checked</div></div>
-          </article>
-          <article class="tile">
-            <div class="tiers"><span class="tier">Free</span></div>
-            <h3>Forgot your password?</h3>
-            <div class="rk" aria-label="Example recovery key">K7Q2-M9XD-4HPW-T8NB</div>
-            <p class="fill">A one-time recovery key, sealed with post-quantum cryptography. Keep it on paper. <a class="tile-link" href="help-recovery-key.html">How it works →</a></p>
-          </article>
-          <article class="tile w4">
-            <div class="tiers"><span class="tier prem">Premium</span></div>
-            <h3>Into your cloud.</h3>
-            <p>Lock files straight into OneDrive, Google Drive or Dropbox. The cloud only stores ciphertext under random names.</p>
-            <div class="rows fill"><span>OneDrive <em>3f9a….enc</em></span><span>Google Drive <em>b21c….enc</em></span><span>Dropbox <em>7e04….enc</em></span></div>
-          </article>
-          <article class="tile w4">
-            <div class="tiers"><span class="tier pro">Pro</span></div>
-            <h3>Your files, on a USB stick.</h3>
-            <p>Carry your encrypted files on a USB stick and open them on other Windows PCs without installing anything there. Clavis runs from the stick and keeps everything on it, and where a PC blocks programs from USB sticks, a page on the stick opens your files in the browser. <a class="tile-link" href="blog-carry-encrypted-files-on-usb-stick.html">How it works →</a></p>
-            <div class="rows fill"><span>Clavis and your vault <em class="yes">on the stick</em></span><span>Installed on the other PC <em>nothing</em></span><span>Browser page, offline <em class="yes">free</em></span></div>
-          </article>
-          <article class="tile">
-            <div class="tiers"><span class="tier">Free</span></div>
-            <h3>Made for Windows Home.</h3>
-            <p>Home editions can't use BitLocker or EFS. Clavis doesn't need them, or administrator rights. <a class="tile-link" href="blog-encrypt-files-windows-11-home.html">Your options →</a></p>
-            <div class="rows fill"><span>BitLocker <em>Pro &amp; up</em></span><span>EFS <em>Pro &amp; up</em></span><span>Clavis <em class="yes">Every edition</em></span></div>
-          </article>
-          <article class="tile w3">
-            <div class="tiers"><span class="tier pro">Pro</span></div>
-            <h3>Find what you forgot.</h3>
-            <p>Old passport and ID card scans, bank statements, payslips, tax papers. Clavis helps you find them in Documents, Downloads, Desktop and Pictures, and you tick what to encrypt. It all happens on your PC, and no list of your files is kept. <a class="tile-link" href="help-find-sensitive-files.html">How it works →</a></p>
-            <div class="rows fill"><span>passport_scan.jpg <em class="yes">Likely</em></span><span>statement_mar.pdf <em class="yes">Likely</em></span><span>scan_0412.pdf <em>Possibly</em></span></div>
-          </article>
-          <article class="tile w3">
-            <div class="tiers"><span class="tier">Free</span></div>
-            <h3>Shred what you don't need.</h3>
-            <p>Right-click a file or folder and choose Shred, or use the Shred Files page. Clavis lists every file, overwrites each one once, then deletes it. On SSDs, USB sticks and memory cards it's best effort, and backups or cloud history may still keep copies. <a class="tile-link" href="help-shred.html">How it works →</a></p>
-            <div class="rows fill"><span>Every file listed <em class="yes">before you confirm</em></span><span>Each file <em class="yes">overwritten, then deleted</em></span><span>SSD, USB, memory card <em>best effort</em></span></div>
-          </article>
-          <article class="tile w3">
-            <div class="tiers"><span class="tier pro">Pro</span><span class="tier prem">Premium</span></div>
-            <h3>Open, edit, re-lock.</h3>
-            <p>Open a locked file in Word or Photos, save, and Clavis seals it again with no decrypted copy left on disk. Premium keeps earlier versions. <a class="tile-link" href="help-open-files.html">How it works →</a></p>
-            <div class="rows versions fill"><span>Today, 14:02 <em class="yes">current</em></span><span>Today, 09:47 <em></em></span><span>Yesterday, 18:15 <em></em></span></div>
-          </article>
-          <article class="tile w3">
-            <div class="tiers"><span class="tier">Free</span></div>
-            <h3>No account. No cloud. No telemetry.</h3>
-            <p>The app goes online only to check for updates, and every update is signed. Your password never leaves your PC.</p>
-            <div class="rows fill"><span>Account <em>none</em></span><span>Analytics in the app <em>none</em></span><span>Updates <em>Ed25519-signed</em></span></div>
-          </article>
-          <article class="tile w3">
-            <div class="tiers"><span class="tier prem">Premium</span></div>
-            <h3>Share without a password.</h3>
-            <p>Encrypt a file for a contact's Clavis ID, or share a whole <a href="help-team-folders.html">team folder</a> in the cloud. Only the people you add can open it, every file is signed, and no password changes hands. <a class="tile-link" href="help-sharing.html">How it works →</a></p>
-          </article>
-          <article class="tile w3">
-            <div class="tiers"><span class="tier pro">Pro</span><span class="tier prem">Premium</span></div>
-            <h3>Folders, notes, the command line.</h3>
-            <p>Lock whole folders, watch Downloads for new files, keep secure notes, and script backups with clavis-cli on Windows or Linux. <a class="tile-link" href="help.html">Every feature →</a></p>
-          </article>
-          <article class="tile" style="grid-column:1/-1">
-            <div class="tiers"><span class="tier">Free</span></div>
-            <h3>No install? Encrypt or open a file in your browser.</h3>
-            <p>On a phone, a Mac or a PC that isn't yours. It all happens on that device, and nothing is uploaded.</p>
-            <div class="btn-row"><a class="btn btn-ghost" href="encrypt.html">Encrypt online</a><a class="btn btn-ghost" href="open.html">Open a file</a></div>
-          </article>
+            <figcaption class="figcap"><b>Fig. 2</b>File Explorer on Windows 11, illustrated. The Clavis menu is under Show more options.</figcaption>
+          </figure>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="block paper-band" id="why">
-      <div class="wrap grid2">
-        <div>
-          <span class="eyebrow">Why bother</span>
-          <h2 class="h2">Your laptop goes places without you.</h2>
-          <p class="intro-p">Anything in Documents can be read by whoever is holding the PC. With Clavis, those files are noise to anyone without your key.</p>
-          <a class="btn" href="download.html">Lock your first file</a>
-        </div>
-        <div>
-          <div class="stake"><b>Repair shop</b><span>The technician who asks for your password to fix the screen.</span></div>
-          <div class="stake"><b>Shared login</b><span>The family PC where everyone uses the same account. <a href="blog-keep-files-private-shared-family-pc.html" style="color:inherit;text-decoration:underline">What to do about it</a></span></div>
-          <div class="stake"><b>Stolen bag</b><span>On Windows Home the drive isn't encrypted, so it reads fine in another machine.</span></div>
-          <div class="stake"><b>Cloud sync</b><span>OneDrive copies Documents to servers you don't control.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="block">
-      <div class="wrap promise">
-        <img src="assets/img/icon-192.png" alt="" width="88" height="88">
-        <div>
-          <p>Security is a right — never a receipt. Free and paid Clavis use the same locks. Paying buys time and convenience, and keeps Clavis independent.</p>
-          <small>The Clavis promise · <a href="pricing.html" style="color:var(--cyan)">See the plans</a></small>
-        </div>
-      </div>
-    </section>
-
-    <section class="closer">
-      <div class="wrap">
-        <h2 class="tagline">Clavis.<br><em class="grad-text">Keep the key.</em></h2>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="download.html">
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>
-            Download free
-          </a>
-          <a class="btn btn-ghost" href="pricing.html">See Pro &amp; Premium</a>
-        </div>
-        <p class="fineprint">Windows 10 &amp; 11 · also for Linux (<a href="download.html">.deb</a>) · 64-bit · Version <span data-release="version">3.16.1</span></p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
+<!-- ================= 03 SEE WHAT A STRANGER SEES (Dusk, kept as it was) ================= -->
+<section class="s" id="try">
+  <div class="tryit grain">
     <div class="wrap">
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-          <p class="latin">clāvis — Latin, “key”</p>
-          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
-          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
-        </div>
-        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
-        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
-        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      <div class="head center">
+        <p class="chap rv h"><span class="no">03</span><span class="bar"></span><span>Try it on this page</span></p>
+        <h2 class="h2 rv h">See what a stranger sees</h2>
+        <p class="lead rv">Type anything. It's encrypted in your browser as you type, and nothing you type is sent anywhere.</p>
       </div>
-      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+      <div class="lab-card rv i">
+        <div class="col">
+          <h3><i></i>What you see</h3>
+          <label class="sr" for="plain">Your text</label>
+          <textarea id="plain" spellcheck="false">Tax return 2025. Refund due: 1,180. Bank account ending 0193.</textarea>
+          <div class="pwrow"><label for="pw">Password</label><input id="pw" value="quiet-harbour-27" autocomplete="off" spellcheck="false"></div>
+          <p class="hint">Edit the text or the password and the right side changes completely. A password that is one letter off opens nothing. Try it.</p>
+        </div>
+        <div class="col">
+          <h3><i></i>What a stranger sees</h3>
+          <div class="cipher" id="cipher" aria-live="off">…</div>
+          <div class="ciphermeta" id="cmeta">&nbsp;</div>
+          <div class="openrow"><label class="sr" for="guess">Type the password to open it</label><input id="guess" placeholder="Password to open it" autocomplete="off" spellcheck="false"><button class="btn-quiet" id="openbtn" type="button">Open</button></div>
+          <div class="openout" id="openout" aria-live="polite">Try a wrong password first.</div>
+        </div>
+      </div>
+      <p class="lab-note rv">This demo uses your browser's built-in AES-256-GCM. The app uses the same cipher, and makes the key from your password with Argon2id. Browsers don't include Argon2id, so this demo makes its key with PBKDF2. <a href="encrypt.html">Encrypt a real file in your browser →</a> or <a href="open.html">open one on a phone or Mac →</a></p>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script src="assets/js/site.js?v=6b89413203" defer></script>
+<!-- ================= 04 RECOVERY KEY (Sunlit's desk, in dusk light): right after the demo's wrong password ================= -->
+<section class="s" id="recovery">
+  <div class="wrap recover">
+    <div class="rdesk rv i">
+      <div class="scene" data-w="560" role="img" aria-label="The Recovery Key window of Clavis Encrypt, and the same sample key written on a card">
+        <div class="rdlg">
+          <div class="dt">Recovery Key<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 0l10 10M10 0L0 10"/></svg></div>
+          <div class="dh"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><rect x="2" y="11" width="18" height="13.5" rx="3" fill="#fff"/><path d="M6 11V7.5a5 5 0 0110 0V11" stroke="#fff" stroke-width="2.6" fill="none"/><circle cx="11" cy="17.6" r="2" fill="#2F6BFF"/></svg>
+            <div><b>Your recovery key</b><small>Vault "default" — shown only once</small></div></div>
+          <div class="db">
+            <div class="kf">K7QF-2M9X-PR4D-8RWT-N3HC-6YVB-Q2JS-9EAZ</div>
+            <div class="br"><span>Copy</span><span>Save as text file…</span></div>
+            <p>This key can unlock the vault if you forget your password. <b>Store it away from this computer</b> — print it, write it down, or keep it in a password manager.</p>
+            <div class="ck"><i><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.8 5.2l2.1 2.1 4.3-4.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>I have stored my recovery key somewhere safe</div>
+            <div class="r-done">Done</div>
+          </div>
+        </div>
+        <div class="keycard">
+          <span class="stk">Sample key</span>
+          <div class="kt">Recovery key</div>
+          <div class="key">K7QF-2M9X-PR4D-8RWT<br>N3HC-6YVB-Q2JS-9EAZ</div>
+          <div class="hand">Kept in the desk drawer, not on the laptop.</div>
+        </div>
+      </div>
+    </div>
+    <div class="copy-col">
+      <p class="chap rv h"><span class="no">04</span><span class="bar"></span><span>Your recovery key</span></p>
+      <h2 class="h2 rv h">Forgot your password? <em>Use your recovery key.</em></h2>
+      <p class="body rv">Right after you set your password, Clavis shows you a recovery key. <b>Print it or write it down</b>, and keep it away from this PC.</p>
+      <p class="body rv">If you forget the password, choose <b>Forgot password? Use recovery key</b> on the unlock screen and type it in.</p>
+      <div class="mini-spec rv">
+        <div><span class="token">X25519 + ML-KEM-768</span><span>The recovery key is sealed with classical and post-quantum encryption together.</span></div>
+        <div><span class="pill l">Shown once</span><span>It isn't stored on your PC. You can make a new one in Settings.</span></div>
+      </div>
+      <a class="tlink rv" href="help-recovery-key.html">See how the recovery key works<span aria-hidden="true"> →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 WINDOWS 11 HOME ================= -->
+<section class="s" id="home">
+  <div class="wrap">
+    <div class="head">
+      <p class="chap rv h"><span class="no">05</span><span class="bar"></span><span>BitLocker and Windows&nbsp;11 Home</span></p>
+      <h2 class="h2 rv h">Works on Windows&nbsp;11 Home, alongside device encryption</h2>
+    </div>
+    <div class="home-grid">
+      <div>
+        <p class="lead rv">Looking for a <a href="blog-clavis-vs-cryptomator-axcrypt-bitlocker.html">BitLocker alternative</a> for your files on Windows&nbsp;11 Home? Home editions don't include BitLocker or EFS. Device encryption, where your PC supports it, protects a lost laptop. Clavis locks the files themselves.</p>
+        <div class="checkpc rv"><b>Check your PC</b><p class="crumbs"><span>Settings</span><i>›</i><span>Privacy &amp; security</span><i>›</i><span>Device encryption</span></p><p class="note">Not there? <a href="blog-device-encryption-not-available-windows-11.html">Device encryption not available, and what to do</a></p></div>
+        <div class="home-links rv">
+          <a class="tlink" href="blog-encrypt-files-windows-11-home.html">Encrypt files on Windows&nbsp;11 Home, step by step<span aria-hidden="true"> →</span></a>
+          <a class="tlink" href="blog-bitlocker-vs-device-encryption-windows-11-home.html">BitLocker vs device encryption, explained<span aria-hidden="true"> →</span></a>
+        </div>
+      </div>
+      <div class="cmp-card rv d1">
+        <table class="cmp">
+          <caption>What each one does</caption>
+          <thead><tr><th scope="col">You want</th><th scope="col">Device encryption</th><th scope="col" class="us">Clavis</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Password-protect a file or folder</th><td><span class="no">No</span></td><td class="us"><span class="y">Yes</span><small>whole folders: Pro</small></td></tr>
+            <tr><th scope="row">Still encrypted after you email, upload or copy it</th><td><span class="no">No</span></td><td class="us"><span class="y">Yes</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 PROOF YOU CAN CHECK (security, in Dusk's blue-hour panel) ================= -->
+<section id="proof" aria-labelledby="proof-h">
+  <div class="night-panel grain">
+    <div class="wrap proof">
+      <div class="head duo">
+        <p class="chap rv h"><span class="no">06</span><span class="bar"></span><span>Proof you can check</span></p>
+        <h2 class="h2 rv h" id="proof-h">Your files and password are never sent to Clavis. No telemetry in the app.</h2>
+        <div class="rv">
+          <p class="lead">Everything happens on your PC. Here is exactly what protects your files, in plain words.</p>
+          <div class="links2">
+            <a class="tlink" href="security.html">How Clavis protects your files<span aria-hidden="true"> →</span></a>
+            <a class="tlink" href="privacy.html">Read the privacy policy<span aria-hidden="true"> →</span></a>
+            <a class="tlink" href="format.html">Check the public file format and free decryptor<span aria-hidden="true"> →</span></a>
+          </div>
+        </div>
+      </div>
+      <dl class="pdl rv d1">
+        <div><dt>Your files</dt><dd><strong>Sealed with AES-256-GCM</strong><span>Every file is checked when it opens. If it was changed, Clavis won't open it.</span></dd></div>
+        <div><dt>Your password</dt><dd><strong>Becomes the key, via Argon2id</strong><span>Slow and memory-hard on purpose, so every guess is costly.</span></dd></div>
+        <div><dt>File names</dt><dd><strong>Hidden too</strong><span>Each file gets a random name. Folder names, sizes and dates still show.</span></dd></div>
+        <div><dt>Master key</dt><dd><strong>None</strong><span>Nobody else, including Clavis, can unlock your files.</span></dd></div>
+        <div><dt>Internet</dt><dd><strong>Update and licence checks only</strong><span>No usage tracking, analytics or crash reporting.</span></dd></div>
+        <div><dt>Updates</dt><dd><strong>Signed with Ed25519</strong><span>The app checks the signature before installing.</span></dd></div>
+        <div class="honest"><dt>Independent audit</dt><dd><strong>Not yet</strong><span>Clavis hasn't had an independent security audit yet, so the security page explains exactly how your files are protected.</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 SEND, CARRY AND SHARE (Ivory): what each plan looks like in the app, right before the prices ================= -->
+<section class="s" id="share">
+  <div class="wrap">
+    <div class="travel-head">
+      <div>
+        <p class="chap rv h"><span class="no">07</span><span class="bar"></span><span>Beyond one file</span></p>
+        <h2 class="h2 rv h">Send, carry and share locked files</h2>
+      </div>
+    </div>
+    <div class="cards">
+      <article class="sc rv">
+        <div class="plate3">
+          <img src="assets/img/home/plate-free-900.webp" srcset="assets/img/home/plate-free-560.webp 560w, assets/img/home/plate-free-900.webp 900w" sizes="(min-width: 1101px) 360px, (min-width: 901px) 50vw, 100vw" width="900" height="846" alt="" loading="lazy" decoding="async">
+          <div class="idlg" role="img" aria-label="The Clavis Sharing window with the button Send files with a password.">
+            <div class="d-t"><img src="assets/img/favicon.svg" alt="">Sharing<span class="x"><svg viewBox="0 0 10 10"><path d="M0 0l10 10M10 0 0 10"/></svg></span></div>
+            <div class="d-tabs"><span class="on">Your ID and contacts</span><span>Team folders</span></div>
+            <div class="d-b">
+              <div class="d-card"><p class="d-p">Make locked copies of files to email or share with anyone. They open them at clavisenc.com/open.html (phone or computer, nothing uploaded) or in Clavis Encrypt, with a one-time password you send separately. Free.</p>
+                <span class="d-blue">Send files with a password…</span></div>
+              <div class="d-card"><div class="a-lab">YOUR CLAVIS ID</div><p class="d-p">Share this ID so people can encrypt files that only you can open.</p></div>
+            </div>
+          </div>
+        </div>
+        <p class="inapp"><b>In the app</b><span>Sharing › Send files with a password…</span></p>
+        <span class="pill">Free</span>
+        <h3>Send a file with a password</h3>
+        <p class="cbody">Clavis makes a locked copy to email. You send the one-time password separately.</p>
+        <p class="more"><a class="tlink" href="open.html">How they open it<span aria-hidden="true"> →</span></a></p>
+      </article>
+      <article class="sc rv d1">
+        <div class="plate3">
+          <img src="assets/img/home/plate-pro-900.webp" srcset="assets/img/home/plate-pro-560.webp 560w, assets/img/home/plate-pro-900.webp 900w" sizes="(min-width: 1101px) 360px, (min-width: 901px) 50vw, 100vw" width="900" height="846" alt="" loading="lazy" decoding="async">
+          <div class="idlg" role="img" aria-label="The Clavis on a USB stick window: your USB stick is ready, and on another PC you open Clavis.exe from the stick.">
+            <div class="d-t"><img src="assets/img/favicon.svg" alt="">Clavis on a USB stick<span class="x"><svg viewBox="0 0 10 10"><path d="M0 0l10 10M10 0 0 10"/></svg></span></div>
+            <div class="d-b">
+              <div class="d-card d-ready"><span class="ok"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 7.4 5.8 10.2 11 4.4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <div><b>Your USB stick is ready.</b><p>On another PC, open the stick in File Explorer and double-click <b style="display:inline;font-size:inherit">Clavis.exe</b> in the Clavis Encrypt folder.</p>
+                  <div class="d-tree">E:\
+├ Open my files.html
+├ Encrypted files\
+└ Clavis Encrypt\   <i>Clavis.exe is in here</i></div></div></div>
+            </div>
+          </div>
+        </div>
+        <p class="inapp"><b>In the app</b><span>USB Stick › Set up stick</span></p>
+        <span class="pill r">Pro</span>
+        <h3>Lock whole folders and carry them on a USB stick</h3>
+        <p class="cbody">Set up the stick once. Then open your files on another Windows PC without installing anything there.</p> <span class="pill n">USB stick mode: installer version</span>
+        <p class="more"><a class="tlink" href="blog-carry-encrypted-files-on-usb-stick.html">Carry encrypted files on a USB stick<span aria-hidden="true"> →</span></a></p>
+      </article>
+      <article class="sc rv d2">
+        <div class="plate3">
+          <img src="assets/img/home/plate-premium-900.webp" srcset="assets/img/home/plate-premium-560.webp 560w, assets/img/home/plate-premium-900.webp 900w" sizes="(min-width: 1101px) 360px, (min-width: 901px) 50vw, 100vw" width="900" height="846" alt="" loading="lazy" decoding="async">
+          <div class="idlg" role="img" aria-label="A Clavis team folder, up to date, listing encrypted files and who last saved each one.">
+            <div class="d-t"><img src="assets/img/favicon.svg" alt="">Team folder: Riverside Office<span class="x"><svg viewBox="0 0 10 10"><path d="M0 0l10 10M10 0 0 10"/></svg></span></div>
+            <div class="d-b">
+              <div class="d-tf"><svg width="20" height="16" viewBox="0 0 20 16" aria-hidden="true"><path d="M1.5 3.5a1.5 1.5 0 0 1 1.5-1.5h4l2 2h8a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H3a1.5 1.5 0 0 1-1.5-1.5z" fill="none" stroke="#2F6BFF" stroke-width="1.4"/><circle cx="8" cy="9" r="1.6" fill="#2F6BFF"/><circle cx="12.5" cy="9" r="1.6" fill="#2F6BFF"/></svg><b>“Riverside Office”</b><span class="pill-b">Owner</span><span class="pill-g">Up to date</span></div>
+              <div class="d-tbl">
+                <div class="hd"><span>Name</span><span>Last saved by</span></div>
+                <div><span><svg class="fl" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1.5h6.5L11 5v7.5H1z" fill="none" stroke="#2F6BFF" stroke-width="1.2"/><rect x="3.6" y="7" width="4.8" height="3.6" rx=".8" fill="#2F6BFF"/></svg>Client list 2026.xlsx</span><span>Maria</span></div>
+                <div><span><svg class="fl" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1.5h6.5L11 5v7.5H1z" fill="none" stroke="#2F6BFF" stroke-width="1.2"/><rect x="3.6" y="7" width="4.8" height="3.6" rx=".8" fill="#2F6BFF"/></svg>Contracts\Office lease 2026.pdf</span><span>Alex</span></div>
+                <div><span><svg class="fl" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1.5h6.5L11 5v7.5H1z" fill="none" stroke="#2F6BFF" stroke-width="1.2"/><rect x="3.6" y="7" width="4.8" height="3.6" rx=".8" fill="#2F6BFF"/></svg>Payroll Sept 2026.xlsx</span><span>Alex</span></div>
+                <div><span><svg class="fl" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1.5h6.5L11 5v7.5H1z" fill="none" stroke="#2F6BFF" stroke-width="1.2"/><rect x="3.6" y="7" width="4.8" height="3.6" rx=".8" fill="#2F6BFF"/></svg>Q3 budget.xlsx</span><span>Ben</span></div>
+                <div><span><svg class="fl" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1.5h6.5L11 5v7.5H1z" fill="none" stroke="#2F6BFF" stroke-width="1.2"/><rect x="3.6" y="7" width="4.8" height="3.6" rx=".8" fill="#2F6BFF"/></svg>Tax return 2025.pdf</span><span>Tom</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="inapp"><b>In the app</b><span>Sharing › Team folders</span></p>
+        <span class="pill l">Premium</span>
+        <h3>One team folder, a key for each person</h3>
+        <p class="cbody">The folder shows every file and who last saved it.</p>
+        <p class="more"><a class="tlink" href="help-team-folders.html">Team folders<span aria-hidden="true"> →</span></a><a class="tlink" href="help-sharing.html">Share without a password<span aria-hidden="true"> →</span></a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 PRICING ================= -->
+<section class="s" id="pricing">
+  <div class="wrap">
+    <div class="head center">
+      <p class="chap rv h"><span class="no">08</span><span class="bar"></span><span>Pricing</span></p>
+      <h2 class="h2 rv h">Same encryption on every plan. <em>Pay once.</em></h2>
+    </div>
+    <div class="plans">
+      <article class="plan free rv">
+        <div class="top"><h3>Free</h3><span class="tag">Start here</span></div>
+        <p class="who">For locking your own files</p>
+        <div class="price">$0 <small>forever</small></div>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg>Encrypt and decrypt any file</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg>Send with a password: they open it in any web browser</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg>Decrypt folders</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg><span>Recovery key if you forget your password</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg><span><a href="help-shred.html">Shred files</a> <small class="iv">best effort on SSDs</small></span></li>
+        </ul>
+        <div class="cta-inline">
+          <a class="btn-primary desk" href="download.html">Download free <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn-primary phone" href="download.html#signup">Email me the download link</a>
+          <p>Start free. Upgrade inside the app whenever you want.</p>
+        </div>
+      </article>
+      <article class="plan rv d1" id="pro">
+        <div class="top"><h3>Pro</h3><span class="tag">For folders and USB sticks</span></div>
+        <p class="who">Everything in Free, plus:</p>
+        <div class="price">$19 <small>once</small></div>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg><span><a href="blog-encrypt-folder-on-windows.html">Encrypt whole folders</a> in one step</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg><span>USB stick mode <small class="iv">installer version</small></span></li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg><span><a href="help-find-sensitive-files.html">Find sensitive files</a></span></li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg><span><a href="help-open-files.html">Open and edit without leaving a decrypted copy</a></span></li>
+        </ul>
+        <a class="btn-quiet more-link" href="pricing.html#pro">Get Pro <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="plan rv d2" id="premium">
+        <div class="top"><h3>Premium</h3><span class="tag">For cloud and teams</span></div>
+        <p class="who">Everything in Pro, plus:</p>
+        <div class="price">$29 <small>once</small></div>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg>Share by Clavis ID: no password to pass along</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg>Team folders in OneDrive, Google Drive, Dropbox or a network drive, each person with their own key</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg>Encrypt to cloud folders, and backups</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg><span>Command line <small class="iv">installer version</small></span></li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg>Previous versions of edited files</li>
+        </ul>
+        <a class="btn-quiet more-link" href="pricing.html#premium">Get Premium <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+    <div class="reducers rv">
+      <span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg>Pay once, no renewals</span>
+      <span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg>All future updates included</span>
+      <span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg><span><a href="mailto:hello@clavisenc.com?subject=Clavis%20trial&amp;body=Pro%20or%20Premium%3F%0ADevice%20code%20(Clavis%20%E2%86%92%20Settings%20%E2%86%92%20License)%3A%20">Ask for a free trial key</a> first</span></span>
+      <span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.3 5.3 10.5 12 3.8" fill="none" stroke="#4E6146" stroke-width="1.7" stroke-linecap="round"/></svg>Move from Pro to Premium by paying only the difference</span>
+    </div>
+    <p class="offer rv" data-until="2026-11-30">Launch offer: <span class="token">LAUNCH20</span> takes 20% off Pro and Premium until 30 November 2026. <a href="pricing.html">Use it on the pricing page →</a></p>
+    <p class="teams rv">Buying for a team? 15% off <span class="nw">3–9 licences</span>, 25% off <span class="nw">10–24</span>. <a href="teams.html">Team prices →</a></p>
+  </div>
+</section>
+
+<!-- ================= 09 FAQ ================= -->
+<section class="s" id="faq">
+  <div class="wrap faq-grid">
+    <div>
+      <p class="chap rv h"><span class="no">09</span><span class="bar"></span><span>Before you download</span></p>
+      <h2 class="h2 rv h">Fair questions</h2>
+      <p class="rv" style="margin:18px 0 0;color:var(--ink-2);font-size:17px">More answers in the <a href="help.html">Help centre</a>, or write to <a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a>.</p>
+    </div>
+    <div class="faq rv">
+      <details><summary>Should I use the installer or the Microsoft Store version?<i aria-hidden="true"></i></summary><p>Both use the same encryption. The installer from the <a href="download.html">download page</a> adds the File Explorer right-click menu, the command line and USB stick setup. The <a href="https://apps.microsoft.com/detail/9PCWJ9HG0TNN">Microsoft Store</a> version has none of those three.</p></details>
+      <details><summary>Is the original file really gone?<i aria-hidden="true"></i></summary><p>Not always. The overwrite is best effort: on SSDs and USB drives, and where backups or File History exist, earlier copies can survive. For the drive itself, keep device encryption or BitLocker on. See <a href="help-shred.html">how Shred handles other copies</a>.</p></details>
+      <details><summary>Will I always be able to open my files?<i aria-hidden="true"></i></summary><p>Decrypting is part of the free version. It runs on your own PC, offline and with no account, so opening the files you've locked doesn't depend on a Clavis server.</p></details>
+    </div>
+  </div>
+</section>
+
+</div><!-- /sheet -->
+
+<!-- ================= CLOSING: the light comes back ================= -->
+<section class="closing" id="get" aria-labelledby="get-h">
+  <div class="bg" id="closeBg" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="chap rv h"><span class="bar"></span><span>Free for Windows&nbsp;10 and&nbsp;11</span><span class="bar"></span></p>
+    <h2 class="close-h rv h" id="get-h">Lock what matters. <em>Keep the key.</em></h2>
+    <div class="cta-inline rv" id="final-cta">
+      <a class="btn-primary desk" href="download.html">Download free for Windows <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn-primary phone" href="download.html#signup">Email me the download link</a>
+      <p class="desk">64-bit · <span data-release="size">43 MB</span> · version <span data-release="version">3.16.1</span> <span class="nw">· no admin rights needed</span></p>
+      <p class="phone">Clavis runs on Windows and <a href="download.html#linux">Linux</a> PCs <span class="brk"><span class="sep">· </span><button class="copy" type="button" data-copy-url="https://clavisenc.com/download.html">Copy link</button> · <a href="download.html">Download anyway</a></span></p>
+      <p class="alt"><span class="desk">Also for <a href="download.html#linux">Linux</a> · </span><a href="pricing.html">Compare Free, Pro and Premium</a></p>
+    </div>
+    <div class="next rv">
+      <div class="top"><h3>What happens next</h3><a class="tlink" href="help-install.html">Install guide with screenshots<span aria-hidden="true"> →</span></a></div>
+      <ol>
+        <li><b>Install it</b>From the Microsoft Store, or run <span class="nw">Clavis-Setup.exe</span> from the download page.</li>
+        <li><b>If Windows warns you</b>The installer isn't code-signed yet, so Windows may show “Windows protected your PC”. Choose More info › Run anyway. The Microsoft Store version installs without this warning.</li>
+        <li><b>Set your password</b>Pick one you'll remember, and keep the recovery key it shows you.</li>
+        <li><b>Encrypt your first file</b>Start with the one you'd least want a stranger to read.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fcols">
+      <div><a class="wordmark" href="./"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a><p class="tagline">File encryption that stays on your PC. For Windows and Linux.</p></div>
+      <div><p class="fh">Product</p><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></div>
+      <div><p class="fh">Help</p><a href="help.html">Help centre</a><a href="help-install.html">Installing</a><a href="help-recovery-key.html">Recovery key</a><a href="help-open-files.html">Opening encrypted files</a><a href="blog.html">Guides</a></div>
+      <div><p class="fh">Company</p><a href="about.html">About</a><a href="security.html">Security</a><a href="mailto:hello@clavisenc.com">Contact</a></div>
+      <div><p class="fh">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a></div>
+    </div>
+    <div class="legal"><span>© <span data-year>2026</span> Clavis Encryption</span><span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> · version <span data-release="version">3.16.1</span></span></div>
+  </div>
+  <p class="bigmark" aria-hidden="true">Clavis</p>
+</footer>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const IO = "IntersectionObserver" in window;
+
+  /* ---------- launch offer hides itself after its end date ---------- */
+  document.querySelectorAll("[data-until]").forEach((el) => { if (Date.now() > new Date(el.dataset.until + "T23:59:59").getTime()) el.remove(); });
+
+  /* ---------- fit the app window to its frame, and the recovery desk to its column ----------
+     The frames take their height from CSS (aspect-ratio) and the scale comes from ResizeObserver sizes, which arrive after
+     layout: nothing here measures the page while it is still being parsed. */
+  const appbox = $("appbox"), app = $("app");
+  const scenes = [...document.querySelectorAll(".scene[data-w]")];
+  const mqPhone = matchMedia("(max-width: 600px)"), mqTablet = matchMedia("(max-width: 900px)");
+  const appW = () => mqPhone.matches ? 460 : mqTablet.matches ? 860 : 1040;   /* the .app widths set in the CSS */
+  const scaleApp = (w) => app.style.setProperty("--s", (w / appW()).toFixed(4));
+  const scaleScene = (sc, w) => { sc.style.transform = `scale(${(w / +sc.dataset.w).toFixed(4)})`; };
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(([e]) => scaleApp(e.contentRect.width)).observe(appbox);
+    const ro = new ResizeObserver((es) => es.forEach((e) => scenes.forEach((sc) => { if (sc.parentElement === e.target) scaleScene(sc, e.contentRect.width); })));
+    scenes.forEach((sc) => ro.observe(sc.parentElement));
+    /* at 900/901px the app's own width changes while its frame may not */
+    [mqPhone, mqTablet].forEach((mq) => mq.addEventListener && mq.addEventListener("change", () => scaleApp(appbox.clientWidth)));
+  } else {
+    const fit = () => { scaleApp(appbox.clientWidth); scenes.forEach((sc) => scaleScene(sc, sc.parentElement.clientWidth)); };
+    addEventListener("load", fit); addEventListener("resize", fit);
+  }
+
+  /* ---------- hero demo: runs once, replays on request; the result is a small toast, not a modal ---------- */
+  const amain = $("amain"), ftext = $("ftext"), field = $("field"), go = $("go"), status = $("status"), stext = $("stext"), chip = $("fchip"), cur = $("cursor"), done = $("done"), replay = $("replay");
+  const PATH = "C:\\Users\\me\\Documents\\tax_return_2025.pdf";
+  let timers = [];
+  const at = (el, x, y) => { el.style.translate = x + "px " + y + "px"; };   /* translate: composited, no layout, no layout shift */
+  function reset() {
+    timers.forEach(clearTimeout); timers = [];
+    ftext.textContent = "Choose a file or folder…"; field.classList.remove("filled");
+    stext.textContent = "Ready"; status.classList.remove("busy"); done.classList.remove("show");
+    chip.className = "fchip"; cur.style.opacity = 0; go.classList.remove("press"); replay.classList.remove("show");
+    const w = amain.clientWidth;
+    at(chip, w - 190, 6); at(cur, w - 40, 24);
+  }
+  function finalFrame() {
+    reset(); ftext.textContent = PATH; field.classList.add("filled");
+    stext.textContent = "Encryption complete"; done.classList.add("show");
+  }
+  const seq = [
+    [400, () => { cur.style.opacity = 1; }],
+    [600, () => { chip.classList.add("in"); at(chip, field.offsetLeft + 24, field.offsetTop - 4); at(cur, field.offsetLeft + 150, field.offsetTop + 16); }],
+    [1800, () => { chip.classList.add("drop"); ftext.textContent = PATH; field.classList.add("filled"); }],
+    [2300, () => { at(cur, go.offsetLeft + go.offsetWidth * .45, go.offsetTop + go.offsetHeight * .45); }],
+    [3300, () => { go.classList.add("press"); }],
+    [3500, () => { go.classList.remove("press"); status.classList.add("busy"); stext.textContent = "Encrypting file 1 of 1"; }],
+    [4800, () => { status.classList.remove("busy"); stext.textContent = "Encryption complete"; cur.style.opacity = 0; }],
+    [5000, () => { done.classList.add("show"); }],
+    [6300, () => { replay.classList.add("show"); }],
+  ];
+  /* it plays once (about 6 s); a click on the window or Escape while it plays stops it on the final frame */
+  let playing = false;
+  function play() { reset(); playing = true; seq.forEach(([t, f]) => timers.push(setTimeout(f, t))); timers.push(setTimeout(() => { playing = false; }, 6300)); }
+  function stop() { finalFrame(); playing = false; replay.classList.add("show"); }
+  requestAnimationFrame(() => app.classList.add("ready"));
+  if (reduce) { requestAnimationFrame(finalFrame); app.removeAttribute("title"); app.style.cursor = "default"; }
+  else {
+    setTimeout(play, 900);
+    app.addEventListener("click", () => (playing ? stop() : play())); replay.addEventListener("click", play);
+    addEventListener("keydown", (e) => { if (e.key === "Escape" && playing) stop(); });
+  }
+
+  /* ---------- nav turns solid once the page moves; the hero light drifts slower than the paper (the sheet slides over it) ---------- */
+  const nav = $("nav"), leaf = $("heroLeaf"), hero = $("top"), closeBg = $("closeBg"), closing = $("get"), night = document.querySelector(".night-panel");
+  let ticking = false;
+  function onScroll() {
+    ticking = false;
+    nav.classList.toggle("solid", scrollY > 40);
+    const nr = night.getBoundingClientRect();
+    nav.classList.toggle("on-dark", nr.top < 72 && nr.bottom > 14);
+    if (reduce) return;
+    if (scrollY < hero.offsetHeight) leaf.style.setProperty("--py", (scrollY * .32).toFixed(1) + "px");
+    const r = closing.getBoundingClientRect();
+    if (r.top < innerHeight && r.bottom > 0) closeBg.style.setProperty("--py", ((r.top - innerHeight / 2) * -.12).toFixed(1) + "px");
+  }
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  requestAnimationFrame(onScroll);   /* not during parsing: reading positions then would force a layout of the whole page */
+  /* the hero's slow light stops moving once it is off screen */
+  if (IO && !reduce) new IntersectionObserver(([e]) => document.querySelector(".hero-bg").classList.toggle("paused", !e.isIntersecting)).observe(hero);
+
+  /* ---------- in-page links: lay every section out first, so the jump lands on the section and not on an estimate ---------- */
+  const root = document.documentElement;
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const id = decodeURIComponent(a.getAttribute("href").slice(1)), t = id && document.getElementById(id);
+    if (!t) return;
+    e.preventDefault();
+    root.classList.add("cv-all");
+    t.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+    if (location.hash !== "#" + id) history.pushState(null, "", "#" + id);
+    if (t.matches("main")) { t.setAttribute("tabindex", "-1"); t.focus({ preventScroll: true }); }
+    /* afterwards off-screen sections may be skipped again: each keeps the height it was just laid out at */
+    let done = false;
+    const end = () => { if (!done) { done = true; root.classList.remove("cv-all"); } };
+    addEventListener("scrollend", end, { once: true }); setTimeout(end, 3000);
+  });
+
+  /* ---------- background photos of the lower sections: added when their section is within ~800px ---------- */
+  const lazyBg = ["how", "try", "proof", "get"].map($).filter(Boolean);
+  if (IO) { const bo = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("near"); bo.unobserve(e.target); } }), { rootMargin: "800px 0px" }); lazyBg.forEach((el) => bo.observe(el)); }
+  else lazyBg.forEach((el) => el.classList.add("near"));
+
+  /* ---------- reveals ---------- */
+  if (!reduce && IO) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+  } else document.querySelectorAll(".rv").forEach((el) => el.classList.add("in"));
+
+  /* ---------- 02: the steps follow the scroll on wide screens; elsewhere the Explorer plays once when seen ---------- */
+  const track = $("howTrack"), ex = $("ex"), stepBtns = [...document.querySelectorAll(".step")];
+  const wide = matchMedia("(min-width: 1180px)");
+  const setState = (i) => {
+    if (ex.dataset.state === String(i)) return;
+    ex.dataset.state = i;
+    stepBtns.forEach((b, k) => { b.classList.toggle("on", k === i); b.setAttribute("aria-pressed", k === i); });
+  };
+  const storyOn = () => wide.matches && !reduce && innerHeight >= 860;
+  function story() {
+    if (!storyOn()) return;
+    const r = track.getBoundingClientRect(), span = r.height - innerHeight;
+    const p = Math.min(1, Math.max(0, -r.top / span));
+    setState(p < .33 ? 0 : p < .66 ? 1 : 2);
+  }
+  stepBtns.forEach((b) => b.addEventListener("click", () => setState(+b.dataset.i)));
+  addEventListener("scroll", () => requestAnimationFrame(story), { passive: true });
+  if (reduce || !IO) setState(2);
+  else if (!storyOn()) {
+    new IntersectionObserver((es, o) => es.forEach((e) => { if (!e.isIntersecting) return; o.disconnect();
+      setTimeout(() => setState(1), 700); setTimeout(() => setState(2), 2300); }), { threshold: .55 }).observe(ex);
+  } else requestAnimationFrame(story);
+  wide.addEventListener && wide.addEventListener("change", () => { if (!storyOn()) setState(2); else story(); });
+
+  /* ---------- download bar: only after the hero button has gone, and never next to another download button ---------- */
+  const dock = $("dock");
+  /* watch the buttons themselves (hidden desk/phone twins never intersect), and the closing section as a whole (Dusk's rule):
+     once the closing is on screen the bar goes, and it never comes back below it */
+  const watched = [...document.querySelectorAll("main .btn-primary"), closing];
+  const seen = new Set();
+  const dockLinks = dock.querySelectorAll("a");
+  const tryEl = $("try");
+  /* never over the demo while someone uses it (only while a field or the Open button has focus and the demo is on screen) */
+  function typing() {
+    const a = document.activeElement;
+    if (!a || !tryEl.contains(a) || !a.closest(".lab-card")) return false;
+    const r = tryEl.getBoundingClientRect();
+    return r.top < innerHeight && r.bottom > 0;
+  }
+  function dockState() {
+    const pastEnd = closing.getBoundingClientRect().top < innerHeight * .5;
+    const on = seen.size === 0 && !pastEnd && !typing() && scrollY > 200;
+    dock.classList.toggle("show", on);
+    dock.setAttribute("aria-hidden", on ? "false" : "true");
+    dockLinks.forEach((a) => a.tabIndex = on ? 0 : -1);
+  }
+  tryEl.addEventListener("focusin", () => dockState());
+  tryEl.addEventListener("focusout", () => setTimeout(dockState));
+  if (IO) {
+    const co = new IntersectionObserver((es) => { es.forEach((e) => e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)); dockState(); }, { threshold: 0 });
+    watched.forEach((el) => el && co.observe(el));
+    addEventListener("scroll", () => requestAnimationFrame(dockState), { passive: true });
+  }
+
+  /* ---------- copy link (phones); data-copy-url, because site.js reads data-copy as a CSS selector ---------- */
+  document.querySelectorAll("[data-copy-url]").forEach((b) => b.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(b.dataset.copyUrl); b.textContent = "Link copied"; } catch (e) { b.textContent = b.dataset.copyUrl; }
+  }));
+
+  /* ---------- 03 try it: real AES-256-GCM in the browser (Web Crypto) ---------- */
+  const plain = $("plain"), pw = $("pw"), cipherEl = $("cipher"), cmeta = $("cmeta"), guess = $("guess"), openbtn = $("openbtn"), openout = $("openout");
+  const subtle = window.crypto && crypto.subtle;
+  const te = new TextEncoder(), td = new TextDecoder();
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const keys = new Map();
+  let last = null;
+  async function keyFor(p) {
+    if (keys.has(p)) return keys.get(p);
+    const base = await subtle.importKey("raw", te.encode(p), "PBKDF2", false, ["deriveKey"]);
+    const k = subtle.deriveKey({ name: "PBKDF2", salt, iterations: 120000, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]);
+    if (keys.size > 20) keys.clear();
+    keys.set(p, k); return k;
+  }
+  const b64 = (u8) => { let s = ""; for (let i = 0; i < u8.length; i += 8192) s += String.fromCharCode.apply(null, u8.subarray(i, i + 8192)); return btoa(s); };
+  let job = 0, deb;
+  async function encryptNow() {
+    if (!subtle) { cipherEl.textContent = "Your browser doesn't allow Web Crypto on this page."; return; }
+    const my = ++job;
+    if (!pw.value) { cipherEl.textContent = "Type a password to lock the text."; cmeta.textContent = " "; last = null; openout.className = "openout"; openout.textContent = "Set a password first."; return; }
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const ct = new Uint8Array(await subtle.encrypt({ name: "AES-GCM", iv }, await keyFor(pw.value), te.encode(plain.value)));
+    if (my !== job) return;
+    last = { iv, ct };
+    const all = new Uint8Array(iv.length + ct.length); all.set(iv); all.set(ct, iv.length);
+    cipherEl.textContent = b64(all);
+    cmeta.textContent = `${te.encode(plain.value).length} bytes in, ${all.length} bytes out (12-byte nonce, 16-byte check tag)`;
+    openout.className = "openout"; openout.textContent = guess.value ? "Press Open to try that password." : "Try a wrong password first.";
+  }
+  const queue = () => { clearTimeout(deb); deb = setTimeout(encryptNow, 120); };
+  plain.addEventListener("input", queue); pw.addEventListener("input", queue);
+  async function tryOpen() {
+    if (!last || !subtle) return;
+    if (!guess.value) { openout.className = "openout"; openout.textContent = "Type a password to try."; return; }
+    try {
+      const pt = await subtle.decrypt({ name: "AES-GCM", iv: last.iv }, await keyFor(guess.value), last.ct);
+      openout.className = "openout good"; openout.textContent = "Opened: " + td.decode(pt);
+    } catch (e) {
+      openout.className = "openout bad"; openout.textContent = "Wrong password. The check tag doesn't match, so nothing is shown.";
+    }
+  }
+  openbtn.addEventListener("click", tryOpen);
+  guess.addEventListener("keydown", (e) => { if (e.key === "Enter") tryOpen(); });
+  /* the first encryption waits until the demo is near the screen, or someone uses it */
+  let started = false;
+  const start = () => { if (!started) { started = true; encryptNow(); } };
+  tryEl.addEventListener("focusin", start);
+  if (IO) new IntersectionObserver((es, o) => { if (es.some((e) => e.isIntersecting)) { o.disconnect(); start(); } }, { rootMargin: "600px 0px" }).observe(tryEl);
+  else start();
+})();
+</script>
+<script src="assets/js/site.js?v=cdddc0389b" defer></script>
 </body>
 </html>

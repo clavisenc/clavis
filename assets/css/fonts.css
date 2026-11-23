@@ -1,5 +1,6 @@
 /* Site fonts, served from clavisenc.com (no requests to Google).
    Hanken Grotesk, Instrument Serif and JetBrains Mono: SIL Open Font License 1.1 (see assets/fonts/OFL.txt).
+   The home page declares its own faces inline (Newsreader, Hanken Grotesk, IBM Plex Mono; same licence, same folder).
    Latin and Latin Extended only; other scripts fall back to system fonts. */
 
 /* latin-ext */

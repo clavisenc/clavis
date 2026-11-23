@@ -201,12 +201,18 @@
   const tiles = $$(".os-tile[data-os]");
   if (tiles.length) {
     const ua = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent || "";
-    const phone = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
+    // The same test as the home page, which sends touch-only devices here for the email form: an iPad (whose Safari
+    // says "Macintosh") or a phone in "desktop site" mode is touch-only too. A link to #signup always shows the form.
+    const touchOnly = matchMedia("(hover: none) and (pointer: coarse)").matches && !/Windows NT/.test(navigator.userAgent);
+    const phone = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent) || touchOnly;
     const os = phone ? "" : /win/i.test(ua) ? "windows" : /linux|x11/i.test(ua) ? "linux" : "";
     const mine = tiles.find(t => t.dataset.os === os);
-    if (phone) {
-      const n = $("#mobile-note"); if (n) n.hidden = false;
+    if (phone) { const n = $("#mobile-note"); if (n) n.hidden = false; }
+    if (phone || location.hash === "#signup") {
       $$("form[data-phone-only]").forEach(f => { f.hidden = false; });   // on a PC the download button is enough
+      // the browser jumped to #signup while the form was still hidden: jump again now that it is there
+      const target = location.hash === "#signup" && document.getElementById("signup");
+      if (target) target.scrollIntoView();   // site.css keeps its top clear of the fixed header
     }
     const copy = $("#copy-dl-link");
     if (copy) copy.addEventListener("click", async () => {
