@@ -290,7 +290,9 @@
   // ?solo=<section id>: show only that section, revealed (used to render page previews).
   const solo = new URLSearchParams(location.search).get("solo");
   if (solo && document.getElementById(solo)) {
-    $$("main > *").forEach(el => { if (el.id !== solo) el.style.display = "none"; });
+    // sections may sit inside a paper .sheet: keep whatever holds the target, hide everything else
+    const t = document.getElementById(solo);
+    $$("main > *, main > .sheet > *").forEach(el => { if (el !== t && !el.contains(t)) el.style.display = "none"; });
     $$("[data-reveal]").forEach(el => el.classList.add("in"));
     document.getElementById(solo).style.paddingTop = "120px";
   }
@@ -402,6 +404,8 @@
   form.querySelector(".dl-gate-x").addEventListener("click", dismiss);
   form.querySelector(".dl-gate-no").addEventListener("click", dismiss);
   dlg.addEventListener("cancel", e => { e.preventDefault(); dismiss(); });
+  // show() opens it non-modal, and a non-modal dialog gets no "cancel" from Escape: close it here too
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && dlg.open) dismiss(); });
 
   form.addEventListener("submit", async ev => {
     ev.preventDefault();

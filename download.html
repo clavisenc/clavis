@@ -1,219 +1,760 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Download — Clavis Encrypt</title>
-  <meta name="description" content="Download Clavis Encrypt for Windows 10 and 11 (installer, portable ZIP or Microsoft Store) or Linux (.deb). No administrator rights needed.">
-  <meta name="theme-color" content="#05080F">
-  <meta property="og:title" content="Download Clavis for Windows">
-  <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://clavisenc.com/download.html">
-  <meta property="og:url" content="https://clavisenc.com/download.html">
-  <meta property="og:site_name" content="Clavis Encrypt">
-  <meta property="og:type" content="website">
-  <meta property="og:description" content="Download Clavis Encrypt for Windows 10 and 11 (installer, portable ZIP or Microsoft Store) or Linux (.deb). No administrator rights needed.">
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link href="assets/css/fonts.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=1ce3770294">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where are my files and vaults kept?","acceptedAnswer":{"@type":"Answer","text":"On your PC only. Encrypted files stay where you put them, and your vault settings live in your Windows user folder."}},{"@type":"Question","name":"Can I encrypt straight from File Explorer?","acceptedAnswer":{"@type":"Answer","text":"Yes. Right-click a file or folder → Clavis → Encrypt, Decrypt or Verify; folders also offer Add to Watch Folder. On Windows 11, choose \"Show more options\" first. You can turn the menu off in Settings → Explorer."}},{"@type":"Question","name":"Can I open an encrypted file without decrypting it?","acceptedAnswer":{"@type":"Answer","text":"Yes, with Clavis Pro: double-click the .enc file and it opens in its usual app without leaving a decrypted copy on your PC. Save your edits back into the encrypted file, or re-lock it when you are done. With Clavis Free, double-clicking offers to decrypt the file."}},{"@type":"Question","name":"How do updates work?","acceptedAnswer":{"@type":"Answer","text":"Clavis checks once a day (or when you choose Settings → Updates → Check now). Updates are small, and you choose when the app restarts."}},{"@type":"Question","name":"What if I forget my password?","acceptedAnswer":{"@type":"Answer","text":"Use the recovery key Clavis gave you when you created your vault — choose “Forgot password?” on the unlock screen."}},{"@type":"Question","name":"Can I uninstall it?","acceptedAnswer":{"@type":"Answer","text":"Yes — from Windows Settings → Apps. Your encrypted files and vaults are left untouched, so keep Clavis (or reinstall it) to open them."}},{"@type":"Question","name":"Does Clavis upload my files?","acceptedAnswer":{"@type":"Answer","text":"No. Everything happens on your computer. Clavis goes online only to check for updates and, for a Pro or Premium key, to confirm the licence."}}]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://clavisenc.com/#website","url":"https://clavisenc.com/","name":"Clavis Encrypt","alternateName":["Clavis","Clavis Encrypt"],"description":"Clavis Encrypt is a file-encryption app for Windows 10 and 11 and Linux. It encrypts files on your own PC with AES-256-GCM, deriving keys from your password with Argon2id. No account, no cloud and nothing uploaded: only you hold the key. Free to use; Pro ($19) and Premium ($29) are one-time purchases.","inLanguage":"en","publisher":{"@id":"https://clavisenc.com/#author"}},{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html","email":"hello@clavisenc.com","logo":{"@type":"ImageObject","url":"https://clavisenc.com/assets/img/icon-512.png","width":512,"height":512},"sameAs":["https://apps.microsoft.com/detail/9PCWJ9HG0TNN","https://github.com/clavisenc"]},{"@type":"SoftwareApplication","@id":"https://clavisenc.com/#software","name":"Clavis Encrypt","alternateName":["Clavis","Clavis Encrypt","Clavis file encryption for Windows"],"description":"Clavis Encrypt is a file-encryption app for Windows 10 and 11 and Linux. It encrypts files on your own PC with AES-256-GCM, deriving keys from your password with Argon2id. No account, no cloud and nothing uploaded: only you hold the key. Free to use; Pro ($19) and Premium ($29) are one-time purchases.","url":"https://clavisenc.com/","applicationCategory":"SecurityApplication","applicationSubCategory":"File encryption","operatingSystem":"Windows 10, Windows 11, Linux (64-bit)","softwareVersion":"3.16.1","dateModified":"2026-10-28","downloadUrl":"https://github.com/clavisenc/FileEncryptionApp-updates/releases/latest/download/Clavis-Setup.exe","installUrl":"https://clavisenc.com/download.html","fileSize":"43 MB","image":"https://clavisenc.com/assets/img/icon-512.png","screenshot":"https://clavisenc.com/assets/img/app-light.png","featureList":["AES-256-GCM authenticated encryption","Argon2id password-based key derivation","Streaming encryption of large files in 64 KiB authenticated chunks","Integrity verification on every decrypt","Post-quantum recovery key (X25519 + ML-KEM-768)","Encrypted file names","Best-effort secure delete of originals","Shred files and folders (best effort on SSDs and flash)","Clavis on a USB stick: run from a stick on other Windows PCs (Pro)","Auto-lock on system sleep, Windows lock and inactivity","File Explorer right-click menu (direct download; the Microsoft Store version has no right-click menu)","Activity history","Ed25519-signed in-app updates","Installer or portable ZIP; per-user install without administrator rights; Linux .deb","English, French, German, Tamil and Hindi","Pro: whole-folder encryption, find sensitive files (ID and bank documents) and encrypt them in one go, open encrypted files without leaving a decrypted copy, browse encrypted folders by real names, watch folders, secure notes, multiple vaults, key-file two-factor, Clavis on a USB stick","Premium: encrypt into OneDrive, Google Drive or Dropbox folders, public-key file sharing with signed files, one-file vault backups, previous versions, command-line tool (clavis-cli)"],"isAccessibleForFree":true,"offers":[{"@type":"Offer","name":"Clavis Free","description":"Free forever: encrypt, decrypt and verify files, recovery key, Shred.","price":"0","priceCurrency":"USD","url":"https://clavisenc.com/pricing.html","availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Clavis Pro (lifetime licence)","description":"One-time purchase, no subscription; future updates included.","price":"19","priceCurrency":"USD","url":"https://clavisenc.com/pricing.html","availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Clavis Premium (lifetime licence)","description":"One-time purchase, no subscription; everything in Pro plus cloud folders, sharing, team folders and the command line.","price":"29","priceCurrency":"USD","url":"https://clavisenc.com/pricing.html","availability":"https://schema.org/InStock"}],"author":{"@id":"https://clavisenc.com/#author"},"publisher":{"@id":"https://clavisenc.com/#author"},"sameAs":["https://apps.microsoft.com/detail/9PCWJ9HG0TNN"]}]}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download — Clavis Encrypt</title>
+<meta name="description" content="Download Clavis Encrypt for Windows 10 and 11 (installer, portable ZIP or Microsoft Store; no administrator rights needed) or Linux (.deb).">
+<meta name="theme-color" content="#F6F1E9">
+<meta property="og:title" content="Download Clavis for Windows">
+<meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://clavisenc.com/download.html">
+<meta property="og:url" content="https://clavisenc.com/download.html">
+<meta property="og:site_name" content="Clavis Encrypt">
+<meta property="og:type" content="website">
+<meta property="og:description" content="Download Clavis Encrypt for Windows 10 and 11 (installer, portable ZIP or Microsoft Store; no administrator rights needed) or Linux (.deb).">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<script>(function (d) { d.classList.add("js"); if (/Windows NT/.test(navigator.userAgent)) d.classList.add("win");
+  /* phones and touch-only tablets (the same test as site.js): show the phone note and email form from the first paint */
+  var ua = navigator.userAgent; if (/android|iphone|ipad|ipod|mobile/i.test(ua) || (matchMedia("(hover: none) and (pointer: coarse)").matches && !/Windows NT/.test(ua))) d.classList.add("is-phone");
+  /* site.js adds the launch-offer bar later: reserve its height now, so the page doesn't shift down after the first paint */
+  try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
+<link rel="preload" as="image" href="assets/img/home/leaf-overlay-1200.webp">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/ibm-plex-mono-400-latin.woff2" crossorigin>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where are my files and vaults kept?","acceptedAnswer":{"@type":"Answer","text":"On your PC only. Encrypted files stay where you put them, and your vault settings live in your Windows user folder."}},{"@type":"Question","name":"Can I encrypt straight from File Explorer?","acceptedAnswer":{"@type":"Answer","text":"Yes, with the installer or the portable ZIP: right-click a file or folder → Clavis → Encrypt, Decrypt or Verify; folders also offer Add to Watch Folder. On Windows 11, choose \"Show more options\" first. You can turn the menu off in Settings → Explorer. The Microsoft Store version has no right-click menu, so drop files onto the Clavis window instead."}},{"@type":"Question","name":"Can I open an encrypted file without decrypting it?","acceptedAnswer":{"@type":"Answer","text":"Yes, with Clavis Pro: double-click the .enc file and it opens in its usual app without leaving a decrypted copy on your PC. Save your edits back into the encrypted file, or re-lock it when you are done. With Clavis Free, double-clicking offers to decrypt the file."}},{"@type":"Question","name":"How do updates work?","acceptedAnswer":{"@type":"Answer","text":"Clavis checks once a day (or when you choose Settings → Updates → Check now). Updates are small, and you choose when the app restarts."}},{"@type":"Question","name":"What if I forget my password?","acceptedAnswer":{"@type":"Answer","text":"Use the recovery key Clavis gave you when you created your vault — choose “Forgot password?” on the unlock screen."}},{"@type":"Question","name":"Can I uninstall it?","acceptedAnswer":{"@type":"Answer","text":"Yes — from Windows Settings → Apps. Your encrypted files and vaults are left untouched, so keep Clavis (or reinstall it) to open them."}},{"@type":"Question","name":"Does Clavis upload my files?","acceptedAnswer":{"@type":"Answer","text":"No. Everything happens on your computer. Clavis goes online only to check for updates and, for a Pro or Premium key, to confirm the licence."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://clavisenc.com/#website","url":"https://clavisenc.com/","name":"Clavis Encrypt","alternateName":["Clavis","Clavis Encrypt"],"description":"Clavis Encrypt is a file-encryption app for Windows 10 and 11 and Linux. It encrypts files on your own PC with AES-256-GCM, deriving keys from your password with Argon2id. No account, no cloud and nothing uploaded: only you hold the key. Free to use; Pro ($19) and Premium ($29) are one-time purchases.","inLanguage":"en","publisher":{"@id":"https://clavisenc.com/#author"}},{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html","email":"hello@clavisenc.com","logo":{"@type":"ImageObject","url":"https://clavisenc.com/assets/img/icon-512.png","width":512,"height":512},"sameAs":["https://apps.microsoft.com/detail/9PCWJ9HG0TNN","https://github.com/clavisenc"]},{"@type":"SoftwareApplication","@id":"https://clavisenc.com/#software","name":"Clavis Encrypt","alternateName":["Clavis","Clavis Encrypt","Clavis file encryption for Windows"],"description":"Clavis Encrypt is a file-encryption app for Windows 10 and 11 and Linux. It encrypts files on your own PC with AES-256-GCM, deriving keys from your password with Argon2id. No account, no cloud and nothing uploaded: only you hold the key. Free to use; Pro ($19) and Premium ($29) are one-time purchases.","url":"https://clavisenc.com/","applicationCategory":"SecurityApplication","applicationSubCategory":"File encryption","operatingSystem":"Windows 10, Windows 11, Linux (64-bit)","softwareVersion":"3.16.1","dateModified":"2026-10-28","downloadUrl":"https://github.com/clavisenc/FileEncryptionApp-updates/releases/latest/download/Clavis-Setup.exe","installUrl":"https://clavisenc.com/download.html","fileSize":"43 MB","image":"https://clavisenc.com/assets/img/icon-512.png","screenshot":"https://clavisenc.com/assets/img/app-light.png","featureList":["AES-256-GCM authenticated encryption","Argon2id password-based key derivation","Streaming encryption of large files in 64 KiB authenticated chunks","Integrity verification on every decrypt","Post-quantum recovery key (X25519 + ML-KEM-768)","Encrypted file names","Best-effort secure delete of originals","Shred files and folders (best effort on SSDs and flash)","Clavis on a USB stick: run from a stick on other Windows PCs (Pro)","Auto-lock on system sleep, Windows lock and inactivity","File Explorer right-click menu (direct download; the Microsoft Store version has no right-click menu)","Activity history","Ed25519-signed in-app updates","Installer or portable ZIP; per-user install without administrator rights; Linux .deb","English, French, German, Tamil and Hindi","Pro: whole-folder encryption, find sensitive files (ID and bank documents) and encrypt them in one go, open encrypted files without leaving a decrypted copy, browse encrypted folders by real names, watch folders, secure notes, multiple vaults, key-file two-factor, Clavis on a USB stick","Premium: encrypt into OneDrive, Google Drive or Dropbox folders, public-key file sharing with signed files, one-file vault backups, previous versions, command-line tool (clavis-cli)"],"isAccessibleForFree":true,"offers":[{"@type":"Offer","name":"Clavis Free","description":"Free forever: encrypt, decrypt and verify files, recovery key, Shred.","price":"0","priceCurrency":"USD","url":"https://clavisenc.com/pricing.html","availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Clavis Pro (lifetime licence)","description":"One-time purchase, no subscription; future updates included.","price":"19","priceCurrency":"USD","url":"https://clavisenc.com/pricing.html","availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Clavis Premium (lifetime licence)","description":"One-time purchase, no subscription; everything in Pro plus cloud folders, sharing, team folders and the command line.","price":"29","priceCurrency":"USD","url":"https://clavisenc.com/pricing.html","availability":"https://schema.org/InStock"}],"author":{"@id":"https://clavisenc.com/#author"},"publisher":{"@id":"https://clavisenc.com/#author"},"sameAs":["https://apps.microsoft.com/detail/9PCWJ9HG0TNN"]}]}</script>
+<style>
+/* ==========================================================================
+   Dusk sub-page base: the same in pricing.html and download.html, and taken from the homepage (index.html),
+   so the three pages read as one site. These pages do not load site.css or fonts.css: everything they need,
+   including the states site.js adds (offer bar, sign-up messages, download tiles), is styled on the page.
+   Type: Newsreader (headlines), Hanken Grotesk (body), IBM Plex Mono (numbers, tokens). All self-hosted,
+   SIL Open Font License 1.1: assets/fonts/OFL.txt.
+   ========================================================================== */
+@font-face { font-family: "Newsreader"; font-style: normal; font-weight: 360 560; font-display: swap; src: url(assets/fonts/newsreader-roman-latin.woff2) format("woff2");
+  ascent-override: 96%; descent-override: 25%; line-gap-override: 0%; }
+@font-face { font-family: "Newsreader"; font-style: italic; font-weight: 360 560; font-display: swap; src: url(assets/fonts/newsreader-italic-latin.woff2) format("woff2");
+  ascent-override: 96%; descent-override: 25%; line-gap-override: 0%; }
+/* Georgia scaled to Newsreader's width and line box, so the swap on a slow connection does not rewrap headings */
+@font-face { font-family: "Newsreader Fallback"; font-style: normal; src: local("Georgia"); size-adjust: 94%; ascent-override: 102.1%; descent-override: 26.6%; line-gap-override: 0%; }
+@font-face { font-family: "Newsreader Fallback"; font-style: italic; src: local("Georgia Italic"), local("Georgia-Italic"); size-adjust: 87.5%; ascent-override: 109.7%; descent-override: 28.6%; line-gap-override: 0%; }
+@font-face { font-family: "Hanken Grotesk"; font-weight: 100 900; font-display: swap; src: url(assets/fonts/hanken-grotesk-normal-latin.woff2) format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url(assets/fonts/ibm-plex-mono-400-latin.woff2) format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url(assets/fonts/ibm-plex-mono-500-latin.woff2) format("woff2"); }
+
+:root {
+  --paper: #F6F1E9;
+  --card: #FFFFFF;
+  --ink-rgb: 26, 30, 44;
+  --ink: rgba(var(--ink-rgb), .92);
+  --ink-2: rgba(var(--ink-rgb), .76);
+  --ink-3: rgba(var(--ink-rgb), .66);
+  --ink-4: rgba(var(--ink-rgb), .5);
+  --hair: rgba(var(--ink-rgb), .09);
+  --edge: rgba(var(--ink-rgb), .16);
+
+  --dusk: #232F4B;  --dusk-hi: #2D3B5C;
+  --peach: #EFBC9E; --peach-50: #FBEADF; --peach-ink: #6A3D27;
+  --rose: #E5B3B9;  --rose-50: #F8E7E7;  --rose-ink: #7A3F49;
+  --lav: #BCAFE0;   --lav-50: #EEEAF8;   --lav-ink: #4B4272;
+  --dusty: #9FB0CF; --dusty-50: #E7ECF5; --dusty-ink: #3E4C6B;
+  --sage-ink: #4E6146;
+
+  --serif: "Newsreader", "Newsreader Fallback", "Iowan Old Style", Georgia, serif;
+  --sans: "Hanken Grotesk", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", Consolas, ui-monospace, monospace;
+
+  --r-sm: 6px; --r-md: 12px; --r-lg: 20px; --r-xl: 28px; --r-sheet: 36px;
+  --sh-card: 0 1px 2px rgba(var(--ink-rgb), .05), 0 12px 28px -12px rgba(var(--ink-rgb), .12), 0 28px 56px -28px rgba(var(--ink-rgb), .16);
+  --sh-float: 0 2px 8px rgba(var(--ink-rgb), .07), 0 0 1px rgba(var(--ink-rgb), .08);
+  --sh-win: 0 2px 4px rgba(var(--ink-rgb), .06), 0 24px 48px -16px rgba(60, 40, 70, .26), 0 70px 120px -40px rgba(90, 60, 90, .32);
+
+  --ease-ui: cubic-bezier(.4, 0, .2, 1);
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --t-fast: 160ms; --t-ui: 200ms;
+  --container: 1180px;
+  --nav-clear: 88px;
+  --grain: url(assets/img/home/grain.webp);
+  --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2 7.3 5.3 10.5 12 3.8' fill='none' stroke='%234E6146' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+* { box-sizing: border-box; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.6 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 1px; }
+img { max-width: 100%; height: auto; display: block; }
+button, input, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--dusk); outline-offset: 3px; border-radius: 4px; }
+/* on the navy offer bar and the blue-hour panel a navy ring would vanish: draw it white there */
+.offer-bar :focus-visible, .night-panel :focus-visible { outline-color: #fff; }
+/* site.js hides things by setting [hidden] (the phone-only form, the phone note, an expired offer): no display rule may win over it */
+[hidden] { display: none !important; }
+.sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: fixed; z-index: 200; left: 16px; top: -80px; padding: 12px 18px; border-radius: 10px; background: var(--dusk); color: #fff; font-weight: 600; text-decoration: none; }
+.skip:focus { top: 16px; }
+main:focus { outline: none; }
+.wrap { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+.nw { white-space: nowrap; }
+/* every link target lands clear of the fixed nav, and of the launch-offer bar while it shows */
+[id] { scroll-margin-top: var(--nav-clear); }
+html.has-offer [id] { scroll-margin-top: calc(var(--nav-clear) + var(--offer-h, 38px)); }
+
+/* computers with a mouse get the download; phones and tablets without one get the email link */
+@media (hover: hover), (pointer: fine), (pointer: none) { .phone { display: none !important; } }
+@media (hover: none) and (pointer: coarse) { html:not(.win) .desk { display: none !important; } }
+html.win .phone { display: none !important; }
+
+.grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; opacity: .14; mix-blend-mode: overlay; background: var(--noise); z-index: 3; }
+
+/* ---------- type ---------- */
+.chap { display: flex; align-items: center; gap: 12px; margin: 0 0 20px; font: 600 11.5px/1.3 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.chap > span:last-child { text-wrap: balance; }
+.chap .no { font: 500 12.5px/1 var(--mono); letter-spacing: .02em; color: var(--ink); }
+.chap .bar { width: 30px; height: 1px; flex: none; background: currentColor; opacity: .55; }
+.center .chap, .chap.center { justify-content: center; }
+.h2 { margin: 0; font: 400 clamp(32px, 3.1vw, 44px)/1.08 var(--serif); letter-spacing: -.022em; color: var(--ink); text-wrap: balance; }
+.h2 em { font-style: italic; font-weight: 380; letter-spacing: -.01em; color: rgba(var(--ink-rgb), .78); }
+.lead { margin: 18px 0 0; font-size: 19px; line-height: 1.6; color: var(--ink-2); max-width: 58ch; text-wrap: pretty; }
+.center { text-align: center; }
+.center .lead { margin-left: auto; margin-right: auto; text-wrap: balance; }
+.tlink { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--edge); padding-bottom: 2px; transition: border-color var(--t-ui) var(--ease-ui), gap var(--t-ui) var(--ease-ui); }
+.tlink:hover { border-color: var(--ink); gap: 9px; }
+.token { display: inline-block; font: 500 .8em/1 var(--mono); letter-spacing: .02em; padding: 5px 8px; border-radius: var(--r-sm); background: rgba(var(--ink-rgb), .06); color: var(--ink); white-space: nowrap; }
+.kbd, kbd { font: 500 .78em/1.7 var(--mono); padding: 2px 7px; border-radius: 5px; background: rgba(var(--ink-rgb), .06); box-shadow: inset 0 0 0 1px var(--hair); color: var(--ink); white-space: nowrap; }
+code { font: 500 .84em/1.5 var(--mono); padding: 1px 6px; border-radius: 5px; background: rgba(var(--ink-rgb), .055); color: var(--ink); overflow-wrap: anywhere; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+
+/* ---------- buttons ---------- */
+.btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 12px; height: 56px; padding: 0 30px 0 34px; border-radius: 999px; background: var(--dusk); color: #fff; text-decoration: none; white-space: nowrap; border: 0; cursor: pointer;
+  font: 500 18px/1 var(--sans); letter-spacing: -.005em;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 1px 2px rgba(var(--ink-rgb), .2), 0 12px 26px -10px rgba(35, 47, 75, .55);
+  transition: transform var(--t-fast) var(--ease-ui), box-shadow var(--t-ui) var(--ease-ui), background var(--t-ui) var(--ease-ui); }
+.btn-primary:hover { background: var(--dusk-hi); transform: translateY(-1px); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 1px 2px rgba(var(--ink-rgb), .2), 0 16px 32px -10px rgba(35, 47, 75, .55), 0 0 0 6px rgba(239, 188, 158, .38); }
+.btn-primary:active { transform: scale(.98); }
+.btn-primary:disabled { opacity: .6; cursor: default; transform: none; }
+.btn-primary svg, .btn-quiet svg { flex: none; }
+.btn-quiet { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--edge); background: rgba(255,255,255,.6); color: var(--ink); font: 500 15px/1 var(--sans); cursor: pointer; text-decoration: none; white-space: nowrap; transition: background var(--t-ui) var(--ease-ui), border-color var(--t-ui) var(--ease-ui); }
+.btn-quiet:hover { background: #fff; border-color: rgba(var(--ink-rgb), .3); }
+
+/* reveal: content is visible without JS; only .js pages hide it until it scrolls in */
+.js .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+.js .rv.h { transform: translateY(6px); }
+.js .rv.in { opacity: 1; transform: none; }
+.rv.d1 { transition-delay: 70ms; } .rv.d2 { transition-delay: 140ms; } .rv.d3 { transition-delay: 210ms; }
+
+/* ================= nav: the homepage's floating glass bar ================= */
+.nav { position: fixed; z-index: 90; top: 14px; left: 50%; transform: translateX(-50%); width: min(var(--container), calc(100% - 28px));
+  display: flex; align-items: center; justify-content: space-between; height: 58px; padding: 0 10px 0 14px; border-radius: 16px;
+  background: rgba(252, 249, 245, .58); border: 1px solid rgba(255,255,255,.72);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow: var(--sh-float), inset 0 1px 0 rgba(255,255,255,.6); transition: background var(--t-ui) var(--ease-ui); }
+.nav.scrolled { background: rgba(250, 247, 242, .9); }   /* site.js adds .scrolled once the page moves */
+.nav.on-dark { background: rgba(250, 247, 242, .97); border-color: rgba(255,255,255,.9); }   /* over a blue-hour panel */
+.nav .wordmark { padding: 12px 0; margin: -12px 0; }
+.wordmark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 540 21px/1 var(--serif); letter-spacing: -.012em; color: var(--ink); white-space: nowrap; }
+.wordmark svg { width: 31px; height: 19px; flex: none; }
+.nav ul { display: flex; gap: 2px; list-style: none; margin: 0; padding: 0; }
+.nav ul a { display: block; padding: 9px 14px; border-radius: 10px; text-decoration: none; font-size: 15.5px; font-weight: 500; color: var(--ink-2); transition: background var(--t-fast) var(--ease-ui), color var(--t-fast) var(--ease-ui); }
+.nav ul a:hover { background: rgba(var(--ink-rgb), .05); color: var(--ink); }
+.nav ul a[aria-current="page"] { color: var(--ink); background: rgba(var(--ink-rgb), .06); }
+
+/* ================= launch-offer bar (added by site.js until 30 Nov 2026), as on the homepage ================= */
+.offer-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 95; min-height: 38px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+  column-gap: 10px; row-gap: 2px; padding: 6px 48px 6px 16px; background: var(--dusk); color: #fff; font: 600 14px/1.35 var(--sans); text-align: center; }
+.offer-bar a { color: #fff; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.offer-bar code { font: inherit; font-weight: 800; letter-spacing: .04em; padding: 0; background: none; color: inherit; }
+.offer-bar .offer-close { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border: 0; border-radius: 8px;
+  background: transparent; color: #fff; font-size: 20px; line-height: 1; cursor: pointer; }
+.offer-bar .offer-close:hover { background: rgba(255,255,255,.14); }
+.offer-bar .offer-short { display: none; }
+html.has-offer body { padding-top: var(--offer-h, 38px); }
+html.has-offer .nav { top: calc(var(--offer-h, 38px) + 14px); }
+@media (max-width: 760px) { .offer-bar { font-size: 13px; padding: 6px 44px 6px 12px; } .offer-bar .offer-long { display: none; } .offer-bar .offer-short { display: inline; } }
+
+/* ================= header band: the homepage's leaf light, calmer ================= */
+.hero { position: relative; isolation: isolate; overflow: hidden; padding: 150px 24px 132px; text-align: center; }
+.hero-bg { position: absolute; z-index: -1; inset: 0; overflow: hidden; background: #F4D8CB; }
+.hero-bg .leaf { position: absolute; inset: 0; }
+.hero-bg .leaf img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
+.hero-bg .crisp { position: absolute; top: -6%; width: 52%; height: 84%; max-height: 900px; background: url(assets/img/home/leaf-overlay-1200.webp) 30% 20% / cover; mix-blend-mode: multiply; opacity: .5; pointer-events: none;
+  -webkit-mask-image: radial-gradient(85% 80% at 18% 20%, #000 45%, transparent 82%); mask-image: radial-gradient(85% 80% at 18% 20%, #000 45%, transparent 82%); }
+.hero-bg .crisp.l { left: -10%; }
+.hero-bg .crisp.r { right: -10%; transform: scaleX(-1); opacity: .44; }
+.hero-bg .wash { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255, 249, 243, .55) 0%, rgba(255, 249, 243, .12) 30%, rgba(255, 249, 243, 0) 56%); }
+.hero-bg .sun { position: absolute; left: 50%; top: 20px; width: 1300px; height: 620px; margin-left: -650px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 247, 240, .66), rgba(255, 243, 235, .28) 54%, rgba(255, 243, 235, 0)); }
+.hero-bg .grain { position: absolute; inset: 0; }
+.hero .chap { justify-content: center; color: var(--ink-2); }
+.hero h1 { margin: 0 auto; max-width: 980px; font: 400 clamp(42px, 4.6vw, 64px)/1.04 var(--serif); letter-spacing: -.024em; color: var(--ink); text-wrap: balance; }
+.hero h1 em { display: block; font-style: italic; font-weight: 380; letter-spacing: -.01em; color: rgba(var(--ink-rgb), .8); }
+.hero .sub { margin: 22px auto 0; max-width: 60ch; font-size: 19px; line-height: 1.6; color: var(--ink-2); text-wrap: balance; }
+.hero .sub strong, .hero .sub b { font-weight: 600; color: var(--ink); }
+
+/* ================= the paper sheet that slides over the header band ================= */
+.sheet { position: relative; z-index: 2; margin-top: -60px; padding-bottom: 128px; background: var(--paper) var(--grain); border-radius: var(--r-sheet);
+  box-shadow: 0 -1px 0 rgba(255,255,255,.95), 0 -20px 44px -26px rgba(236, 160, 128, .7), 0 -60px 110px -50px rgba(176, 160, 222, .62), 0 34px 60px -34px rgba(80, 60, 100, .4); }
+section.s { padding: 120px 0 0; }
+.sheet > section.s:first-child { padding-top: 88px; }
+.head { max-width: 760px; margin-bottom: 48px; }
+.head.center { margin-left: auto; margin-right: auto; }
+
+/* ================= questions (the homepage's FAQ) ================= */
+.faq-grid { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 72px; align-items: start; }
+.faq-side > p:not(.chap) { margin: 18px 0 0; color: var(--ink-2); font-size: 17px; }
+/* a long list of questions: the side column (label, heading, help link) stays in view beside it */
+@media (min-width: 901px) { .faq-side { position: sticky; top: calc(var(--nav-clear) + 24px); }
+  html.has-offer .faq-side { top: calc(var(--nav-clear) + 24px + var(--offer-h, 38px)); } }
+.faq details { border-top: 1px solid var(--hair); }
+.faq details:last-child { border-bottom: 1px solid var(--hair); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 24px; align-items: center; padding: 22px 0; font: 440 23px/1.3 var(--serif); letter-spacing: -.01em; color: var(--ink); text-wrap: balance; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary i { flex: none; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--edge); position: relative; transition: transform .3s var(--ease-out), background .2s; }
+.faq summary i::before, .faq summary i::after { content: ""; position: absolute; left: 50%; top: 50%; width: 11px; height: 1.5px; margin: -.75px 0 0 -5.5px; background: var(--ink-2); }
+.faq summary i::after { transform: rotate(90deg); transition: transform .3s var(--ease-out); }
+.faq details[open] summary i { background: var(--peach-50); }
+.faq details[open] summary i::after { transform: rotate(0); }
+.faq summary:hover i { background: #fff; }
+.faq details > p { margin: 0; padding: 0 54px 30px 0; font-size: 17px; line-height: 1.65; color: var(--ink-2); }
+.faq details > p a { color: var(--ink); }
+
+/* ================= email sign-up forms (posted by site.js; Brevo double opt-in) ================= */
+.signup { position: relative; max-width: 680px; margin: 0 auto; padding: 28px 30px 24px; border-radius: var(--r-lg); background: var(--card); box-shadow: var(--sh-card); text-align: left; }
+.signup-title { margin: 0 0 6px; font: 430 26px/1.2 var(--serif); letter-spacing: -.012em; color: var(--ink); }
+.signup-text { margin: 0 0 18px; font-size: 16px; line-height: 1.55; color: var(--ink-2); }
+.signup-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.signup-row input[type=email] { flex: 1 1 240px; min-width: 0; height: 52px; padding: 0 20px; border-radius: 999px; border: 1px solid var(--edge); background: #fff; font: 400 16px/1 var(--sans); color: var(--ink); }
+.signup-row input[type=email]::placeholder { color: var(--ink-4); }
+.signup-row input[type=email]:focus { outline: 2px solid var(--dusk); outline-offset: 2px; }
+.signup-row .btn-primary { flex: 0 0 auto; height: 52px; padding: 0 26px; font-size: 16.5px; }
+.signup-consent { display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; font-size: 14px; line-height: 1.5; color: var(--ink-3); }
+.signup-consent input { flex: none; width: 17px; height: 17px; margin: 2px 0 0; accent-color: var(--dusk); }
+.signup-consent a, .signup-note a { color: var(--ink-2); }
+.signup-note { margin: 10px 0 0; font-size: 14px; line-height: 1.5; color: var(--ink-3); }
+.signup-msg { margin: 10px 0 0; min-height: 1.2em; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.signup-msg:empty { margin: 0; min-height: 0; }
+.signup-msg[data-kind=ok] { margin-top: 12px; padding: 10px 14px; border-radius: var(--r-md); background: #E4EBDF; color: #2F4128; }
+.signup-msg[data-kind=error] { margin-top: 12px; padding: 10px 14px; border-radius: var(--r-md); background: var(--rose-50); color: var(--rose-ink); }
+.signup.is-done .signup-row, .signup.is-done .signup-consent { opacity: .5; }
+.signup-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.signup-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ================= footer: a second sheet, and the big pale wordmark (as on the homepage) ================= */
+footer { position: relative; z-index: 2; margin-top: -48px; padding: 72px 0 0; overflow: hidden; background: var(--paper) var(--grain); border-radius: var(--r-sheet) var(--r-sheet) 0 0;
+  box-shadow: 0 -1px 0 rgba(255,255,255,.9), 0 -18px 40px -26px rgba(110, 80, 130, .45); }
+.fcols { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: 32px; }
+.fcols .wordmark { font-size: 23px; padding: 10px 0; margin: -10px 0; }
+.fcols .tagline { margin: 12px 0 0; font: italic 420 18px/1.4 var(--serif); color: var(--ink-2); max-width: 26ch; }
+.fcols .fh { margin: 4px 0 14px; font: 600 11.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+.fcols a:not(.wordmark) { display: block; padding: 5px 0; font-size: 15.5px; color: var(--ink-2); text-decoration: none; }
+.fcols a:not(.wordmark):hover { color: var(--ink); text-decoration: underline; }
+.fcols a[aria-current="page"] { color: var(--ink); }
+.legal { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--hair); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 14px; color: var(--ink-3); }
+.legal a { display: inline-block; padding: 12px 4px; margin: -12px -4px; color: inherit; text-decoration: none; }
+.bigmark { margin: 24px 0 -.14em; text-align: center; white-space: nowrap; user-select: none; font: italic 360 clamp(100px, 19vw, 300px)/.9 var(--serif); letter-spacing: -.035em; padding: 0 .06em;
+  background: linear-gradient(180deg, rgba(232, 168, 140, .5) 12%, rgba(188, 175, 224, .36) 60%, rgba(188, 175, 224, .2) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ================= responsive (the homepage's breakpoints) ================= */
+@media (max-width: 900px) {
+  body { font-size: 17px; }
+  .nav { height: 54px; }
+  .nav ul li.hide-s { display: none; }
+  .nav ul a { padding: 8px 9px; font-size: 15px; }
+  .wordmark { font-size: 20px; gap: 8px; }
+  .wordmark svg { width: 28px; height: 17px; }
+  .hero { padding: 116px 16px 112px; }
+  .hero .sub { font-size: 17.5px; }
+  .sheet { border-radius: 26px; margin-top: -44px; padding-bottom: 96px; }
+  section.s { padding-top: 92px; }
+  .sheet > section.s:first-child { padding-top: 64px; }
+  .wrap { padding: 0 16px; }
+  .head { margin-bottom: 34px; }
+  .faq-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .faq details > p { padding-right: 0; }
+  footer { border-radius: 26px 26px 0 0; padding-top: 60px; }
+  .fcols { grid-template-columns: 1fr 1fr; }
+  .fcols > div:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 700px) {
+  .hero h1 { font-size: 38px; line-height: 1.06; }
+  .h2 { font-size: 33px; }
+  .chap { align-items: flex-start; }
+  .chap .bar { margin-top: 7px; }
+  .faq summary { font-size: 21px; padding: 20px 0; }
+  .bigmark { font-size: 118px; }
+  .signup { padding: 22px 18px 18px; }
+  .signup-row .btn-primary { flex: 1 1 100%; }
+}
+@media (max-width: 600px) {
+  /* Newsreader at 32-38px reads grey on small and 1x screens: a touch more weight */
+  .hero h1 { font-weight: 450; }
+  .hero h1 em { font-weight: 410; }
+  .h2 { font-weight: 440; }
+  .hero-bg .crisp { width: 120%; height: 40%; top: 0; }
+  .hero-bg .crisp.l { display: none; }
+  .hero-bg .crisp.r { right: -14%; opacity: .45; }
+}
+@media (max-width: 359px) {
+  .nav ul { display: none; }
+  .hero h1 { font-size: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .js .rv { opacity: 1; transform: none; }
+}
+
+/* ==========================================================================
+   Download page
+   ========================================================================== */
+/* ---------- the download band: the choice sits in the leaf light ---------- */
+.hero.dl { padding-bottom: 132px; }
+/* the band's .wrap gives the side gutter (24px; 16px on phones), so the band itself has none */
+.hero.dl { padding-left: 0; padding-right: 0; }
+.hero.dl .sub { max-width: 56ch; }
+.mobile-note { max-width: 720px; margin: 34px auto 0; padding: 22px 24px; border-radius: var(--r-lg); text-align: left; font-size: 16px; line-height: 1.6; color: var(--ink-2);
+  background: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.85); -webkit-backdrop-filter: blur(22px) saturate(1.35); backdrop-filter: blur(22px) saturate(1.35); box-shadow: var(--sh-card); }
+.mobile-note p { margin: 0 0 12px; }
+.mobile-note p:last-child { margin-bottom: 0; }
+.mobile-note b { font-weight: 600; color: var(--ink); }
+.mobile-note a:not(.btn-primary) { color: var(--ink); }
+.mobile-note .mobile-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+/* the email form always shows right under this note, so the note's one button is "Copy link" */
+.mobile-actions > * { flex: 1 1 150px; }
+.mobile-actions .btn-quiet { height: 52px; font-size: 16px; background: #fff; }
+/* if copying fails, site.js puts the whole link in this button: let it wrap */
+#copy-dl-link { white-space: normal; overflow-wrap: anywhere; height: auto; min-height: 52px; padding: 8px 18px; }
+
+.os-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 460px)); justify-content: center; align-items: start; gap: 22px; margin: 46px auto 0; text-align: left; }
+.os-tile { position: relative; display: flex; flex-direction: column; gap: 14px; padding: 28px 28px 24px; border-radius: var(--r-lg);
+  background: rgba(255,255,255,.66); border: 1px solid rgba(255,255,255,.82); -webkit-backdrop-filter: blur(22px) saturate(1.35); backdrop-filter: blur(22px) saturate(1.35);
+  box-shadow: var(--sh-card), inset 0 1px 0 rgba(255,255,255,.7); }
+.os-tile.is-you { background: rgba(255,255,255,.94); box-shadow: 0 0 0 6px rgba(239, 188, 158, .34), var(--sh-win); }
+.os-badge { display: none; position: absolute; top: 26px; right: 26px; height: 26px; align-items: center; padding: 0 11px; border-radius: 999px; background: var(--peach-50); color: var(--peach-ink); font: 600 12.5px/1 var(--sans); }
+.os-tile.is-you .os-badge { display: inline-flex; }
+.os-head { display: flex; align-items: center; gap: 14px; }
+.os-logo { width: 54px; height: 54px; flex: none; display: grid; place-items: center; border-radius: 15px; background: #fff; box-shadow: inset 0 0 0 1px var(--hair), var(--sh-float); }
+.os-logo svg { width: 30px; height: 30px; }
+.os-name { font: 430 34px/1 var(--serif); letter-spacing: -.015em; color: var(--ink); }
+.os-sub { margin-top: 7px; font: 400 13px/1.45 var(--mono); color: var(--ink-3); }
+.os-what { margin: 4px 0 0; font-size: 16.5px; line-height: 1.55; color: var(--ink-2); }
+.os-tile .btn-primary { width: 100%; height: 58px; padding: 0 22px; font-size: 17px; gap: 10px; }
+.os-tile .btn-quiet { width: 100%; height: 48px; font-size: 15.5px; background: rgba(255,255,255,.8); }
+.os-tile .btn-primary svg, .os-tile .btn-quiet svg { width: 18px; height: 18px; }
+.os-note { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink-3); }
+.os-note b { font-weight: 600; color: var(--ink-2); }
+/* commands stay whole: never broken mid-word */
+.os-note code { display: inline-block; max-width: 100%; white-space: nowrap; overflow-wrap: normal; }
+/* once site.js knows the visitor's system, only that tile keeps a filled button (the Store stays first for Windows either way) */
+.os-grid.detected .os-tile:not(.is-you) .btn-primary { height: 50px; font-size: 16px; background: rgba(255,255,255,.8); color: var(--ink); border: 1px solid var(--edge); box-shadow: none; }
+.os-grid.detected .os-tile:not(.is-you) .btn-primary:hover { background: #fff; transform: none; }
+/* a phone can't install either: its one filled button is the email link, so the tiles' buttons are quiet */
+html.is-phone .os-tile .btn-primary { height: 50px; font-size: 16px; background: rgba(255,255,255,.8); color: var(--ink); border: 1px solid var(--edge); box-shadow: none; }
+html.is-phone .os-tile .btn-primary:hover { background: #fff; transform: none; }
+.os-warn { margin-top: 2px; padding-top: 10px; border-top: 1px solid var(--hair); font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
+.os-warn summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 6px 0; font-weight: 600; color: var(--ink); }
+.os-warn summary::-webkit-details-marker { display: none; }
+.os-warn summary::after { content: ""; flex: none; margin-left: auto; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform .2s var(--ease-ui); }
+.os-warn[open] summary::after { transform: translateY(2px) rotate(225deg); }
+.os-warn p { margin: 10px 0 0; }
+.os-warn ol { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 6px; }
+.os-warn b { font-weight: 600; color: var(--ink); }
+.os-warn a { color: var(--ink); }
+#signup { margin-top: 30px; }
+/* phones: the note and the form are there from the first paint (site.js would show them only after it, moving the tiles) */
+html.is-phone #mobile-note[hidden], html.is-phone #signup[hidden] { display: block !important; }
+/* the phone note already offers the Android waitlist */
+html.is-phone .dl-strip .waitlist { display: none; }
+/* links to #dl-btn (blog posts, the pricing page) land with the installer note above the button in view */
+#dl-btn { scroll-margin-top: calc(var(--nav-clear) + 96px); }
+html.has-offer #dl-btn { scroll-margin-top: calc(var(--nav-clear) + 96px + var(--offer-h, 38px)); }
+.dl-strip { max-width: 920px; margin: 30px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 28px; font-size: 15px; line-height: 1.55; color: var(--ink-2); text-wrap: balance; }
+.dl-strip a { color: var(--ink); }
+
+/* ---------- 01 getting started ---------- */
+.dl-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; counter-reset: st; }
+.dl-steps li { counter-increment: st; padding: 26px 28px 28px; border-radius: var(--r-lg); background: var(--card); box-shadow: var(--sh-card); }
+.dl-steps li::before { content: "0" counter(st); display: block; margin-bottom: 16px; font: 500 12.5px/1 var(--mono); letter-spacing: .04em; color: var(--ink-3); }
+.dl-steps h3 { margin: 0 0 10px; font: 430 26px/1.2 var(--serif); letter-spacing: -.012em; color: var(--ink); }
+.dl-steps p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--ink-2); }
+.dl-steps b { font-weight: 600; color: var(--ink); }
+.dl-steps a { color: var(--ink); }
+
+/* ---------- 02 check the file: the homepage's blue-hour panel ---------- */
+.night-panel { position: relative; isolation: isolate; overflow: hidden; margin: 0 24px; padding: 88px 0 84px; border-radius: var(--r-xl); color: #F2F1EE; background: #2B3555; }
+.night-panel .bg { position: absolute; inset: 0; z-index: -2; }
+.night-panel .bg img { width: 100%; height: 100%; object-fit: cover; }
+.night-panel::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(60% 50% at 88% 0%, rgba(239, 188, 158, .36), rgba(239, 188, 158, 0) 70%), linear-gradient(180deg, rgba(30, 40, 68, .12), rgba(22, 29, 50, .55)); }
+.night-panel .chap { color: rgba(242, 241, 238, .9); }
+.night-panel .chap .no { color: #FBFAF7; }
+.dl-trust { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 64px; align-items: start; }
+.dl-trust h2 { margin: 0 0 18px; font: 400 clamp(30px, 3vw, 42px)/1.1 var(--serif); letter-spacing: -.02em; color: #FBFAF7; text-wrap: balance; }
+.dl-trust > div:first-child p:not(.chap) { margin: 0 0 14px; font-size: 17px; line-height: 1.65; color: rgba(242, 241, 238, .88); }
+.night-panel .kbd { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.22); color: #fff; }
+.dl-trust .check { padding-top: 6px; }
+.code-line { display: flex; align-items: center; gap: 10px; padding: 8px 8px 8px 18px; border-radius: 14px; background: rgba(10, 14, 28, .42); border: 1px solid rgba(255,255,255,.14); }
+.code-line code { flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; padding: 0; background: none; font: 400 14.5px/1.6 var(--mono); color: #FBFAF7; }
+.copy-btn { flex: none; height: 36px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.08); color: #fff; font: 500 14px/1 var(--sans); cursor: pointer; transition: background var(--t-ui) var(--ease-ui); }
+.copy-btn:hover { background: rgba(255,255,255,.16); }
+.hashes { margin: 20px 0 0; }
+.hashes > div { padding: 14px 0; border-top: 1px solid rgba(255,255,255,.16); }
+.hashes dt { font: 500 13px/1.3 var(--mono); color: #F4CDB7; }
+.hashes dd { margin: 6px 0 0; }
+.hashes .hash { display: block; padding: 0; background: none; font: 400 13.5px/1.6 var(--mono); color: rgba(251, 250, 247, .9); word-break: break-all; }
+.night-panel .os-note { margin: 12px 0 0; color: rgba(242, 241, 238, .8); }
+.night-panel .os-note code { background: rgba(255,255,255,.1); color: #fff; }
+
+/* ---------- 03 what's new ---------- */
+.new-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+.panel { padding: 30px 32px 28px; border-radius: var(--r-lg); background: var(--card); box-shadow: var(--sh-card); }
+.panel > h3 { margin: 0 0 16px; font: 430 28px/1.15 var(--serif); letter-spacing: -.015em; color: var(--ink); }
+.notes { font-size: 16.5px; line-height: 1.6; color: var(--ink-2); overflow-wrap: anywhere; }
+.notes p { margin: 0 0 10px; }
+.notes h3 { margin: 22px 0 6px; font: 600 17px/1.35 var(--sans); color: var(--ink); }
+.notes h3:first-child { margin-top: 0; }
+.notes ul { margin: 0 0 6px; padding: 0; list-style: none; }
+.notes li { position: relative; padding: 9px 0 9px 22px; border-top: 1px solid var(--hair); }
+.notes li:first-child { border-top: 0; }
+.notes li::before { content: ""; position: absolute; left: 3px; top: 19px; width: 7px; height: 7px; border-radius: 50%; background: var(--peach); }
+.notes strong { font-weight: 600; color: var(--ink); }
+.req { list-style: none; margin: 0; padding: 0; }
+.req li { display: grid; grid-template-columns: 124px minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 13px 0; border-top: 1px solid var(--hair); font: 600 11.5px/1.5 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+.req li:first-child { border-top: 0; padding-top: 4px; }
+.req span { font: 400 16px/1.5 var(--sans); letter-spacing: 0; text-transform: none; color: var(--ink); }
+
+/* ---------- closing: the light comes back (as on the homepage and the pricing page) ---------- */
+.closing { position: relative; z-index: 1; isolation: isolate; margin-top: -60px; padding: 200px 24px 160px; text-align: center; overflow: hidden; }
+.closing .bg { position: absolute; z-index: -2; inset: 0; background: #DCC6D8; }
+.closing .bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
+.closing::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(62% 60% at 50% 42%, rgba(255, 247, 240, .9), rgba(255, 245, 238, .5) 70%, rgba(255, 245, 238, .16)); }
+.closing .chap { justify-content: center; color: var(--ink-2); }
+.close-h { margin: 0; font: 400 clamp(40px, 4.4vw, 62px)/1.02 var(--serif); letter-spacing: -.024em; color: var(--ink); }
+.close-h em { display: block; margin-top: 4px; font-style: italic; font-weight: 370; font-size: clamp(64px, 8.2vw, 124px); line-height: 1; letter-spacing: -.022em; color: rgba(var(--ink-rgb), .86); }
+.closing .lead { margin: 22px auto 0; text-wrap: balance; }
+.closing .cta { margin-top: 34px; }
+.closing .cta p { margin: 14px 0 0; font-size: 15px; color: var(--ink-2); text-wrap: balance; }
+.closing .cta p a { display: inline-block; padding: 12px 4px; margin: -12px -4px; color: var(--ink); }
+
+/* ---------- after a download starts: the optional setup-guide offer (site.js opens it, non-modal, bottom right) ---------- */
+.dl-gate { padding: 0; border: 0; border-radius: var(--r-lg); background: var(--card); color: var(--ink); width: min(440px, calc(100vw - 32px)); max-width: none;
+  box-shadow: 0 0 0 1px rgba(var(--ink-rgb), .06), 0 2px 6px rgba(var(--ink-rgb), .08), 0 30px 70px -20px rgba(60, 40, 80, .45); }
+.dl-gate--toast[open] { position: fixed; inset: auto 24px 24px auto; margin: 0; z-index: 96; }
+@media (prefers-reduced-motion: no-preference) { .dl-gate[open] { animation: dl-up .35s var(--ease-out) both; } }
+@keyframes dl-up { from { opacity: 0; transform: translateY(14px); } }
+.dl-gate .signup { margin: 0; padding: 24px 24px 18px; border-radius: 0; background: none; box-shadow: none; }
+.dl-gate .signup-title { padding-right: 36px; font-size: 23px; }
+.dl-gate .signup-text { margin-bottom: 14px; font-size: 15px; }
+.dl-gate-opt { color: var(--ink-3); }
+.dl-gate-x { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border: 0; border-radius: 10px; background: transparent; color: var(--ink-3); font-size: 24px; line-height: 1; cursor: pointer; }
+.dl-gate-x:hover { background: rgba(var(--ink-rgb), .06); color: var(--ink); }
+.dl-gate .signup-row input[type=email] { flex-basis: 190px; height: 48px; }
+.dl-gate .signup-row .btn-primary { height: 48px; padding: 0 20px; font-size: 15.5px; }
+.dl-gate .signup-consent { font-size: 13.5px; }
+.dl-gate-small { margin: 12px 0 0; font-size: 13px; line-height: 1.55; color: var(--ink-3); }
+.dl-gate-small a { color: var(--ink-2); }
+.dl-gate-no { padding: 0; border: 0; background: none; color: var(--ink); font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
+
+@media (max-width: 1100px) {
+  .dl-trust { gap: 44px; }
+}
+@media (max-width: 900px) {
+  .hero.dl { padding-bottom: 104px; }
+  .os-grid { grid-template-columns: minmax(0, 1fr); max-width: 560px; margin-left: auto; margin-right: auto; }
+  .dl-steps { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .night-panel { margin: 0 8px; padding: 64px 0 60px; border-radius: 24px; }
+  .dl-trust { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .new-grid { grid-template-columns: minmax(0, 1fr); }
+  .closing { padding: 150px 16px 128px; margin-top: -44px; }
+}
+@media (max-width: 700px) {
+  .os-tile { padding: 22px 18px 18px; }
+  .os-name { font-size: 30px; }
+  .os-badge { position: static; align-self: flex-start; order: -1; }
+  .mobile-note { padding: 18px 18px; }
+  .panel { padding: 24px 20px 22px; }
+  .req li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .dl-steps li { padding: 22px 20px 24px; }
+  /* the hash command wraps after "Get-FileHash" (never inside the file name) instead of hiding ".exe" under the Copy button */
+  .code-line { padding: 8px 8px 8px 14px; }
+  .code-line code { white-space: normal; font-size: 13.5px; }
+  .close-h { font-size: 36px; }
+  .close-h em { font-size: 64px; }
+  .closing .cta .btn-primary { width: 100%; height: 54px; font-size: 17px; }
+}
+@media (max-width: 560px) {
+  .dl-gate--toast[open] { inset: auto 12px 12px 12px; width: auto; }
+}
+/* the narrowest phones: the install command may break at a space, never inside the file name */
+@media (max-width: 359px) {
+  .os-note code { white-space: normal; }
+}
+</style>
 </head>
 <body>
-  <div class="sky" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
-      </button>
-      <nav class="nav-links" aria-label="Main">
-        <a href="./">Home</a>
-        <a href="about.html">About</a>
-        <a href="security.html">Security</a>
-        <a href="blog.html">Blog</a>
-        <a href="help.html">Help</a>
-        <a href="pricing.html">Pricing</a>
-        <a class="btn btn-primary" href="download.html" aria-current="page">Download</a>
-      </nav>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+<nav class="nav" id="nav" aria-label="Main">
+  <a class="wordmark" href="./" aria-label="Clavis Encrypt home"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a>
+  <ul>
+    <li class="hide-s"><a href="./#how">How it works</a></li>
+    <li><a href="./#proof">Security</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li class="hide-s"><a href="blog.html">Guides</a></li>
+    <li class="hide-s"><a href="help.html">Help</a></li>
+  </ul>
+</nav>
+</header>
+
+<main id="main">
+<!-- ================= DOWNLOAD: the choice, in the leaf light ================= -->
+<section class="hero dl" id="get">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="leaf">
+      <picture>
+        <source media="(max-width: 600px)" srcset="assets/img/home/hero-leaf-780.webp" width="780" height="1170">
+        <img src="assets/img/home/hero-leaf-1920.webp" srcset="assets/img/home/hero-leaf-1280.webp 1280w, assets/img/home/hero-leaf-1920.webp 1920w" sizes="100vw" width="1920" height="1440" alt="" fetchpriority="high">
+      </picture>
     </div>
-  </header>
+    <div class="crisp l"></div><div class="crisp r"></div>
+    <div class="wash"></div>
+    <div class="sun"></div>
+    <div class="grain"></div>
+  </div>
+  <div class="wrap">
+    <p class="chap"><span class="bar"></span><span>Download · version <span data-release="version">3.16.1</span></span><span class="bar"></span></p>
+    <h1>Get Clavis. <em>It's free.</em></h1>
+    <p class="sub">Released <span data-release="date">October 28, 2026</span>. On Windows it installs just for you, with no administrator rights and no account. Updates arrive inside the app and are signed.</p>
 
-  <main>
-    <section class="dl-top" id="get">
-      <div class="wrap">
-        <div class="dl-intro intro">
-          <span class="eyebrow">Download · version <span data-release="version">3.16.1</span></span>
-          <h1 class="display">Get Clavis. <em>It's free.</em></h1>
-          <p class="lede">Released <span data-release="date">October 28, 2026</span>. Installs just for you, with no administrator rights and no account. Updates arrive inside the app and are signed.</p>
-        </div>
+    <div class="mobile-note" id="mobile-note" hidden><p><b>On a phone?</b> Clavis Encrypt runs on Windows and Linux computers. We'll email you the download link so it's waiting when you're at your PC. Already have a <code>.enc</code> file? <a href="open.html" data-goatcounter-click="phone-open-enc">Open it in your browser</a>. Need to send one? <a href="encrypt.html" data-goatcounter-click="phone-encrypt-web">Encrypt a file in your browser</a>.</p><p class="mobile-actions"><button type="button" class="btn-quiet" id="copy-dl-link" data-goatcounter-click="phone-copy-link" data-goatcounter-title="Download: copy link (phone)">Copy link</button></p><p>Want Clavis on your Android phone? <a data-goatcounter-click="android-waitlist" data-goatcounter-title="Android waitlist" href="mailto:hello@clavisenc.com?subject=Clavis%20for%20Android%20%E2%80%94%20waitlist&amp;body=Please%20tell%20me%20when%20Clavis%20is%20on%20Android.">Join the waitlist</a> — one email to hello@clavisenc.com, and we'll tell you if it happens.</p></div>
 
-        <div class="mobile-note" id="mobile-note" hidden><p><b>On a phone?</b> Clavis Encrypt runs on Windows and Linux computers. We'll email you the download link so it's waiting when you're at your PC. Already have a <code>.enc</code> file? <a href="open.html" data-goatcounter-click="phone-open-enc">Open it in your browser</a>. Need to send one? <a href="encrypt.html" data-goatcounter-click="phone-encrypt-web">Encrypt a file in your browser</a>.</p><p class="mobile-actions"><a class="btn btn-primary" data-goatcounter-click="phone-email-link" data-goatcounter-title="Download: email me the PC link (phone)" href="#signup">Email me the link</a><button type="button" class="btn btn-ghost" id="copy-dl-link" data-goatcounter-click="phone-copy-link" data-goatcounter-title="Download: copy link (phone)">Copy link</button></p><p>Want Clavis on your Android phone? <a data-goatcounter-click="android-waitlist" data-goatcounter-title="Android waitlist" href="mailto:hello@clavisenc.com?subject=Clavis%20for%20Android%20%E2%80%94%20waitlist&amp;body=Please%20tell%20me%20when%20Clavis%20is%20on%20Android.">Join the waitlist</a> — one email to hello@clavisenc.com, and we'll tell you if it happens.</p></div>
-
-        <div class="os-grid">
-          <div class="os-tile" data-os="windows">
-            <span class="os-badge">For this computer</span>
-            <div class="os-head">
-              <span class="os-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4cc2ff" d="M2.5 4.4 10.4 3.3v7.9H2.5z"/><path fill="#4cc2ff" d="M11.6 3.1 21.5 1.8v9.4h-9.9z"/><path fill="#4cc2ff" d="M2.5 12.4h7.9v7.9l-7.9-1.1z"/><path fill="#4cc2ff" d="M11.6 12.4h9.9v9.4l-9.9-1.3z"/></svg></span>
-              <div><div class="os-name">Windows</div><div class="os-sub">Windows 10 &amp; 11 · 64-bit · <span data-release="size">43 MB</span></div></div>
-            </div>
-            <p class="os-what">Get it from the Microsoft Store: it installs without warnings and keeps itself up to date.</p>
-            <a class="btn btn-primary" id="dl-store" href="https://apps.microsoft.com/detail/9PCWJ9HG0TNN?mode=direct&amp;cid=website" target="_blank" rel="noopener" data-goatcounter-click="download-windows-store" data-goatcounter-title="Download: Microsoft Store"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h14l-1 10H4z"/><path d="M7 7V5a3 3 0 0 1 6 0v2"/></svg> Get it from Microsoft Store</a>
-            <p class="os-note"><b>Or download the installer</b>, which also adds the File Explorer right-click Encrypt menu and the command line. No administrator rights needed.</p>
-            <a data-goatcounter-click="download-windows-installer" data-goatcounter-title="Download: Windows installer" class="btn btn-ghost" id="dl-btn" href="https://github.com/clavisenc/FileEncryptionApp-updates/releases/latest/download/Clavis-Setup.exe"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg> Clavis-Setup.exe</a>
-            <a data-goatcounter-click="download-windows-zip" data-goatcounter-title="Download: Windows ZIP" class="btn btn-ghost" href="https://github.com/clavisenc/FileEncryptionApp-updates/releases/latest/download/Clavis-windows.zip"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg> Portable ZIP (no installer)</a>
-            <p class="os-note">Portable ZIP: unzip anywhere and run <b>Clavis.exe</b>.</p>
-            <details class="os-warn" data-track="download-warning-help">
-              <summary>Installer: nothing downloaded, or a warning appeared?</summary>
-              <p><b>Easiest fix:</b> install it from the <a href="https://apps.microsoft.com/detail/9PCWJ9HG0TNN?mode=direct&amp;cid=website" target="_blank" rel="noopener" data-goatcounter-click="msstore-warning-help">Microsoft Store</a> instead.</p>
-              <p>Clavis Encrypt is new, so Edge and Chrome don't recognise the installer yet and may hold it back. Nothing is wrong with the file.</p>
-              <ol>
-                <li><b>Edge:</b> open Downloads (<kbd>Ctrl</kbd>+<kbd>J</kbd>), point at Clavis-Setup.exe, click <b>…</b> → <b>Keep</b> → <b>Show more</b> → <b>Keep anyway</b>.</li>
-                <li><b>Chrome:</b> open Downloads (<kbd>Ctrl</kbd>+<kbd>J</kbd>) → <b>Keep</b> (or <b>Download dangerous file</b> → <b>Download</b>).</li>
-                <li>When you run it, Windows may show <b>"Windows protected your PC"</b>: click <b>More info</b> → <b>Run anyway</b>.</li>
-              </ol>
-              <p>Want to check the file first? Compare its SHA-256 with <a href="#trust">the one further down this page</a>.</p>
-            </details>
-          </div>
-          <div class="os-tile" data-os="linux" id="linux">
-            <span class="os-badge">For this computer</span>
-            <div class="os-head">
-              <span class="os-logo"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="37" rx="17" ry="21" fill="#2a3242" stroke="#8b97ad" stroke-width="1.5"/><ellipse cx="32" cy="41" rx="10.5" ry="14" fill="#f1f3f7"/><circle cx="32" cy="19" r="11.5" fill="#2a3242" stroke="#8b97ad" stroke-width="1.5"/><ellipse cx="27.6" cy="18" rx="3" ry="3.6" fill="#fff"/><ellipse cx="36.4" cy="18" rx="3" ry="3.6" fill="#fff"/><circle cx="28.1" cy="18.8" r="1.4" fill="#111"/><circle cx="35.9" cy="18.8" r="1.4" fill="#111"/><path d="M27 23.6c2-1.7 8-1.7 10 0-1.7 2.8-8.3 2.8-10 0z" fill="#f5b21b"/><ellipse cx="22.5" cy="57" rx="7" ry="3.4" fill="#f5b21b"/><ellipse cx="41.5" cy="57" rx="7" ry="3.4" fill="#f5b21b"/></svg></span>
-              <div><div class="os-name">Linux</div><div class="os-sub">.deb · Ubuntu, Debian &amp; derivatives · 64-bit</div></div>
-            </div>
-            <p class="os-what">The app plus the <code>clavis-cli</code> command, for scripts and backups.</p>
-            <a data-goatcounter-click="download-linux-deb" data-goatcounter-title="Download: Linux .deb" class="btn btn-primary" id="dl-linux" href="https://github.com/clavisenc/FileEncryptionApp-updates/releases/latest/download/Clavis-linux.deb"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg> Clavis-linux.deb</a>
-            <p class="os-note">Install: <code>sudo apt install ./Clavis-linux.deb</code><br>Update by installing the newer .deb. Command line: <code>/opt/clavis/bin/clavis-cli</code></p>
-          </div>
-        </div>
-        <form class="signup" id="signup" hidden data-phone-only action="https://94ecc37e.sibforms.com/serve/MUIFAODh8yM-0OEUwziXyrPNw4kpzT7bHTSADiC84_5zFwjzX2fUgCBFBU4r4JueOJjNYSUH8d6eCTMR_2Ki_KfVzYmofwCwModeDBUfGA9SxeN22TEnZG8E3ymq1sKP7NxpC86mSHewfDShuBvMDMZlGaYFIbexM7Z98H7TTPsuOyHu4BEdBws5pk4OM4VmCZ88eg1bjLjkIJvEWA==" method="POST" data-signup="signup-download" data-track="signup-download" novalidate>
-          <p class="signup-title">Not at your PC right now?</p>
-          <p class="signup-text">Leave your email and we'll send you the download link, plus a note when there's a new version. Nothing else.</p>
-          <div class="signup-row">
-            <label class="signup-sr" for="signup-email">Email address</label>
-            <input type="email" id="signup-email" name="EMAIL" required autocomplete="email" placeholder="you@example.com">
-            <button class="btn btn-primary" type="submit">Email me the link</button>
-          </div>
-          <label class="signup-consent"><input type="checkbox" name="OPT_IN" value="1"> <span>Also send me the occasional update: new versions and offers. Optional, unsubscribe any time (<a href="privacy.html#emails">privacy</a>).</span></label>
-          <p class="signup-note">We'll email you a link to confirm your address, then the download link. Emails come from hello@clavisenc.com; if you use Outlook or Hotmail, check Junk.</p>
-          <input type="text" name="email_address_check" value="" class="signup-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <input type="hidden" name="locale" value="en">
-          <p class="signup-msg" role="status" aria-live="polite"></p>
-        </form>
-        <div class="dl-strip">
-          <span>Same vaults and the same .enc files on every system — encrypt on one, open on another.</span>
-          <span class="waitlist">Want Clavis on Android? <a data-goatcounter-click="android-waitlist" data-goatcounter-title="Android waitlist" href="mailto:hello@clavisenc.com?subject=Clavis%20for%20Android%20%E2%80%94%20waitlist&amp;body=Please%20tell%20me%20when%20Clavis%20is%20on%20Android.">Join the waitlist</a></span>
-        </div>
+    <form class="signup" id="signup" hidden data-phone-only action="https://94ecc37e.sibforms.com/serve/MUIFAODh8yM-0OEUwziXyrPNw4kpzT7bHTSADiC84_5zFwjzX2fUgCBFBU4r4JueOJjNYSUH8d6eCTMR_2Ki_KfVzYmofwCwModeDBUfGA9SxeN22TEnZG8E3ymq1sKP7NxpC86mSHewfDShuBvMDMZlGaYFIbexM7Z98H7TTPsuOyHu4BEdBws5pk4OM4VmCZ88eg1bjLjkIJvEWA==" method="POST" data-signup="signup-download" data-track="signup-download" novalidate>
+      <p class="signup-title">Not at your PC right now?</p>
+      <p class="signup-text">Leave your email and we'll send you the download link, plus a note when there's a new version. Nothing else.</p>
+      <div class="signup-row">
+        <label class="signup-sr" for="signup-email">Email address</label>
+        <input type="email" id="signup-email" name="EMAIL" required autocomplete="email" placeholder="you@example.com">
+        <button class="btn-primary" type="submit">Email me the link</button>
       </div>
-    </section>
+      <label class="signup-consent"><input type="checkbox" name="OPT_IN" value="1"> <span>Also send me the occasional update: new versions and offers. Optional, unsubscribe any time (<a href="privacy.html#emails">privacy</a>).</span></label>
+      <p class="signup-note">We'll email you a link to confirm your address, then the download link. Emails come from hello@clavisenc.com; if you use Outlook or Hotmail, check Junk.</p>
+      <input type="text" name="email_address_check" value="" class="signup-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="locale" value="en">
+      <p class="signup-msg" role="status" aria-live="polite"></p>
+    </form>
 
-    <section class="block" id="install">
-      <div class="wrap">
-        <div class="block-head">
-          <span class="eyebrow">Getting started</span>
-          <h2 class="h2">Three minutes, <em>start to locked.</em></h2>
+    <div class="os-grid">
+      <div class="os-tile" data-os="windows">
+        <span class="os-badge">For this computer</span>
+        <div class="os-head">
+          <span class="os-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0F6CBD" d="M2.5 4.4 10.4 3.3v7.9H2.5z"/><path fill="#0F6CBD" d="M11.6 3.1 21.5 1.8v9.4h-9.9z"/><path fill="#0F6CBD" d="M2.5 12.4h7.9v7.9l-7.9-1.1z"/><path fill="#0F6CBD" d="M11.6 12.4h9.9v9.4l-9.9-1.3z"/></svg></span>
+          <div><div class="os-name">Windows</div><div class="os-sub">Windows 10 &amp; 11 <span class="nw">· 64-bit</span> <span class="nw">· <span data-release="size">43 MB</span></span></div></div>
         </div>
-        <ol class="dl-steps">
-          <li><h3>Install</h3><p><b>Windows:</b> click <b>Get</b> in the Microsoft Store, or double-click Clavis-Setup.exe — either way it installs just for you, no administrator prompt. <b>Linux:</b> <code>sudo apt install ./Clavis-linux.deb</code></p></li>
-          <li><h3>Create your vault</h3><p>Open Clavis from the Start menu or your apps menu and choose a strong password. Clavis coaches you while you type.</p></li>
-          <li><h3>Save your recovery key</h3><p>Write it down or print it. It's your way back in if you ever forget the password. <a href="help-recovery-key.html">More about it →</a></p></li>
-        </ol>
+        <p class="os-what">Get it from the Microsoft Store: it installs without warnings and keeps itself up to date.</p>
+        <a class="btn-primary" id="dl-store" href="https://apps.microsoft.com/detail/9PCWJ9HG0TNN?mode=direct&amp;cid=website" target="_blank" rel="noopener" data-goatcounter-click="download-windows-store" data-goatcounter-title="Download: Microsoft Store"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h14l-1 10H4z"/><path d="M7 7V5a3 3 0 0 1 6 0v2"/></svg> Get it from Microsoft Store</a>
+        <p class="os-note"><b>Or download the installer</b>, which also adds the File Explorer right-click Encrypt menu and the command line. No administrator rights needed.</p>
+        <a data-goatcounter-click="download-windows-installer" data-goatcounter-title="Download: Windows installer" class="btn-quiet" id="dl-btn" href="https://github.com/clavisenc/FileEncryptionApp-updates/releases/latest/download/Clavis-Setup.exe"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg> Clavis-Setup.exe</a>
+        <a data-goatcounter-click="download-windows-zip" data-goatcounter-title="Download: Windows ZIP" class="btn-quiet" href="https://github.com/clavisenc/FileEncryptionApp-updates/releases/latest/download/Clavis-windows.zip"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg> Portable ZIP (no installer)</a>
+        <p class="os-note">Portable ZIP: unzip anywhere and run <b>Clavis.exe</b>.</p>
+        <details class="os-warn" data-track="download-warning-help">
+          <summary>Installer: nothing downloaded, or a warning appeared?</summary>
+          <p><b>Easiest fix:</b> install it from the <a href="https://apps.microsoft.com/detail/9PCWJ9HG0TNN?mode=direct&amp;cid=website" target="_blank" rel="noopener" data-goatcounter-click="msstore-warning-help">Microsoft Store</a> instead.</p>
+          <p>Clavis Encrypt is new, so Edge and Chrome don't recognise the installer yet and may hold it back. Nothing is wrong with the file.</p>
+          <ol>
+            <li><b>Edge:</b> open Downloads (<kbd>Ctrl</kbd>+<kbd>J</kbd>), point at Clavis-Setup.exe, click <b>…</b> → <b>Keep</b> → <b>Show more</b> → <b>Keep anyway</b>.</li>
+            <li><b>Chrome:</b> open Downloads (<kbd>Ctrl</kbd>+<kbd>J</kbd>) → <b>Keep</b> (or <b>Download dangerous file</b> → <b>Download</b>).</li>
+            <li>When you run it, Windows may show <b>"Windows protected your PC"</b>: click <b>More info</b> → <b>Run anyway</b>.</li>
+          </ol>
+          <p>Want to check the file first? Compare its SHA-256 with <a href="#trust">the one further down this page</a>.</p>
+        </details>
       </div>
-    </section>
-
-    <section class="block" id="trust" style="padding-top:0">
-      <div class="wrap">
-        <div class="dl-trust">
-          <div>
-            <h2>Seeing “Windows protected your PC”?</h2>
-            <p>That's normal for a new, independent app — nothing is wrong. Choose <span class="kbd">More info</span>, then <span class="kbd">Run anyway</span>. The portable ZIP behaves the same.</p>
-            <p>Want to be sure the file is ours? Compare its SHA-256 checksum with the one here before you run it.</p>
-          </div>
-          <div>
-            <div class="code-line"><code id="hash-cmd">Get-FileHash .\Clavis-Setup.exe</code><button type="button" class="copy-btn" data-copy="#hash-cmd">Copy</button></div>
-            <dl class="hashes">
-              <div><dt>Clavis-Setup.exe</dt><dd><code class="hash">81860e80cd181e94a1bcb9b8e9cbc5e1dee7370ec18fd5bc1443af8af4bc5cee</code></dd></div>
-              <div><dt>Clavis-windows.zip</dt><dd><code class="hash">574b24c2cf2d937516e1364b69a9eaa2810af931160d62cefc41458dfed6ed95</code></dd></div>
-              <div><dt>Clavis-linux.deb</dt><dd><code class="hash">a143fc4d7e1b10c6924d9b996c56cf3d4199873f690c523bbfa28750a07e0c09</code></dd></div>
-            </dl>
-            <p class="os-note">On Linux: <code>sha256sum Clavis-linux.deb</code></p>
-          </div>
+      <div class="os-tile" data-os="linux" id="linux">
+        <span class="os-badge">For this computer</span>
+        <div class="os-head">
+          <span class="os-logo"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="37" rx="17" ry="21" fill="#2a3242" stroke="#8b97ad" stroke-width="1.5"/><ellipse cx="32" cy="41" rx="10.5" ry="14" fill="#f1f3f7"/><circle cx="32" cy="19" r="11.5" fill="#2a3242" stroke="#8b97ad" stroke-width="1.5"/><ellipse cx="27.6" cy="18" rx="3" ry="3.6" fill="#fff"/><ellipse cx="36.4" cy="18" rx="3" ry="3.6" fill="#fff"/><circle cx="28.1" cy="18.8" r="1.4" fill="#111"/><circle cx="35.9" cy="18.8" r="1.4" fill="#111"/><path d="M27 23.6c2-1.7 8-1.7 10 0-1.7 2.8-8.3 2.8-10 0z" fill="#f5b21b"/><ellipse cx="22.5" cy="57" rx="7" ry="3.4" fill="#f5b21b"/><ellipse cx="41.5" cy="57" rx="7" ry="3.4" fill="#f5b21b"/></svg></span>
+          <div><div class="os-name">Linux</div><div class="os-sub">.deb · 64-bit<br>Ubuntu, Debian &amp; derivatives</div></div>
         </div>
+        <p class="os-what">The app plus the <code>clavis-cli</code> command, for scripts and backups.</p>
+        <a data-goatcounter-click="download-linux-deb" data-goatcounter-title="Download: Linux .deb" class="btn-primary" id="dl-linux" href="https://github.com/clavisenc/FileEncryptionApp-updates/releases/latest/download/Clavis-linux.deb"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg> Clavis-linux.deb</a>
+        <p class="os-note">Install: <code>sudo apt install <span class="nw">./Clavis-linux.deb</span></code><br>Update by installing the newer .deb. Command line: <code>/opt/clavis/bin/clavis-cli</code></p>
       </div>
-    </section>
-
-    <section class="block" id="whats-new" style="padding-top:0">
-      <div class="wrap dl-grid">
-        <div class="panel">
-          <h2>What's new</h2>
-          <div class="notes" id="notes"><p>See the latest improvements to Clavis.</p></div>
-          <h2 style="margin-top:36px">Requirements</h2>
-          <ul class="req">
-            <li>System <span>Windows 10 / 11 · Ubuntu, Debian</span></li>
-            <li>Architecture <span>64-bit (x64)</span></li>
-            <li>Disk space <span>About 60 MB</span></li>
-            <li>Permissions <span>Windows: none · Linux: sudo to install</span></li>
-            <li>Internet <span>Only for updates and license activation</span></li>
-          </ul>
-        </div>
-        <div class="panel faq">
-          <h2>Questions</h2>
-          <details><summary>Where are my files and vaults kept?</summary><p>On your PC only. Encrypted files stay where you put them, and your vault settings live in your Windows user folder.</p></details>
-          <details><summary>Can I encrypt straight from File Explorer?</summary><p>Yes. Right-click a file or folder → Clavis → Encrypt, Decrypt or Verify; folders also offer Add to Watch Folder. On Windows 11, choose "Show more options" first. You can turn the menu off in Settings → Explorer.</p></details>
-          <details><summary>Can I open an encrypted file without decrypting it?</summary><p>Yes, with Clavis Pro: double-click the .enc file and it opens in its usual app without leaving a decrypted copy on your PC. Save your edits back into the encrypted file, or re-lock it when you are done. With Clavis Free, double-clicking offers to decrypt the file.</p></details>
-          <details><summary>How do updates work?</summary><p>Clavis checks once a day (or when you choose Settings → Updates → Check now). Updates are small, and you choose when the app restarts.</p></details>
-          <details><summary>What if I forget my password?</summary><p>Use the recovery key Clavis gave you when you created your vault — choose “Forgot password?” on the unlock screen.</p></details>
-          <details><summary>Can I uninstall it?</summary><p>Yes — from Windows Settings → Apps. Your encrypted files and vaults are left untouched, so keep Clavis (or reinstall it) to open them.</p></details>
-          <details><summary>Does Clavis upload my files?</summary><p>No. Everything happens on your computer. Clavis goes online only to check for updates and, for a Pro or Premium key, to confirm the licence.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <!-- After a download has started: an optional offer of the setup guide by email (updates
-         opt-in also optional). Sent to Brevo list "Downloaders", who get the "Thanks for downloading"
-         setup email. Brevo form "Downloads". Never blocks the download.
-         -->
-    <dialog class="dl-gate dl-gate--toast" id="dl-gate" aria-labelledby="dl-gate-title">
-      <form class="signup" id="dl-signup" action="https://94ecc37e.sibforms.com/serve/MUIFAN8ViGh359cWMNdVXrp8WV1oNioazxb1rI_IBNjYewJjLzGj0APN1ETPohRaSn5hwrwaezPoqF1KxJjp8P5u44Qw8V7wWDpdp_Ee9DsUmZ10IxfBZPMyf-aNHvnfsFL_t6CwXnstJbPGu-LIfEt_xyZN90gJUOSjjZG8J4CM-T4iqVjEORkpi4pN-uyM5SOax2REozLlnu9_tQ==" data-action="https://94ecc37e.sibforms.com/serve/MUIFAN8ViGh359cWMNdVXrp8WV1oNioazxb1rI_IBNjYewJjLzGj0APN1ETPohRaSn5hwrwaezPoqF1KxJjp8P5u44Qw8V7wWDpdp_Ee9DsUmZ10IxfBZPMyf-aNHvnfsFL_t6CwXnstJbPGu-LIfEt_xyZN90gJUOSjjZG8J4CM-T4iqVjEORkpi4pN-uyM5SOax2REozLlnu9_tQ==" method="POST" data-gate novalidate>
-        <button class="dl-gate-x" type="button" aria-label="Close">&times;</button>
-        <p class="signup-title" id="dl-gate-title">Your download has started</p>
-        <p class="signup-text">Want a 2-minute setup guide by email? <span class="dl-gate-opt">(optional)</span> One short how-to for your first two minutes. We never sell your address.</p>
-        <div class="signup-row">
-          <label class="signup-sr" for="dl-signup-email">Email address</label>
-          <input type="email" id="dl-signup-email" name="EMAIL" required autocomplete="email" placeholder="you@example.com">
-          <button class="btn btn-primary" type="submit">Send me the guide</button>
-        </div>
-        <label class="signup-consent"><input type="checkbox" name="OPT_IN" value="1"> <span>Also send me the occasional update: new versions and offers. Optional, unsubscribe any time.</span></label>
-        <p class="dl-gate-small"><button class="dl-gate-no" type="button">No thanks</button> · The app itself needs no account, and your files never leave your PC. <a href="privacy.html#emails">Privacy</a> · Outlook or Hotmail? The guide may land in Junk.</p>
-        <input type="text" name="email_address_check" value="" class="signup-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <input type="hidden" name="locale" value="en">
-        <p class="signup-msg" role="status" aria-live="polite"></p>
-      </form>
-    </dialog>
-  </main>
-
-  <footer class="footer">
-    <div class="wrap">
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-          <p class="latin">clāvis — Latin, “key”</p>
-          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
-          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
-        </div>
-        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
-        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
-        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
-      </div>
-      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
     </div>
-  </footer>
 
-  <script src="assets/js/site.js?v=cdddc0389b" defer></script>
+    <div class="dl-strip">
+      <span>Same vaults and the same .enc files on every system — encrypt on one, open on another.</span>
+      <span class="waitlist">Want Clavis on Android? <a data-goatcounter-click="android-waitlist" data-goatcounter-title="Android waitlist" href="mailto:hello@clavisenc.com?subject=Clavis%20for%20Android%20%E2%80%94%20waitlist&amp;body=Please%20tell%20me%20when%20Clavis%20is%20on%20Android.">Join the waitlist</a></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE PAPER SHEET ================= -->
+<div class="sheet">
+
+<!-- ================= 01 GETTING STARTED ================= -->
+<section class="s" id="install">
+  <div class="wrap">
+    <div class="head">
+      <p class="chap rv h"><span class="no">01</span><span class="bar"></span><span>Getting started</span></p>
+      <h2 class="h2 rv h">Three minutes, <em>start to locked.</em></h2>
+    </div>
+    <ol class="dl-steps">
+      <li class="rv"><h3>Install</h3><p><b>Windows:</b> click <b>Get</b> in the Microsoft Store, or double-click Clavis-Setup.exe — either way it installs just for you, no administrator prompt. <b>Linux:</b> <code>sudo apt install <span class="nw">./Clavis-linux.deb</span></code></p></li>
+      <li class="rv d1"><h3>Create your vault</h3><p>Open Clavis from the Start menu or your apps menu and choose a strong password. Clavis coaches you while you type.</p></li>
+      <li class="rv d2"><h3>Save your recovery key</h3><p>Write it down or print it. It's your way back in if you ever forget the password. <a href="help-recovery-key.html">More about it →</a></p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= 02 CHECK THE FILE ================= -->
+<section class="s" id="trust">
+  <div class="night-panel">
+    <div class="bg" aria-hidden="true"><img src="assets/img/home/night-leaf-1600.webp" width="1600" height="1100" alt="" loading="lazy" decoding="async"></div>
+    <div class="wrap dl-trust">
+      <div>
+        <p class="chap"><span class="no">02</span><span class="bar"></span><span>Check the file</span></p>
+        <h2>Seeing “Windows protected your PC”?</h2>
+        <p>That's normal for a new, independent app — nothing is wrong. Choose <span class="kbd">More info</span>, then <span class="kbd">Run anyway</span>. The portable ZIP behaves the same.</p>
+        <p>Want to be sure the file is ours? Compare its SHA-256 checksum with the one here before you run it.</p>
+      </div>
+      <div class="check">
+        <div class="code-line"><code id="hash-cmd"><span class="nw">Get-FileHash</span> <span class="nw">.\Clavis-Setup.exe</span></code><button type="button" class="copy-btn" data-copy="#hash-cmd">Copy</button></div>
+        <dl class="hashes">
+          <div><dt>Clavis-Setup.exe</dt><dd><code class="hash">81860e80cd181e94a1bcb9b8e9cbc5e1dee7370ec18fd5bc1443af8af4bc5cee</code></dd></div>
+          <div><dt>Clavis-windows.zip</dt><dd><code class="hash">574b24c2cf2d937516e1364b69a9eaa2810af931160d62cefc41458dfed6ed95</code></dd></div>
+          <div><dt>Clavis-linux.deb</dt><dd><code class="hash">a143fc4d7e1b10c6924d9b996c56cf3d4199873f690c523bbfa28750a07e0c09</code></dd></div>
+        </dl>
+        <p class="os-note">On Linux: <code>sha256sum Clavis-linux.deb</code></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 WHAT'S NEW (notes filled from data/release.json by site.js) ================= -->
+<section class="s" id="whats-new">
+  <div class="wrap">
+    <div class="head">
+      <p class="chap rv h"><span class="no">03</span><span class="bar"></span><span>Version <span data-release="version">3.16.1</span></span></p>
+      <h2 class="h2 rv h">What's new, <em class="nw">and what it needs.</em></h2>
+    </div>
+    <div class="new-grid">
+      <div class="panel rv">
+        <h3>What's new</h3>
+        <div class="notes" id="notes"><p>See the latest improvements to Clavis.</p></div>
+      </div>
+      <div class="panel rv d1">
+        <h3>Requirements</h3>
+        <ul class="req">
+          <li>System <span>Windows 10 / 11 · Ubuntu, Debian</span></li>
+          <li>Architecture <span>64-bit (x64)</span></li>
+          <li>Disk space <span>About 60 MB</span></li>
+          <li>Permissions <span>Windows: none · Linux: sudo to install</span></li>
+          <li>Internet <span>Only for updates and, on Pro or Premium, licence activation and the check each time Clavis starts online</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 QUESTIONS (these items also become the page's FAQ structured data) ================= -->
+<section class="s" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div class="faq-side">
+      <p class="chap rv h"><span class="no">04</span><span class="bar"></span><span>After you install</span></p>
+      <h2 class="h2 rv h" id="faq-h">Questions</h2>
+      <p class="rv">More answers in the <a href="help.html">Help centre</a>, or write to <a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a>.</p>
+    </div>
+    <div class="faq rv">
+      <details><summary>Where are my files and vaults kept?<i aria-hidden="true"></i></summary><p>On your PC only. Encrypted files stay where you put them, and your vault settings live in your Windows user folder.</p></details>
+      <details><summary>Can I encrypt straight from File Explorer?<i aria-hidden="true"></i></summary><p>Yes, with the installer or the portable ZIP: right-click a file or folder → Clavis → Encrypt, Decrypt or Verify; folders also offer Add to Watch Folder. On Windows 11, choose "Show more options" first. You can turn the menu off in Settings → Explorer. The Microsoft Store version has no right-click menu, so drop files onto the Clavis window instead.</p></details>
+      <details><summary>Can I open an encrypted file without decrypting it?<i aria-hidden="true"></i></summary><p>Yes, with Clavis Pro: double-click the .enc file and it opens in its usual app without leaving a decrypted copy on your PC. Save your edits back into the encrypted file, or re-lock it when you are done. With Clavis Free, double-clicking offers to decrypt the file.</p></details>
+      <details><summary>How do updates work?<i aria-hidden="true"></i></summary><p>Clavis checks once a day (or when you choose Settings → Updates → Check now). Updates are small, and you choose when the app restarts.</p></details>
+      <details><summary>What if I forget my password?<i aria-hidden="true"></i></summary><p>Use the recovery key Clavis gave you when you created your vault — choose “Forgot password?” on the unlock screen.</p></details>
+      <details><summary>Can I uninstall it?<i aria-hidden="true"></i></summary><p>Yes — from Windows Settings → Apps. Your encrypted files and vaults are left untouched, so keep Clavis (or reinstall it) to open them.</p></details>
+      <details><summary>Does Clavis upload my files?<i aria-hidden="true"></i></summary><p>No. Everything happens on your computer. Clavis goes online only to check for updates and, for a Pro or Premium key, to confirm the licence.</p></details>
+    </div>
+  </div>
+</section>
+
+</div><!-- /sheet -->
+
+<!-- ================= CLOSING ================= -->
+<section class="closing" aria-labelledby="close-h">
+  <div class="bg" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 600px)" srcset="assets/img/home/close-leaf-900p.webp" width="900" height="1500">
+      <img src="assets/img/home/close-leaf-1920.webp" width="1920" height="1440" alt="" loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <div class="wrap">
+    <p class="chap rv h"><span class="bar"></span><span>Free · no account</span><span class="bar"></span></p>
+    <h2 class="close-h rv h" id="close-h">Ready when <em>you are.</em></h2>
+    <p class="lead rv">Encrypt your first file in a few minutes. It stays on your PC, and only you hold the key.</p>
+    <div class="cta rv">
+      <a class="btn-primary desk" href="#get">Choose your download <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14V4M3.5 8.5 8 4l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn-primary phone" href="#signup">Email me the download link</a>
+      <p><a href="pricing.html">Compare Free, Pro and Premium</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- After a download has started: an optional offer of the setup guide by email (updates
+     opt-in also optional). Sent to Brevo list "Downloaders", who get the "Thanks for downloading"
+     setup email. Brevo form "Downloads". Never blocks the download.
+     -->
+<dialog class="dl-gate dl-gate--toast" id="dl-gate" aria-labelledby="dl-gate-title">
+  <form class="signup" id="dl-signup" action="https://94ecc37e.sibforms.com/serve/MUIFAN8ViGh359cWMNdVXrp8WV1oNioazxb1rI_IBNjYewJjLzGj0APN1ETPohRaSn5hwrwaezPoqF1KxJjp8P5u44Qw8V7wWDpdp_Ee9DsUmZ10IxfBZPMyf-aNHvnfsFL_t6CwXnstJbPGu-LIfEt_xyZN90gJUOSjjZG8J4CM-T4iqVjEORkpi4pN-uyM5SOax2REozLlnu9_tQ==" data-action="https://94ecc37e.sibforms.com/serve/MUIFAN8ViGh359cWMNdVXrp8WV1oNioazxb1rI_IBNjYewJjLzGj0APN1ETPohRaSn5hwrwaezPoqF1KxJjp8P5u44Qw8V7wWDpdp_Ee9DsUmZ10IxfBZPMyf-aNHvnfsFL_t6CwXnstJbPGu-LIfEt_xyZN90gJUOSjjZG8J4CM-T4iqVjEORkpi4pN-uyM5SOax2REozLlnu9_tQ==" method="POST" data-gate novalidate>
+    <button class="dl-gate-x" type="button" aria-label="Close">&times;</button>
+    <p class="signup-title" id="dl-gate-title">Your download has started</p>
+    <p class="signup-text">Want a 2-minute setup guide by email? <span class="dl-gate-opt">(optional)</span> One short how-to for your first two minutes. We never sell your address.</p>
+    <div class="signup-row">
+      <label class="signup-sr" for="dl-signup-email">Email address</label>
+      <input type="email" id="dl-signup-email" name="EMAIL" required autocomplete="email" placeholder="you@example.com">
+      <button class="btn-primary" type="submit">Send me the guide</button>
+    </div>
+    <label class="signup-consent"><input type="checkbox" name="OPT_IN" value="1"> <span>Also send me the occasional update: new versions and offers. Optional, unsubscribe any time.</span></label>
+    <p class="dl-gate-small"><button class="dl-gate-no" type="button">No thanks</button> · The app itself needs no account, and your files never leave your PC. <a href="privacy.html#emails">Privacy</a> · Outlook or Hotmail? The guide may land in Junk.</p>
+    <input type="text" name="email_address_check" value="" class="signup-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input type="hidden" name="locale" value="en">
+    <p class="signup-msg" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fcols">
+      <div><a class="wordmark" href="./"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a><p class="tagline">File encryption that stays on your PC. For Windows and Linux.</p></div>
+      <div><p class="fh">Product</p><a href="./">Home</a><a href="download.html" aria-current="page">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></div>
+      <div><p class="fh">Help</p><a href="help.html">Help centre</a><a href="help-install.html">Installing</a><a href="help-recovery-key.html">Recovery key</a><a href="help-open-files.html">Opening encrypted files</a><a href="blog.html">Guides</a></div>
+      <div><p class="fh">Company</p><a href="about.html">About</a><a href="security.html">Security</a><a href="mailto:hello@clavisenc.com">Contact</a></div>
+      <div><p class="fh">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a></div>
+    </div>
+    <div class="legal"><span>© <span data-year>2026</span> Clavis Encryption</span><span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> · version <span data-release="version">3.16.1</span></span></div>
+  </div>
+  <p class="bigmark" aria-hidden="true">Clavis</p>
+</footer>
+
+<script>
+(() => {
+  /* reveals: content is visible without JS; with it, sections fade in as they arrive */
+  const rv = document.querySelectorAll(".rv");
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+    rv.forEach((el) => io.observe(el));
+  } else rv.forEach((el) => el.classList.add("in"));
+
+  /* the glass nav turns solid while the blue-hour panel passes under it (as on the homepage) */
+  const nav = document.getElementById("nav"), night = document.querySelector(".night-panel");
+  let ticking = false;
+  const onScroll = () => { ticking = false; const r = night.getBoundingClientRect(), n = nav.getBoundingClientRect(); nav.classList.toggle("on-dark", r.top < n.bottom && r.bottom > n.top); };
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  requestAnimationFrame(onScroll);
+})();
+</script>
+<script src="assets/js/site.js?v=21c5346618" defer></script>
 </body>
 </html>
