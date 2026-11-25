@@ -153,7 +153,7 @@ Not for: storing passwords (it is not a password manager), macOS, Android or iPh
 - [How to keep files private on a shared family PC (Windows 11)](https://clavisenc.com/blog-keep-files-private-shared-family-pc.html)
 - [How to encrypt files before emailing them](https://clavisenc.com/blog-encrypt-files-before-emailing.html)
 - [How to password-protect or encrypt a USB drive without BitLocker (Windows 11 and 10 Home)](https://clavisenc.com/blog-encrypt-usb-drive-windows-11-home.html): 7-Zip, VeraCrypt, Clavis or BitLocker To Go set up on a Pro PC; which keep your files, opening them on other PCs, and forgotten passwords
-- [How to encrypt files on Windows 11 Home (no BitLocker needed)](https://clavisenc.com/blog-encrypt-files-windows-11-home.html)
+- [How to encrypt files on Windows 11 Home (without BitLocker)](https://clavisenc.com/blog-encrypt-files-windows-11-home.html)
 - [How to share encrypted files without sending a password](https://clavisenc.com/blog-share-encrypted-files-without-password.html)
 - [What a post-quantum recovery key is, and why your encryption needs one](https://clavisenc.com/blog-post-quantum-recovery-key.html)
 - [How to encrypt files before uploading them to OneDrive, Google Drive or Dropbox](https://clavisenc.com/blog-encrypt-before-onedrive-google-drive-dropbox.html)

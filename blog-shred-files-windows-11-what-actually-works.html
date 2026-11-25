@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Can you permanently delete a file on Windows 11? What actually works — Clavis Encrypt</title>
   <meta name="description" content="What Delete, Shift+Delete and file shredders really do on Windows 11: hard disks, SSDs and TRIM, USB sticks, OneDrive and Google Drive version history, File History and restore points. With sources, and how to shred files for free.">
-  <meta name="theme-color" content="#05080F">
+  <meta name="theme-color" content="#F6F1E9">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Can you permanently delete a file on Windows 11? What actually works">
   <meta property="og:description" content="Hard disk, SSD, USB stick or cloud: what deleting and shredding really do, and why encrypting first is what protects a file.">
@@ -18,38 +18,41 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link href="assets/css/fonts.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=1ce3770294">
+  <script>(function (d) { d.classList.add("js");
+    /* site.js adds the launch-offer bar later: reserve its height now, so the page doesn't shift down after the first paint */
+    try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-shred-files-windows-11-what-actually-works.html#article","headline":"Can you permanently delete a file on Windows 11? What actually works","description":"What Delete, Shift+Delete and file shredders really do on Windows 11: hard disks, SSDs and TRIM, USB sticks, OneDrive and Google Drive version history, File History and restore points. With sources, and how to shred files for free.","datePublished":"2026-10-14","dateModified":"2026-10-19","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-shred-files-windows-11-what-actually-works.html","image":["https://clavisenc.com/assets/img/og.png","https://clavisenc.com/assets/img/help/shred.webp","https://clavisenc.com/assets/img/help/shred-confirm.webp"],"isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://csrc.nist.gov/pubs/sp/800/88/r2/final","https://csrc.nist.gov/files/pubs/sp/800/88/r2/final/docs/sp800-88r2-faq.pdf","https://static.usenix.org/event/fast11/tech/full_papers/Wei.pdf","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-behavior","https://support.microsoft.com/en-us/windows/windows-file-recovery-61f5b28a-f5b8-3cc2-0f8e-a63cb4e1d4c4","https://learn.microsoft.com/en-us/windows-server/storage/file-server/volume-shadow-copy-service","https://learn.microsoft.com/en-us/sysinternals/downloads/sdelete","https://support.microsoft.com/en-US/Windows/Experience/backup-recovery/backup-and-restore-with-file-history","https://support.microsoft.com/en-us/office/restore-deleted-files-or-folders-in-onedrive-949ada80-0026-4db3-a953-c99083e6a84f","https://support.microsoft.com/en-us/office/restore-a-previous-version-of-a-file-stored-in-onedrive-159cad6d-d76e-4981-88ef-de6e96c93893","https://support.google.com/drive/answer/2375102?hl=en","https://support.google.com/drive/answer/2409045?hl=en","https://help.dropbox.com/account-settings/data-retention-policy","https://support.microsoft.com/en-us/windows/reset-your-pc-0ef73740-b927-549b-b7c9-e6f2b48d275e","https://support.microsoft.com/en-us/windows/device-encryption-in-windows-cf7e2b6f-3e70-4882-9532-18633605b7df"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"Can you permanently delete a file on Windows 11? What actually works","item":"https://clavisenc.com/blog-shred-files-windows-11-what-actually-works.html"}]}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I permanently delete files on Windows 11?","acceptedAnswer":{"@type":"Answer","text":"Shift+Delete and emptying the Recycle Bin only free the space, so recovery tools can often get the file back from a hard disk. Overwriting the file once before deleting it, with a free shredder such as Clavis Encrypt's Shred Files, stops that on a hard disk. On SSDs and USB sticks no shredder can guarantee it, and cloud version history and backups keep their own copies, so encrypt sensitive files and turn on BitLocker or Device Encryption."}},{"@type":"Question","name":"Does deleting a file remove it from an SSD?","acceptedAnswer":{"@type":"Answer","text":"Not reliably. Windows sends TRIM when you delete a file on an NTFS SSD, and most drives then stop returning the old data, so ordinary recovery tools usually find nothing. But the old data can stay in the flash chips until the drive erases them, and a 2011 USENIX study found 4% to 75% of overwritten files still on SSDs. Full-disk encryption is the reliable fix."}},{"@type":"Question","name":"Is it safe to use a file shredder on an SSD?","acceptedAnswer":{"@type":"Answer","text":"Yes, it won't harm the drive: a single overwrite pass adds very little wear. It just isn't guaranteed to destroy every copy, because the SSD may write the new data to different cells. Avoid 7-pass or 35-pass modes and free-space wiping on SSDs; NIST says multi-pass overwriting is unnecessary and degrades flash."}},{"@type":"Question","name":"How many passes do I need to securely delete a file?","acceptedAnswer":{"@type":"Answer","text":"One. NIST SP 800-88 Rev. 2 says multi-pass overwriting is unnecessary for modern storage and that clearing typically uses a single pass. Extra passes don't make an SSD or USB stick any safer."}},{"@type":"Question","name":"How do I delete my files before selling my laptop?","acceptedAnswer":{"@type":"Answer","text":"Back up what you need, then use Settings, System, Recovery, Reset PC, Remove everything, with Clean data turned on. Microsoft recommends this when you sell, donate or recycle a PC. If the laptop has an SSD, it helps most if Device Encryption or BitLocker was on. Also sign out of your Microsoft, Google and WhatsApp accounts first."}},{"@type":"Question","name":"How do I securely delete a copy of my ID card or passport from my laptop?","acceptedAnswer":{"@type":"Answer","text":"Shred the file with a tool such as Clavis Encrypt's free Shred Files (best effort on SSDs), then check where other copies hide: Downloads, WhatsApp Desktop and email attachments, OneDrive or Google Drive and their trash, and any USB stick you copied it to. If you need to keep one copy, keep it encrypted instead of deleting it."}},{"@type":"Question","name":"If I delete a file on my PC, is it deleted from OneDrive or Google Drive?","acceptedAnswer":{"@type":"Answer","text":"The file is removed from your synced folder, but the cloud keeps it in its recycle bin or trash, usually for 30 days (93 days on OneDrive work or school accounts), and keeps older versions too. Delete it on the website and empty the cloud's recycle bin or trash."}},{"@type":"Question","name":"Can deleted files be recovered from a USB stick?","acceptedAnswer":{"@type":"Answer","text":"Often, yes. Files deleted from USB sticks and memory cards usually skip the Recycle Bin but stay on the flash until reused, and Microsoft's own Windows File Recovery can scan USB drives. Shredding helps but is best effort on flash, so encrypt files you keep on a USB stick."}},{"@type":"Question","name":"Is Clavis Shred free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Shred Files, including whole folders, is part of Clavis Encrypt Free on Windows and Linux. Security features in Clavis are never behind a paywall."}}]}</script>
 </head>
 <body>
-  <div class="sky" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
-      </button>
-      <nav class="nav-links" aria-label="Main">
-        <a href="./">Home</a>
-        <a href="about.html">About</a>
-        <a href="security.html">Security</a>
-        <a href="blog.html" aria-current="page">Blog</a>
-        <a href="help.html">Help</a>
-        <a href="pricing.html">Pricing</a>
-        <a class="btn btn-primary" href="download.html">Download</a>
-      </nav>
-    </div>
+  <header>
+  <nav class="nav" id="nav" aria-label="Main">
+    <a class="wordmark" href="./" aria-label="Clavis Encrypt home"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a>
+    <ul>
+      <li class="hide-s"><a href="./#how">How it works</a></li>
+      <li><a href="./#proof">Security</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li class="hide-s"><a href="blog.html" aria-current="true">Guides</a></li>
+      <li class="hide-s"><a href="help.html">Help</a></li>
+    </ul>
+  </nav>
   </header>
 
-  <main>
-    <article class="block">
+  <main id="main" class="doc">
+    <article>
+      <header class="phead">
+        <div class="phead-in">
+          <p class="post-meta"><a href="blog.html">Blog</a> · Guide · October 14, 2026 · Updated October 19, 2026</p>
+          <h1>Can you permanently delete a file on Windows 11? What actually works</h1>
+        </div>
+      </header>
+      <div class="sheet">
       <div class="wrap post">
-        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · October 14, 2026 · Updated October 19, 2026</p>
-        <h1>Can you permanently delete a file on Windows 11? What actually works</h1>
 
         <p>You're about to sell your laptop, or you've finally encrypted that passport scan or old bank statement, and you want the readable copy gone for good. Windows says Shift+Delete will "permanently delete" a file. A dozen free shredders promise the same. The honest answer depends on where the file lives: a hard disk, an SSD, a USB stick, a cloud folder, or a backup you forgot about. Here's what each one really does, what the research says, and what actually protects a file.</p>
 
@@ -186,24 +189,22 @@
           </a>
         </div>
       </div>
+      </div>
     </article>
   </main>
 
-  <footer class="footer">
+  <footer>
     <div class="wrap">
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-          <p class="latin">clāvis — Latin, “key”</p>
-          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
-          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
-        </div>
-        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
-        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
-        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      <div class="fcols">
+        <div><a class="wordmark" href="./"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a><p class="tagline">File encryption that stays on your PC. For Windows and Linux.</p></div>
+        <div><p class="fh">Product</p><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></div>
+        <div><p class="fh">Help</p><a href="help.html">Help centre</a><a href="help-install.html">Installing</a><a href="help-recovery-key.html">Recovery key</a><a href="help-open-files.html">Opening encrypted files</a><a href="blog.html">Guides</a></div>
+        <div><p class="fh">Company</p><a href="about.html">About</a><a href="security.html">Security</a><a href="mailto:hello@clavisenc.com">Contact</a></div>
+        <div><p class="fh">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a></div>
       </div>
-      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+      <div class="legal"><span>© <span data-year>2026</span> Clavis Encryption</span><span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> · version <span data-release="version">3.16.1</span></span></div>
     </div>
+    <p class="bigmark" aria-hidden="true">Clavis</p>
   </footer>
 
   <script src="assets/js/site.js?v=c8b1747684" defer></script>

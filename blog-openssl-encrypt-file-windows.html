@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>OpenSSL: encrypt a file with a password on Windows — Clavis Encrypt</title>
   <meta name="description" content="Encrypt and decrypt a file with OpenSSL on Windows: openssl enc with -pbkdf2, safer password options, and public-key encryption with openssl cms.">
-  <meta name="theme-color" content="#05080F">
+  <meta name="theme-color" content="#F6F1E9">
   <meta property="og:type" content="article">
   <meta property="og:title" content="How to encrypt a file with OpenSSL on Windows (password or public key)">
   <meta property="og:description" content="Tested openssl enc and openssl cms commands, why -pbkdf2 matters, why enc has no tamper check, and how to pass passwords in scripts.">
@@ -19,38 +19,41 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link href="assets/css/fonts.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=1ce3770294">
+  <script>(function (d) { d.classList.add("js");
+    /* site.js adds the launch-offer bar later: reserve its height now, so the page doesn't shift down after the first paint */
+    try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-openssl-encrypt-file-windows.html#article","headline":"How to encrypt a file with OpenSSL on Windows (password or public key)","description":"Encrypt and decrypt a file with OpenSSL on Windows: openssl enc with -pbkdf2, safer password options, and public-key encryption with openssl cms.","datePublished":"2026-11-11","dateModified":"2026-11-11","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-openssl-encrypt-file-windows.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://docs.openssl.org/3.5/man1/openssl-enc/","https://docs.openssl.org/1.1.1/man1/enc/","https://docs.openssl.org/3.5/man1/openssl-passphrase-options/","https://docs.openssl.org/3.5/man1/openssl-cms/","https://docs.openssl.org/3.0/man1/openssl-cms/","https://docs.openssl.org/1.1.1/man1/cms/","https://docs.openssl.org/3.5/man1/openssl-pkeyutl/","https://docs.openssl.org/3.5/man3/RSA_public_encrypt/","https://docs.openssl.org/3.5/man1/openssl-req/","https://docs.openssl.org/3.5/man1/openssl-rand/","https://openssl-library.org/source/","https://github.com/openssl/openssl/wiki/Binaries","https://github.com/openssl/installer/blob/main/windows-installer/README.md","https://github.com/git-for-windows/build-extra/blob/main/ReleaseNotes.md","https://learn.microsoft.com/en-us/powershell/module/psreadline/about/about_psreadline","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_character_encoding?view=powershell-5.1","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_redirection","https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"How to encrypt a file with OpenSSL on Windows","item":"https://clavisenc.com/blog-openssl-encrypt-file-windows.html"}]}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I encrypt a file with OpenSSL using a password?","acceptedAnswer":{"@type":"Answer","text":"Run openssl enc -aes-256-cbc -pbkdf2 -iter 600000 -salt -in file -out file.enc and type a password. To decrypt, add -d, use the .enc file as input and keep the same cipher, -pbkdf2 and -iter. Decrypt to a new file name: OpenSSL overwrites the output file without asking, even when the password is wrong."}},{"@type":"Question","name":"Why does OpenSSL say \"deprecated key derivation used\"?","acceptedAnswer":{"@type":"Answer","text":"You left out -pbkdf2 and -iter, so OpenSSL used its old way of turning the password into a key. Use -pbkdf2 with a high -iter for new files; old files must be decrypted with the options they were made with."}},{"@type":"Question","name":"Can openssl enc use AES-256-GCM?","acceptedAnswer":{"@type":"Answer","text":"No. OpenSSL's manual says enc doesn't support GCM or CCM and won't in the future. Use openssl cms with -aes-256-gcm (OpenSSL 3.0 or later) if you need a tamper check."}},{"@type":"Question","name":"How do I encrypt a large file with an RSA public key in OpenSSL?","acceptedAnswer":{"@type":"Answer","text":"Use openssl cms -encrypt with the recipient's certificate, not RSA directly, which only handles a few hundred bytes. cms encrypts the file with a random key and encrypts that key with RSA; the recipient decrypts with openssl cms -decrypt."}},{"@type":"Question","name":"What does \"bad decrypt\" mean in OpenSSL?","acceptedAnswer":{"@type":"Answer","text":"Usually a wrong password, or options that differ from the ones used to encrypt: cipher, -pbkdf2, -iter, or -md for files from very old versions. A damaged file can cause it too."}}]}</script>
 </head>
 <body>
-  <div class="sky" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
-      </button>
-      <nav class="nav-links" aria-label="Main">
-        <a href="./">Home</a>
-        <a href="about.html">About</a>
-        <a href="security.html">Security</a>
-        <a href="blog.html" aria-current="page">Blog</a>
-        <a href="help.html">Help</a>
-        <a href="pricing.html">Pricing</a>
-        <a class="btn btn-primary" href="download.html">Download</a>
-      </nav>
-    </div>
+  <header>
+  <nav class="nav" id="nav" aria-label="Main">
+    <a class="wordmark" href="./" aria-label="Clavis Encrypt home"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a>
+    <ul>
+      <li class="hide-s"><a href="./#how">How it works</a></li>
+      <li><a href="./#proof">Security</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li class="hide-s"><a href="blog.html" aria-current="true">Guides</a></li>
+      <li class="hide-s"><a href="help.html">Help</a></li>
+    </ul>
+  </nav>
   </header>
 
-  <main>
-    <article class="block">
+  <main id="main" class="doc">
+    <article>
+      <header class="phead">
+        <div class="phead-in">
+          <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 11, 2026</p>
+          <h1>How to encrypt a file with OpenSSL on Windows (password or public key)</h1>
+        </div>
+      </header>
+      <div class="sheet">
       <div class="wrap post">
-        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 11, 2026</p>
-        <h1>How to encrypt a file with OpenSSL on Windows (password or public key)</h1>
 
         <p>OpenSSL is a free command-line toolkit that can encrypt a file with a password or with someone's public key. A few options decide how well the file is protected, and some defaults are old. These commands were tested with OpenSSL 3.2 on Windows 11 and checked against OpenSSL's manual.</p>
 
@@ -170,7 +173,7 @@ openssl enc -d -aes-256-cbc -pbkdf2 -in archive.zip.enc -out archive.zip -pass f
         </ul>
         <p class="muted-note"><em>Commands tested with OpenSSL 3.2.1 on Windows 11; facts checked against the OpenSSL manuals on November 11, 2026. Options can change between versions; <code>openssl enc -help</code> on your own PC is the final word.</em></p>
 
-        <p>Related: <a href="blog-gpg-encrypt-file-windows.html">encrypting a file with GPG on Windows</a>, <a href="blog-encrypt-file-powershell.html">encrypting a file with PowerShell</a> and <a href="blog-7zip-command-line-password.html">7-Zip from the command line with a password</a>.</p>
+        <p class="related">Related: <a href="blog-gpg-encrypt-file-windows.html">encrypting a file with GPG on Windows</a>, <a href="blog-encrypt-file-powershell.html">encrypting a file with PowerShell</a> and <a href="blog-7zip-command-line-password.html">7-Zip from the command line with a password</a>.</p>
 
         <div class="post-cta">
           <a class="btn btn-primary" href="pricing.html?ref=blog-openssl#premium">Get Clavis Premium — $29 once</a>
@@ -181,24 +184,22 @@ openssl enc -d -aes-256-cbc -pbkdf2 -in archive.zip.enc -out archive.zip -pass f
           <p class="cta-note">One-time payment, tax included, no subscription. The command line comes with the installer from clavisenc.com, not the Microsoft Store version, so start with the free installer.</p>
         </div>
       </div>
+      </div>
     </article>
   </main>
 
-  <footer class="footer">
+  <footer>
     <div class="wrap">
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-          <p class="latin">clāvis — Latin, “key”</p>
-          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
-          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
-        </div>
-        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
-        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
-        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      <div class="fcols">
+        <div><a class="wordmark" href="./"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a><p class="tagline">File encryption that stays on your PC. For Windows and Linux.</p></div>
+        <div><p class="fh">Product</p><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></div>
+        <div><p class="fh">Help</p><a href="help.html">Help centre</a><a href="help-install.html">Installing</a><a href="help-recovery-key.html">Recovery key</a><a href="help-open-files.html">Opening encrypted files</a><a href="blog.html">Guides</a></div>
+        <div><p class="fh">Company</p><a href="about.html">About</a><a href="security.html">Security</a><a href="mailto:hello@clavisenc.com">Contact</a></div>
+        <div><p class="fh">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a></div>
       </div>
-      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+      <div class="legal"><span>© <span data-year>2026</span> Clavis Encryption</span><span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> · version <span data-release="version">3.16.1</span></span></div>
     </div>
+    <p class="bigmark" aria-hidden="true">Clavis</p>
   </footer>
 
   <script src="assets/js/site.js?v=c8b1747684" defer></script>

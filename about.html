@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About — Clavis Encrypt</title>
   <meta name="description" content="About Clavis Encrypt: private file encryption for Windows 10 and 11 and Linux, by Clavis Encryption. Free, with one-time Pro ($19) and Premium ($29). Also on the Microsoft Store.">
-  <meta name="theme-color" content="#05080F">
+  <meta name="theme-color" content="#F6F1E9">
   <meta property="og:title" content="About Clavis Encrypt">
   <meta property="og:image" content="https://clavisenc.com/assets/img/og.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -17,37 +17,32 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link href="assets/css/fonts.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=1ce3770294">
-  <style>#facts .spec dd { max-width: 26em; } #facts .spec dd a { color: var(--cyan); } @media (max-width: 760px) { #facts .spec { flex-direction: column; gap: 6px; } #facts .spec dd { text-align: left; } }</style>
+  <script>(function (d) { d.classList.add("js");
+    /* site.js adds the launch-offer bar later: reserve its height now, so the page doesn't shift down after the first paint */
+    try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"AboutPage","@id":"https://clavisenc.com/about.html#webpage","url":"https://clavisenc.com/about.html","name":"About Clavis Encrypt","description":"About Clavis Encrypt: private file encryption for Windows 10 and 11 and Linux, by Clavis Encryption. Free, with one-time Pro ($19) and Premium ($29). Also on the Microsoft Store.","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#author"},"mainEntity":{"@id":"https://clavisenc.com/#author"},"inLanguage":"en"},{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html","email":"hello@clavisenc.com","logo":{"@type":"ImageObject","url":"https://clavisenc.com/assets/img/icon-512.png","width":512,"height":512},"sameAs":["https://apps.microsoft.com/detail/9PCWJ9HG0TNN","https://github.com/clavisenc"]},{"@type":"SoftwareApplication","@id":"https://clavisenc.com/#software","name":"Clavis Encrypt","url":"https://clavisenc.com/","applicationCategory":"SecurityApplication","operatingSystem":"Windows 10, Windows 11, Linux (64-bit)","softwareVersion":"3.16.1","publisher":{"@id":"https://clavisenc.com/#author"}}]}</script>
 </head>
 <body>
-  <div class="sky" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
-      </button>
-      <nav class="nav-links" aria-label="Main">
-        <a href="./">Home</a>
-        <a href="about.html" aria-current="page">About</a>
-        <a href="security.html">Security</a>
-        <a href="blog.html">Blog</a>
-        <a href="help.html">Help</a>
-        <a href="pricing.html">Pricing</a>
-        <a class="btn btn-primary" href="download.html">Download</a>
-      </nav>
-    </div>
+  <header>
+  <nav class="nav" id="nav" aria-label="Main">
+    <a class="wordmark" href="./" aria-label="Clavis Encrypt home"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a>
+    <ul>
+      <li class="hide-s"><a href="./#how">How it works</a></li>
+      <li><a href="./#proof">Security</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li class="hide-s"><a href="blog.html">Guides</a></li>
+      <li class="hide-s"><a href="help.html">Help</a></li>
+    </ul>
+  </nav>
   </header>
 
-  <main>
-    <section class="page-hero" id="top">
-      <div class="hero-mark-glow" aria-hidden="true"></div>
-      <img class="hero-mark" src="assets/img/icon-512.png" alt="" aria-hidden="true">
+  <main id="main">
+    <section class="phead page-hero" id="top">
       <div class="wrap intro">
         <span class="eyebrow">About Clavis</span>
         <h1 class="display">A key <em>you keep.</em></h1>
@@ -60,7 +55,7 @@
       </div>
     </section>
 
-    <div class="rule"></div>
+    <div class="sheet">
 
     <section class="block" id="story-text">
       <div class="wrap story-text">
@@ -134,9 +129,11 @@
           <div class="spec"><dt>Auto-lock</dt><dd>On sleep and Windows lock</dd></div>
           <div class="spec"><dt>Runs on</dt><dd>Windows 10 &amp; 11, Linux (64-bit)</dd></div>
         </dl>
-        <p class="fineprint" style="margin-top:28px;max-width:44em">Website credits: the leaf-shadow photographs on the home page are by Suhyeon Choi and Monica Valls on Unsplash. Fonts: Newsreader, Hanken Grotesk, IBM Plex Mono, Instrument Serif and JetBrains Mono, under the <a href="assets/fonts/OFL.txt">SIL Open Font License</a>.</p>
+        <p class="fineprint" style="margin-top:28px;max-width:44em">Website credits: the leaf-shadow photographs on the home page are by Suhyeon Choi and Monica Valls on Unsplash. Fonts: Newsreader, Hanken Grotesk and IBM Plex Mono, under the <a href="assets/fonts/OFL.txt">SIL Open Font License</a>.</p>
       </div>
     </section>
+
+    </div>
 
     <section class="cta">
       <div class="wrap" data-reveal>
@@ -153,21 +150,18 @@
     </section>
   </main>
 
-  <footer class="footer">
+  <footer>
     <div class="wrap">
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-          <p class="latin">clāvis — Latin, “key”</p>
-          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
-          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
-        </div>
-        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
-        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
-        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      <div class="fcols">
+        <div><a class="wordmark" href="./"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a><p class="tagline">File encryption that stays on your PC. For Windows and Linux.</p></div>
+        <div><p class="fh">Product</p><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></div>
+        <div><p class="fh">Help</p><a href="help.html">Help centre</a><a href="help-install.html">Installing</a><a href="help-recovery-key.html">Recovery key</a><a href="help-open-files.html">Opening encrypted files</a><a href="blog.html">Guides</a></div>
+        <div><p class="fh">Company</p><a href="about.html" aria-current="page">About</a><a href="security.html">Security</a><a href="mailto:hello@clavisenc.com">Contact</a></div>
+        <div><p class="fh">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a></div>
       </div>
-      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+      <div class="legal"><span>© <span data-year>2026</span> Clavis Encryption</span><span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> · version <span data-release="version">3.16.1</span></span></div>
     </div>
+    <p class="bigmark" aria-hidden="true">Clavis</p>
   </footer>
 
   <script src="assets/js/site.js?v=c8b1747684" defer></script>

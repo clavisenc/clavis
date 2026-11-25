@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>How to GPG encrypt a file on Windows (command line) — Clavis Encrypt</title>
   <meta name="description" content="Encrypt a file with GPG on Windows: install Gpg4win, use gpg -c for a passphrase or gpg -e -r for a public key, decrypt with -o and -d, back up your key.">
-  <meta name="theme-color" content="#05080F">
+  <meta name="theme-color" content="#F6F1E9">
   <meta property="og:type" content="article">
   <meta property="og:title" content="How to encrypt a file with GPG on Windows (command line and Kleopatra)">
   <meta property="og:description" content="Install Gpg4win, encrypt with a passphrase or a public key, decrypt, back up your key, and verify downloads, with the exact gpg commands.">
@@ -19,38 +19,41 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link href="assets/css/fonts.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=1ce3770294">
+  <script>(function (d) { d.classList.add("js");
+    /* site.js adds the launch-offer bar later: reserve its height now, so the page doesn't shift down after the first paint */
+    try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-gpg-encrypt-file-windows.html#article","headline":"How to encrypt a file with GPG on Windows (command line and Kleopatra)","description":"Encrypt a file with GPG on Windows: install Gpg4win, use gpg -c for a passphrase or gpg -e -r for a public key, decrypt with -o and -d, back up your key.","datePublished":"2026-11-11","dateModified":"2026-11-11","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-gpg-encrypt-file-windows.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://www.gpg4win.org/about.html","https://www.gpg4win.org/get-gpg4win.html","https://www.gpg4win.org/system-requirements.html","https://www.gpg4win.org/version5.html","https://www.gpg4win.org/features.html","https://www.gpg4win.org/package-integrity.html","https://wiki.gnupg.org/Gpg4win/CheckIntegrity","https://github.com/gpg/gpg4win/blob/master/src/nsis/inst-gnupg-w32.nsi","https://github.com/gpg/gnupg/blob/master/build-aux/speedo/w32/inst.nsi","https://www.gnupg.org/documentation/manuals/gnupg/Operational-GPG-Commands.html","https://www.gnupg.org/documentation/manuals/gnupg/OpenPGP-Key-Management.html","https://www.gnupg.org/documentation/manuals/gnupg/GPG-Key-related-Options.html","https://www.gnupg.org/documentation/manuals/gnupg/GPG-Input-and-Output.html","https://www.gnupg.org/documentation/manuals/gnupg/OpenPGP-Options.html","https://www.gnupg.org/documentation/manuals/gnupg/GPG-Esoteric-Options.html","https://www.gnupg.org/faq/gnupg-faq.html","https://www.gnupg.org/download/integrity_check.html","https://github.com/git-for-windows/build-extra/blob/main/ReleaseNotes.md","https://learn.microsoft.com/en-us/powershell/module/psreadline/about/about_psreadline","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_redirection"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"How to encrypt a file with GPG on Windows","item":"https://clavisenc.com/blog-gpg-encrypt-file-windows.html"}]}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I encrypt a file with GPG on Windows?","acceptedAnswer":{"@type":"Answer","text":"Install Gpg4win, open PowerShell and run gpg -c yourfile to encrypt it with a passphrase. GPG writes yourfile.gpg next to the original. To encrypt for someone else, import their public key and run gpg -e -r their-email yourfile."}},{"@type":"Question","name":"How do I encrypt a file with a public key using the gpg command line on Windows?","acceptedAnswer":{"@type":"Answer","text":"Run gpg --import with their key file, check the fingerprint with gpg --fingerprint, certify the key with gpg --lsign-key their-email, then run gpg -e -r their-email -r your-email file. Only the people you list with -r can decrypt it."}},{"@type":"Question","name":"What's the difference between gpg -c and gpg -e?","acceptedAnswer":{"@type":"Answer","text":"gpg -c encrypts with a passphrase you choose, so anyone who knows it can decrypt. gpg -e encrypts for public keys, so only the holders of the matching secret keys can decrypt, and no passphrase has to be shared."}},{"@type":"Question","name":"Does gpg -c use AES-256?","acceptedAnswer":{"@type":"Answer","text":"Yes. The GnuPG manual says the default cipher for symmetric encryption is AES-256. You can add --cipher-algo AES256 to make it explicit."}},{"@type":"Question","name":"I forgot my GPG passphrase. Can I get my files back?","acceptedAnswer":{"@type":"Answer","text":"No. The GnuPG FAQ says it can't help: without the passphrase you can't decrypt existing files. Revoke the key with your revocation certificate and create a new one."}},{"@type":"Question","name":"Can I use GPG on Windows without the command line?","acceptedAnswer":{"@type":"Answer","text":"Yes. Kleopatra, which comes with Gpg4win, creates and manages keys and encrypts and decrypts files in windows, and GpgEX adds encryption to the File Explorer right-click menu."}}]}</script>
 </head>
 <body>
-  <div class="sky" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
-      </button>
-      <nav class="nav-links" aria-label="Main">
-        <a href="./">Home</a>
-        <a href="about.html">About</a>
-        <a href="security.html">Security</a>
-        <a href="blog.html" aria-current="page">Blog</a>
-        <a href="help.html">Help</a>
-        <a href="pricing.html">Pricing</a>
-        <a class="btn btn-primary" href="download.html">Download</a>
-      </nav>
-    </div>
+  <header>
+  <nav class="nav" id="nav" aria-label="Main">
+    <a class="wordmark" href="./" aria-label="Clavis Encrypt home"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a>
+    <ul>
+      <li class="hide-s"><a href="./#how">How it works</a></li>
+      <li><a href="./#proof">Security</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li class="hide-s"><a href="blog.html" aria-current="true">Guides</a></li>
+      <li class="hide-s"><a href="help.html">Help</a></li>
+    </ul>
+  </nav>
   </header>
 
-  <main>
-    <article class="block">
+  <main id="main" class="doc">
+    <article>
+      <header class="phead">
+        <div class="phead-in">
+          <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 11, 2026</p>
+          <h1>How to encrypt a file with GPG on Windows (command line and Kleopatra)</h1>
+        </div>
+      </header>
+      <div class="sheet">
       <div class="wrap post">
-        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 11, 2026</p>
-        <h1>How to encrypt a file with GPG on Windows (command line and Kleopatra)</h1>
 
         <p>GPG (GnuPG) encrypts files with a passphrase or with someone's public key, in the OpenPGP standard format. On Windows it comes with Gpg4win, which also installs Kleopatra, a key manager with windows and buttons. These commands were checked against the GnuPG manual and tested with GnuPG 2.4.</p>
 
@@ -155,7 +158,7 @@ gpg --verify setup.exe.sig setup.exe</code></pre>
         </ul>
         <p class="muted-note"><em>Checked against the GnuPG manual (version 2.5.23) and gpg4win.org on November 11, 2026; commands tested with GnuPG 2.4. Gpg4win and Kleopatra change between versions; <code>gpg --help</code> on your own PC is the final word.</em></p>
 
-        <p>Related: <a href="blog-openssl-encrypt-file-windows.html">encrypting a file with OpenSSL</a>, <a href="blog-encrypt-files-before-emailing.html">encrypting files before emailing them</a> and <a href="blog-share-encrypted-files-without-password.html">sharing encrypted files without sending a password</a>.</p>
+        <p class="related">Related: <a href="blog-openssl-encrypt-file-windows.html">encrypting a file with OpenSSL</a>, <a href="blog-encrypt-files-before-emailing.html">encrypting files before emailing them</a> and <a href="blog-share-encrypted-files-without-password.html">sharing encrypted files without sending a password</a>.</p>
 
         <div class="post-cta">
           <a class="btn btn-primary" href="pricing.html?ref=blog-gpg#premium">Get Clavis Premium — $29 once</a>
@@ -166,24 +169,22 @@ gpg --verify setup.exe.sig setup.exe</code></pre>
           <p class="cta-note">One-time payment, tax included, no subscription. The command line comes with the installer from clavisenc.com, not the Microsoft Store version, so start with the free installer.</p>
         </div>
       </div>
+      </div>
     </article>
   </main>
 
-  <footer class="footer">
+  <footer>
     <div class="wrap">
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-          <p class="latin">clāvis — Latin, “key”</p>
-          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
-          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
-        </div>
-        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
-        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
-        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      <div class="fcols">
+        <div><a class="wordmark" href="./"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a><p class="tagline">File encryption that stays on your PC. For Windows and Linux.</p></div>
+        <div><p class="fh">Product</p><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></div>
+        <div><p class="fh">Help</p><a href="help.html">Help centre</a><a href="help-install.html">Installing</a><a href="help-recovery-key.html">Recovery key</a><a href="help-open-files.html">Opening encrypted files</a><a href="blog.html">Guides</a></div>
+        <div><p class="fh">Company</p><a href="about.html">About</a><a href="security.html">Security</a><a href="mailto:hello@clavisenc.com">Contact</a></div>
+        <div><p class="fh">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a></div>
       </div>
-      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+      <div class="legal"><span>© <span data-year>2026</span> Clavis Encryption</span><span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> · version <span data-release="version">3.16.1</span></span></div>
     </div>
+    <p class="bigmark" aria-hidden="true">Clavis</p>
   </footer>
 
   <script src="assets/js/site.js?v=c8b1747684" defer></script>

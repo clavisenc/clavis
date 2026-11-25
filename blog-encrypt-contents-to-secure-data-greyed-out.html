@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Encrypt contents to secure data greyed out? Why, what to do — Clavis Encrypt</title>
   <meta name="description" content="Greyed (grayed) out in Windows 11 or 10? Home has no EFS and no registry or service fix adds it. Check your edition, the Pro causes, what to use instead.">
-  <meta name="theme-color" content="#05080F">
+  <meta name="theme-color" content="#F6F1E9">
   <meta property="og:type" content="article">
   <meta property="og:title" content="“Encrypt contents to secure data” greyed out? Why it happens and what to do">
   <meta property="og:description" content="Windows Home has no EFS, and no registry, service or Group Policy fix adds it. A 30-second check, what we found testing the usual fixes, the causes on Pro, and what to use instead.">
@@ -19,38 +19,41 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link href="assets/css/fonts.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=1ce3770294">
+  <script>(function (d) { d.classList.add("js");
+    /* site.js adds the launch-offer bar later: reserve its height now, so the page doesn't shift down after the first paint */
+    try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-encrypt-contents-to-secure-data-greyed-out.html#article","headline":"“Encrypt contents to secure data” greyed out? Why it happens and what to do","description":"Greyed (grayed) out in Windows 11 or 10? Home has no EFS and no registry or service fix adds it. Check your edition, the Pro causes, what to use instead.","datePublished":"2026-11-05","dateModified":"2026-11-05","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-encrypt-contents-to-secure-data-greyed-out.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://support.microsoft.com/en-us/windows/security/encryption/how-to-encrypt-a-file-or-folder","https://learn.microsoft.com/en-us/previous-versions/windows/embedded/bb499351(v=winembedded.5)","https://support.microsoft.com/en-us/windows/experience/find-information-about-your-windows-device","https://support.microsoft.com/en-us/windows/deployment/install-upgrade/upgrade-windows-home-to-windows-pro","https://support.microsoft.com/en-us/onedrive/install-onedrive-on-an-external-drive","https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-admx-filesys","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-behavior","https://learn.microsoft.com/en-us/windows-server/security/windows-services/security-guidelines-for-disabling-system-services-in-windows-server","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cipher","https://learn.microsoft.com/en-us/windows/win32/fileio/file-encryption","https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc759177(v=ws.10)","https://learn.microsoft.com/en-us/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/back-up-recovery-agent-efs-private-key","https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc742463(v=ws.11)","https://support.microsoft.com/en-us/windows/security/encryption/device-encryption-in-windows","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/","https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings","https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows","https://www.7-zip.org/","https://veracrypt.io/en/Using%20VeraCrypt%20Without%20Administrator%20Privileges.html","https://clavisenc.com/format.html"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"“Encrypt contents to secure data” greyed out? Why it happens and what to do","item":"https://clavisenc.com/blog-encrypt-contents-to-secure-data-greyed-out.html"}]}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is “Encrypt contents to secure data” greyed out?","acceptedAnswer":{"@type":"Answer","text":"Usually because the PC runs Windows 11 or Windows 10 Home, which doesn't include EFS, the Encrypting File System behind that box. Microsoft says file encryption is not available in the Home edition of Windows. On Pro, Enterprise or Education, it's usually a drive that isn't NTFS, such as a FAT32 or exFAT USB stick, or a policy that turns encryption off."}},{"@type":"Question","name":"How do I enable Encrypt contents to secure data in Windows 11 Home?","acceptedAnswer":{"@type":"Answer","text":"You can't. EFS isn't part of Windows 11 Home, and no setting, service or registry change adds it. Either upgrade to Windows 11 Pro (Settings, System, Activation, Upgrade your edition of Windows) or use an alternative: device encryption for the drive, plus a 7-Zip archive, a VeraCrypt container or a file-encryption app such as Clavis Encrypt for your files."}},{"@type":"Question","name":"Does Windows 11 Home have EFS?","acceptedAnswer":{"@type":"Answer","text":"No. EFS (the Encrypting File System) is in Windows 11 Pro, Enterprise and Education, not Home. On a Windows 11 Home PC, even the command cipher /e answers “The request is not supported.” Many Home PCs do have device encryption, which encrypts the whole internal drive instead."}},{"@type":"Question","name":"Can a registry or Group Policy change turn it on in Home?","acceptedAnswer":{"@type":"Answer","text":"No. On a Windows 11 Home PC we found the EFS service already running, fsutil reporting encryption as enabled, NtfsDisableEncryption set to 0 and no policy set, and cipher /e still answered “The request is not supported.” The Group Policy setting for EFS can only turn encryption off; it can't add EFS to Home."}},{"@type":"Question","name":"Why is it greyed out on a USB stick?","acceptedAnswer":{"@type":"Answer","text":"On Home, it's greyed out everywhere. On Pro, it's usually because the stick is formatted FAT32 or exFAT, and EFS works only on NTFS drives. Check in File Explorer: right-click the drive, Properties, General tab, File system. For a stick, a tool that encrypts each file with a password travels better than EFS."}},{"@type":"Question","name":"Is it the same on Windows 10?","acceptedAnswer":{"@type":"Answer","text":"Yes. Microsoft's page on encrypting a file or folder applies to Windows 10 and Windows 11 and says file encryption is not available in the Home edition. You check your edition the same way on both: Settings, System, About, under Windows specifications."}},{"@type":"Question","name":"Does EFS put a password on my folder?","acceptedAnswer":{"@type":"Answer","text":"No. EFS has no separate password. It uses a key in your Windows account, so anyone signed in as you opens the files normally. It keeps out other accounts and someone who removes the drive. To lock files with their own password, use a 7-Zip archive, a VeraCrypt container or a file-encryption app."}},{"@type":"Question","name":"Why can't I encrypt a folder in Windows 11?","acceptedAnswer":{"@type":"Answer","text":"If the encrypt option is greyed out, your PC probably runs Windows 11 Home, which has no EFS. On Pro, check that the folder is on an NTFS drive, isn't a system folder such as the Windows folder, and that no policy turns encryption off. On Home, put the folder in a password-protected 7-Zip archive or a VeraCrypt container, or encrypt its files with an app such as Clavis Encrypt. Step by step: how to encrypt a folder on Windows."}}]}</script>
 </head>
 <body>
-  <div class="sky" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
-      </button>
-      <nav class="nav-links" aria-label="Main">
-        <a href="./">Home</a>
-        <a href="about.html">About</a>
-        <a href="security.html">Security</a>
-        <a href="blog.html" aria-current="page">Blog</a>
-        <a href="help.html">Help</a>
-        <a href="pricing.html">Pricing</a>
-        <a class="btn btn-primary" href="download.html">Download</a>
-      </nav>
-    </div>
+  <header>
+  <nav class="nav" id="nav" aria-label="Main">
+    <a class="wordmark" href="./" aria-label="Clavis Encrypt home"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a>
+    <ul>
+      <li class="hide-s"><a href="./#how">How it works</a></li>
+      <li><a href="./#proof">Security</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li class="hide-s"><a href="blog.html" aria-current="true">Guides</a></li>
+      <li class="hide-s"><a href="help.html">Help</a></li>
+    </ul>
+  </nav>
   </header>
 
-  <main>
-    <article class="block">
+  <main id="main" class="doc">
+    <article>
+      <header class="phead">
+        <div class="phead-in">
+          <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 5, 2026</p>
+          <h1>“Encrypt contents to secure data” greyed out? Why it happens and what to do</h1>
+        </div>
+      </header>
+      <div class="sheet">
       <div class="wrap post">
-        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 5, 2026</p>
-        <h1>“Encrypt contents to secure data” greyed out? Why it happens and what to do</h1>
 
         <p>You right-click a file or folder, choose <strong>Properties → Advanced</strong>, and the <strong>Encrypt contents to secure data</strong> box is greyed out (grayed out): you can't tick it. That box switches on EFS, the Encrypting File System built into some editions of Windows. Most of the time the reason is simple, and it isn't a fault you can repair. Here's how to tell which case you're in within 30 seconds, what we found when we tried the popular “fixes”, the real causes on Pro, and what to use instead.</p>
 
@@ -172,7 +175,7 @@
         </ul>
         <p class="muted-note"><em>The service, fsutil, registry and <code>cipher /e</code> results are from our own test on a Windows 11 Home PC, November 2026.</em></p>
 
-        <p>More guides: <a href="blog-encrypt-files-windows-11-home.html">how to encrypt files in Windows 11 Home</a>, <a href="blog-encrypt-files-windows-10.html">how to encrypt files on Windows 10</a> and <a href="blog-encrypt-folder-on-windows.html">how to encrypt a folder on Windows</a>.</p>
+        <p class="related">More guides: <a href="blog-encrypt-files-windows-11-home.html">how to encrypt files in Windows 11 Home</a>, <a href="blog-encrypt-files-windows-10.html">how to encrypt files on Windows 10</a> and <a href="blog-encrypt-folder-on-windows.html">how to encrypt a folder on Windows</a>.</p>
 
         <div class="post-cta">
           <a class="btn btn-primary" href="download.html?ref=blog-encrypt-contents-to-secure-data-greyed-o">
@@ -181,24 +184,22 @@
           </a>
         </div>
       </div>
+      </div>
     </article>
   </main>
 
-  <footer class="footer">
+  <footer>
     <div class="wrap">
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-          <p class="latin">clāvis — Latin, “key”</p>
-          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
-          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
-        </div>
-        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
-        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
-        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      <div class="fcols">
+        <div><a class="wordmark" href="./"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a><p class="tagline">File encryption that stays on your PC. For Windows and Linux.</p></div>
+        <div><p class="fh">Product</p><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></div>
+        <div><p class="fh">Help</p><a href="help.html">Help centre</a><a href="help-install.html">Installing</a><a href="help-recovery-key.html">Recovery key</a><a href="help-open-files.html">Opening encrypted files</a><a href="blog.html">Guides</a></div>
+        <div><p class="fh">Company</p><a href="about.html">About</a><a href="security.html">Security</a><a href="mailto:hello@clavisenc.com">Contact</a></div>
+        <div><p class="fh">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a></div>
       </div>
-      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+      <div class="legal"><span>© <span data-year>2026</span> Clavis Encryption</span><span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> · version <span data-release="version">3.16.1</span></span></div>
     </div>
+    <p class="bigmark" aria-hidden="true">Clavis</p>
   </footer>
 
   <script src="assets/js/site.js?v=c8b1747684" defer></script>

@@ -8,7 +8,7 @@
   <meta name="referrer" content="no-referrer">
   <title>Open a Clavis .enc File Online (Free, Decrypted on Your Device)</title>
   <meta name="description" content="Open or decrypt a Clavis .enc file online for free, on any phone, Mac or PC. Decrypted on your device; the file and password are never uploaded.">
-  <meta name="theme-color" content="#05080F">
+  <meta name="theme-color" content="#F6F1E9">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Open a Clavis .enc file online">
   <meta property="og:description" content="On any phone, Mac or PC. Decrypted on your device; nothing is uploaded.">
@@ -20,64 +20,67 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link href="assets/css/fonts.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=1ce3770294">
+  <script src="assets/js/early.js"></script>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://clavisenc.com/open.html#page","name":"Open a Clavis .enc file online","description":"Open a Clavis Encrypt file on any phone, Mac or PC, decrypted on your device.","inLanguage":"en","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"mainEntity":{"@id":"https://clavisenc.com/open.html#app"}},{"@type":"WebApplication","@id":"https://clavisenc.com/open.html#app","name":"Clavis Encrypt: open a .enc file online","url":"https://clavisenc.com/open.html","description":"Open a Clavis Encrypt .enc file in the browser, on any phone, Mac or PC. The file is decrypted on the device and is not uploaded.","applicationCategory":"SecurityApplication","operatingSystem":"Any","browserRequirements":"A current Chrome, Edge, Firefox or Safari","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/"}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I open a .enc file?","acceptedAnswer":{"@type":"Answer","text":"If Clavis Encrypt made it, choose the file on this page, type its password and press Open. That works on any phone or computer with a current browser, and you don't need to install anything. If another program made it, you need that program."}},{"@type":"Question","name":"Can I decrypt a file online without uploading it?","acceptedAnswer":{"@type":"Answer","text":"Yes, on this page. Its code runs in your browser, and the page's security policy stops that code from connecting anywhere, so the file and the password are never uploaded. The only thing the page sends is a cookieless count (a visit, and \"a file was opened\") to the site's analytics, with no file name, size, content or password. As with any web page, you're trusting the code the site sends you. The file format is public, so you can check a file with the open-source decryptor. The code hasn't been independently audited."}},{"@type":"Question","name":"Can this page open any .enc file?","acceptedAnswer":{"@type":"Answer","text":"No. It opens files made with Clavis Encrypt or with this site's Encrypt online page. Other programs use the .enc ending for their own formats, and the page will say \"This isn't a Clavis Encrypt file.\" It also can't open files made with Encrypt for someone or files from a team folder: those open only in Clavis Encrypt."}},{"@type":"Question","name":"Can I open a .enc file without the password?","acceptedAnswer":{"@type":"Answer","text":"No. Without the password the file can't be decrypted, and neither this page nor we can get a lost password back for you. If someone sent you the file, ask them for the password. If it's your own file and you forgot your vault password, use your recovery key in the Clavis Encrypt app; this page can't use one."}},{"@type":"Question","name":"Why does it say \"Wrong password or key file\"?","acceptedAnswer":{"@type":"Answer","text":"The file wouldn't open with what you entered. Check the capital letters and spaces, and if your vault uses a key file, choose it under My vault uses a key file. Team folder files show this message too, because they open only in Clavis Encrypt."}},{"@type":"Question","name":"Why does it say the file was damaged or altered?","acceptedAnswer":{"@type":"Answer","text":"Part of the file has changed since it was encrypted, or it didn't finish downloading. Clavis checks this every time and won't give you a changed file. Download it again or ask the sender for a new copy."}},{"@type":"Question","name":"Does it work on iPhone and Android?","acceptedAnswer":{"@type":"Answer","text":"Yes, in a current Safari, Chrome, Edge or Firefox. Very large files (over about 1 GB) may not fit in a phone's memory, so open those on a computer."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. There's no account, no sign-up and no limit on how often you use it."}}]}</script>
   <style>
-    .opener { margin: 26px 0 8px; }
-    .drop { display: block; border: 1.5px dashed var(--line-2); border-radius: 18px; padding: 28px 22px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; }
-    .drop.hot, .drop:hover { border-color: var(--azure); background: rgba(47,166,255,.06); }
-    .drop b { display: block; color: var(--text); font-size: 18px; margin-bottom: 6px; }
+    .opener { margin: 30px 0 8px; padding: 26px 26px 28px; border-radius: 20px; background: #fff; box-shadow: var(--sh-card); }
+    .drop { position: relative; display: block; border: 1.5px dashed rgba(var(--ink-rgb), .24); border-radius: 16px; padding: 28px 22px; text-align: center; cursor: pointer; background: var(--light); transition: border-color .2s; }
+    .drop.hot, .drop:hover { border-color: var(--dusk); }
+    .drop:focus-within { outline: 2px solid var(--dusk); outline-offset: 3px; }
+    .drop b { display: block; color: var(--ink); font-size: 18px; margin-bottom: 6px; }
     .drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-    .drop #chosen { font: 500 14px/1.4 var(--mono); color: var(--muted); }
-    .opener label.f { display: block; margin: 18px 0 0; color: var(--text); font-weight: 600; font-size: 15px; }
-    .opener input[type=password] { width: 100%; height: 50px; margin-top: 8px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--line-2); background: rgba(255,255,255,.04); color: var(--text); font-size: 16px; }
-    .opener input[type=password]:focus { outline: 2px solid var(--azure); outline-offset: 2px; }
-    .opener details { margin-top: 14px; color: var(--muted); font-size: 15px; }
-    .opener details input { margin-top: 10px; color: var(--muted); }
-    .opener .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
-    .btn.small { padding: 9px 16px; font-size: 14px; }
+    .drop #chosen { font: 500 14px/1.4 var(--mono); color: var(--ink-2); overflow-wrap: anywhere; }
+    .opener label.f { display: block; margin: 20px 0 0; color: var(--ink); font-weight: 600; font-size: 15px; }
+    .opener input[type=password] { width: 100%; height: 50px; margin-top: 8px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--edge); background: #fff; color: var(--ink); font-size: 16px; }
+    .opener input[type=password]:focus { outline: 2px solid var(--dusk); outline-offset: 2px; }
+    .opener details { margin-top: 14px; color: var(--ink-2); font-size: 15px; }
+    .opener details summary { cursor: pointer; padding: 4px 0; }
+    .opener details input { margin-top: 10px; color: var(--ink-2); }
+    .opener .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
     #results { list-style: none; padding: 0; margin: 22px 0 0; }
-    .res { padding: 16px 18px; border: 1px solid var(--line-2); border-radius: 14px; margin-bottom: 12px; }
-    .res-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-    .res-name { color: var(--text); overflow-wrap: anywhere; }
-    .res-state { color: var(--muted); font-size: 14px; }
-    .res-state.good { color: var(--ok); } .res-state.bad { color: #FF8A8A; }
-    .bar { height: 4px; border-radius: 4px; background: rgba(255,255,255,.07); margin: 12px 0 0; overflow: hidden; }
-    .bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #3D7BFF, #46E6FF); transition: width .2s; }
+    .post #results .res { padding: 16px 18px; border-radius: 14px; margin: 0 0 12px; background: #fff; box-shadow: var(--sh-card); }
+    .res-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 16px; }
+    .res-name { color: var(--ink); overflow-wrap: anywhere; }
+    .res-state { color: var(--ink-2); font-size: 14.5px; }
+    .res-state.good { color: #2F6B3A; } .res-state.bad { color: var(--bad-ink); }
+    .bar { height: 4px; border-radius: 4px; background: rgba(var(--ink-rgb), .08); margin: 12px 0 0; overflow: hidden; }
+    .bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--dusk), #6B7BA8); transition: width .2s; }
     .res-act { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
     .res-act:empty { display: none; }
-    #unsupported { color: #FF8A8A; }
+    #unsupported { color: var(--bad-ink); font-weight: 500; }
+    @media (max-width: 700px) { .opener { padding: 18px 16px 20px; margin-left: -4px; margin-right: -4px; } .opener .row .btn { flex: 1 1 auto; } }
   </style>
 </head>
 <body>
-  <div class="sky" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
-      </button>
-      <nav class="nav-links" aria-label="Main">
-        <a href="./">Home</a>
-        <a href="about.html">About</a>
-        <a href="security.html">Security</a>
-        <a href="blog.html">Blog</a>
-        <a href="help.html">Help</a>
-        <a href="pricing.html">Pricing</a>
-        <a class="btn btn-primary" href="download.html?ref=open">Download</a>
-      </nav>
-    </div>
+  <header>
+  <nav class="nav" id="nav" aria-label="Main">
+    <a class="wordmark" href="./" aria-label="Clavis Encrypt home"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a>
+    <ul>
+      <li class="hide-s"><a href="./#how">How it works</a></li>
+      <li><a href="./#proof">Security</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li class="hide-s"><a href="blog.html">Guides</a></li>
+      <li class="hide-s"><a href="help.html">Help</a></li>
+    </ul>
+  </nav>
   </header>
 
-  <main>
-    <section class="block">
+  <main id="main" class="doc">
+    <section>
+      <header class="phead">
+        <div class="phead-in">
+          <p class="post-meta">Open anywhere</p>
+          <h1>Open a .enc file online, in your browser</h1>
+        </div>
+      </header>
+      <div class="sheet">
       <div class="wrap post">
-        <p class="post-meta">Open anywhere</p>
-        <h1>Open a .enc file online, in your browser</h1>
         <p>On a phone, a Mac, a Chromebook or a PC without Clavis Encrypt. The file is decrypted <strong>on this device</strong>: your file and password never leave this device. The page only counts visits and opened files, without cookies, like the rest of this site.</p>
         <p>It opens <code>.enc</code> files made with Clavis Encrypt. Other programs use the <code>.enc</code> ending too, and their files won't open here.</p>
         <p id="unsupported" hidden>This browser is too old for this page. Use a current Chrome, Edge, Firefox or Safari.</p>
@@ -145,24 +148,22 @@
           <details><summary>Is it free?</summary><p>Yes. There's no account, no sign-up and no limit on how often you use it.</p></details>
         </div>
       </div>
+      </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <footer>
     <div class="wrap">
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-          <p class="latin">clāvis — Latin, “key”</p>
-          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
-          <a class="btn btn-primary foot-cta" href="download.html?ref=open">Download free</a>
-        </div>
-        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html?ref=open">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
-        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
-        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      <div class="fcols">
+        <div><a class="wordmark" href="./"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a><p class="tagline">File encryption that stays on your PC. For Windows and Linux.</p></div>
+        <div><p class="fh">Product</p><a href="./">Home</a><a href="download.html?ref=open">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="encrypt.html">Encrypt online</a><a href="open.html" aria-current="page">Open a file</a></div>
+        <div><p class="fh">Help</p><a href="help.html">Help centre</a><a href="help-install.html">Installing</a><a href="help-recovery-key.html">Recovery key</a><a href="help-open-files.html">Opening encrypted files</a><a href="blog.html">Guides</a></div>
+        <div><p class="fh">Company</p><a href="about.html">About</a><a href="security.html">Security</a><a href="mailto:hello@clavisenc.com">Contact</a></div>
+        <div><p class="fh">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a></div>
       </div>
-      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+      <div class="legal"><span>© <span data-year>2026</span> Clavis Encryption</span><span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> · version 3.16.1</span></div>
     </div>
+    <p class="bigmark" aria-hidden="true">Clavis</p>
   </footer>
 
   <script src="assets/js/vendor/argon2.umd.min.js"></script>

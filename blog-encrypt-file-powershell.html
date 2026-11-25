@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>How to encrypt a file using PowerShell — Clavis Encrypt</title>
   <meta name="description" content="PowerShell has no cmdlet that locks a file with a password. What cipher /e, Protect-CmsMessage, Export-Clixml, 7-Zip and clavis-cli can each do.">
-  <meta name="theme-color" content="#05080F">
+  <meta name="theme-color" content="#F6F1E9">
   <meta property="og:type" content="article">
   <meta property="og:title" content="How to encrypt a file using PowerShell (and what isn't built in)">
   <meta property="og:description" content="No built-in cmdlet adds a password to a file. Exact commands for EFS, certificates, stored passwords, 7-Zip and clavis-cli, which Windows editions they need, and a safe folder script.">
@@ -19,38 +19,41 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link href="assets/css/fonts.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=1ce3770294">
+  <script>(function (d) { d.classList.add("js");
+    /* site.js adds the launch-offer bar later: reserve its height now, so the page doesn't shift down after the first paint */
+    try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-encrypt-file-powershell.html#article","headline":"How to encrypt a file using PowerShell (and what isn't built in)","description":"PowerShell has no cmdlet that locks a file with a password. What cipher /e, Protect-CmsMessage, Export-Clixml, 7-Zip and clavis-cli can each do.","datePublished":"2026-11-11","dateModified":"2026-11-11","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-encrypt-file-powershell.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive","https://support.microsoft.com/en-us/windows/security/encryption/how-to-encrypt-a-file-or-folder","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cipher","https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc759177(v=ws.10)","https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/protect-cmsmessage","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/unprotect-cmsmessage","https://learn.microsoft.com/en-us/powershell/module/pki/new-selfsignedcertificate","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/convertfrom-securestring","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/convertto-securestring","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-credential","https://learn.microsoft.com/en-us/dotnet/api/system.management.automation.pscredential.getnetworkcredential","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_operators","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables","https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-5.1","https://learn.microsoft.com/en-us/powershell/module/psreadline/about/about_psreadline","https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-process","https://www.7-zip.org/7z.html","https://github.com/ip7z/7zip/blob/main/C/Util/7zipInstall/7zipInstall.c","https://7-zip.opensource.jp/chm/cmdline/switches/password.htm","https://7-zip.opensource.jp/chm/cmdline/exit_codes.htm"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"How to encrypt a file using PowerShell","item":"https://clavisenc.com/blog-encrypt-file-powershell.html"}]}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can PowerShell encrypt a file with a password?","acceptedAnswer":{"@type":"Answer","text":"Not with a built-in cmdlet. Compress-Archive has no password parameter, cipher /e uses your Windows account rather than a password, and Protect-CmsMessage uses a certificate. To add a password, call 7-Zip (free) or clavis-cli (Clavis Encrypt Premium) from PowerShell."}},{"@type":"Question","name":"How do I encrypt a file with a certificate in PowerShell?","acceptedAnswer":{"@type":"Answer","text":"Create a document encryption certificate (for example New-SelfSignedCertificate -Type DocumentEncryptionCert), then run Protect-CmsMessage -To with the certificate's subject, -Path and -OutFile. Unprotect-CmsMessage decrypts it. It returns text, so it suits text files rather than photos or Office documents."}},{"@type":"Question","name":"How do I save an encrypted password to a file in PowerShell?","acceptedAnswer":{"@type":"Answer","text":"Pipe Get-Credential to Export-Clixml, and load it later with Import-Clixml. On Windows it's encrypted with DPAPI, so only your user account on that computer can read it. On Linux and macOS it's stored as plain text."}},{"@type":"Question","name":"Does cipher /e work on Windows 11 Home?","acceptedAnswer":{"@type":"Answer","text":"No. Microsoft says file encryption isn't available in the Home edition, and on a Windows 11 Home PC cipher /e answered \"The request is not supported.\" when we tried it. Use 7-Zip or a file-encryption app instead."}},{"@type":"Question","name":"Can I decrypt an Export-Clixml password on another computer?","acceptedAnswer":{"@type":"Answer","text":"No. Microsoft says the exported file can't be used on a different computer or by a different user. Save the password again on each PC that needs it."}},{"@type":"Question","name":"How do I encrypt every file in a folder with PowerShell?","acceptedAnswer":{"@type":"Answer","text":"Run 7-Zip with 7z a -p -mhe=on archive.7z and the folder, check $LASTEXITCODE, then test the archive with 7z t before you delete anything. With Clavis Encrypt Premium, clavis-cli encrypt --keep and the folder encrypts each file separately."}},{"@type":"Question","name":"Is ConvertTo-SecureString encryption?","acceptedAnswer":{"@type":"Answer","text":"ConvertTo-SecureString only makes a secure string. ConvertFrom-SecureString turns it into an encrypted string you can save, with DPAPI or, if you pass a key, AES. On Linux and macOS, SecureString contents aren't encrypted."}}]}</script>
 </head>
 <body>
-  <div class="sky" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
-      </button>
-      <nav class="nav-links" aria-label="Main">
-        <a href="./">Home</a>
-        <a href="about.html">About</a>
-        <a href="security.html">Security</a>
-        <a href="blog.html" aria-current="page">Blog</a>
-        <a href="help.html">Help</a>
-        <a href="pricing.html">Pricing</a>
-        <a class="btn btn-primary" href="download.html">Download</a>
-      </nav>
-    </div>
+  <header>
+  <nav class="nav" id="nav" aria-label="Main">
+    <a class="wordmark" href="./" aria-label="Clavis Encrypt home"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a>
+    <ul>
+      <li class="hide-s"><a href="./#how">How it works</a></li>
+      <li><a href="./#proof">Security</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li class="hide-s"><a href="blog.html" aria-current="true">Guides</a></li>
+      <li class="hide-s"><a href="help.html">Help</a></li>
+    </ul>
+  </nav>
   </header>
 
-  <main>
-    <article class="block">
+  <main id="main" class="doc">
+    <article>
+      <header class="phead">
+        <div class="phead-in">
+          <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 11, 2026</p>
+          <h1>How to encrypt a file using PowerShell (and what isn't built in)</h1>
+        </div>
+      </header>
+      <div class="sheet">
       <div class="wrap post">
-        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 11, 2026</p>
-        <h1>How to encrypt a file using PowerShell (and what isn't built in)</h1>
 
         <p>You want one PowerShell command that locks a file with a password. Windows doesn't include one. <code>Compress-Archive</code> has no password parameter, and the built-in commands that do encrypt use your Windows account, a certificate, or protect only a stored password. Here is what each option does, with exact commands and a safe folder script.</p>
 
@@ -177,7 +180,7 @@ if ($LASTEXITCODE -ne 0) { throw "clavis-cli stopped with exit code $LASTEXITCOD
         </ul>
         <p class="muted-note"><em>Last checked against Microsoft's and 7-Zip's documentation on November 11, 2026. The cipher, Protect-CmsMessage and $OutputEncoding results are from our own tests on a Windows 11 Home PC with Windows PowerShell 5.1, November 2026.</em></p>
 
-        <p>Related: <a href="blog-password-protect-zip-file-windows-11.html">password-protecting a zip file in Windows 11</a>, <a href="blog-openssl-encrypt-file-windows.html">encrypting a file with OpenSSL on Windows</a> and <a href="blog-gpg-encrypt-file-windows.html">encrypting a file with GPG on Windows</a>.</p>
+        <p class="related">Related: <a href="blog-password-protect-zip-file-windows-11.html">password-protecting a zip file in Windows 11</a>, <a href="blog-openssl-encrypt-file-windows.html">encrypting a file with OpenSSL on Windows</a> and <a href="blog-gpg-encrypt-file-windows.html">encrypting a file with GPG on Windows</a>.</p>
 
         <div class="post-cta">
           <a class="btn btn-primary" href="pricing.html?ref=blog-powershell#premium">Get Clavis Premium — $29 once</a>
@@ -188,24 +191,22 @@ if ($LASTEXITCODE -ne 0) { throw "clavis-cli stopped with exit code $LASTEXITCOD
           <p class="cta-note">One-time payment, tax included, no subscription. The command line comes with the installer from clavisenc.com, not the Microsoft Store version, so start with the free installer.</p>
         </div>
       </div>
+      </div>
     </article>
   </main>
 
-  <footer class="footer">
+  <footer>
     <div class="wrap">
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-          <p class="latin">clāvis — Latin, “key”</p>
-          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
-          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
-        </div>
-        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
-        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
-        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      <div class="fcols">
+        <div><a class="wordmark" href="./"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a><p class="tagline">File encryption that stays on your PC. For Windows and Linux.</p></div>
+        <div><p class="fh">Product</p><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></div>
+        <div><p class="fh">Help</p><a href="help.html">Help centre</a><a href="help-install.html">Installing</a><a href="help-recovery-key.html">Recovery key</a><a href="help-open-files.html">Opening encrypted files</a><a href="blog.html">Guides</a></div>
+        <div><p class="fh">Company</p><a href="about.html">About</a><a href="security.html">Security</a><a href="mailto:hello@clavisenc.com">Contact</a></div>
+        <div><p class="fh">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a></div>
       </div>
-      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+      <div class="legal"><span>© <span data-year>2026</span> Clavis Encryption</span><span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> · version <span data-release="version">3.16.1</span></span></div>
     </div>
+    <p class="bigmark" aria-hidden="true">Clavis</p>
   </footer>
 
   <script src="assets/js/site.js?v=c8b1747684" defer></script>

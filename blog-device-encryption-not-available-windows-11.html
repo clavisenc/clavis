@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Device encryption not available in Windows 11? How to fix — Clavis Encrypt</title>
   <meta name="description" content="Device encryption missing or not showing in Windows 11? What each Device Encryption Support reason (TPM, PCR7, WinRE, DMA) means and how to fix it.">
-  <meta name="theme-color" content="#05080F">
+  <meta name="theme-color" content="#F6F1E9">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Device encryption not showing or not available in Windows 11: what each reason means and how to fix it">
   <meta property="og:description" content="Find the reason in System Information, then fix it: what TPM is not usable, PCR7 binding, WinRE, HSTI, DMA and Disabled by policy mean, and what changed in Windows 11 24H2.">
@@ -19,38 +19,41 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link href="assets/css/fonts.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=1ce3770294">
+  <script>(function (d) { d.classList.add("js");
+    /* site.js adds the launch-offer bar later: reserve its height now, so the page doesn't shift down after the first paint */
+    try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://clavisenc.com/blog-device-encryption-not-available-windows-11.html#article","headline":"Device encryption not showing or not available in Windows 11: what each reason means and how to fix it","description":"Device encryption missing or not showing in Windows 11? What each Device Encryption Support reason (TPM, PCR7, WinRE, DMA) means and how to fix it.","datePublished":"2026-11-05","dateModified":"2026-11-05","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/blog-device-encryption-not-available-windows-11.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"citation":["https://support.microsoft.com/en-us/windows/device-encryption-in-windows-cf7e2b6f-3e70-4882-9532-18633605b7df","https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-bitlocker","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/","https://learn.microsoft.com/en-us/windows/security/book/operating-system-security-encryption-and-data-protection","https://support.microsoft.com/en-us/windows/experience/find-information-about-your-windows-device","https://support.microsoft.com/en-us/windows/deployment/updates-lifecycle/install-windows-updates","https://support.microsoft.com/en-us/windows/enable-tpm-2-0-on-your-pc-1fd5a332-360d-4f46-a1e7-ae6b0c90645c","https://support.microsoft.com/en-us/windows/device-security-in-the-windows-security-app-afa11526-de57-b1c5-599f-3a4c6a61c5e2","https://support.microsoft.com/en-us/windows/windows-11-and-secure-boot-a8ff1202-c0d9-42f5-940f-843abef64fad","https://learn.microsoft.com/en-us/windows/deployment/mbr-to-gpt","https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/reagentc-command-line-options?view=windows-11","https://support.microsoft.com/en-us/topic/kb5028997-instructions-to-manually-resize-your-partition-to-install-the-winre-update-400faa27-9343-461c-ada9-24c8229763bf","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/recovery-overview","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/operations-guide","https://learn.microsoft.com/en-us/powershell/module/bitlocker/suspend-bitlocker","https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde-protectors","https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/configure","https://support.microsoft.com/en-us/windows/deployment/install-upgrade/upgrade-windows-home-to-windows-pro","https://support.microsoft.com/en-us/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6","https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings","https://learn.microsoft.com/en-us/windows/terminal/faq","https://learn.microsoft.com/en-us/answers/questions/4252467/system-information-device-encryption-question","https://learn.microsoft.com/en-us/answers/questions/5682631/setting-up-device-encryption-reasons-for-failed-au"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://clavisenc.com/blog.html"},{"@type":"ListItem","position":3,"name":"Device encryption not available in Windows 11? How to fix","item":"https://clavisenc.com/blog-device-encryption-not-available-windows-11.html"}]}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is device encryption not showing in Windows 11 Home?","acceptedAnswer":{"@type":"Answer","text":"Either you're signed in with a standard account, or the PC fails a requirement. Open System Information as administrator and read the Device Encryption Support line. If it says Meets prerequisites, sign in with an administrator account and look under Settings, Privacy & security. If it lists reasons, common ones are a TPM or Secure Boot switched off in the UEFI firmware settings. Windows 11 Home does have device encryption; it's full BitLocker that it lacks."}},{"@type":"Question","name":"What does \"Reasons for failed automatic device encryption\" mean?","acceptedAnswer":{"@type":"Answer","text":"It's how System Information introduces the list of reasons your PC can't use device encryption, such as TPM is not usable, PCR7 binding is not supported or WinRE is not configured. Fix each reason in turn, starting with the TPM, and check again. On Windows 11 version 24H2 and later, the Modern Standby (HSTI) and DMA reasons no longer block device encryption."}},{"@type":"Question","name":"What does \"Elevation required to view\" mean in System Information?","acceptedAnswer":{"@type":"Answer","text":"It means System Information wasn't opened with administrator rights, so it won't show whether device encryption is supported. Close it, right-click System Information in the Start menu results, choose Run as administrator, and read the Device Encryption Support line again."}},{"@type":"Question","name":"Does device encryption still need Modern Standby in Windows 11 24H2?","acceptedAnswer":{"@type":"Answer","text":"No. Starting with Windows 11 version 24H2, Microsoft removed the Modern Standby or HSTI requirement and the DMA requirement for automatic device encryption, so more PCs qualify. On Windows 10 and on Windows 11 versions before 24H2, those requirements still apply. The way past them is Windows 11 version 24H2 or later; on Windows 10, that means upgrading to Windows 11, which needs a PC that meets Windows 11's requirements, including TPM 2.0."}},{"@type":"Question","name":"How do I fix \"PCR7 binding is not supported\"?","acceptedAnswer":{"@type":"Answer","text":"Microsoft gives two causes: Secure Boot is turned off, or devices such as a docking station, external graphics card or special network adapter are connected at startup. Unplug those devices and restart. If the message remains, turn on Secure Boot in the UEFI firmware settings and use UEFI boot mode, not Legacy or CSM. If Windows was installed in Legacy mode, it won't start in UEFI mode until the disk is converted with Microsoft's MBR2GPT tool. Before converting, confirm the PC supports UEFI boot, back up your files, and suspend BitLocker if it's on, with a reboot count of 0 so it stays suspended until you resume it. The conversion can't be undone; after it, switch the firmware to UEFI. Microsoft says BitLocker's protectors must then be recreated, which makes a new recovery key: back it up straight away and check its Key ID at aka.ms/myrecoverykey, because the old key no longer works. Then resume protection and check that manage-bde -status C: says Protection On."}},{"@type":"Question","name":"What does \"TPM is not usable\" mean?","acceptedAnswer":{"@type":"Answer","text":"The PC either has no Trusted Platform Module or it's switched off in the BIOS or UEFI. Check Windows Security, Device security, Security processor, or run tpm.msc. To turn it on, restart into UEFI Firmware Settings and enable the TPM option, often called Intel PTT, AMD fTPM or Security Device Support. Microsoft's page for PC makers lists TPM 1.2 or 2.0 for automatic device encryption, though Windows 11 itself requires TPM 2.0."}},{"@type":"Question","name":"Can I use device encryption with a local account?","acceptedAnswer":{"@type":"Answer","text":"Not properly. With only a local account, Windows doesn't turn device encryption on automatically, and Microsoft says a PC that uses only local accounts remains unprotected even though the data is encrypted. An administrator needs to sign in with a Microsoft account so the recovery key is backed up and the drive is fully protected."}},{"@type":"Question","name":"How do I turn on device encryption in Windows 11 Home?","acceptedAnswer":{"@type":"Answer","text":"Sign in with an administrator account, and use a Microsoft account so Windows backs up the recovery key to it automatically. Open Settings, then Privacy & security, then Device encryption, and switch it on. Then check that the recovery key is listed at aka.ms/myrecoverykey. If the page isn't there, open System Information as administrator and read Device Encryption Support to see which requirement your PC fails."}}]}</script>
 </head>
 <body>
-  <div class="sky" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
-      </button>
-      <nav class="nav-links" aria-label="Main">
-        <a href="./">Home</a>
-        <a href="about.html">About</a>
-        <a href="security.html">Security</a>
-        <a href="blog.html" aria-current="page">Blog</a>
-        <a href="help.html">Help</a>
-        <a href="pricing.html">Pricing</a>
-        <a class="btn btn-primary" href="download.html">Download</a>
-      </nav>
-    </div>
+  <header>
+  <nav class="nav" id="nav" aria-label="Main">
+    <a class="wordmark" href="./" aria-label="Clavis Encrypt home"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a>
+    <ul>
+      <li class="hide-s"><a href="./#how">How it works</a></li>
+      <li><a href="./#proof">Security</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li class="hide-s"><a href="blog.html" aria-current="true">Guides</a></li>
+      <li class="hide-s"><a href="help.html">Help</a></li>
+    </ul>
+  </nav>
   </header>
 
-  <main>
-    <article class="block">
+  <main id="main" class="doc">
+    <article>
+      <header class="phead">
+        <div class="phead-in">
+          <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 5, 2026</p>
+          <h1>Device encryption not showing or not available in Windows 11: what each reason means and how to fix it</h1>
+        </div>
+      </header>
+      <div class="sheet">
       <div class="wrap post">
-        <p class="post-meta"><a href="blog.html">Blog</a> · Guide · November 5, 2026</p>
-        <h1>Device encryption not showing or not available in Windows 11: what each reason means and how to fix it</h1>
 
         <p>Device encryption is the simple form of BitLocker that Windows turns on by itself, Windows 11 Home included, when a PC meets its requirements. When the PC doesn't, device encryption is not available and the <strong>Device encryption</strong> page is simply missing from Settings, with no message. Windows does record the reason, in one line of the System Information app that most people never open. This guide shows where to find that line, what each message means, how to fix it, and which messages stopped mattering in Windows 11 version 24H2.</p>
 
@@ -211,7 +214,7 @@
           <li><a href="https://learn.microsoft.com/en-us/answers/questions/5682631/setting-up-device-encryption-reasons-for-failed-au" rel="noopener">Microsoft Q&amp;A, user post: Setting up Device Encryption (example wording: Reasons for failed automatic device encryption, PCR7, HSTI and DMA messages)</a></li>
         </ul>
 
-        <p>Related: <a href="blog-check-if-drive-is-encrypted-windows-11.html">how to check if a drive is encrypted in Windows 11</a>, <a href="blog-turn-off-device-encryption-windows-11.html">how to turn off device encryption in Windows 11</a> and <a href="blog-find-bitlocker-recovery-key-windows-11.html">how to find your BitLocker recovery key</a>.</p>
+        <p class="related">Related: <a href="blog-check-if-drive-is-encrypted-windows-11.html">how to check if a drive is encrypted in Windows 11</a>, <a href="blog-turn-off-device-encryption-windows-11.html">how to turn off device encryption in Windows 11</a> and <a href="blog-find-bitlocker-recovery-key-windows-11.html">how to find your BitLocker recovery key</a>.</p>
 
         <div class="post-cta">
           <a class="btn btn-primary" href="download.html?ref=blog-device-encryption">
@@ -220,24 +223,22 @@
           </a>
         </div>
       </div>
+      </div>
     </article>
   </main>
 
-  <footer class="footer">
+  <footer>
     <div class="wrap">
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-          <p class="latin">clāvis — Latin, “key”</p>
-          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
-          <a class="btn btn-primary foot-cta" href="download.html">Download free</a>
-        </div>
-        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
-        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
-        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      <div class="fcols">
+        <div><a class="wordmark" href="./"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a><p class="tagline">File encryption that stays on your PC. For Windows and Linux.</p></div>
+        <div><p class="fh">Product</p><a href="./">Home</a><a href="download.html">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></div>
+        <div><p class="fh">Help</p><a href="help.html">Help centre</a><a href="help-install.html">Installing</a><a href="help-recovery-key.html">Recovery key</a><a href="help-open-files.html">Opening encrypted files</a><a href="blog.html">Guides</a></div>
+        <div><p class="fh">Company</p><a href="about.html">About</a><a href="security.html">Security</a><a href="mailto:hello@clavisenc.com">Contact</a></div>
+        <div><p class="fh">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a></div>
       </div>
-      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+      <div class="legal"><span>© <span data-year>2026</span> Clavis Encryption</span><span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> · version <span data-release="version">3.16.1</span></span></div>
     </div>
+    <p class="bigmark" aria-hidden="true">Clavis</p>
   </footer>
 
   <script src="assets/js/site.js?v=c8b1747684" defer></script>

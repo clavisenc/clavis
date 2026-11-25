@@ -8,7 +8,7 @@
   <meta name="referrer" content="no-referrer">
   <title>Encrypt a File Online Free: In Your Browser, Nothing Uploaded</title>
   <meta name="description" content="Encrypt a file online for free with a password, on any phone, Mac or PC. AES-256-GCM runs on your device and nothing is uploaded. No account needed.">
-  <meta name="theme-color" content="#05080F">
+  <meta name="theme-color" content="#F6F1E9">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Encrypt a file online, free and on your device">
   <meta property="og:description" content="Lock a file with a password on any phone, Mac or PC. Encrypted on your device; nothing is uploaded.">
@@ -20,75 +20,77 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link href="assets/css/fonts.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=1ce3770294">
+  <script src="assets/js/early.js"></script>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://clavisenc.com/encrypt.html#page","name":"Encrypt a file online","description":"Encrypt a file with a password on any phone, Mac or PC, on your device. Nothing is uploaded.","inLanguage":"en","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"mainEntity":{"@id":"https://clavisenc.com/encrypt.html#app"}},{"@type":"WebApplication","@id":"https://clavisenc.com/encrypt.html#app","name":"Clavis Encrypt: encrypt a file online","url":"https://clavisenc.com/encrypt.html","description":"Encrypt a file with a password in the browser, on any phone, Mac or PC. The file is encrypted on the device with AES-256-GCM and is not uploaded.","applicationCategory":"SecurityApplication","operatingSystem":"Any","browserRequirements":"A current Chrome, Edge, Firefox or Safari","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/"}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it safe to encrypt a file on a website?","acceptedAnswer":{"@type":"Answer","text":"This page encrypts on your device. Its code runs in your browser, and the page's security policy stops that code from connecting anywhere, so the file and the password are never uploaded. The only thing the page sends is a cookieless count (a visit, and \"a file was encrypted\") to the site's analytics, with no file name, size, content or password. As with any web page, you're trusting the code the site sends you. The file format is public, so you can check a file with the open-source decryptor. The code hasn't been independently audited."}},{"@type":"Question","name":"How does the other person open the file?","acceptedAnswer":{"@type":"Answer","text":"At clavisenc.com/open.html on any phone or computer, where it's decrypted on their device, or in the free Clavis Encrypt app for Windows and Linux. They need the password you send them separately."}},{"@type":"Question","name":"How should I send the password?","acceptedAnswer":{"@type":"Answer","text":"Separately from the file: a phone call, a text message or a different chat app, never in the same email or chat as the file. Anyone who gets both can open it."}},{"@type":"Question","name":"What encryption does it use?","acceptedAnswer":{"@type":"Answer","text":"AES-256-GCM, with a key made from your password by Argon2id (64 MB of memory, 2 passes) and a new random salt for every file. The content is compressed, then sealed in 64 KB chunks, so a changed, reordered or cut-off file is detected when it's opened. It's the same .enc format the Clavis Encrypt app writes."}},{"@type":"Question","name":"Is there a size limit?","acceptedAnswer":{"@type":"Answer","text":"Up to 1 GB at a time on a phone and 2 GB on a computer, because the browser holds the encrypted file until you save it. The Clavis Encrypt app has no such limit."}},{"@type":"Question","name":"Can I encrypt a folder?","acceptedAnswer":{"@type":"Answer","text":"Not on this page. Zip the folder first and encrypt the zip file, or use the Clavis Encrypt app, which encrypts whole folders."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. There's no account, no sign-up and no limit on how often you use it."}},{"@type":"Question","name":"What if I forget the password?","acceptedAnswer":{"@type":"Answer","text":"Then the file can't be opened. The password is never stored or sent anywhere, so there's nothing to recover it from. Keep your original file until the other person has opened theirs."}}]}</script>
   <style>
-    .locker { margin: 26px 0 8px; }
-    .drop { display: block; border: 1.5px dashed var(--line-2); border-radius: 18px; padding: 28px 22px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; }
-    .drop.hot, .drop:hover { border-color: var(--azure); background: rgba(47,166,255,.06); }
-    .drop b { display: block; color: var(--text); font-size: 18px; margin-bottom: 6px; }
+    .locker { margin: 30px 0 8px; padding: 26px 26px 28px; border-radius: 20px; background: #fff; box-shadow: var(--sh-card); }
+    .drop { position: relative; display: block; border: 1.5px dashed rgba(var(--ink-rgb), .24); border-radius: 16px; padding: 28px 22px; text-align: center; cursor: pointer; background: var(--light); transition: border-color .2s; }
+    .drop.hot, .drop:hover { border-color: var(--dusk); }
+    .drop:focus-within { outline: 2px solid var(--dusk); outline-offset: 3px; }
+    .drop b { display: block; color: var(--ink); font-size: 18px; margin-bottom: 6px; }
     .drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-    .drop #chosen { font: 500 14px/1.4 var(--mono); color: var(--muted); overflow-wrap: anywhere; }
-    .locker label.f { display: block; margin: 18px 0 0; color: var(--text); font-weight: 600; font-size: 15px; }
+    .drop #chosen { font: 500 14px/1.4 var(--mono); color: var(--ink-2); overflow-wrap: anywhere; }
+    .locker label.f { display: block; margin: 20px 0 0; color: var(--ink); font-weight: 600; font-size: 15px; }
     .pw-row { display: flex; gap: 8px; margin-top: 8px; }
-    .locker input[type=password], .locker input[type=text] { flex: 1; min-width: 0; width: 100%; height: 50px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--line-2); background: rgba(255,255,255,.04); color: var(--text); font-size: 16px; font-family: var(--mono); }
-    .locker input:focus { outline: 2px solid var(--azure); outline-offset: 2px; }
+    .locker input[type=password], .locker input[type=text] { flex: 1; min-width: 0; width: 100%; height: 50px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--edge); background: #fff; color: var(--ink); font-size: 16px; font-family: var(--mono); }
+    .locker input:focus { outline: 2px solid var(--dusk); outline-offset: 2px; }
     .locker #pw2 { margin-top: 8px; }
-    .pw-row .btn { flex: none; }
+    .pw-row .btn { flex: none; height: 50px; }
     .tools { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
-    .meter { height: 4px; border-radius: 4px; background: rgba(255,255,255,.07); margin: 12px 0 0; overflow: hidden; }
+    .meter { height: 4px; border-radius: 4px; background: rgba(var(--ink-rgb), .08); margin: 12px 0 0; overflow: hidden; }
     .meter i { display: block; height: 100%; width: 0; transition: width .2s, background .2s; }
-    .meter i.s0 { background: #FF6B6B; } .meter i.s1 { background: #FF9F5A; } .meter i.s2 { background: #F5D547; }
-    .meter i.s3 { background: #7BD88F; } .meter i.s4 { background: var(--ok); }
-    .hint { color: var(--muted); font-size: 14px; margin: 8px 0 0; min-height: 1.4em; }
-    #formMsg { color: #FF8A8A; margin: 16px 0 0; }
-    .locker .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
-    .btn.small { padding: 9px 16px; font-size: 14px; }
+    .meter i.s0 { background: #C2473B; } .meter i.s1 { background: #D9822B; } .meter i.s2 { background: #C9A227; }
+    .meter i.s3 { background: #6E9A4E; } .meter i.s4 { background: #3F7A45; }
+    .hint { color: var(--ink-2); font-size: 14.5px; margin: 8px 0 0; min-height: 1.4em; }
+    #formMsg { color: var(--bad-ink); font-weight: 500; margin: 16px 0 0; }
+    .locker .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
     #results { list-style: none; padding: 0; margin: 22px 0 0; }
-    .res { padding: 16px 18px; border: 1px solid var(--line-2); border-radius: 14px; margin-bottom: 12px; }
-    .res-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-    .res-name { color: var(--text); overflow-wrap: anywhere; }
-    .res-state { color: var(--muted); font-size: 14px; }
-    .res-state.good { color: var(--ok); } .res-state.bad { color: #FF8A8A; }
-    .bar { height: 4px; border-radius: 4px; background: rgba(255,255,255,.07); margin: 12px 0 0; overflow: hidden; }
-    .bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #3D7BFF, #46E6FF); transition: width .2s; }
+    .post #results .res { padding: 16px 18px; border-radius: 14px; margin: 0 0 12px; background: #fff; box-shadow: var(--sh-card); }
+    .res-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 16px; }
+    .res-name { color: var(--ink); overflow-wrap: anywhere; }
+    .res-state { color: var(--ink-2); font-size: 14.5px; }
+    .res-state.good { color: #2F6B3A; } .res-state.bad { color: var(--bad-ink); }
+    .bar { height: 4px; border-radius: 4px; background: rgba(var(--ink-rgb), .08); margin: 12px 0 0; overflow: hidden; }
+    .bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--dusk), #6B7BA8); transition: width .2s; }
     .res-act { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
     .res-act:empty { display: none; }
-    .done { padding: 18px 20px; border: 1px solid var(--line-2); border-radius: 14px; background: rgba(61,214,140,.05); }
+    .done { padding: 20px 22px; border-radius: 16px; background: var(--sage-50); box-shadow: inset 0 0 0 1px rgba(47, 65, 40, .14); }
     .done p { margin: 0 0 12px; }
-    .done textarea { width: 100%; min-height: 120px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line-2); background: rgba(255,255,255,.04); color: var(--text); font: 15px/1.5 var(--sans, inherit); resize: vertical; }
-    #unsupported { color: #FF8A8A; }
+    .done textarea { width: 100%; min-height: 120px; margin-top: 8px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--edge); background: #fff; color: var(--ink); font: 15px/1.5 var(--sans); resize: vertical; }
+    #unsupported { color: var(--bad-ink); font-weight: 500; }
+    @media (max-width: 700px) { .locker { padding: 18px 16px 20px; margin-left: -4px; margin-right: -4px; } .locker .row .btn { flex: 1 1 auto; } }
   </style>
 </head>
 <body>
-  <div class="sky" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="./" aria-label="Clavis home"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-      <button class="menu-btn" aria-label="Menu" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
-      </button>
-      <nav class="nav-links" aria-label="Main">
-        <a href="./">Home</a>
-        <a href="about.html">About</a>
-        <a href="security.html">Security</a>
-        <a href="blog.html">Blog</a>
-        <a href="help.html">Help</a>
-        <a href="pricing.html">Pricing</a>
-        <a class="btn btn-primary" href="download.html?ref=encrypt">Download</a>
-      </nav>
-    </div>
+  <header>
+  <nav class="nav" id="nav" aria-label="Main">
+    <a class="wordmark" href="./" aria-label="Clavis Encrypt home"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a>
+    <ul>
+      <li class="hide-s"><a href="./#how">How it works</a></li>
+      <li><a href="./#proof">Security</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li class="hide-s"><a href="blog.html">Guides</a></li>
+      <li class="hide-s"><a href="help.html">Help</a></li>
+    </ul>
+  </nav>
   </header>
 
-  <main>
-    <section class="block">
+  <main id="main" class="doc">
+    <section>
+      <header class="phead">
+        <div class="phead-in">
+          <p class="post-meta">Encrypt anywhere</p>
+          <h1>Encrypt a file online, in your browser</h1>
+        </div>
+      </header>
+      <div class="sheet">
       <div class="wrap post">
-        <p class="post-meta">Encrypt anywhere</p>
-        <h1>Encrypt a file online, in your browser</h1>
         <p>On a phone, a Mac or any computer. The file is encrypted <strong>on this device</strong>: your file and password never leave this device. The page only counts visits and finished files, without cookies, like the rest of this site.</p>
         <p id="unsupported" hidden>This browser is too old for this page. Use a current Chrome, Edge, Firefox or Safari.</p>
 
@@ -163,24 +165,22 @@
           <details><summary>What if I forget the password?</summary><p>Then the file can't be opened. The password is never stored or sent anywhere, so there's nothing to recover it from. Keep your original file until the other person has opened theirs.</p></details>
         </div>
       </div>
+      </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <footer>
     <div class="wrap">
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <a class="brand" href="./"><img src="assets/img/icon-64.png" alt=""><span>Clavis<em class="brand-sub">Encrypt</em></span></a>
-          <p class="latin">clāvis — Latin, “key”</p>
-          <p class="foot-line">File encryption that stays on your PC. No account, no cloud.</p>
-          <a class="btn btn-primary foot-cta" href="download.html?ref=encrypt">Download free</a>
-        </div>
-        <nav aria-label="Product"><b>Product</b><a href="./">Home</a><a href="download.html?ref=encrypt">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="security.html">Security</a><a href="encrypt.html">Encrypt online</a><a href="open.html">Open a file</a></nav>
-        <nav aria-label="Learn"><b>Learn</b><a href="help.html">Help</a><a href="blog.html">Blog</a><a href="help-install.html">Install guide</a><a href="help-recovery-key.html">Recovery key</a></nav>
-        <nav aria-label="Clavis"><b>Clavis</b><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="mailto:hello@clavisenc.com">Contact</a></nav>
+      <div class="fcols">
+        <div><a class="wordmark" href="./"><svg viewBox="66 124 392 240" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(22 -6)"><path d="M237.9 188.1A96 96 0 1 0 237.9 323.9" stroke-width="40"/><path d="M170 256H404" stroke-width="36"/><path d="M404 256V316" stroke-width="36"/><path d="M342 256V300" stroke-width="32"/></g></svg>Clavis Encrypt</a><p class="tagline">File encryption that stays on your PC. For Windows and Linux.</p></div>
+        <div><p class="fh">Product</p><a href="./">Home</a><a href="download.html?ref=encrypt">Download</a><a href="pricing.html">Pricing</a><a href="teams.html">For teams</a><a href="encrypt.html" aria-current="page">Encrypt online</a><a href="open.html">Open a file</a></div>
+        <div><p class="fh">Help</p><a href="help.html">Help centre</a><a href="help-install.html">Installing</a><a href="help-recovery-key.html">Recovery key</a><a href="help-open-files.html">Opening encrypted files</a><a href="blog.html">Guides</a></div>
+        <div><p class="fh">Company</p><a href="about.html">About</a><a href="security.html">Security</a><a href="mailto:hello@clavisenc.com">Contact</a></div>
+        <div><p class="fh">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a></div>
       </div>
-      <div class="foot-base"><span>© <span data-year>2026</span> Clavis Encryption</span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></div>
+      <div class="legal"><span>© <span data-year>2026</span> Clavis Encryption</span><span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> · version 3.16.1</span></div>
     </div>
+    <p class="bigmark" aria-hidden="true">Clavis</p>
   </footer>
 
   <script src="assets/js/vendor/argon2.umd.min.js"></script>
