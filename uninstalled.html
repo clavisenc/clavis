@@ -13,7 +13,7 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
+  <link rel="stylesheet" href="assets/css/site.css?v=98c6c8d46b">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -31,7 +31,7 @@
   </nav>
   </header>
 
-  <main id="main" class="doc">
+  <main id="main" class="doc pg-bye">
     <article>
       <header class="phead">
         <div class="phead-in">
@@ -53,6 +53,7 @@
           <li>Files someone else encrypted for you (<em>Encrypt for someone</em>) open only in Clavis Encrypt, with the Clavis ID in your vault.</li>
         </ul>
 
+        <div class="caution">
         <h2>Thinking of deleting the vault folder?</h2>
         <p>Please decrypt everything you still need first. Without the vault folder:</p>
         <ul>
@@ -60,7 +61,9 @@
           <li>files encrypted for you, your secure notes and your contacts are gone, unless you made a vault backup (<code>.clavisbackup</code>).</li>
         </ul>
         <p>If you're not sure, leave the folder where it is. It's small, and it lets a reinstall pick up exactly where you left off.</p>
+        </div>
 
+        <div class="ask">
         <h2 id="why">Why did you uninstall? <span class="muted-note">(optional, anonymous)</span></h2>
         <p>One click tells us. We don't know who you are, and nothing else is sent.</p>
         <div class="reasons" data-uninstall-reasons>
@@ -74,6 +77,7 @@
         </div>
         <p class="reason-thanks" role="status" data-reason-thanks hidden>Thanks, that helps.</p>
         <p><strong>What could we do better?</strong> A sentence is plenty: <a href="mailto:hello@clavisenc.com?subject=Clavis%20Encrypt%20feedback">hello@clavisenc.com</a>. Email isn't anonymous, of course; we use your address only to reply.</p>
+        </div>
 
         <div class="post-cta">
           <p>Changed your mind?</p>

@@ -22,7 +22,7 @@
     try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
+  <link rel="stylesheet" href="assets/css/site.css?v=98c6c8d46b">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -40,7 +40,7 @@
   </nav>
   </header>
 
-  <main id="main" class="doc">
+  <main id="main" class="doc pg-legal">
     <article>
       <header class="phead">
         <div class="phead-in">
@@ -49,42 +49,57 @@
         </div>
       </header>
       <div class="sheet">
-      <div class="wrap post">
+      <div class="wrap legal-grid">
+        <nav class="toc" aria-label="Contents">
+          <ol>
+            <li><a href="#your-license">Your license</a></li>
+            <li><a href="#purchases-and-refunds">Purchases and refunds</a></li>
+            <li><a href="#what-you-may-not-do">What you may not do</a></li>
+            <li><a href="#your-responsibility-for-passwords-and-keys">Your responsibility for passwords and keys</a></li>
+            <li><a href="#no-warranty">No warranty</a></li>
+            <li><a href="#limitation-of-liability">Limitation of liability</a></li>
+            <li><a href="#updates-and-changes">Updates and changes</a></li>
+            <li><a href="#governing-law">Governing law</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ol>
+        </nav>
+        <div class="post legal-body">
 
         <p>Clavis Encrypt ("Clavis", "we") makes the Clavis Encrypt app. By downloading or using it, you agree to these terms. If you don't agree, please don't use the app.</p>
 
-        <h2>Your license</h2>
+        <h2 id="your-license">Your license</h2>
         <p><b>Free:</b> Clavis Free is provided free of charge for personal and business use.</p>
         <p><b>Pro and Premium:</b> buying Clavis Pro or Clavis Premium grants you a one-time, perpetual, non-exclusive license to use that plan's features on up to two computers you own or control at a time. You can move it by removing the license from one computer (Settings → License → Remove license). Your license includes future updates. It is for your own use — please don't share, resell or publish your license key.</p>
 
-        <h2>Purchases and refunds</h2>
+        <h2 id="purchases-and-refunds">Purchases and refunds</h2>
         <p>Pro and Premium are one-time purchases, not subscriptions. Prices are shown on the <a href="pricing.html">Pricing page</a> and include applicable taxes. Orders are processed by our payment partner, which acts as the merchant of record and is named at checkout; your license key is emailed to you right after payment.</p>
         <p>Clavis Free is the trial, so purchases are final. We refund double charges, license keys we can't make work, and wherever the law requires; see the <a href="refund.html">Refund Policy</a>. A refunded license key stops working.</p>
 
-        <h2>What you may not do</h2>
+        <h2 id="what-you-may-not-do">What you may not do</h2>
         <ul>
           <li>Resell, sublicense or redistribute Clavis or its license keys.</li>
           <li>Attempt to circumvent licensing, except as permitted by law.</li>
           <li>Use Clavis to break the law.</li>
         </ul>
 
-        <h2>Your responsibility for passwords and keys</h2>
+        <h2 id="your-responsibility-for-passwords-and-keys">Your responsibility for passwords and keys</h2>
         <p>Clavis uses real encryption. This means: <b>if you lose your password and your recovery key, your files cannot be opened by anyone — including us.</b> You are responsible for choosing strong passwords, for storing your recovery key safely, and for keeping your own backups of important data. We cannot recover lost passwords, recovery keys or files.</p>
 
-        <h2>No warranty</h2>
+        <h2 id="no-warranty">No warranty</h2>
         <p>Clavis is provided <b>"as is," without warranty of any kind</b>, express or implied, including fitness for a particular purpose. While Clavis uses established, standard cryptography, we do not warrant that it is error-free or that it will meet every requirement or threat model. Use it as one part of good security practice, not your only safeguard.</p>
 
-        <h2>Limitation of liability</h2>
+        <h2 id="limitation-of-liability">Limitation of liability</h2>
         <p>To the maximum extent permitted by law, we are not liable for any indirect, incidental or consequential damages, or for loss of data, arising from your use of Clavis. Where liability cannot be excluded, it is limited to the amount you paid for the software.</p>
 
-        <h2>Updates and changes</h2>
+        <h2 id="updates-and-changes">Updates and changes</h2>
         <p>We may update Clavis and these terms over time. Continued use after a change means you accept the updated terms. Material changes will be reflected in the date above.</p>
 
-        <h2>Governing law</h2>
+        <h2 id="governing-law">Governing law</h2>
         <p>These terms are governed by the laws of India, without regard to conflict-of-law rules.</p>
 
-        <h2>Contact</h2>
+        <h2 id="contact">Contact</h2>
         <p>Questions? Email <b><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></b>.</p>
+        </div>
       </div>
       </div>
     </article>

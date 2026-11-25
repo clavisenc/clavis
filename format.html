@@ -22,7 +22,7 @@
     try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
+  <link rel="stylesheet" href="assets/css/site.css?v=98c6c8d46b">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://clavisenc.com/format.html#article","headline":"The Clavis Encrypt .enc file format","description":"The complete .enc file format, plus a free open-source decryptor that opens any file with just your password.","datePublished":"2026-10-12","dateModified":"2026-10-12","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/format.html","image":"https://clavisenc.com/assets/img/og.png","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Security","item":"https://clavisenc.com/security.html"},{"@type":"ListItem","position":3,"name":"The .enc file format","item":"https://clavisenc.com/format.html"}]}]}</script>
 </head>
 <body>
@@ -41,7 +41,7 @@
   </nav>
   </header>
 
-  <main id="main" class="doc">
+  <main id="main" class="doc pg-legal">
     <article>
       <header class="phead">
         <div class="phead-in">
@@ -50,7 +50,16 @@
         </div>
       </header>
       <div class="sheet">
-      <div class="wrap post">
+      <div class="wrap legal-grid">
+        <nav class="toc" aria-label="Contents">
+          <ol>
+            <li><a href="#the-current-format-version-3">The current format (version 3)</a></li>
+            <li><a href="#older-formats">Older formats</a></li>
+            <li><a href="#what-this-decryptor-doesnt-open">What this decryptor doesn't open</a></li>
+            <li><a href="#why-publish-this">Why publish this?</a></li>
+          </ol>
+        </nav>
+        <div class="post legal-body">
         <p>An encryption app shouldn't hold your files hostage. If Clavis Encrypt ever stopped being developed, or you simply stopped using it, you'd still need your files back. So the complete <code>.enc</code> format is described on this page, and there's a small free decryptor that opens any file with just your password, without Clavis Encrypt.</p>
 
         <div class="callout"><b>Download the decryptor:</b> <a href="tools/clavis_decrypt.py" download>clavis_decrypt.py</a>, about 300 lines of readable Python under the MIT licence. Run it on Windows, macOS or Linux:
@@ -61,7 +70,7 @@ python clavis_decrypt.py "C:\Files\9f3c….enc" -o restored</pre>
 
         <p>Everything below is what the decryptor implements; together they let anyone check that Clavis does what the <a href="security.html">Security page</a> says. One <code>.enc</code> file holds everything needed to open it except your password: there's no separate key file, account or vault you'd also have to keep, unless you chose a key file as a second factor.</p>
 
-        <h2>The current format (version 3)</h2>
+        <h2 id="the-current-format-version-3">The current format (version 3)</h2>
         <p>Written by Clavis Encrypt 2.0 and later. Numbers are big-endian.</p>
         <div class="table-wrap"><table>
           <thead><tr><th>Bytes</th><th>Field</th><th>Meaning</th></tr></thead>
@@ -86,7 +95,7 @@ python clavis_decrypt.py "C:\Files\9f3c….enc" -o restored</pre>
         <p>This is the "STREAM" construction also used by Tink and age: the counter stops chunks being reordered or removed, the last-chunk flag stops a file being cut short or extended, and the associated data ties every chunk to its header. Each chunk is checked before its contents are used.</p>
         <p><strong>Inside.</strong> The decrypted stream is: the original file name's length (2 bytes), the file name (UTF-8), then the file's content compressed with GZIP. That's why the file on disk can have a random name: the real name is encrypted inside it.</p>
 
-        <h2>Older formats</h2>
+        <h2 id="older-formats">Older formats</h2>
         <p>Clavis still opens files from every earlier version, and so does the decryptor. They protect the whole file with one AES-256-GCM tag (no associated data). The decrypted payload is <code>SHA-256(content) (32 bytes) · name length (2) · name · GZIP(content)</code>, and the SHA-256 is checked after decompressing.</p>
         <div class="table-wrap"><table>
           <thead><tr><th>Version</th><th>Header</th><th>Key</th></tr></thead>
@@ -98,14 +107,15 @@ python clavis_decrypt.py "C:\Files\9f3c….enc" -o restored</pre>
         </table></div>
         <p>For PBKDF2 files with a key file, the password used is <code>password + NUL + hex(SHA-256(key file))</code>. An original-format file's salt can start with <code>0x03</code>; if a file looks like version 3 but its first chunk doesn't open, try it as an original-format file.</p>
 
-        <h2>What this decryptor doesn't open</h2>
+        <h2 id="what-this-decryptor-doesnt-open">What this decryptor doesn't open</h2>
         <ul>
           <li><strong>Files made with "Encrypt for someone"</strong> (version byte <code>0x04</code>). They're sealed to the recipient's Clavis ID (X25519 + ML-KEM-768 public keys), so they open only with the recipient's private keys inside Clavis Encrypt. That's the point of them.</li>
           <li><strong>Secure notes, the vault's own files and recovery kits</strong>: they belong to the app and aren't files you'd need to rescue.</li>
         </ul>
 
-        <h2>Why publish this?</h2>
+        <h2 id="why-publish-this">Why publish this?</h2>
         <p>Clavis Encrypt itself isn't open source, and it hasn't had an independent audit yet; we'd rather say so than pretend. Publishing the format and a decryptor is the next best thing: anyone can check how files are protected, and nobody is ever locked in. Found a mistake? Write to <a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a>.</p>
+        </div>
       </div>
       </div>
     </article>

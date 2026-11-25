@@ -22,7 +22,7 @@
     try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
+  <link rel="stylesheet" href="assets/css/site.css?v=98c6c8d46b">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -40,7 +40,7 @@
   </nav>
   </header>
 
-  <main id="main" class="doc">
+  <main id="main" class="doc pg-legal">
     <article>
       <header class="phead">
         <div class="phead-in">
@@ -49,14 +49,24 @@
         </div>
       </header>
       <div class="sheet">
-      <div class="wrap post">
+      <div class="wrap legal-grid">
+        <nav class="toc" aria-label="Contents">
+          <ol>
+            <li><a href="#try-before-you-buy">Try before you buy</a></li>
+            <li><a href="#when-we-refund">When we refund</a></li>
+            <li><a href="#how-to-ask-for-a-refund">How to ask for a refund</a></li>
+            <li><a href="#who-processes-payments">Who processes payments</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ol>
+        </nav>
+        <div class="post legal-body">
 
         <div class="callout"><b>Short version:</b> Clavis Free is the trial. Use it for as long as you like before you buy. Clavis Pro and Clavis Premium are digital licences delivered instantly by email, so purchases are final and we don't refund a change of mind. We do refund if something went wrong on our side, as described below.</div>
 
-        <h2>Try before you buy</h2>
+        <h2 id="try-before-you-buy">Try before you buy</h2>
         <p><a href="download.html">Clavis Free</a> has the full app and the same encryption as the paid plans, with no time limit and no account. The paid plans only add features on top. Want to try Pro or Premium first? Email <b><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></b> with your device code (Clavis → Settings → License) and we'll send you a free trial key.</p>
 
-        <h2>When we refund</h2>
+        <h2 id="when-we-refund">When we refund</h2>
         <p>We give a full refund when:</p>
         <ul>
           <li><b>You were charged more than once</b> for the same licence.</li>
@@ -65,7 +75,7 @@
         </ul>
         <p>Because a licence is delivered instantly and can't be returned, we don't refund purchases made by mistake or a change of mind once the key has been sent.</p>
 
-        <h2>How to ask for a refund</h2>
+        <h2 id="how-to-ask-for-a-refund">How to ask for a refund</h2>
         <ol>
           <li>Email <b><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></b> within 14 days of your purchase.</li>
           <li>Include your order number (it's in your receipt email) and what went wrong.</li>
@@ -73,11 +83,12 @@
         </ol>
         <p>When a refund is made, the licence key is switched off and the PCs using it return to Clavis Free. Your files are not affected: everything you encrypted still opens with your password on the free plan.</p>
 
-        <h2>Who processes payments</h2>
+        <h2 id="who-processes-payments">Who processes payments</h2>
         <p>Orders are processed by our payment partner, which acts as the merchant of record and is named on your checkout and receipt. Prices include applicable taxes.</p>
 
-        <h2>Contact</h2>
+        <h2 id="contact">Contact</h2>
         <p>Questions? Email <b><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a></b>. See also our <a href="terms.html">Terms of Use</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+        </div>
       </div>
       </div>
     </article>

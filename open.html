@@ -23,26 +23,30 @@
   <script src="assets/js/early.js"></script>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css?v=88df84e86e">
+  <link rel="stylesheet" href="assets/css/site.css?v=98c6c8d46b">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://clavisenc.com/open.html#page","name":"Open a Clavis .enc file online","description":"Open a Clavis Encrypt file on any phone, Mac or PC, decrypted on your device.","inLanguage":"en","isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"mainEntity":{"@id":"https://clavisenc.com/open.html#app"}},{"@type":"WebApplication","@id":"https://clavisenc.com/open.html#app","name":"Clavis Encrypt: open a .enc file online","url":"https://clavisenc.com/open.html","description":"Open a Clavis Encrypt .enc file in the browser, on any phone, Mac or PC. The file is decrypted on the device and is not uploaded.","applicationCategory":"SecurityApplication","operatingSystem":"Any","browserRequirements":"A current Chrome, Edge, Firefox or Safari","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/"}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I open a .enc file?","acceptedAnswer":{"@type":"Answer","text":"If Clavis Encrypt made it, choose the file on this page, type its password and press Open. That works on any phone or computer with a current browser, and you don't need to install anything. If another program made it, you need that program."}},{"@type":"Question","name":"Can I decrypt a file online without uploading it?","acceptedAnswer":{"@type":"Answer","text":"Yes, on this page. Its code runs in your browser, and the page's security policy stops that code from connecting anywhere, so the file and the password are never uploaded. The only thing the page sends is a cookieless count (a visit, and \"a file was opened\") to the site's analytics, with no file name, size, content or password. As with any web page, you're trusting the code the site sends you. The file format is public, so you can check a file with the open-source decryptor. The code hasn't been independently audited."}},{"@type":"Question","name":"Can this page open any .enc file?","acceptedAnswer":{"@type":"Answer","text":"No. It opens files made with Clavis Encrypt or with this site's Encrypt online page. Other programs use the .enc ending for their own formats, and the page will say \"This isn't a Clavis Encrypt file.\" It also can't open files made with Encrypt for someone or files from a team folder: those open only in Clavis Encrypt."}},{"@type":"Question","name":"Can I open a .enc file without the password?","acceptedAnswer":{"@type":"Answer","text":"No. Without the password the file can't be decrypted, and neither this page nor we can get a lost password back for you. If someone sent you the file, ask them for the password. If it's your own file and you forgot your vault password, use your recovery key in the Clavis Encrypt app; this page can't use one."}},{"@type":"Question","name":"Why does it say \"Wrong password or key file\"?","acceptedAnswer":{"@type":"Answer","text":"The file wouldn't open with what you entered. Check the capital letters and spaces, and if your vault uses a key file, choose it under My vault uses a key file. Team folder files show this message too, because they open only in Clavis Encrypt."}},{"@type":"Question","name":"Why does it say the file was damaged or altered?","acceptedAnswer":{"@type":"Answer","text":"Part of the file has changed since it was encrypted, or it didn't finish downloading. Clavis checks this every time and won't give you a changed file. Download it again or ask the sender for a new copy."}},{"@type":"Question","name":"Does it work on iPhone and Android?","acceptedAnswer":{"@type":"Answer","text":"Yes, in a current Safari, Chrome, Edge or Firefox. Very large files (over about 1 GB) may not fit in a phone's memory, so open those on a computer."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. There's no account, no sign-up and no limit on how often you use it."}}]}</script>
   <style>
-    .opener { margin: 30px 0 8px; padding: 26px 26px 28px; border-radius: 20px; background: #fff; box-shadow: var(--sh-card); }
-    .drop { position: relative; display: block; border: 1.5px dashed rgba(var(--ink-rgb), .24); border-radius: 16px; padding: 28px 22px; text-align: center; cursor: pointer; background: var(--light); transition: border-color .2s; }
+    /* the tool card: it sits beside the explanation in the header's leaf light (layout: site.css, "Encrypt online / Open a file") */
+    .opener { padding: 28px 28px 30px; border-radius: 24px; background: #fff; box-shadow: var(--sh-card), 0 44px 80px -44px rgba(80, 60, 110, .5); }
+    .drop { position: relative; display: block; border: 1.5px dashed rgba(var(--ink-rgb), .26); border-radius: 16px; padding: 30px 22px; text-align: center; cursor: pointer; background: var(--light); transition: border-color .2s; }
     .drop.hot, .drop:hover { border-color: var(--dusk); }
     .drop:focus-within { outline: 2px solid var(--dusk); outline-offset: 3px; }
-    .drop b { display: block; color: var(--ink); font-size: 18px; margin-bottom: 6px; }
+    .drop b { display: block; color: var(--ink); font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+    .drop b::before { content: ""; display: block; width: 44px; height: 44px; margin: 0 auto 12px; border-radius: 50%; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23232F4B' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='10.5' width='14' height='10' rx='2.2'/%3E%3Cpath d='M8.5 10.5V7.8a3.5 3.5 0 0 1 6.8-1.2'/%3E%3C/svg%3E") 50% 50% / 20px no-repeat; box-shadow: 0 6px 16px -8px rgba(80, 60, 110, .45); }
     .drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
     .drop #chosen { font: 500 14px/1.4 var(--mono); color: var(--ink-2); overflow-wrap: anywhere; }
-    .opener label.f { display: block; margin: 20px 0 0; color: var(--ink); font-weight: 600; font-size: 15px; }
+    .opener label.f { display: block; margin: 22px 0 0; color: var(--ink); font-weight: 600; font-size: 15px; }
     .opener input[type=password] { width: 100%; height: 50px; margin-top: 8px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--edge); background: #fff; color: var(--ink); font-size: 16px; }
     .opener input[type=password]:focus { outline: 2px solid var(--dusk); outline-offset: 2px; }
     .opener details { margin-top: 14px; color: var(--ink-2); font-size: 15px; }
     .opener details summary { cursor: pointer; padding: 4px 0; }
-    .opener details input { margin-top: 10px; color: var(--ink-2); }
+    .opener details input { margin-top: 10px; max-width: 100%; color: var(--ink-2); }
     .opener .row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
-    #results { list-style: none; padding: 0; margin: 22px 0 0; }
-    .post #results .res { padding: 16px 18px; border-radius: 14px; margin: 0 0 12px; background: #fff; box-shadow: var(--sh-card); }
+    .opener .row .btn-primary { flex: 1 1 auto; }
+    #results { list-style: none; padding: 0; margin: 16px 0 0; }
+    #results:empty { display: none; }
+    #results .res { padding: 16px 18px; border-radius: 16px; margin: 0 0 12px; background: #fff; box-shadow: var(--sh-card); }
     .res-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 16px; }
     .res-name { color: var(--ink); overflow-wrap: anywhere; }
     .res-state { color: var(--ink-2); font-size: 14.5px; }
@@ -51,8 +55,8 @@
     .bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--dusk), #6B7BA8); transition: width .2s; }
     .res-act { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
     .res-act:empty { display: none; }
-    #unsupported { color: var(--bad-ink); font-weight: 500; }
-    @media (max-width: 700px) { .opener { padding: 18px 16px 20px; margin-left: -4px; margin-right: -4px; } .opener .row .btn { flex: 1 1 auto; } }
+    .res-act .btn { max-width: 100%; white-space: normal; height: auto; min-height: 40px; padding-top: 8px; padding-bottom: 8px; line-height: 1.3; overflow-wrap: anywhere; }
+    @media (max-width: 700px) { .opener { padding: 20px 16px 22px; margin-left: -4px; margin-right: -4px; border-radius: 20px; } .opener .row .btn { flex: 1 1 auto; } }
   </style>
 </head>
 <body>
@@ -71,20 +75,21 @@
   </nav>
   </header>
 
-  <main id="main" class="doc">
+  <main id="main" class="doc pg-tool">
     <section>
-      <header class="phead">
-        <div class="phead-in">
+      <div class="phead tool-band">
+      <div class="tool-grid">
+      <div class="tool-intro">
+        <header class="tool-head">
           <p class="post-meta">Open anywhere</p>
           <h1>Open a .enc file online, in your browser</h1>
-        </div>
-      </header>
-      <div class="sheet">
-      <div class="wrap post">
+        </header>
         <p>On a phone, a Mac, a Chromebook or a PC without Clavis Encrypt. The file is decrypted <strong>on this device</strong>: your file and password never leave this device. The page only counts visits and opened files, without cookies, like the rest of this site.</p>
         <p>It opens <code>.enc</code> files made with Clavis Encrypt. Other programs use the <code>.enc</code> ending too, and their files won't open here.</p>
         <p id="unsupported" hidden>This browser is too old for this page. Use a current Chrome, Edge, Firefox or Safari.</p>
+      </div>
 
+      <div class="tool-col">
         <form class="opener" id="openForm" autocomplete="off">
           <label class="drop" id="drop">
             <input type="file" id="encFiles" multiple>
@@ -101,13 +106,24 @@
           </div>
         </form>
         <ul id="results" aria-live="polite"></ul>
+      </div>
+      </div>
+      </div>
 
+      <div class="sheet">
+      <div class="wrap post tool-more">
         <div class="callout"><b>Short answer:</b> to decrypt a Clavis .enc file online, choose the file above, type its password and press <strong>Open</strong>. It's decrypted in your browser, on your device, and you then save the original file. It's free and needs no account and no app. It works only for files made with Clavis Encrypt, and only with the right password.</div>
 
+        <div class="split">
         <h2>What is a .enc file?</h2>
+        <div class="split-body">
         <p><code>.enc</code> is short for "encrypted". A file with that ending is locked: its content can't be read without the right password or key. The ending doesn't belong to any one program, so different programs write different kinds of <code>.enc</code> file.</p>
         <p>A Clavis <code>.enc</code> file holds one encrypted file, protected with AES-256-GCM, with its original name stored inside. If someone sent it to you, it was probably made with <a href="encrypt.html">Encrypt online</a> or <strong>Send with a password</strong> in the app, and it has a name like <code>report.pdf.enc</code>. Files you encrypted in the Clavis Encrypt app have random names, and the real name comes back when you open them.</p>
 
+        </div>
+        </div>
+
+        <div class="split">
         <h2>How to open a .enc file online</h2>
         <ol>
           <li>If the file came by email, a chat app or a link, save it to your phone or computer first.</li>
@@ -117,7 +133,9 @@
           <li>Press <strong>Open</strong> and wait a few seconds.</li>
           <li>Press <strong>Save <em>name</em></strong> to keep the file. For PDFs, images and text files, <strong>View</strong> shows it first.</li>
         </ol>
+        </div>
 
+        <div class="split">
         <h2>What this page can't open</h2>
         <ul>
           <li><strong><code>.enc</code> files from other programs.</strong> The page says "This isn't a Clavis Encrypt file." Open those with the program that made them; ask the sender if you're not sure which one it was.</li>
@@ -125,7 +143,9 @@
           <li><strong>Team folder files.</strong> They open only in Clavis Encrypt, for members of the team folder. This page shows "Wrong password or key file" for them.</li>
           <li><strong>Any file without its password.</strong> Neither this page nor we can get a lost password back for you.</li>
         </ul>
+        </div>
 
+        <div class="split">
         <h2>Good to know</h2>
         <ul>
           <li>Opening takes a few seconds: the same deliberate slowness that protects your password from guessing.</li>
@@ -135,7 +155,9 @@
           <li>To send a file back locked with a password, <a href="encrypt.html">encrypt a file in your browser</a>, on this phone or computer.</li>
           <li>For files you keep, whole folders, watch folders and more, <a href="download.html?ref=open">get Clavis Encrypt</a>.</li>
         </ul>
+        </div>
 
+        <div class="split">
         <h2>Questions</h2>
         <div class="faq">
           <details><summary>How do I open a .enc file?</summary><p>If Clavis Encrypt made it, choose the file on this page, type its password and press Open. That works on any phone or computer with a current browser, and you don't need to install anything. If another program made it, you need that program.</p></details>
@@ -146,6 +168,7 @@
           <details><summary>Why does it say the file was damaged or altered?</summary><p>Part of the file has changed since it was encrypted, or it didn't finish downloading. Clavis checks this every time and won't give you a changed file. Download it again or ask the sender for a new copy.</p></details>
           <details><summary>Does it work on iPhone and Android?</summary><p>Yes, in a current Safari, Chrome, Edge or Firefox. Very large files (over about 1 GB) may not fit in a phone's memory, so open those on a computer.</p></details>
           <details><summary>Is it free?</summary><p>Yes. There's no account, no sign-up and no limit on how often you use it.</p></details>
+        </div>
         </div>
       </div>
       </div>
