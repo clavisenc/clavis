@@ -533,7 +533,7 @@
   bar.setAttribute("role", "region");
   bar.setAttribute("aria-label", "Launch offer");
   bar.innerHTML = '<span><span class="offer-long">Hurry: launch offer ends 30 Nov. 20% off Pro &amp; Premium with code </span><code>LAUNCH20</code><span class="offer-short"> = 20% off until 30 Nov</span></span>'
-    + '<a href="pricing.html?ref=offer-bar#plans">See pricing &rarr;</a>'
+    + '<a href="pricing.html?ref=offer-bar">See pricing &rarr;</a>'
     + '<button type="button" class="offer-close" aria-label="Close">&times;</button>';
   document.body.prepend(bar);
   const root = document.documentElement;
@@ -542,8 +542,12 @@
   fit();
   window.addEventListener("resize", fit);
   bar.querySelector(".offer-close").addEventListener("click", () => {
+    // The page loses the bar's reserved space when it closes: scroll up by the same amount so
+    // whatever the reader is looking at stays exactly where it is instead of sliding under the nav.
+    const h = bar.offsetHeight;
     bar.remove();
     root.classList.remove("has-offer");
+    if (window.scrollY > 0) window.scrollTo({ top: Math.max(0, window.scrollY - h), behavior: "instant" });
     window.removeEventListener("resize", fit);
     try { sessionStorage.setItem("offer-closed", "1"); } catch (e) { /* fine */ }
   });
