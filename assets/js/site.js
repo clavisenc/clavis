@@ -268,11 +268,15 @@
     })
     .catch(() => {});
 
-  // Minimal Markdown for release notes: headings, bullets, bold, inline code.
+  // Minimal Markdown for release notes: headings, bullets, bold, inline code, links.
   function md(src) {
     src = src.replace(/^# .*\n?/m, "").split(/^## Install/m)[0].trim();
-    const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    const inline = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/`(.+?)`/g, "<code>$1</code>");
+    const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    // [text](https://…) and bare https://… become links; links to this site stay on it (relative).
+    const href = u => u.replace(/^https:\/\/clavisenc\.com\//, "") || "./";
+    const links = s => s.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/(?:[^\s<&]|&amp;)*[^\s<&.,;:!?)\]])/g,
+      (m, text, url, bare) => '<a href="' + href(url || bare) + '">' + (text || bare) + "</a>");
+    const inline = s => links(esc(s)).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/`(.+?)`/g, "<code>$1</code>");
     let html = "", list = false;
     for (const raw of src.split(/\r?\n/)) {
       const line = raw.trim();
@@ -460,7 +464,10 @@
         if (gc && typeof gc.count === "function")
           gc.count({ path: form.dataset.signup || "signup", title: "Email sign-up", event: true });
       } catch (e) {
-        say("That didn't go through. Please try again, or email hello@clavisenc.com.", "error");
+        say("That didn't go through. Please try again, or email ", "error");
+        const mail = document.createElement("a");
+        mail.href = "mailto:hello@clavisenc.com"; mail.textContent = "hello@clavisenc.com";
+        msg.append(mail, ".");
       } finally {
         button.disabled = false;
       }

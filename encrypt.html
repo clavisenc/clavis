@@ -154,7 +154,7 @@
         <h2>Questions</h2>
         <div class="faq">
           <details><summary>Is it safe to encrypt a file on a website?</summary><p>This page encrypts on your device. Its code runs in your browser, and the page's security policy stops that code from connecting anywhere, so the file and the password are never uploaded. The only thing the page sends is a cookieless count (a visit, and "a file was encrypted") to the site's analytics, with no file name, size, content or password. As with any web page, you're trusting the code the site sends you. The file format is public, so you can check a file with the open-source decryptor. The code hasn't been independently audited.</p></details>
-          <details><summary>How does the other person open the file?</summary><p>At clavisenc.com/open.html on any phone or computer, where it's decrypted on their device, or in the free Clavis Encrypt app for Windows and Linux. They need the password you send them separately.</p></details>
+          <details><summary>How does the other person open the file?</summary><p>At <a href="open.html">clavisenc.com/open.html</a> on any phone or computer, where it's decrypted on their device, or in the free Clavis Encrypt app for Windows and Linux. They need the password you send them separately.</p></details>
           <details><summary>How should I send the password?</summary><p>Separately from the file: a phone call, a text message or a different chat app, never in the same email or chat as the file. Anyone who gets both can open it.</p></details>
           <details><summary>What encryption does it use?</summary><p>AES-256-GCM, with a key made from your password by Argon2id (64 MB of memory, 2 passes) and a new random salt for every file. The content is compressed, then sealed in 64 KB chunks, so a changed, reordered or cut-off file is detected when it's opened. It's the same .enc format the Clavis Encrypt app writes.</p></details>
           <details><summary>Is there a size limit?</summary><p>Up to 1 GB at a time on a phone and 2 GB on a computer, because the browser holds the encrypted file until you save it. The Clavis Encrypt app has no such limit.</p></details>
@@ -189,6 +189,6 @@
   <script src="assets/js/encrypt.js"></script>
   <script src="assets/js/encrypt-ui.js"></script>
   <script src="assets/js/count.js"></script>
-  <script src="assets/js/site.js?v=21c5346618" defer></script>
+  <script src="assets/js/site.js?v=c8b1747684" defer></script>
 </body>
 </html>

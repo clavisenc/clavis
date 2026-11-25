@@ -204,7 +204,7 @@
           <details><summary>How do I password-protect an external hard drive on Windows 11 Home?</summary><p>First check whether the drive has its own hardware encryption, such as WD Security on a WD My Passport or password protection on a Samsung T7. If not, use VeraCrypt (encrypt in place keeps your files, on an NTFS partition only), BitLocker To Go set up on a Pro PC, or encrypt the files with 7-Zip or Clavis. Back up the drive first.</p></details>
           <details><summary>Can I encrypt an external drive without formatting it?</summary><p>Yes. BitLocker To Go encrypts the drive with your files on it, and VeraCrypt can encrypt a partition in place without losing data if it's formatted NTFS. On a FAT32 or exFAT drive, VeraCrypt's only whole-drive choice is a new volume (Create encrypted volume and format it), which erases the drive; a VeraCrypt container file doesn't. 7-Zip and Clavis work on files and don't touch the drive's format. Back up first either way.</p></details>
           <details><summary>Does Microsoft Defender encrypt USB drives?</summary><p>No. Microsoft Defender Antivirus scans for malware. Microsoft Defender for Endpoint, a business product, can make company PCs accept only BitLocker-encrypted USB drives, but BitLocker does the encrypting. “Defender encrypted USB” usually means a hardware-encrypted stick you buy, such as Kanguru's Defender line.</p></details>
-          <details><summary>Will it open on another PC or a Mac?</summary><p>Only with the right tool and the password. VeraCrypt volumes open on Windows, macOS and Linux with VeraCrypt installed. Clavis .enc files open in Clavis on Windows or Linux, or in any browser at clavisenc.com/open.html, Mac included. A 7z archive needs an app that opens encrypted 7z files on that device. Microsoft doesn't document BitLocker To Go on Home, Mac or Linux, so test first.</p></details>
+          <details><summary>Will it open on another PC or a Mac?</summary><p>Only with the right tool and the password. VeraCrypt volumes open on Windows, macOS and Linux with VeraCrypt installed. Clavis .enc files open in Clavis on Windows or Linux, or in any browser at <a href="open.html">clavisenc.com/open.html</a>, Mac included. A 7z archive needs an app that opens encrypted 7z files on that device. Microsoft doesn't document BitLocker To Go on Home, Mac or Linux, so test first.</p></details>
           <details><summary>Is it safe to keep my only copy on an encrypted stick?</summary><p>No. Encryption protects against people reading the files, not against the stick breaking or getting lost. Always keep a second copy somewhere else, and keep the password and recovery key off the stick.</p></details>
         </div>
 
@@ -269,6 +269,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/site.js?v=21c5346618" defer></script>
+  <script src="assets/js/site.js?v=c8b1747684" defer></script>
 </body>
 </html>
