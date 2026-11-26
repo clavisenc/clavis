@@ -321,6 +321,11 @@ footer { position: relative; z-index: 2; margin-top: -48px; padding: 72px 0 0; o
 .offer-note .token { font-size: 13.5px; background: #fff; box-shadow: inset 0 0 0 1px rgba(239, 188, 158, .7); }
 /* wide screens: one slim line the width of the card row, so the prices still reach the first screen */
 @media (min-width: 1101px) { .offer-note { max-width: none; padding: 12px 20px; } }
+/* the free trial comes first: one line above the offer note and the cards, so it is in the first screen; each paid card repeats it under its Buy button */
+.plans-trial { margin: 0 auto 26px; text-align: center; font-size: 16px; line-height: 1.55; color: var(--ink-2); text-wrap: balance; }
+.plans-trial b { font-weight: 600; color: var(--ink); }
+.plans-trial .tlink { display: inline; }
+.plans-trial + .offer-note { margin-top: -10px; }
 .plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
 .plan { position: relative; display: flex; flex-direction: column; border-radius: var(--r-lg); background: var(--card); box-shadow: var(--sh-card); overflow: hidden; }
 /* plan cards fade in without moving: a link to #pro or #premium must land where the card ends up */
@@ -360,7 +365,13 @@ footer { position: relative; z-index: 2; margin-top: -48px; padding: 72px 0 0; o
 .plan-ask { display: block; margin: 12px 0 0; text-align: center; font-size: 14px; line-height: 1.45; color: var(--ink-3); }
 a.plan-ask { padding: 6px 0; margin-top: 6px; color: var(--ink-2); text-decoration: none; }
 a.plan-ask:hover { color: var(--ink); text-decoration: underline; }
-.plan-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 30px 0 0; }
+/* "Try free for 7 days": the quiet button as a compact centred pill under the full-width Buy button, so Buy stays the main action */
+.plan-trial { width: auto; align-self: center; padding: 0 22px; margin-top: 10px; }
+/* cards side by side: Free's button stays level with the two Buy buttons (60px = the trial button and the taller ask link under Buy) */
+@media (min-width: 901px) { #free .plan-ask { margin-bottom: 60px; } }
+/* 901-1039px: the "Ask about ..." links wrap to two lines, so each one reserves two lines and the Buy buttons stay level */
+@media (min-width: 901px) and (max-width: 1039px) { a.plan-ask { min-height: 53px; } #free .plan-ask { margin-bottom: 81px; } }
+.plan-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 30px 0 0; }
 .plan-notes > * { margin: 0; padding: 20px 22px 22px; border-radius: var(--r-lg); background: rgba(255,255,255,.55); border: 1px solid var(--hair); font-size: 15px; line-height: 1.6; color: var(--ink-2); }
 .plan-notes b { display: block; margin-bottom: 6px; font: 440 19.5px/1.3 var(--serif); letter-spacing: -.006em; color: var(--ink); }
 .plan-notes a { color: var(--ink); }
@@ -545,6 +556,7 @@ html.has-offer .cmp thead th { top: calc(var(--nav-clear) - 16px + var(--offer-h
 <section class="s" id="plans">
   <div class="wrap">
     <p class="chap center rv h"><span class="no">01</span><span class="bar"></span><span>Plans</span></p>
+    <p class="plans-trial"><b>Not sure yet?</b> <a class="tlink" href="trial.html?ref=pricing-top" data-goatcounter-click="pricing-top-trial" data-goatcounter-title="Pricing: try free (above the plans)">Try Pro or Premium free for 7 days</a>, no card needed.</p>
     <div class="trial-note offer-note" data-until="2026-11-30"><b>Launch offer: 20% off Pro and Premium</b> with code <b class="token">LAUNCH20</b> at checkout, until 30 November 2026. Pro $15.20, Premium $23.20, one-time, tax included.</div>
     <div class="plans">
 
@@ -595,6 +607,7 @@ html.has-offer .cmp thead th { top: calc(var(--nav-clear) - 16px + var(--offer-h
             <li>All future updates included</li>
           </ul>
           <a class="btn-quiet plan-cta" id="buy-pro" href="https://checkout.dodopayments.com/buy/pdt_0NqfTIdpi6He6Vuuw1lYt?quantity=1&amp;redirect_url=https://clavisenc.com/thanks.html" data-goatcounter-click="buy-pro" data-goatcounter-title="Pricing: Buy Pro">Buy Pro — $19</a>
+          <a class="btn-quiet plan-trial" href="trial.html?ref=pricing-pro&amp;plan=pro" data-goatcounter-click="pricing-pro-trial" data-goatcounter-title="Pricing: try Pro free for 7 days">Try free for 7 days<span class="sr"> (Pro)</span></a>
           <a data-goatcounter-click="ask-pro" data-goatcounter-title="Pricing: ask about Pro" class="plan-ask" href="mailto:hello@clavisenc.com?subject=Clavis%20Pro">Ask about Pro → hello@clavisenc.com</a>
         </div>
       </article>
@@ -617,6 +630,7 @@ html.has-offer .cmp thead th { top: calc(var(--nav-clear) - 16px + var(--offer-h
             <li>All future updates included</li>
           </ul>
           <a class="btn-primary plan-cta" id="buy-premium" href="https://checkout.dodopayments.com/buy/pdt_0NqfThLllRtq1wiHbBWZt?quantity=1&amp;redirect_url=https://clavisenc.com/thanks.html" data-goatcounter-click="buy-premium" data-goatcounter-title="Pricing: Buy Premium">Buy Premium — $29</a>
+          <a class="btn-quiet plan-trial" href="trial.html?ref=pricing-premium&amp;plan=premium" data-goatcounter-click="pricing-premium-trial" data-goatcounter-title="Pricing: try Premium free for 7 days">Try free for 7 days<span class="sr"> (Premium)</span></a>
           <a data-goatcounter-click="ask-premium" data-goatcounter-title="Pricing: ask about Premium" class="plan-ask" href="mailto:hello@clavisenc.com?subject=Clavis%20Premium">Ask about Premium → hello@clavisenc.com</a>
         </div>
       </article>
@@ -625,12 +639,7 @@ html.has-offer .cmp thead th { top: calc(var(--nav-clear) - 16px + var(--offer-h
 
     <div class="plan-notes">
       <p class="fineprint rv"><b>Microsoft Store version<span class="sr">:</span></b> The same plans and license keys, but no File Explorer right-click menu, no command line and no USB-stick setup. For those, use the <a href="download.html?ref=pricing-store-note#dl-btn">installer from the download page</a>.</p>
-      <div class="trial-note rv d1">
-        <b>Want to try Pro or Premium first?</b> Get a
-        <a data-goatcounter-click="ask-trial" data-goatcounter-title="Pricing: get a trial key" href="trial.html?ref=pricing">free 7-day trial key</a>
-        in a few seconds: paste your device code from Clavis → Settings → License (the key works on that PC).
-      </div>
-      <p class="fineprint rv d2"><b>Buying for a team or several PCs?</b> 15% off from 3 licences, 25% off from 10, and invoices for your organisation: <a data-goatcounter-click="ask-bulk" data-goatcounter-title="Pricing: teams page" href="teams.html?ref=pricing">Clavis for teams</a>.</p>
+      <p class="fineprint rv d1"><b>Buying for a team or several PCs?</b> 15% off from 3 licences, 25% off from 10, and invoices for your organisation: <a data-goatcounter-click="ask-bulk" data-goatcounter-title="Pricing: teams page" href="teams.html?ref=pricing">Clavis for teams</a>.</p>
     </div>
 
     <form class="signup" id="signup" action="https://94ecc37e.sibforms.com/serve/MUIFAODh8yM-0OEUwziXyrPNw4kpzT7bHTSADiC84_5zFwjzX2fUgCBFBU4r4JueOJjNYSUH8d6eCTMR_2Ki_KfVzYmofwCwModeDBUfGA9SxeN22TEnZG8E3ymq1sKP7NxpC86mSHewfDShuBvMDMZlGaYFIbexM7Z98H7TTPsuOyHu4BEdBws5pk4OM4VmCZ88eg1bjLjkIJvEWA==" method="POST" data-signup="signup-pricing" data-track="signup-pricing" novalidate>
@@ -823,6 +832,6 @@ html.has-offer .cmp thead th { top: calc(var(--nav-clear) - 16px + var(--offer-h
   addEventListener("scroll", () => requestAnimationFrame(dockState), { passive: true });
 })();
 </script>
-<script src="assets/js/site.js?v=13bb681dfa" defer></script>
+<script src="assets/js/site.js?v=e169c41635" defer></script>
 </body>
 </html>

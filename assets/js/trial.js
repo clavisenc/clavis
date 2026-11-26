@@ -11,8 +11,16 @@
   const label = button.textContent;
 
   // The app can open this page with the code filled in: trial.html?code=K7Q2-M9XD
-  const given = new URLSearchParams(location.search).get("code");
+  const params = new URLSearchParams(location.search);
+  const given = params.get("code");
   if (given && /^[0-9A-Za-z-]{8,12}$/.test(given)) code.value = given.toUpperCase();
+
+  // The pricing cards say which plan: trial.html?plan=pro or ?plan=premium (Premium stays the default)
+  const wanted = (params.get("plan") || "").toLowerCase();
+  if (wanted === "pro" || wanted === "premium") {
+    const radio = form.querySelector('input[name=plan][value="' + wanted + '"]');
+    if (radio) radio.checked = true;
+  }
 
   const planName = p => (p === "premium" ? "Premium" : "Pro");
   const day = iso => new Date(iso + "T12:00:00").toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
@@ -21,7 +29,8 @@
     const gc = window.goatcounter;
     if (gc && typeof gc.count === "function") gc.count({ path, title, event: true });
   };
-  const fill = (box, plan, expires) => {
+  const fill = (box, plan, expires, again) => {
+    box.querySelectorAll("[data-again]").forEach(el => (el.hidden = !again));
     box.querySelectorAll("[data-plan]").forEach(el => (el.textContent = planName(plan)));
     box.querySelectorAll("[data-expires]").forEach(el => (el.textContent = day(expires)));
     box.hidden = false;
@@ -49,7 +58,7 @@
       if (r.ok && d.key) {
         $("trial-key").value = d.key;
         form.hidden = true;
-        fill(done, d.plan, d.expires);
+        fill(done, d.plan, d.expires, !!d.again);
         count(d.again ? "trial-shown-again" : "trial-started", d.again ? "Trial key shown again" : "Trial started");
       } else if (r.status === 409 && d.used) {
         form.hidden = true;

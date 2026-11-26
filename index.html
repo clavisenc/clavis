@@ -232,12 +232,14 @@ html.has-offer section[id] { scroll-margin-top: calc(84px + var(--offer-h, 38px)
 .hero .sub b { font-weight: 600; color: var(--ink); }
 .hero-cta { margin-top: 30px; }
 .hero-cta .reassure { margin: 16px 0 0; font-size: 15px; line-height: 1.45; color: var(--ink); }
+/* the free trial, under the main button and its "Free forever" line (desktop and phones); the gap above the app picture is tightened so it moves down only a little */
+.hero-cta .trial-line { margin: 8px 0 0; font-size: 15.5px; line-height: 1.45; }
 .hero-cta .facts { margin: 6px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--ink-2); }
 .hero-cta .facts a { color: var(--ink); }
 .hero-cta .reassure, .hero-cta .facts, .closing .cta-inline p { text-wrap: balance; }
 
 /* ---------- live app window: a faithful redraw of the real Clavis window, set in a glass frame (Sunlit) ---------- */
-.stage { position: relative; width: min(856px, 100%); margin: 54px auto 0; }
+.stage { position: relative; width: min(856px, 100%); margin: 36px auto 0; }
 .bezel { position: relative; padding: 7px; border-radius: 19px; background: rgba(255, 250, 246, .36); border: 1px solid rgba(255,255,255,.7);
   -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2); box-shadow: var(--sh-win); }
 /* the same leaves that fall on the wall fall across the window, lightly */
@@ -682,7 +684,7 @@ footer { position: relative; z-index: 2; margin-top: -48px; padding: 72px 0 0; o
   .hero h1 { font-size: clamp(38px, 3.9vw, 56px); }
   .hero .sub { margin-top: 14px; font-size: 18px; }
   .hero-cta { margin-top: 24px; }
-  .stage { margin-top: 42px; }
+  .stage { margin-top: 28px; }
 }
 @media (min-width: 1180px) and (min-height: 860px) and (prefers-reduced-motion: no-preference) {
   #how.s { padding-top: 28px; }
@@ -789,7 +791,8 @@ footer { position: relative; z-index: 2; margin-top: -48px; padding: 72px 0 0; o
   .hero-cta { margin-top: 26px; }
   .hero-cta .btn-primary, .cta-inline .btn-primary { width: 100%; height: 54px; font-size: 17px; }
   .hero-cta .reassure { font-size: 14px; }
-  .stage { margin-top: 40px; }
+  .hero-cta .trial-line { margin-top: 6px; }
+  .stage { margin-top: 28px; }
   .stage-foot { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
   .reducers { flex-direction: column; align-items: center; text-align: center; }
   .reducers > span { display: block; }
@@ -968,6 +971,7 @@ footer { position: relative; z-index: 2; margin-top: -48px; padding: 72px 0 0; o
       <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     <a class="btn-primary phone" href="download.html#signup">Email me the download link</a>
     <p class="reassure">Free forever <span class="nw">· No account, <span class="desk">no email, </span>no card</span> <span class="nw brk"><span class="sep">· </span>Same encryption as the paid plans</span></p>
+    <p class="trial-line"><a class="tlink" href="trial.html?ref=home-hero" data-goatcounter-click="home-trial" data-goatcounter-title="Home: try Pro or Premium free for 7 days">or try Pro or Premium free for 7 days<span aria-hidden="true"> →</span></a></p>
     <p class="facts desk">Windows&nbsp;10 and&nbsp;11 · <span class="nw">64-bit</span> · <span data-release="size" class="nw">43 MB</span><span class="brk"><span class="sep"> · </span>version <span data-release="version">3.16.1</span></span><span class="brk"><span class="sep"> · </span><span class="nw">also in the <a href="https://apps.microsoft.com/detail/9PCWJ9HG0TNN">Microsoft Store</a></span> <span class="nw">and for <a href="download.html#linux">Linux</a></span></span></p>
     <p class="facts phone">Clavis runs on Windows and <a href="download.html#linux">Linux</a> PCs <span class="brk"><span class="sep">· </span><button class="copy" type="button" data-copy-url="https://clavisenc.com/download.html">Copy link</button> · <a href="download.html">Download anyway</a></span></p>
   </div>
@@ -1678,6 +1682,6 @@ footer { position: relative; z-index: 2; margin-top: -48px; padding: 72px 0 0; o
   else start();
 })();
 </script>
-<script src="assets/js/site.js?v=13bb681dfa" defer></script>
+<script src="assets/js/site.js?v=e169c41635" defer></script>
 </body>
 </html>

@@ -399,7 +399,8 @@
 
   // The download always starts at once (the link is followed as usual); the guide is offered
   // afterwards on every download until an email is given ("No thanks" isn't remembered).
-  document.querySelectorAll('a[data-goatcounter-click^="download-"]').forEach(a => a.addEventListener("click", () => {
+  // The "download-trial" link opens the trial page, not a download, so it is left out.
+  document.querySelectorAll('a[data-goatcounter-click^="download-"]:not([data-goatcounter-click="download-trial"])').forEach(a => a.addEventListener("click", () => {
     if (known() || dlg.open) return;
     msg.textContent = ""; btn.disabled = false;
     setTimeout(() => { dlg.show(); event("download-email-offered"); }, 400);
