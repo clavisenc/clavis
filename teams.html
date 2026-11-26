@@ -22,7 +22,7 @@
     try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css?v=96d87d39e6">
+  <link rel="stylesheet" href="assets/css/site.css?v=64437b41a0">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do we need one licence per person or per PC?","acceptedAnswer":{"@type":"Answer","text":"One licence per person is usually right: each licence works on up to two PCs, for example an office PC and a laptop."}},{"@type":"Question","name":"Does it need administrator rights to install?","acceptedAnswer":{"@type":"Answer","text":"No. The installer from the download page installs per user without administrator rights, and it supports silent installs with /quiet /norestart."}},{"@type":"Question","name":"Can we manage licences centrally?","acceptedAnswer":{"@type":"Answer","text":"Not yet. Each key is activated on the PC in Settings → License, and Remove license frees it for another PC."}},{"@type":"Question","name":"What happens if an employee forgets their password?","acceptedAnswer":{"@type":"Answer","text":"They can unlock their vault with their recovery key. There is no master key, so make sure everyone saves their recovery key, and add a second owner to team folders."}},{"@type":"Question","name":"Does it work with OneDrive, Google Drive, Dropbox or a network drive?","acceptedAnswer":{"@type":"Answer","text":"Yes. Encrypted files stay encrypted in any synced folder, and team folders work in OneDrive, Google Drive, Dropbox or a network drive."}},{"@type":"Question","name":"Can we get an invoice?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our payment partner, the merchant of record, emails a receipt and invoice for every purchase. If you need specific details on it, such as your organisation's name or tax number, tell us when you ask for a quote."}}]}</script>
 </head>
 <body>
@@ -57,14 +57,14 @@
 
         <section class="t-trial" id="trial">
         <h2>Try it free first</h2>
-        <p>Get a free Pro or Premium trial key for one PC and test Clavis with your own files before you buy.</p>
+        <p>Get a free 7-day Pro or Premium trial key for your PC in a few seconds, and test Clavis with your own files before you buy.</p>
         <ol>
           <li><a data-goatcounter-click="teams-trial-download" data-goatcounter-title="Teams: trial, download" href="download.html?ref=teams-trial">Install Clavis</a> (free, no account).</li>
           <li>Open <b>Settings → License</b> and copy <b>This PC's code</b>.</li>
-          <li>Email it to us and say Pro or Premium. We reply with a trial key for that PC.</li>
+          <li>Paste it on the <a href="trial.html?ref=teams">trial page</a>, choose Pro or Premium, and get your key straight away.</li>
         </ol>
-        <p class="btn-row"><a class="btn-primary" data-goatcounter-click="teams-trial" data-goatcounter-title="Teams: ask for a trial key" href="mailto:hello@clavisenc.com?subject=Clavis%20trial%20key&amp;body=Pro%20or%20Premium%3F%0AThis%20PC%27s%20code%20(Clavis%20%E2%86%92%20Settings%20%E2%86%92%20License)%3A%20%0ACompany%3A%20">Get a free trial key</a><a class="btn btn-ghost" data-goatcounter-click="teams-trial-download" data-goatcounter-title="Teams: trial, download" href="download.html?ref=teams-trial">Download Clavis free</a></p>
-        <p class="fineprint">Button doesn't open your email? Write to <a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> from any email app.</p>
+        <p class="btn-row"><a class="btn-primary" data-goatcounter-click="teams-trial" data-goatcounter-title="Teams: get a trial key" href="trial.html?ref=teams">Get a free trial key</a><a class="btn btn-ghost" data-goatcounter-click="teams-trial-download" data-goatcounter-title="Teams: trial, download" href="download.html?ref=teams-trial">Download Clavis free</a></p>
+        <p class="fineprint">One trial per PC. Trying it on several office PCs? Each PC can get its own trial key.</p>
         </section>
 
         <section class="t-prices">
@@ -120,7 +120,7 @@
         <section class="t-partner">
         <h2>IT support providers</h2>
         <p>Do you set up PCs for small offices? We pay <b>5% of every sale you refer</b>, or you can pass the volume prices on to your clients. Email <a data-goatcounter-click="teams-partner" data-goatcounter-title="Teams: partner enquiry" href="mailto:hello@clavisenc.com?subject=Clavis%20partner&amp;body=Company%3A%0AWebsite%3A%0AHow%20you%20support%20clients%3A">hello@clavisenc.com</a> with your company name and website to set it up.</p>
-        <p class="t-partner-cta"><a class="btn-light" data-goatcounter-click="teams-partner-trial" data-goatcounter-title="Teams: partner, trial key" href="#trial">Get a free trial key</a></p>
+        <p class="t-partner-cta"><a class="btn-light" data-goatcounter-click="teams-partner-trial" data-goatcounter-title="Teams: partner, trial key" href="trial.html?ref=teams-partner">Get a free trial key</a></p>
         </section>
 
         <h2>Questions</h2>
