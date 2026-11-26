@@ -512,6 +512,34 @@
   }));
 })();
 
+/* Wide tables and code blocks that scroll sideways (mostly on phones) must be reachable by keyboard
+   (WCAG 2.1.1): while one overflows it gets tabindex=0 and a name, so arrow keys can scroll it. */
+(function () {
+  const boxes = document.querySelectorAll(".table-wrap, main pre");
+  if (!boxes.length) return;
+  const kind = el => (el.matches("pre") ? "Code" : "Table");
+  const number = new Map([...boxes].map((el, i, all) => [el, [...all].slice(0, i + 1).filter(o => kind(o) === kind(el)).length]));
+  const fit = () => boxes.forEach(el => {
+    const scrolls = el.scrollWidth > el.clientWidth + 1;
+    if (scrolls && !el.hasAttribute("tabindex")) {
+      el.tabIndex = 0;
+      el.dataset.kbScroll = "1";
+      if (!el.hasAttribute("aria-label")) {
+        el.setAttribute("role", "region");
+        el.setAttribute("aria-label", `${kind(el)} ${number.get(el)}, scrolls sideways`);   // a landmark: names must be unique
+        el.dataset.kbLabel = "1";
+      }
+    } else if (!scrolls && el.dataset.kbScroll) {
+      el.removeAttribute("tabindex");
+      delete el.dataset.kbScroll;
+      if (el.dataset.kbLabel) { el.removeAttribute("role"); el.removeAttribute("aria-label"); delete el.dataset.kbLabel; }
+    }
+  });
+  fit();
+  let t;
+  window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(fit, 150); });
+})();
+
 /* Time-limited notices (data-until="YYYY-MM-DD", last day included) hide themselves afterwards,
    so the site never shows an expired offer even if nobody removes it. */
 (function () {
