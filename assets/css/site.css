@@ -977,3 +977,18 @@ main.pg-404 { min-height: 100vh; min-height: 100svh; display: grid; place-items:
     linear-gradient(180deg, rgba(255, 249, 243, .5) 0%, rgba(255, 249, 243, .1) 50%, rgba(255, 249, 243, .3) 100%), url(../img/home/hero-leaf-780.webp); background-size: 700px 100%, auto, cover; }
   .pg-404 .wrap { padding: 40px 22px 34px; border-radius: 26px; }
 }
+
+/* Teams: free trial key */
+.post .t-trial { margin: 44px 0 56px; padding: 30px 32px 26px; border-radius: 24px; background: var(--card); box-shadow: var(--sh-card); }
+.post .t-trial h2 { margin-top: 0; }
+.post .t-trial ol { margin: 18px 0 22px; }
+.post .t-trial .btn-row { margin: 0 0 12px; }
+.post a.btn-primary { color: #fff; text-decoration: none; }
+.post a.btn-ghost { color: var(--ink); text-decoration: none; }
+.post .t-trial .fineprint { margin: 0; }
+.t-partner-cta { margin: 20px 0 0 !important; }
+.post .t-partner a.btn-light { display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 999px; background: #FBFAF7; color: var(--dusk);
+  font: 500 16px/1 var(--sans); text-decoration: none; box-shadow: 0 10px 24px -12px rgba(0, 0, 0, .45); transition: transform var(--t-fast) var(--ease-ui), background var(--t-ui) var(--ease-ui); }
+.post .t-partner a.btn-light:hover { background: #fff; transform: translateY(-1px); }
+.post .t-partner a.btn-light:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+@media (max-width: 600px) { .post .t-trial { padding: 24px 20px 20px; } .post .t-trial .btn-row > a { flex: 1 1 100%; } }
