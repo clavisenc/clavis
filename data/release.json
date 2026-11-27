@@ -1,9 +1,9 @@
 {
-  "version": "3.16.1",
-  "date": "2026-10-28",
+  "version": "3.17.0",
+  "date": "2026-11-28",
   "size": "43 MB",
-  "sha256": "81860e80cd181e94a1bcb9b8e9cbc5e1dee7370ec18fd5bc1443af8af4bc5cee",
-  "zipSha256": "574b24c2cf2d937516e1364b69a9eaa2810af931160d62cefc41458dfed6ed95",
-  "debSha256": "a143fc4d7e1b10c6924d9b996c56cf3d4199873f690c523bbfa28750a07e0c09",
-  "notes": "# Clavis Encrypt 3.16.1\n\n## Ready for Pro and Premium\n\n- Clavis can now activate the Clavis Pro and Clavis Premium license keys from our new online store (Settings → License → Enter license key). Pro and Premium are on sale at https://clavisenc.com/pricing.html.\n- A key works on up to 2 PCs. To move it, choose Remove license on the old PC first; if that PC is offline, Clavis frees the slot the next time it's online.\n\n## Install / upgrade\n\n- **Windows, already installed:** the app updates itself (Settings → Updates → Check now), or download it from https://clavisenc.com/download.html.\n- **Microsoft Store:** the Store updates it automatically.\n- **Linux:** install the new `.deb` from https://clavisenc.com/download.html.\n\nYour vaults and settings are kept.\n"
+  "sha256": "682329dc220dea38be473341320226e7bbbaafc3c0f3235334f34c4c39d6509a",
+  "zipSha256": "61976dbbfcaa1fe6a65a41c81361d952216d0ce8440d26c5c468ccfd82a2e014",
+  "debSha256": "f703d79e4b398b14ee74a3775d5343cb142c96eb2bd0bf1dc6367164c3d5bde5",
+  "notes": "# Clavis Encrypt 3.17.0\n\n## 🆕 Links in Secure Notes\n\n- Link your encrypted files in a note: while editing a note, press **Insert file…**. When you press **Done**, the file shows as a label you can click to **Open in Clavis** (without saving a decrypted copy) or **Show in folder**. Part of **Clavis Pro**.\n- Mention a contact by typing **@** and their name. Click them later to **Share a file with** them or to list the **Notes that mention them**. Part of **Clavis Premium**.\n- The notes list shows who and what each note mentions, and searching for a person's name finds the notes that mention them.\n- If a linked file was moved, or you restored your vault on another PC, it shows crossed out. Click it and choose **Locate it…** to point the link at the file's new place.\n- Links are stored inside the note, encrypted with your vault. Older versions of Clavis show them as plain text and keep them.\n\n## Install / upgrade\n\n- **Windows, already installed:** the app updates itself (Settings → Updates → Check now), or download it from https://clavisenc.com/download.html.\n- **Microsoft Store:** the Store updates it automatically.\n- **Linux:** install the new `.deb` from https://clavisenc.com/download.html.\n\nYour vaults and settings are kept.\n"
 }
