@@ -1025,8 +1025,23 @@ main.pg-404 { min-height: 100vh; min-height: 100svh; display: grid; place-items:
   font: 13px/1.5 var(--mono); color: var(--ink); word-break: break-all; }
 .post .trial-done .btn-row { margin: 12px 0 14px; }
 .post .trial-card .fineprint { margin: 18px 0 0; }
+/* Optional trial emails: the tips box (hidden until they go live), its answer under the key, and the confirmed notice */
+.pg-trial .trial-tips { display: grid; gap: 10px; min-width: 0; margin: 0 0 2px; }
+.pg-trial .tips-opt { display: flex; gap: 12px; align-items: flex-start; font-size: 15.5px; line-height: 1.5; color: var(--ink); cursor: pointer; }
+.pg-trial .tips-opt input { margin: 3px 0 0; width: 18px; height: 18px; flex: none; accent-color: var(--dusk); }
+.pg-trial .tips-opt input:focus-visible { outline: 2px solid var(--dusk); outline-offset: 3px; }
+.pg-trial .tips-more { display: grid; gap: 8px; min-width: 0; padding-left: 30px; }
+.pg-trial .tips-more label { font-weight: 600; color: var(--ink); }
+.pg-trial .tips-more input { width: 100%; max-width: 360px; height: 48px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--edge); background: #fff;
+  font: 400 17px/1.2 var(--sans); color: var(--ink); }
+.pg-trial .tips-more input:focus-visible { outline: 2px solid var(--dusk); outline-offset: 2px; border-color: transparent; }
+.pg-trial .tips-small { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--ink-3); }
+.pg-trial .tips-small a { color: var(--ink-2); }
+.pg-trial .trial-ok, .pg-trial .trial-done .trial-tips-note { margin: 0 0 14px; padding: 12px 16px; border-radius: 12px; background: var(--sage-50); color: var(--sage-ink); font-size: 15px; line-height: 1.55; }
+.pg-trial .trial-ok { margin: 18px 0 0; }
 @media (max-width: 600px) {
   .post .trial-card { padding: 24px 20px 20px; }
   .trial-form fieldset { grid-template-columns: 1fr; }
   .trial-form .btn-primary, .post .trial-done .btn-row > * { width: 100%; }
+  .pg-trial .tips-more { padding-left: 0; }
 }

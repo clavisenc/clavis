@@ -22,7 +22,7 @@
     try { if (Date.now() <= new Date("2026-11-30T23:59:59").getTime() && sessionStorage.getItem("offer-closed") !== "1") d.classList.add("has-offer"); } catch (e) {} })(document.documentElement);</script>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css?v=fa388bc737">
+  <link rel="stylesheet" href="assets/css/site.css?v=1a24b5e36d">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What happens when the 7 days end?","acceptedAnswer":{"@type":"Answer","text":"Clavis goes back to Free. Your encrypted files and vaults stay exactly as they are, and Free still encrypts and decrypts your files with the same encryption. To keep the Pro or Premium features, buy a licence: it's a one-time purchase with no subscription."}},{"@type":"Question","name":"Can I try both Pro and Premium?","acceptedAnswer":{"@type":"Answer","text":"Each PC gets one free trial. Premium includes everything in Pro, so choose Premium to try it all."}},{"@type":"Question","name":"Do I need an account or an email address?","acceptedAnswer":{"@type":"Answer","text":"No. You only paste This PC's code. It's a short code made from your PC's Windows or Linux ID: it says nothing about you or your files, and the key works only on that PC."}},{"@type":"Question","name":"Where do I find This PC's code?","acceptedAnswer":{"@type":"Answer","text":"Open Clavis Encrypt and go to Settings → License. The code is 8 characters, like K7Q2-M9XD. If you don't see it, update Clavis (Settings → Updates → Check now)."}},{"@type":"Question","name":"I'm trying it for my team. Can several PCs have a trial?","acceptedAnswer":{"@type":"Answer","text":"Yes, each PC can get its own 7-day trial key here. For team prices and invoices, see Clavis for teams."}}]}</script>
 </head>
 <body>
@@ -61,6 +61,8 @@
             <li>Paste it below, choose a plan and press the button.</li>
           </ol>
 
+          <p id="trial-confirmed" class="trial-ok" role="status" hidden>Thanks, you're confirmed. Your first tips email is on its way, usually within 15 minutes.</p>
+
           <form id="trial-form" class="trial-form" novalidate>
             <label for="trial-code">This PC's code</label>
             <input id="trial-code" name="code" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="12" placeholder="K7Q2-M9XD" required>
@@ -69,6 +71,14 @@
               <label class="plan-opt"><input type="radio" name="plan" value="pro"><span><b>Pro</b><small>Whole folders, find sensitive files, watch folders, Clavis on a USB stick</small></span></label>
               <label class="plan-opt"><input type="radio" name="plan" value="premium" checked><span><b>Premium</b><small>Everything in Pro, plus encrypting into OneDrive, Google Drive or Dropbox, sharing and team folders</small></span></label>
             </fieldset>
+            <div class="trial-tips" data-trial-tips hidden>
+              <label class="tips-opt"><input type="checkbox" id="trial-tips" aria-controls="trial-tips-more" aria-expanded="false"><span>Email me 3 short tips during my trial and a reminder before it ends. Unsubscribe any time.</span></label>
+              <div id="trial-tips-more" class="tips-more" hidden>
+                <label for="trial-email">Your email</label>
+                <input id="trial-email" type="email" autocomplete="email" inputmode="email" maxlength="254" spellcheck="false" aria-describedby="trial-tips-small">
+                <p id="trial-tips-small" class="tips-small">Optional. Sent by Clavis Encrypt through Brevo; we'll email you a link to confirm first. We take your address off the trial list 3 days after your trial ends. <a href="privacy.html#trial-emails">Privacy</a></p>
+              </div>
+            </div>
             <button class="btn-primary" type="submit">Get my 7-day key</button>
             <p id="trial-msg" class="trial-msg" role="alert" hidden></p>
           </form>
@@ -83,6 +93,7 @@
               <li>Paste the key and press <b>Activate</b>.</li>
             </ol>
             <p>It works on this PC only, until <b data-expires></b>. Then Clavis goes back to Free, and your encrypted files and vaults stay exactly as they are. Like it? <a href="pricing.html?ref=trial">Buy Pro or Premium</a>, one-time, no subscription.</p>
+            <p class="trial-tips-note" data-tips-note role="status" hidden></p>
           </div>
 
           <div id="trial-used" class="trial-used" hidden tabindex="-1">
@@ -122,7 +133,7 @@
     <p class="bigmark" aria-hidden="true">Clavis</p>
   </footer>
 
-  <script src="assets/js/site.js?v=e169c41635" defer></script>
-  <script src="assets/js/trial.js" defer></script>
+  <script src="assets/js/site.js?v=af6ef966a9" defer></script>
+  <script src="assets/js/trial.js?v=02dd7c8602" defer></script>
 </body>
 </html>

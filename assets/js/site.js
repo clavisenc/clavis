@@ -1,4 +1,109 @@
 /* Clavis — site behaviour. No dependencies. */
+
+/* ── Email-link codes (runs first, before GoatCounter is loaded) ──────────────
+   Links in our emails to businesses carry a short code made for that business, e.g.
+   teams.html?ref=email-partner&f=k7q2m (privacy.html#email-links). This block:
+   - takes f off the address bar at once, valid or not, and on the trial page also the app's
+     ?code=K7Q2-M9XD, which it hands to trial.js in memory (window.clavisTrialCode). GoatCounter's
+     count.js sends the address bar's query with every hit, so neither code reaches it that way;
+   - keeps a valid code only in this closure: no cookies, no localStorage or sessionStorage, no
+     window.name, so it lasts one page view. A click on a link to another of our pages gets f added
+     at that moment, and the next page takes it off again, so one visit stays one firm's visit;
+   - reports "opened" only on the first real input (pointer, key, wheel, touch, a mouse move).
+     Corporate mail scanners open links in sandboxes without touching the page, and those must not
+     look like a visit. Cost: someone who opens the page and leaves without touching it isn't reported.
+   Events (the alerts Worker matches ^firm-(open|trial|click)-<code>-[a-z0-9-]{1,60}$):
+     firm-open-<code>-<page>   firm-click-<code>-<button>   firm-trial-<code>-<plan> (trial.js)
+   Nothing is sent on a local copy or on data-no-analytics pages (encrypt, open); f is still taken off. */
+(() => {
+  "use strict";
+  const CODE = /^[0-9abcdefghjkmnpqrstvwxyz]{5}$/;           // lowercase Crockford: no i, l, o, u
+  const INPUTS = ["pointerdown", "keydown", "wheel", "touchstart", "pointermove"];
+  const slug = s => String(s).toLowerCase().replace(/[^a-z0-9-]/g, "-").slice(0, 60);
+  const key = part => { const k = part.split("=")[0].replace(/\+/g, " "); try { return decodeURIComponent(k); } catch (e) { return k; } };
+  // the query without the named parameters; every other parameter is kept exactly as written
+  const without = (search, names) => {
+    const kept = search.replace(/^\?/, "").split("&").filter(p => p && !names.includes(key(p)));
+    return kept.length ? "?" + kept.join("&") : "";
+  };
+
+  const params = new URLSearchParams(location.search);
+  const strip = /\/trial(\.html)?$/.test(location.pathname) ? ["f", "code"] : ["f"];
+  if (strip[1] && params.has("code")) window.clavisTrialCode = params.get("code");
+  if (strip.some(n => params.has(n))) {
+    try { history.replaceState(history.state, "", location.pathname + without(location.search, strip) + location.hash); } catch (e) { /* keep going */ }
+  }
+
+  const host = location.hostname;
+  if (host === "localhost" || host === "127.0.0.1" || host === "") return;
+  if (document.documentElement.hasAttribute("data-no-analytics")) return;
+  // some mail programs take a sentence's full stop or bracket into the link: k7q2m. -> k7q2m
+  const code = (params.get("f") || "").trim().replace(/[.,;:)]+$/, "").toLowerCase();
+  if (!CODE.test(code)) return;
+
+  // Events wait for GoatCounter's count.js (the next block loads it), as the other blocks do (30 tries).
+  const queue = [];
+  let tries = 0, waiting = false;
+  const flush = () => {
+    waiting = false;
+    const gc = window.goatcounter;
+    if (!gc || typeof gc.count !== "function") { if (++tries < 30) { waiting = true; setTimeout(flush, 1000); } return; }
+    while (queue.length) gc.count({ path: queue.shift(), title: "Email link", event: true });   // the title never has the code
+  };
+  const send = (kind, what) => {
+    const name = slug(what);
+    if (!name) return;
+    queue.push("firm-" + kind + "-" + code + "-" + name);
+    if (!waiting) flush();
+  };
+
+  // "Opened": the first trusted input; a mouse move counts once the pointer has really moved.
+  let page = location.pathname.replace(/^\/+/, "").replace(/\.html$/, "");
+  if (page === "index") page = "";
+  let opened = false, at = null;
+  const open = e => {
+    if (opened || !e.isTrusted) return;
+    if (e.type === "pointermove") {
+      if (!at) { at = [e.clientX, e.clientY]; return; }
+      if (Math.abs(e.clientX - at[0]) + Math.abs(e.clientY - at[1]) < 3) return;
+    }
+    opened = true;
+    INPUTS.forEach(t => removeEventListener(t, open, true));
+    send("open", page || "home");
+  };
+  INPUTS.forEach(t => addEventListener(t, open, { capture: true, passive: true }));
+
+  // Links to our other pages take the code along (added at click time, never stored).
+  const carry = a => {
+    if (a.hasAttribute("download")) return;
+    let u;
+    try { u = new URL(a.href, location.href); } catch (e) { return; }
+    if (u.origin !== location.origin) return;
+    const last = u.pathname.split("/").pop();
+    if (last.includes(".") && !/\.html$/.test(last)) return;                             // files, not pages
+    if (u.hash && u.pathname === location.pathname && u.search === location.search) return; // a jump within this page
+    const q = without(u.search, ["f"]);
+    u.search = (q ? q + "&" : "?") + "f=" + code;
+    a.href = u.href;
+  };
+  // Clicks on buttons we already count (download-*, buy-*, teams-*, ask-*). Links to the trial page
+  // (names ending in -trial) are left out: the trial page reports itself.
+  const click = e => {
+    if (e.type === "auxclick" && e.button !== 1) return;
+    const t = e.target instanceof Element ? e.target : null;
+    if (!t) return;
+    const counted = t.closest("[data-goatcounter-click]");
+    if (counted && e.isTrusted && !/-trial$/.test(counted.dataset.goatcounterClick || "")) send("click", counted.dataset.goatcounterClick || "");
+    const a = t.closest("a[href]");
+    if (a) carry(a);
+  };
+  addEventListener("click", click, true);
+  addEventListener("auxclick", click, true);
+
+  // trial.js calls this after a new trial key: firm-trial-<code>-<plan>
+  window.clavisFirmEvent = (kind, what) => { if (kind === "trial") send("trial", what); };
+})();
+
 (() => {
   "use strict";
   const $  = (s, r = document) => r.querySelector(s);
@@ -303,8 +408,10 @@
 })();
 
 /* ── Privacy-friendly analytics (GoatCounter) ─────────────────────────────
-   No cookies, no personal data, no cross-site tracking — so no cookie banner
-   is needed. Set ENDPOINT to your GoatCounter URL (from goatcounter.com signup);
+   No cookies and no cross-site tracking; ordinary visits are counted anonymously,
+   so no cookie banner is needed. Exception: email-link codes (the "Email-link codes"
+   block at the top of this file; privacy.html#email-links).
+   Set ENDPOINT to your GoatCounter URL (from goatcounter.com signup);
    this is the ONLY place to change it. Leave "" to disable. */
 (() => {
   "use strict";
