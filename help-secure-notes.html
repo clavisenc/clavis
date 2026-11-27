@@ -23,7 +23,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-roman-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-normal-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/site.css?v=1a24b5e36d">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://clavisenc.com/help-secure-notes.html#article","headline":"Keep secure notes in your vault","description":"Store Wi-Fi passwords, PINs and other small secrets as encrypted notes inside your Clavis vault.","datePublished":"2026-10-01","dateModified":"2026-10-01","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/help-secure-notes.html","image":["https://clavisenc.com/assets/img/help/notes.webp"],"isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Help","item":"https://clavisenc.com/help.html"},{"@type":"ListItem","position":3,"name":"Keep secure notes in your vault","item":"https://clavisenc.com/help-secure-notes.html"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://clavisenc.com/help-secure-notes.html#article","headline":"Keep secure notes in your vault","description":"Store Wi-Fi passwords, PINs and other small secrets as encrypted notes inside your Clavis vault.","datePublished":"2026-10-01","dateModified":"2026-11-28","inLanguage":"en","author":{"@type":"Organization","@id":"https://clavisenc.com/#author","name":"Clavis Encryption","url":"https://clavisenc.com/about.html"},"publisher":{"@id":"https://clavisenc.com/#author"},"mainEntityOfPage":"https://clavisenc.com/help-secure-notes.html","image":["https://clavisenc.com/assets/img/help/notes.webp","https://clavisenc.com/assets/img/help/notes-mention.webp"],"isPartOf":{"@id":"https://clavisenc.com/#website"},"about":{"@id":"https://clavisenc.com/#software"},"proficiencyLevel":"Beginner"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://clavisenc.com/"},{"@type":"ListItem","position":2,"name":"Help","item":"https://clavisenc.com/help.html"},{"@type":"ListItem","position":3,"name":"Keep secure notes in your vault","item":"https://clavisenc.com/help-secure-notes.html"}]}]}</script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -51,16 +51,26 @@
       </header>
       <div class="sheet">
       <div class="wrap post help-article">
-<p><strong>Secure Notes</strong> is for small secrets that aren't files: Wi-Fi passwords, locker codes, account numbers, answers to
-security questions. Notes are encrypted inside your vault with the same keys as your files.</p>
+<p><strong>Secure Notes</strong> is for small secrets that aren't files: Wi-Fi passwords, locker codes, account numbers. Notes are encrypted inside your vault with the same keys as your files.</p>
 <figure class="help-shot">
-  <img src="assets/img/help/notes.webp" width="932" height="679" alt="The Secure Notes window" loading="lazy">
-  <ol class="help-steps"><li>Your notes, newest first</li><li>Search titles and text</li><li>Add a note</li><li>Everything here is encrypted in your vault</li><li>Saved when you switch notes, press Save or close</li></ol>
+  <img src="assets/img/help/notes.webp" width="926" height="675" alt="A note with a linked file and a mentioned contact" loading="lazy">
+  <ol class="help-steps"><li>Your notes; the second line shows who and what each mentions</li><li>Click a file to open it or show it in its folder</li><li>Click a person to share a file with them</li><li>Edit the note; Done shows the links again</li><li>Search titles, text and people</li></ol>
 </figure>
 <ul>
-  <li>Notes save when you switch to another note, press <strong>Save</strong> or close the window.</li>
-  <li>Search looks through titles and text.</li>
-  <li>Notes are included in a <a href="help-backup-restore.html">vault backup</a> (Premium), so they move with you to a new PC.</li>
+  <li>A note without links opens ready to type, as before. A note with links opens ready to read: press <strong>Edit</strong> to change it, then <strong>Done</strong>. <strong>Save</strong> saves and keeps you editing. Notes also save when you switch notes or close the window.</li>
+  <li><strong>Link a file:</strong> while editing, press <strong>Insert file…</strong> and choose an encrypted file (.enc). While you edit, the link shows as its name, like <code>[[Lease 2025.pdf]]</code>; where the file is stays in the note but isn't shown. After <strong>Done</strong>, click the file to <strong>Open in Clavis</strong> or <strong>Show in folder</strong>. Open in Clavis wipes the decrypted content when you re-lock the file; Windows or the app you use may still list the file's name in its recent files.</li>
+  <li><strong>Mention a person</strong> <span class="plan-chip">Premium</span>: while editing, type <strong>@</strong> and the first letters of a contact's name, then choose them and press Enter. Click them later to <strong>Share a file with</strong> them or to see <strong>Notes that mention them</strong>.</li>
+</ul>
+<figure class="help-shot">
+  <img src="assets/img/help/notes-mention.webp" width="926" height="675" alt="Type @ to mention a contact" loading="lazy">
+  <ol class="help-steps"><li>Pick a contact and press Enter</li></ol>
+</figure>
+<ul>
+  <li>A crossed-out file couldn't be found: it was moved or deleted, its drive isn't connected, or you restored your vault on another PC. Click it and choose <strong>Locate it…</strong> to point the link at the file, or <strong>Remove link</strong> to keep just its name.</li>
+  <li>A file on another computer on your network shows that computer's name. Clavis asks before it connects to it.</li>
+  <li>Search looks through titles and text, and finds the notes that mention a person when you type their name.</li>
+  <li>Linking files is part of Clavis Pro; mentioning contacts is part of Clavis Premium. With Pro, people mentioned earlier show as plain names.</li>
+  <li>Links are stored inside the note, encrypted with your vault, and are included in a <a href="help-backup-restore.html">vault backup</a> (Premium). Older versions of Clavis show them as plain text and keep them.</li>
 </ul>
         <nav class="help-pager" aria-label="More help"><a href="help-watch-folders.html"><span>← Previous</span>Encrypt new files automatically with watch folders</a><a class="next" href="help-browse-encrypted.html"><span>Next →</span>Browse encrypted files by their real names</a></nav>
         <p class="help-more">Can't find what you need? <a href="help.html">All help articles</a> · <a href="mailto:hello@clavisenc.com">Email us</a></p>
@@ -78,7 +88,7 @@ security questions. Notes are encrypted inside your vault with the same keys as 
         <div><p class="fh">Company</p><a href="about.html">About</a><a href="security.html">Security</a><a href="mailto:hello@clavisenc.com">Contact</a></div>
         <div><p class="fh">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a></div>
       </div>
-      <div class="legal"><span>© <span data-year>2026</span> Clavis Encryption</span><span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> · version <span data-release="version">3.16.1</span></span></div>
+      <div class="legal"><span>© <span data-year>2026</span> Clavis Encryption</span><span><a href="mailto:hello@clavisenc.com">hello@clavisenc.com</a> · version <span data-release="version">3.17.0</span></span></div>
     </div>
     <p class="bigmark" aria-hidden="true">Clavis</p>
   </footer>
